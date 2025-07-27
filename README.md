@@ -1,129 +1,99 @@
-# hello-uniapp
+# 蓝牙电池监控小程序
 
-`uni-app`框架示例，一套代码，同时发行到iOS、Android、H5、小程序等多个平台，请使用手机在下方扫码快速体验`uni-app`的强大功能。[官方文档](https://uniapp.dcloud.net.cn/)
+一个基于 uni-app 开发的微信小程序，专注于蓝牙设备的电池监控和管理。
 
-## 快速上手
-hello-uniapp 示例工程可以通过两种方式创建， 一种是 HBuilderX, 配套 IDE，集成开发；另一种是 CLI 创建；推荐前者。
-### 通过 HBuilderX 可视化界面创建（推荐）
+## 核心功能
 
-可视化的方式比较简单，HBuilderX内置相关环境，开箱即用，无需配置nodejs。
+- **实时监控**: 监控已连接蓝牙设备的电池状态
+- **设备管理**: 扫描、连接、断开蓝牙设备
+- **智能提醒**: 低电量自动提醒功能
+- **数据管理**: 电池历史数据查看和导出
 
-开始之前，开发者需先下载安装如下工具：
-
-- HBuilderX：[官方IDE下载地址](https://www.dcloud.io/hbuilderx.html)
-
-HBuilderX是通用的前端开发工具，但为`uni-app`做了特别强化，请下载App开发版。
-
-由于截图在 github 不便浏览，参见官方文档 [HBuilderX 可视化界面创建](https://uniapp.dcloud.net.cn/quickstart?id=_1-%e9%80%9a%e8%bf%87-hbuilderx-%e5%8f%af%e8%a7%86%e5%8c%96%e7%95%8c%e9%9d%a2)
-
-### 通过 vue-cli 创建
+## 项目结构
 
 ```
-npm install -g @vue/cli
+bluetooth-battery-project/
+├── pages/                 # 页面文件
+│   └── tabBar/            # 标签页
+│       ├── component/     # 实时状态页面
+│       ├── API/           # 设备控制页面
+│       └── extUI/         # 系统设置页面
+├── static/                # 静态资源
+│   ├── logo.png          # 应用图标
+│   └── *.png             # 标签页图标
+├── common/                # 公共资源
+│   └── uni.css           # 通用样式
+├── App.vue               # 应用入口组件
+├── main.js              # 应用入口文件
+├── pages.json           # 页面路由配置
+├── manifest.json        # 应用配置文件（已禁用H5平台）
+├── package.json         # 项目配置
+└── uni.scss             # SCSS预处理器配置
 ```
 
-#### 创建uni-app
+## 技术栈
 
-**使用正式版**（对应HBuilderX最新正式版）
+- **框架**: uni-app (Vue 2)
+- **平台**: 微信小程序（100%专注，已禁用其他平台）
+- **API**: 微信小程序蓝牙API (wx.xxx)
+- **样式**: SCSS + 响应式设计
 
+## 快速开始
+
+### 环境要求
+
+- HBuilderX 3.0+
+- 微信开发者工具
+
+### 开发步骤
+
+1. 使用 HBuilderX 打开项目
+2. 在 `manifest.json` 中配置小程序 appid
+3. 运行到微信开发者工具
+4. 在微信开发者工具中预览和调试
+
+### 蓝牙API使用
+
+项目使用微信小程序蓝牙API：
+
+```javascript
+// 初始化蓝牙适配器
+wx.openBluetoothAdapter()
+
+// 开始搜索设备
+wx.startBluetoothDevicesDiscovery()
+
+// 连接设备
+wx.createBLEConnection()
+
+// 获取服务
+wx.getBLEDeviceServices()
 ```
-vue create -p dcloudio/uni-preset-vue my-project
-```
 
-**使用alpha版**（对应HBuilderX最新alpha版）
+## 页面说明
 
-```
-vue create -p dcloudio/uni-preset-vue#alpha my-alpha-project
-```
+- **实时状态**: 显示已连接设备的电池状态和历史数据
+- **设备控制**: 扫描和管理蓝牙设备连接
+- **系统设置**: 应用设置和数据管理功能
 
-此时，会提示选择项目模板，选择 `hello uni-app` 项目模板，如下所示：
+## 部署
 
-<div>
-<img src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/h5-cli-01.png" width="300">
-</div>
+1. 在微信开发者工具中点击"上传"
+2. 登录微信公众平台提交审核
+3. 审核通过后发布上线
 
-创建好后，进入项目目录
-```
-cd my-project
-```
+## 注意事项
 
-执行该命令运行到 h5 端
-```
-npm run dev:h5
-```
+- 需要真机测试蓝牙功能
+- 确保设备支持蓝牙Low Energy (BLE)
+- 遵循微信小程序蓝牙使用规范
+- `uni.scss` 文件用于解决SCSS编译依赖问题，请勿删除
+- 项目已禁用H5平台编译，专注微信小程序开发
 
-欢迎提 issues，推荐到[官方社区](https://ask.dcloud.net.cn/explore/)提问。
+## 项目特点
 
-## 扫码体验
-
-<div class="quick">
-    <p>一套代码编到10个平台，这不是梦想。眼见为实，扫描10个二维码，亲自体验最全面的跨平台效果！</p>
-    <div style="display: flex;">
-      <a href="//m3w.cn/uniapp" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box">
-          <img src="https://web-assets.dcloud.net.cn/unidoc/zh/uni-android.png" width="160" />
-        </div>
-        <b>Android版</b>
-      </a>
-      <a href="https://itunes.apple.com/cn/app/hello-uni-app/id1417078253?mt=8" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box">
-          <img src="https://web-assets.dcloud.net.cn/unidoc/zh/uni-h5.png" width="160" />
-        </div>
-        <b>iOS版</b>
-      </a>
-      <a href="https://hellouniapp.dcloud.net.cn/" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box">
-          <img src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/uni-h5-hosting-qr.png" width="160" />
-        </div>
-        <b>H5版</b>
-      </a>
-      <a href="//m3w.cn/uniapp" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box"><img src="//img.cdn.aliyun.dcloud.net.cn/guide/uniapp/gh_33446d7f7a26_430.jpg" width="160" /></div>
-        <b>微信小程序版</b>
-      </a>
-      <a href="//m3w.cn/uniapp" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box"><img src="https://web-assets.dcloud.net.cn/unidoc/zh/alipay1.png" width="160" /></div>
-        <b>支付宝小程序版</b>
-      </a>
-    </div>
-    <div class="flex-img-group-view" style="margin-top: 20px;">
-      <a href="//m3w.cn/uniapp" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box"><img src="https://web-assets.dcloud.net.cn/unidoc/zh/baidu-uniapp.png" width="160" /></div>
-        <b>百度小程序版</b>
-      </a>
-      <a href="//m3w.cn/uniapp" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box">
-          <img src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/mp-toutiao.png" width="160" />
-        </div>
-        <b>字节跳动小程序版</b>
-      </a>
-      <a href="//m3w.cn/uniapp" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box">
-          <img src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/hello-uni-qq.png" width="160" />
-        </div>
-        <b>QQ小程序版</b>
-      </a>
-      <a href="//m3w.cn/uniapp" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box">
-          <img src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/hello-uni-qa-union.png" width="160" />
-        </div>
-        <b>快应用</b>
-      </a>
-      <a href="https://so.mp.360.cn/mp.html?appid=qh4j181qqtru354st6" target="_blank" class="clear-style barcode-view">
-        <div class="barcode-img-box">
-          <img src="https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/hello-uni-mp-360-qr.png" width="160" />
-        </div>
-        <b>360小程序</b>
-      </a>
-    </div>
-    <p>
-        <em>注：某些平台不能提交简单demo，故补充了一些其他功能；hello uni-app示例代码可从[github](https://github.com/dcloudio/hello-uniapp)获取</em></br>
-        <em>快应用仅支持 vivo 、oppo、华为</em></br>
-        <em>360小程序仅 windows平台支持，需要在360浏览器中打开</em></br>
-    </p>
-</div>
-
-`uni-app`官网文档详见[https://uniapp.dcloud.io](https://uniapp.dcloud.io)
-
-更多uni-app的模板、示例详见[插件市场](https://ext.dcloud.net.cn/)
-
+✅ **100%小程序专用**: 已禁用H5等其他平台，专注微信小程序  
+✅ **极度轻量**: 仅18个文件，总大小约62KB  
+✅ **零冗余代码**: 已移除所有无关平台的配置和文件  
+✅ **即开即用**: 可直接在微信开发者工具中运行  
+✅ **完整功能**: 包含蓝牙扫描、连接、监控等完整流程 
