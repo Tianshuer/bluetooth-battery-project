@@ -86,9 +86,10 @@ export default {
   background-color: #fff;
   margin-bottom: 20rpx;
   border-radius: 25rpx;
-  &:last-child {
-    margin-bottom: 0;
-  }
+}
+
+.input-item:last-child {
+  margin-bottom: 0;
 }
 
 .label {
