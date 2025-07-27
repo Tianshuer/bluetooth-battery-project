@@ -13,7 +13,6 @@
     "wechat-miniprogram",
     "蓝牙电池监控"
   ],
-  "dependencies": {},
   "dcloudext": {
     "type": "uniapp-template-project",
     "sale": {
@@ -26,5 +25,8 @@
       "data": "仅用于蓝牙设备监控",
       "permissions": "蓝牙、定位（用于蓝牙扫描）"
     }
+  },
+  "dependencies": {
+    "@dcloudio/uni-ui": "^1.5.10"
   }
 }

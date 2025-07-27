@@ -3,7 +3,7 @@
 		{
 			"path": "pages/tabBar/component/component",
 			"style": {
-				"navigationBarTitleText": "实时状态",
+				"navigationStyle": "custom",
 				"enablePullDownRefresh": true,
 				"backgroundTextStyle": "dark"
 			}
@@ -11,14 +11,14 @@
 		{
 			"path": "pages/tabBar/API/API",
 			"style": {
-				"navigationBarTitleText": "显示与控制",
+				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
 		},
 		{
 			"path": "pages/tabBar/extUI/extUI",
 			"style": {
-				"navigationBarTitleText": "系统设置",
+				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
 		}

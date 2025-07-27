@@ -1,10 +1,14 @@
 <script>
 	import { version } from './package.json'
+	import globalStore from './store/index.js'
 
 	export default {
 		onLaunch: function() {
 			console.log('蓝牙电池监控应用启动');
 			console.log(`应用版本: v${version}`);
+			
+			// 初始化全局状态管理
+			globalStore.init();
 			
 			// 初始化全局数据
 			this.globalData = {
