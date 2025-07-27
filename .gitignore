@@ -1,0 +1,6 @@
+# 编译输出目录
+unpackage/
+dist/
+
+# 依赖包
+node_modules/
