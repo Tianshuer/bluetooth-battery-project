@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "redirectPage"
+  "navigationBarTitleText": "redirectPage",
+  "usingComponents": {
+    "page-head": "/components/page-head/page-head"
+  }
 }

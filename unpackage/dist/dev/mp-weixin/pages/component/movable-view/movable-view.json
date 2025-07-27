@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "movable-view"
+  "navigationBarTitleText": "movable-view",
+  "usingComponents": {
+    "page-head": "/components/page-head/page-head"
+  }
 }

@@ -1,0 +1,1 @@
+<view><view id="str">{{$root.g0}}</view><button id="button" data-event-opts="{{[['tap',[['getRandomValues',['$event']]]]]}}" bindtap="__e">crypto.getRandomValues</button></view>

@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "下拉刷新",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "page-head": "/components/page-head/page-head"
+  }
 }

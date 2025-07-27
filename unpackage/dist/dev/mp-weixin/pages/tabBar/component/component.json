@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "实时状态"
+  "navigationBarTitleText": "内置组件",
+  "usingComponents": {
+    "u-link": "/components/u-link/u-link"
+  }
 }

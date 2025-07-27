@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "textarea"
+  "navigationBarTitleText": "textarea",
+  "usingComponents": {
+    "page-head": "/components/page-head/page-head"
+  }
 }

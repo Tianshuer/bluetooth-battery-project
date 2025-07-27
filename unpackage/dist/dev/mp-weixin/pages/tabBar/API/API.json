@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "显示与控制"
+  "navigationBarTitleText": "接口",
+  "usingComponents": {
+    "u-link": "/components/u-link/u-link",
+    "set-tab-bar": "/components/api-set-tabbar"
+  }
 }

@@ -16,7 +16,7 @@
 		{
 			"path": "pages/tabBar/component/component",
 			"style": {
-				"navigationBarTitleText": "实时状态",
+				"navigationBarTitleText": "内置组件",
 				"app-plus": {
 					"bounce": "vertical",
 					"titleNView": {
@@ -33,7 +33,7 @@
 		{
 			"path": "pages/tabBar/API/API",
 			"style": {
-				"navigationBarTitleText": "显示与控制",
+				"navigationBarTitleText": "接口",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [{
@@ -49,7 +49,7 @@
 		{
 			"path": "pages/tabBar/extUI/extUI",
 			"style": {
-				"navigationBarTitleText": "系统设置",
+				"navigationBarTitleText": "扩展组件",
 				"app-plus": {
 					"titleNView": {
 						"buttons": [{

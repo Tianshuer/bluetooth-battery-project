@@ -1,6 +1,6 @@
-(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],[
-/* 0 */,
-/* 1 */
+(global["webpackJsonp"] = global["webpackJsonp"] || []).push([["common/vendor"],{
+
+/***/ 1:
 /*!*********************************************************!*\
   !*** ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js ***!
   \*********************************************************/
@@ -52,7 +52,10742 @@ var _default = target[key];
 exports.default = _default;
 
 /***/ }),
-/* 2 */
+
+/***/ 10:
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/nonIterableRest.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+module.exports = _nonIterableRest, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 1004:
+/*!***********************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/pages/extUI/table/tableData.js ***!
+  \***********************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = [{
+  "date": "2020-09-01",
+  "name": "Dcloud1",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-02",
+  "name": "Dcloud2",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-03",
+  "name": "Dcloud3",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-04",
+  "name": "Dcloud4",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-05",
+  "name": "Dcloud5",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-06",
+  "name": "Dcloud6",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-07",
+  "name": "Dcloud7",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-08",
+  "name": "Dcloud8",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-09",
+  "name": "Dcloud9",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-10",
+  "name": "Dcloud10",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-11",
+  "name": "Dcloud11",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-12",
+  "name": "Dcloud12",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-13",
+  "name": "Dcloud13",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-14",
+  "name": "Dcloud14",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-15",
+  "name": "Dcloud15",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-16",
+  "name": "Dcloud16",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-01",
+  "name": "Dcloud17",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-02",
+  "name": "Dcloud18",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-03",
+  "name": "Dcloud19",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-04",
+  "name": "Dcloud20",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-05",
+  "name": "Dcloud21",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-06",
+  "name": "Dcloud22",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-07",
+  "name": "Dcloud23",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-08",
+  "name": "Dcloud24",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-09",
+  "name": "Dcloud25",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-10",
+  "name": "Dcloud26",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-11",
+  "name": "Dcloud27",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-12",
+  "name": "Dcloud28",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-13",
+  "name": "Dcloud29",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-14",
+  "name": "Dcloud30",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-15",
+  "name": "Dcloud31",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-16",
+  "name": "Dcloud32",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-01",
+  "name": "Dcloud33",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-02",
+  "name": "Dcloud34",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-03",
+  "name": "Dcloud35",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-04",
+  "name": "Dcloud36",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-05",
+  "name": "Dcloud37",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-06",
+  "name": "Dcloud38",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-07",
+  "name": "Dcloud39",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-08",
+  "name": "Dcloud40",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-09",
+  "name": "Dcloud41",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-10",
+  "name": "Dcloud42",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-11",
+  "name": "Dcloud43",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-12",
+  "name": "Dcloud44",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}, {
+  "date": "2020-09-13",
+  "name": "Dcloud45",
+  "address": "上海市普陀区金沙江路 1518 弄"
+}, {
+  "date": "2020-09-14",
+  "name": "Dcloud46",
+  "address": "上海市普陀区金沙江路 1517 弄"
+}, {
+  "date": "2020-09-15",
+  "name": "Dcloud47",
+  "address": "上海市普陀区金沙江路 1519 弄"
+}, {
+  "date": "2020-09-16",
+  "name": "Dcloud48",
+  "address": "上海市普陀区金沙江路 1516 弄"
+}];
+exports.default = _default;
+
+/***/ }),
+
+/***/ 11:
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var toPropertyKey = __webpack_require__(/*! ./toPropertyKey.js */ 12);
+function _defineProperty(obj, key, value) {
+  key = toPropertyKey(key);
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+module.exports = _defineProperty, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 1125:
+/*!************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/components/u-charts/u-charts.js ***!
+  \************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni, module) {/*
+ * uCharts v1.8.5.20190815
+ * uni-app平台高性能跨全端图表，支持H5、APP、小程序（微信/支付宝/百度/头条/QQ/360）
+ * Copyright (c) 2019 QIUN秋云 https://www.ucharts.cn All rights reserved.
+ * Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+ *
+ * uCharts官方网站
+ * https://www.uCharts.cn
+ *
+ * 开源地址:
+ * https://gitee.com/uCharts/uCharts
+ *
+ * uni-app插件市场地址：
+ * http://ext.dcloud.net.cn/plugin?id=271
+ *
+ */
+
+
+
+var _typeof = __webpack_require__(/*! @babel/runtime/helpers/typeof */ 13);
+var config = {
+  yAxisWidth: 15,
+  yAxisSplit: 5,
+  xAxisHeight: 15,
+  xAxisLineHeight: 15,
+  legendHeight: 15,
+  yAxisTitleWidth: 15,
+  padding: [10, 10, 10, 10],
+  pixelRatio: 1,
+  rotate: false,
+  columePadding: 3,
+  fontSize: 13,
+  //dataPointShape: ['diamond', 'circle', 'triangle', 'rect'],
+  dataPointShape: ['circle', 'circle', 'circle', 'circle'],
+  colors: ['#1890ff', '#2fc25b', '#facc14', '#f04864', '#8543e0', '#90ed7d'],
+  pieChartLinePadding: 15,
+  pieChartTextPadding: 5,
+  xAxisTextPadding: 3,
+  titleColor: '#333333',
+  titleFontSize: 20,
+  subtitleColor: '#999999',
+  subtitleFontSize: 15,
+  toolTipPadding: 3,
+  toolTipBackground: '#000000',
+  toolTipOpacity: 0.7,
+  toolTipLineHeight: 20,
+  radarGridCount: 3,
+  radarLabelTextMargin: 15,
+  gaugeLabelTextMargin: 15
+};
+var assign;
+if (Object.assign) {
+  assign = Object.assign;
+} else {
+  // 使用polyfill
+  assign = function assign(target, varArgs) {
+    if (target == null) {
+      throw new TypeError('Cannot convert undefined or null to object');
+    }
+    var to = Object(target);
+    for (var index = 1; index < arguments.length; index++) {
+      var nextSource = arguments[index];
+      if (nextSource != null) {
+        for (var nextKey in nextSource) {
+          if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+            to[nextKey] = nextSource[nextKey];
+          }
+        }
+      }
+    }
+    return to;
+  };
+}
+var util = {
+  toFixed: function toFixed(num, limit) {
+    limit = limit || 2;
+    if (this.isFloat(num)) {
+      num = num.toFixed(limit);
+    }
+    return num;
+  },
+  isFloat: function isFloat(num) {
+    return num % 1 !== 0;
+  },
+  approximatelyEqual: function approximatelyEqual(num1, num2) {
+    return Math.abs(num1 - num2) < 1e-10;
+  },
+  isSameSign: function isSameSign(num1, num2) {
+    return Math.abs(num1) === num1 && Math.abs(num2) === num2 || Math.abs(num1) !== num1 && Math.abs(num2) !== num2;
+  },
+  isSameXCoordinateArea: function isSameXCoordinateArea(p1, p2) {
+    return this.isSameSign(p1.x, p2.x);
+  },
+  isCollision: function isCollision(obj1, obj2) {
+    obj1.end = {};
+    obj1.end.x = obj1.start.x + obj1.width;
+    obj1.end.y = obj1.start.y - obj1.height;
+    obj2.end = {};
+    obj2.end.x = obj2.start.x + obj2.width;
+    obj2.end.y = obj2.start.y - obj2.height;
+    var flag = obj2.start.x > obj1.end.x || obj2.end.x < obj1.start.x || obj2.end.y > obj1.start.y || obj2.start.y < obj1.end.y;
+    return !flag;
+  }
+};
+
+//兼容H5点击事件
+function getH5Offset(e) {
+  e.mp = {
+    changedTouches: []
+  };
+  e.mp.changedTouches.push({
+    x: e.offsetX,
+    y: e.offsetY
+  });
+  return e;
+}
+
+// hex 转 rgba
+function hexToRgb(hexValue, opc) {
+  var rgx = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  var hex = hexValue.replace(rgx, function (m, r, g, b) {
+    return r + r + g + g + b + b;
+  });
+  var rgb = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  var r = parseInt(rgb[1], 16);
+  var g = parseInt(rgb[2], 16);
+  var b = parseInt(rgb[3], 16);
+  return 'rgba(' + r + ',' + g + ',' + b + ',' + opc + ')';
+}
+function findRange(num, type, limit) {
+  if (isNaN(num)) {
+    throw new Error('[uCharts] unvalid series data!');
+  }
+  limit = limit || 10;
+  type = type ? type : 'upper';
+  var multiple = 1;
+  while (limit < 1) {
+    limit *= 10;
+    multiple *= 10;
+  }
+  if (type === 'upper') {
+    num = Math.ceil(num * multiple);
+  } else {
+    num = Math.floor(num * multiple);
+  }
+  while (num % limit !== 0) {
+    if (type === 'upper') {
+      num++;
+    } else {
+      num--;
+    }
+  }
+  return num / multiple;
+}
+function calCandleMA(dayArr, nameArr, colorArr, kdata) {
+  var seriesTemp = [];
+  for (var k = 0; k < dayArr.length; k++) {
+    var seriesItem = {
+      data: [],
+      name: nameArr[k],
+      color: colorArr[k]
+    };
+    for (var i = 0, len = kdata.length; i < len; i++) {
+      if (i < dayArr[k]) {
+        seriesItem.data.push(null);
+        continue;
+      }
+      var sum = 0;
+      for (var j = 0; j < dayArr[k]; j++) {
+        sum += kdata[i - j][1];
+      }
+      seriesItem.data.push(+(sum / dayArr[k]).toFixed(3));
+    }
+    seriesTemp.push(seriesItem);
+  }
+  return seriesTemp;
+}
+function calValidDistance(distance, chartData, config, opts) {
+  var dataChartAreaWidth = opts.width - opts.area[1] - opts.area[3];
+  var dataChartWidth = chartData.eachSpacing * (opts.chartData.xAxisData.xAxisPoints.length - 1);
+  var validDistance = distance;
+  if (distance >= 0) {
+    validDistance = 0;
+  } else if (Math.abs(distance) >= dataChartWidth - dataChartAreaWidth) {
+    validDistance = dataChartAreaWidth - dataChartWidth;
+  }
+  return validDistance;
+}
+function isInAngleRange(angle, startAngle, endAngle) {
+  function adjust(angle) {
+    while (angle < 0) {
+      angle += 2 * Math.PI;
+    }
+    while (angle > 2 * Math.PI) {
+      angle -= 2 * Math.PI;
+    }
+    return angle;
+  }
+  angle = adjust(angle);
+  startAngle = adjust(startAngle);
+  endAngle = adjust(endAngle);
+  if (startAngle > endAngle) {
+    endAngle += 2 * Math.PI;
+    if (angle < startAngle) {
+      angle += 2 * Math.PI;
+    }
+  }
+  return angle >= startAngle && angle <= endAngle;
+}
+function calRotateTranslate(x, y, h) {
+  var xv = x;
+  var yv = h - y;
+  var transX = xv + (h - yv - xv) / Math.sqrt(2);
+  transX *= -1;
+  var transY = (h - yv) * (Math.sqrt(2) - 1) - (h - yv - xv) / Math.sqrt(2);
+  return {
+    transX: transX,
+    transY: transY
+  };
+}
+function createCurveControlPoints(points, i) {
+  function isNotMiddlePoint(points, i) {
+    if (points[i - 1] && points[i + 1]) {
+      return points[i].y >= Math.max(points[i - 1].y, points[i + 1].y) || points[i].y <= Math.min(points[i - 1].y, points[i + 1].y);
+    } else {
+      return false;
+    }
+  }
+  var a = 0.2;
+  var b = 0.2;
+  var pAx = null;
+  var pAy = null;
+  var pBx = null;
+  var pBy = null;
+  if (i < 1) {
+    pAx = points[0].x + (points[1].x - points[0].x) * a;
+    pAy = points[0].y + (points[1].y - points[0].y) * a;
+  } else {
+    pAx = points[i].x + (points[i + 1].x - points[i - 1].x) * a;
+    pAy = points[i].y + (points[i + 1].y - points[i - 1].y) * a;
+  }
+  if (i > points.length - 3) {
+    var last = points.length - 1;
+    pBx = points[last].x - (points[last].x - points[last - 1].x) * b;
+    pBy = points[last].y - (points[last].y - points[last - 1].y) * b;
+  } else {
+    pBx = points[i + 1].x - (points[i + 2].x - points[i].x) * b;
+    pBy = points[i + 1].y - (points[i + 2].y - points[i].y) * b;
+  }
+  if (isNotMiddlePoint(points, i + 1)) {
+    pBy = points[i + 1].y;
+  }
+  if (isNotMiddlePoint(points, i)) {
+    pAy = points[i].y;
+  }
+  return {
+    ctrA: {
+      x: pAx,
+      y: pAy
+    },
+    ctrB: {
+      x: pBx,
+      y: pBy
+    }
+  };
+}
+function convertCoordinateOrigin(x, y, center) {
+  return {
+    x: center.x + x,
+    y: center.y - y
+  };
+}
+function avoidCollision(obj, target) {
+  if (target) {
+    // is collision test
+    while (util.isCollision(obj, target)) {
+      if (obj.start.x > 0) {
+        obj.start.y--;
+      } else if (obj.start.x < 0) {
+        obj.start.y++;
+      } else {
+        if (obj.start.y > 0) {
+          obj.start.y++;
+        } else {
+          obj.start.y--;
+        }
+      }
+    }
+  }
+  return obj;
+}
+function fillSeries(series, opts, config) {
+  var index = 0;
+  return series.map(function (item) {
+    if (!item.color) {
+      item.color = config.colors[index];
+      index = (index + 1) % config.colors.length;
+    }
+    if (!item.type) {
+      item.type = opts.type;
+    }
+    if (typeof item.show == "undefined") {
+      item.show = true;
+    }
+    if (!item.type) {
+      item.type = opts.type;
+    }
+    if (!item.pointShape) {
+      item.pointShape = "circle";
+    }
+    if (!item.legendShape) {
+      switch (item.type) {
+        case 'line':
+          item.legendShape = "line";
+          break;
+        case 'column':
+          item.legendShape = "rect";
+          break;
+        case 'area':
+          item.legendShape = "triangle";
+          break;
+        default:
+          item.legendShape = "circle";
+      }
+    }
+    return item;
+  });
+}
+function getDataRange(minData, maxData) {
+  var limit = 0;
+  var range = maxData - minData;
+  if (range >= 10000) {
+    limit = 1000;
+  } else if (range >= 1000) {
+    limit = 100;
+  } else if (range >= 100) {
+    limit = 10;
+  } else if (range >= 10) {
+    limit = 5;
+  } else if (range >= 1) {
+    limit = 1;
+  } else if (range >= 0.1) {
+    limit = 0.1;
+  } else if (range >= 0.01) {
+    limit = 0.01;
+  } else if (range >= 0.001) {
+    limit = 0.001;
+  } else if (range >= 0.0001) {
+    limit = 0.0001;
+  } else if (range >= 0.00001) {
+    limit = 0.00001;
+  } else {
+    limit = 0.000001;
+  }
+  return {
+    minRange: findRange(minData, 'lower', limit),
+    maxRange: findRange(maxData, 'upper', limit)
+  };
+}
+function measureText(text) {
+  var fontSize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : config.fontSize;
+  text = String(text);
+  var text = text.split('');
+  var width = 0;
+  for (var i = 0; i < text.length; i++) {
+    var item = text[i];
+    if (/[a-zA-Z]/.test(item)) {
+      width += 7;
+    } else if (/[0-9]/.test(item)) {
+      width += 5.5;
+    } else if (/\./.test(item)) {
+      width += 2.7;
+    } else if (/-/.test(item)) {
+      width += 3.25;
+    } else if (/[\u4e00-\u9fa5]/.test(item)) {
+      width += 10;
+    } else if (/\(|\)/.test(item)) {
+      width += 3.73;
+    } else if (/\s/.test(item)) {
+      width += 2.5;
+    } else if (/%/.test(item)) {
+      width += 8;
+    } else {
+      width += 10;
+    }
+  }
+  return width * fontSize / 10;
+}
+function dataCombine(series) {
+  return series.reduce(function (a, b) {
+    return (a.data ? a.data : a).concat(b.data);
+  }, []);
+}
+function dataCombineStack(series, len) {
+  var sum = new Array(len);
+  for (var j = 0; j < sum.length; j++) {
+    sum[j] = 0;
+  }
+  for (var i = 0; i < series.length; i++) {
+    for (var j = 0; j < sum.length; j++) {
+      sum[j] += series[i].data[j];
+    }
+  }
+  return series.reduce(function (a, b) {
+    return (a.data ? a.data : a).concat(b.data).concat(sum);
+  }, []);
+}
+function getTouches(touches, opts, e) {
+  var x, y;
+  if (touches.clientX) {
+    if (opts.rotate) {
+      y = opts.height - touches.clientX * opts.pixelRatio;
+      x = (touches.pageY - e.currentTarget.offsetTop - opts.height / opts.pixelRatio / 2 * (opts.pixelRatio - 1)) * opts.pixelRatio;
+    } else {
+      x = touches.clientX * opts.pixelRatio;
+      y = (touches.pageY - e.currentTarget.offsetTop - opts.height / opts.pixelRatio / 2 * (opts.pixelRatio - 1)) * opts.pixelRatio;
+    }
+  } else {
+    if (opts.rotate) {
+      y = opts.height - touches.x * opts.pixelRatio;
+      x = touches.y * opts.pixelRatio;
+    } else {
+      x = touches.x * opts.pixelRatio;
+      y = touches.y * opts.pixelRatio;
+    }
+  }
+  return {
+    x: x,
+    y: y
+  };
+}
+function getSeriesDataItem(series, index) {
+  var data = [];
+  for (var i = 0; i < series.length; i++) {
+    var item = series[i];
+    if (item.data[index] !== null && typeof item.data[index] !== 'undefined' && item.show) {
+      var seriesItem = {};
+      seriesItem.color = item.color;
+      seriesItem.type = item.type;
+      seriesItem.style = item.style;
+      seriesItem.pointShape = item.pointShape;
+      seriesItem.disableLegend = item.disableLegend;
+      seriesItem.name = item.name;
+      seriesItem.show = item.show;
+      seriesItem.data = item.format ? item.format(item.data[index]) : item.data[index];
+      data.push(seriesItem);
+    }
+  }
+  return data;
+}
+function getMaxTextListLength(list) {
+  var lengthList = list.map(function (item) {
+    return measureText(item);
+  });
+  return Math.max.apply(null, lengthList);
+}
+function getRadarCoordinateSeries(length) {
+  var eachAngle = 2 * Math.PI / length;
+  var CoordinateSeries = [];
+  for (var i = 0; i < length; i++) {
+    CoordinateSeries.push(eachAngle * i);
+  }
+  return CoordinateSeries.map(function (item) {
+    return -1 * item + Math.PI / 2;
+  });
+}
+function getToolTipData(seriesData, calPoints, index, categories) {
+  var option = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  var textList = seriesData.map(function (item) {
+    return {
+      text: option.format ? option.format(item, categories[index]) : item.name + ': ' + item.data,
+      color: item.color
+    };
+  });
+  var validCalPoints = [];
+  var offset = {
+    x: 0,
+    y: 0
+  };
+  for (var i = 0; i < calPoints.length; i++) {
+    var points = calPoints[i];
+    if (typeof points[index] !== 'undefined' && points[index] !== null) {
+      validCalPoints.push(points[index]);
+    }
+  }
+  for (var _i = 0; _i < validCalPoints.length; _i++) {
+    var item = validCalPoints[_i];
+    offset.x = Math.round(item.x);
+    offset.y += item.y;
+  }
+  offset.y /= validCalPoints.length;
+  return {
+    textList: textList,
+    offset: offset
+  };
+}
+function getMixToolTipData(seriesData, calPoints, index, categories) {
+  var option = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  var textList = seriesData.map(function (item) {
+    return {
+      text: option.format ? option.format(item, categories[index]) : item.name + ': ' + item.data,
+      color: item.color,
+      disableLegend: item.disableLegend ? true : false
+    };
+  });
+  textList = textList.filter(function (item) {
+    if (item.disableLegend !== true) {
+      return item;
+    }
+  });
+  var validCalPoints = [];
+  var offset = {
+    x: 0,
+    y: 0
+  };
+  for (var i = 0; i < calPoints.length; i++) {
+    var points = calPoints[i];
+    if (typeof points[index] !== 'undefined' && points[index] !== null) {
+      validCalPoints.push(points[index]);
+    }
+  }
+  for (var _i2 = 0; _i2 < validCalPoints.length; _i2++) {
+    var item = validCalPoints[_i2];
+    offset.x = Math.round(item.x);
+    offset.y += item.y;
+  }
+  offset.y /= validCalPoints.length;
+  return {
+    textList: textList,
+    offset: offset
+  };
+}
+function getCandleToolTipData(series, seriesData, calPoints, index, categories, extra) {
+  var option = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : {};
+  var upColor = extra.color.upFill;
+  var downColor = extra.color.downFill;
+  //颜色顺序为开盘，收盘，最低，最高
+  var color = [upColor, upColor, downColor, upColor];
+  var textList = [];
+  var text0 = {
+    text: categories[index],
+    color: null
+  };
+  textList.push(text0);
+  seriesData.map(function (item) {
+    if (index == 0 && item.data[1] - item.data[0] < 0) {
+      color[1] = downColor;
+    } else {
+      if (item.data[0] < series[index - 1][1]) {
+        color[0] = downColor;
+      }
+      if (item.data[1] < item.data[0]) {
+        color[1] = downColor;
+      }
+      if (item.data[2] > series[index - 1][1]) {
+        color[2] = upColor;
+      }
+      if (item.data[3] < series[index - 1][1]) {
+        color[3] = downColor;
+      }
+    }
+    var text1 = {
+      text: '开盘：' + item.data[0],
+      color: color[0]
+    };
+    var text2 = {
+      text: '收盘：' + item.data[1],
+      color: color[1]
+    };
+    var text3 = {
+      text: '最低：' + item.data[2],
+      color: color[2]
+    };
+    var text4 = {
+      text: '最高：' + item.data[3],
+      color: color[3]
+    };
+    textList.push(text1, text2, text3, text4);
+  });
+  var validCalPoints = [];
+  var offset = {
+    x: 0,
+    y: 0
+  };
+  for (var i = 0; i < calPoints.length; i++) {
+    var points = calPoints[i];
+    if (typeof points[index] !== 'undefined' && points[index] !== null) {
+      validCalPoints.push(points[index]);
+    }
+  }
+  offset.x = Math.round(validCalPoints[0][0].x);
+  return {
+    textList: textList,
+    offset: offset
+  };
+}
+function filterSeries(series) {
+  var tempSeries = [];
+  for (var i = 0; i < series.length; i++) {
+    if (series[i].show == true) {
+      tempSeries.push(series[i]);
+    }
+  }
+  return tempSeries;
+}
+function findCurrentIndex(currentPoints, xAxisPoints, opts, config) {
+  var offset = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+  var currentIndex = -1;
+  var spacing = 0;
+  if ((opts.type == 'line' || opts.type == 'area') && opts.xAxis.boundaryGap == 'justify') {
+    spacing = opts.chartData.eachSpacing / 2;
+  }
+  if (isInExactChartArea(currentPoints, opts, config)) {
+    xAxisPoints.forEach(function (item, index) {
+      if (currentPoints.x + offset + spacing > item) {
+        currentIndex = index;
+      }
+    });
+  }
+  return currentIndex;
+}
+function findLegendIndex(currentPoints, legendData, opts) {
+  var currentIndex = -1;
+  if (isInExactLegendArea(currentPoints, legendData.area)) {
+    var points = legendData.points;
+    var index = -1;
+    for (var i = 0, len = points.length; i < len; i++) {
+      var item = points[i];
+      for (var j = 0; j < item.length; j++) {
+        index += 1;
+        var area = item[j]['area'];
+        if (currentPoints.x > area[0] && currentPoints.x < area[2] && currentPoints.y > area[1] && currentPoints.y < area[3]) {
+          currentIndex = index;
+          break;
+        }
+      }
+    }
+    return currentIndex;
+  }
+  return currentIndex;
+}
+function isInExactLegendArea(currentPoints, area) {
+  return currentPoints.x > area.start.x && currentPoints.x < area.end.x && currentPoints.y > area.start.y && currentPoints.y < area.end.y;
+}
+function isInExactChartArea(currentPoints, opts, config) {
+  return currentPoints.x < opts.width - opts.area[1] + 10 && currentPoints.x > opts.area[3] - 10 && currentPoints.y > opts.area[0] && currentPoints.y < opts.height - opts.area[2];
+}
+function findRadarChartCurrentIndex(currentPoints, radarData, count) {
+  var eachAngleArea = 2 * Math.PI / count;
+  var currentIndex = -1;
+  if (isInExactPieChartArea(currentPoints, radarData.center, radarData.radius)) {
+    var fixAngle = function fixAngle(angle) {
+      if (angle < 0) {
+        angle += 2 * Math.PI;
+      }
+      if (angle > 2 * Math.PI) {
+        angle -= 2 * Math.PI;
+      }
+      return angle;
+    };
+    var angle = Math.atan2(radarData.center.y - currentPoints.y, currentPoints.x - radarData.center.x);
+    angle = -1 * angle;
+    if (angle < 0) {
+      angle += 2 * Math.PI;
+    }
+    var angleList = radarData.angleList.map(function (item) {
+      item = fixAngle(-1 * item);
+      return item;
+    });
+    angleList.forEach(function (item, index) {
+      var rangeStart = fixAngle(item - eachAngleArea / 2);
+      var rangeEnd = fixAngle(item + eachAngleArea / 2);
+      if (rangeEnd < rangeStart) {
+        rangeEnd += 2 * Math.PI;
+      }
+      if (angle >= rangeStart && angle <= rangeEnd || angle + 2 * Math.PI >= rangeStart && angle + 2 * Math.PI <= rangeEnd) {
+        currentIndex = index;
+      }
+    });
+  }
+  return currentIndex;
+}
+function findFunnelChartCurrentIndex(currentPoints, funnelData) {
+  var currentIndex = -1;
+  for (var i = 0, len = funnelData.series.length; i < len; i++) {
+    var item = funnelData.series[i];
+    if (currentPoints.x > item.funnelArea[0] && currentPoints.x < item.funnelArea[2] && currentPoints.y > item.funnelArea[1] && currentPoints.y < item.funnelArea[3]) {
+      currentIndex = i;
+      break;
+    }
+  }
+  return currentIndex;
+}
+function findWordChartCurrentIndex(currentPoints, wordData) {
+  var currentIndex = -1;
+  for (var i = 0, len = wordData.length; i < len; i++) {
+    var item = wordData[i];
+    if (currentPoints.x > item.area[0] && currentPoints.x < item.area[2] && currentPoints.y > item.area[1] && currentPoints.y < item.area[3]) {
+      currentIndex = i;
+      break;
+    }
+  }
+  return currentIndex;
+}
+function findMapChartCurrentIndex(currentPoints, opts) {
+  var currentIndex = -1;
+  var cData = opts.chartData.mapData;
+  var data = opts.series;
+  var tmp = pointToCoordinate(currentPoints.y, currentPoints.x, cData.bounds, cData.scale, cData.xoffset, cData.yoffset);
+  var poi = [tmp.x, tmp.y];
+  for (var i = 0, len = data.length; i < len; i++) {
+    var item = data[i].geometry.coordinates;
+    if (isPoiWithinPoly(poi, item)) {
+      currentIndex = i;
+      break;
+    }
+  }
+  return currentIndex;
+}
+function findPieChartCurrentIndex(currentPoints, pieData) {
+  var currentIndex = -1;
+  if (isInExactPieChartArea(currentPoints, pieData.center, pieData.radius)) {
+    var angle = Math.atan2(pieData.center.y - currentPoints.y, currentPoints.x - pieData.center.x);
+    angle = -angle;
+    for (var i = 0, len = pieData.series.length; i < len; i++) {
+      var item = pieData.series[i];
+      if (isInAngleRange(angle, item._start_, item._start_ + item._proportion_ * 2 * Math.PI)) {
+        currentIndex = i;
+        break;
+      }
+    }
+  }
+  return currentIndex;
+}
+function isInExactPieChartArea(currentPoints, center, radius) {
+  return Math.pow(currentPoints.x - center.x, 2) + Math.pow(currentPoints.y - center.y, 2) <= Math.pow(radius, 2);
+}
+function splitPoints(points) {
+  var newPoints = [];
+  var items = [];
+  points.forEach(function (item, index) {
+    if (item !== null) {
+      items.push(item);
+    } else {
+      if (items.length) {
+        newPoints.push(items);
+      }
+      items = [];
+    }
+  });
+  if (items.length) {
+    newPoints.push(items);
+  }
+  return newPoints;
+}
+function calLegendData(series, opts, config, chartData) {
+  var legendData = {
+    area: {
+      start: {
+        x: 0,
+        y: 0
+      },
+      end: {
+        x: 0,
+        y: 0
+      },
+      width: 0,
+      height: 0,
+      wholeWidth: 0,
+      wholeHeight: 0
+    },
+    points: [],
+    widthArr: [],
+    heightArr: []
+  };
+  if (opts.legend.show === false) {
+    chartData.legendData = legendData;
+    return legendData;
+  }
+  var padding = opts.legend.padding;
+  var margin = opts.legend.margin;
+  var fontSize = opts.legend.fontSize;
+  var shapeWidth = 15 * opts.pixelRatio;
+  var shapeRight = 5 * opts.pixelRatio;
+  var lineHeight = Math.max(opts.legend.lineHeight * opts.pixelRatio, fontSize);
+  if (opts.legend.position == 'top' || opts.legend.position == 'bottom') {
+    var legendList = [];
+    var widthCount = 0;
+    var widthCountArr = [];
+    var currentRow = [];
+    for (var i = 0; i < series.length; i++) {
+      var item = series[i];
+      var itemWidth = shapeWidth + shapeRight + measureText(item.name || 'undefined', fontSize) + opts.legend.itemGap;
+      if (widthCount + itemWidth > opts.width - opts.padding[1] - opts.padding[3]) {
+        legendList.push(currentRow);
+        widthCountArr.push(widthCount - opts.legend.itemGap);
+        widthCount = itemWidth;
+        currentRow = [item];
+      } else {
+        widthCount += itemWidth;
+        currentRow.push(item);
+      }
+    }
+    if (currentRow.length) {
+      legendList.push(currentRow);
+      widthCountArr.push(widthCount - opts.legend.itemGap);
+      legendData.widthArr = widthCountArr;
+      var legendWidth = Math.max.apply(null, widthCountArr);
+      switch (opts.legend.float) {
+        case 'left':
+          legendData.area.start.x = opts.padding[3];
+          legendData.area.end.x = opts.padding[3] + 2 * padding;
+          break;
+        case 'right':
+          legendData.area.start.x = opts.width - opts.padding[1] - legendWidth - 2 * padding;
+          legendData.area.end.x = opts.width - opts.padding[1];
+          break;
+        default:
+          legendData.area.start.x = (opts.width - legendWidth) / 2 - padding;
+          legendData.area.end.x = (opts.width + legendWidth) / 2 + padding;
+      }
+      legendData.area.width = legendWidth + 2 * padding;
+      legendData.area.wholeWidth = legendWidth + 2 * padding;
+      legendData.area.height = legendList.length * lineHeight + 2 * padding;
+      legendData.area.wholeHeight = legendList.length * lineHeight + 2 * padding + 2 * margin;
+      legendData.points = legendList;
+    }
+  } else {
+    var len = series.length;
+    var maxHeight = opts.height - opts.padding[0] - opts.padding[2] - 2 * margin - 2 * padding;
+    var maxLength = Math.min(Math.floor(maxHeight / lineHeight), len);
+    legendData.area.height = maxLength * lineHeight + padding * 2;
+    legendData.area.wholeHeight = maxLength * lineHeight + padding * 2;
+    switch (opts.legend.float) {
+      case 'top':
+        legendData.area.start.y = opts.padding[0] + margin;
+        legendData.area.end.y = opts.padding[0] + margin + legendData.area.height;
+        break;
+      case 'bottom':
+        legendData.area.start.y = opts.height - opts.padding[2] - margin - legendData.area.height;
+        legendData.area.end.y = opts.height - opts.padding[2] - margin;
+        break;
+      default:
+        legendData.area.start.y = (opts.height - legendData.area.height) / 2;
+        legendData.area.end.y = (opts.height + legendData.area.height) / 2;
+    }
+    var lineNum = len % maxLength === 0 ? len / maxLength : Math.floor(len / maxLength + 1);
+    var _currentRow = [];
+    for (var _i3 = 0; _i3 < lineNum; _i3++) {
+      var temp = series.slice(_i3 * maxLength, _i3 * maxLength + maxLength);
+      _currentRow.push(temp);
+    }
+    legendData.points = _currentRow;
+    if (_currentRow.length) {
+      for (var _i4 = 0; _i4 < _currentRow.length; _i4++) {
+        var _item = _currentRow[_i4];
+        var maxWidth = 0;
+        for (var j = 0; j < _item.length; j++) {
+          var _itemWidth = shapeWidth + shapeRight + measureText(_item[j].name || 'undefined', fontSize) + opts.legend.itemGap;
+          if (_itemWidth > maxWidth) {
+            maxWidth = _itemWidth;
+          }
+        }
+        legendData.widthArr.push(maxWidth);
+        legendData.heightArr.push(_item.length * lineHeight + padding * 2);
+      }
+      var _legendWidth = 0;
+      for (var _i5 = 0; _i5 < legendData.widthArr.length; _i5++) {
+        _legendWidth += legendData.widthArr[_i5];
+      }
+      legendData.area.width = _legendWidth - opts.legend.itemGap + 2 * padding;
+      legendData.area.wholeWidth = legendData.area.width + padding;
+    }
+  }
+  switch (opts.legend.position) {
+    case 'top':
+      legendData.area.start.y = opts.padding[0] + margin;
+      legendData.area.end.y = opts.padding[0] + margin + legendData.area.height;
+      break;
+    case 'bottom':
+      legendData.area.start.y = opts.height - opts.padding[2] - legendData.area.height - margin;
+      legendData.area.end.y = opts.height - opts.padding[2] - margin;
+      break;
+    case 'left':
+      legendData.area.start.x = opts.padding[3];
+      legendData.area.end.x = opts.padding[3] + legendData.area.width;
+      break;
+    case 'right':
+      legendData.area.start.x = opts.width - opts.padding[1] - legendData.area.width;
+      legendData.area.end.x = opts.width - opts.padding[1];
+      break;
+  }
+  chartData.legendData = legendData;
+  return legendData;
+}
+function calCategoriesData(categories, opts, config, eachSpacing) {
+  var result = {
+    angle: 0,
+    xAxisHeight: config.xAxisHeight
+  };
+  var categoriesTextLenth = categories.map(function (item) {
+    return measureText(item);
+  });
+  var maxTextLength = Math.max.apply(this, categoriesTextLenth);
+  if (opts.xAxis.rotateLabel == true && maxTextLength + 2 * config.xAxisTextPadding > eachSpacing) {
+    result.angle = 45 * Math.PI / 180;
+    result.xAxisHeight = 2 * config.xAxisTextPadding + maxTextLength * Math.sin(result.angle);
+  }
+  return result;
+}
+function getRadarDataPoints(angleList, center, radius, series, opts) {
+  var process = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1;
+  var radarOption = opts.extra.radar || {};
+  radarOption.max = radarOption.max || 0;
+  var maxData = Math.max(radarOption.max, Math.max.apply(null, dataCombine(series)));
+  var data = [];
+  var _loop2 = function _loop2(i) {
+    var each = series[i];
+    var listItem = {};
+    listItem.color = each.color;
+    listItem.data = [];
+    each.data.forEach(function (item, index) {
+      var tmp = {};
+      tmp.angle = angleList[index];
+      tmp.proportion = item / maxData;
+      tmp.position = convertCoordinateOrigin(radius * tmp.proportion * process * Math.cos(tmp.angle), radius * tmp.proportion * process * Math.sin(tmp.angle), center);
+      listItem.data.push(tmp);
+    });
+    data.push(listItem);
+  };
+  for (var i = 0; i < series.length; i++) {
+    _loop2(i);
+  }
+  return data;
+}
+function getPieDataPoints(series, radius) {
+  var process = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  var count = 0;
+  var _start_ = 0;
+  for (var i = 0; i < series.length; i++) {
+    var item = series[i];
+    item.data = item.data === null ? 0 : item.data;
+    count += item.data;
+  }
+  for (var _i6 = 0; _i6 < series.length; _i6++) {
+    var _item2 = series[_i6];
+    _item2.data = _item2.data === null ? 0 : _item2.data;
+    if (count === 0) {
+      _item2._proportion_ = 1 / series.length * process;
+    } else {
+      _item2._proportion_ = _item2.data / count * process;
+    }
+    _item2._radius_ = radius;
+  }
+  for (var _i7 = 0; _i7 < series.length; _i7++) {
+    var _item3 = series[_i7];
+    _item3._start_ = _start_;
+    _start_ += 2 * _item3._proportion_ * Math.PI;
+  }
+  return series;
+}
+function getFunnelDataPoints(series, radius) {
+  var process = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  series = series.sort(function (a, b) {
+    return parseInt(b.data) - parseInt(a.data);
+  });
+  for (var i = 0; i < series.length; i++) {
+    series[i].radius = series[i].data / series[0].data * radius * process;
+    series[i]._proportion_ = series[i].data / series[0].data;
+  }
+  return series.reverse();
+}
+function getRoseDataPoints(series, type, minRadius, radius) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var count = 0;
+  var _start_ = 0;
+  var dataArr = [];
+  for (var i = 0; i < series.length; i++) {
+    var item = series[i];
+    item.data = item.data === null ? 0 : item.data;
+    count += item.data;
+    dataArr.push(item.data);
+  }
+  var minData = Math.min.apply(null, dataArr);
+  var maxData = Math.max.apply(null, dataArr);
+  var radiusLength = radius - minRadius;
+  for (var _i8 = 0; _i8 < series.length; _i8++) {
+    var _item4 = series[_i8];
+    _item4.data = _item4.data === null ? 0 : _item4.data;
+    if (count === 0 || type == 'area') {
+      _item4._proportion_ = _item4.data / count * process;
+      _item4._rose_proportion_ = 1 / series.length * process;
+    } else {
+      _item4._proportion_ = _item4.data / count * process;
+      _item4._rose_proportion_ = _item4.data / count * process;
+    }
+    _item4._radius_ = minRadius + radiusLength * ((_item4.data - minData) / (maxData - minData));
+  }
+  for (var _i9 = 0; _i9 < series.length; _i9++) {
+    var _item5 = series[_i9];
+    _item5._start_ = _start_;
+    _start_ += 2 * _item5._rose_proportion_ * Math.PI;
+  }
+  return series;
+}
+function getArcbarDataPoints(series, arcbarOption) {
+  var process = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  if (process == 1) {
+    process = 0.999999;
+  }
+  for (var i = 0; i < series.length; i++) {
+    var item = series[i];
+    item.data = item.data === null ? 0 : item.data;
+    var totalAngle = void 0;
+    if (arcbarOption.type == 'default') {
+      if (arcbarOption.endAngle < arcbarOption.startAngle) {
+        totalAngle = 2 + arcbarOption.endAngle - arcbarOption.startAngle;
+      } else {
+        totalAngle = arcbarOption.startAngle - arcbarOption.endAngle;
+      }
+    } else {
+      totalAngle = 2;
+    }
+    item._proportion_ = totalAngle * item.data * process + arcbarOption.startAngle;
+    if (item._proportion_ >= 2) {
+      item._proportion_ = item._proportion_ % 2;
+    }
+  }
+  return series;
+}
+function getGaugeAxisPoints(categories, startAngle, endAngle) {
+  var totalAngle = startAngle - endAngle + 1;
+  var tempStartAngle = startAngle;
+  for (var i = 0; i < categories.length; i++) {
+    categories[i].value = categories[i].value === null ? 0 : categories[i].value;
+    categories[i]._startAngle_ = tempStartAngle;
+    categories[i]._endAngle_ = totalAngle * categories[i].value + startAngle;
+    if (categories[i]._endAngle_ >= 2) {
+      categories[i]._endAngle_ = categories[i]._endAngle_ % 2;
+    }
+    tempStartAngle = categories[i]._endAngle_;
+  }
+  return categories;
+}
+function getGaugeDataPoints(series, categories, gaugeOption) {
+  var process = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+  for (var i = 0; i < series.length; i++) {
+    var item = series[i];
+    item.data = item.data === null ? 0 : item.data;
+    if (gaugeOption.pointer.color == 'auto') {
+      for (var _i10 = 0; _i10 < categories.length; _i10++) {
+        if (item.data <= categories[_i10].value) {
+          item.color = categories[_i10].color;
+          break;
+        }
+      }
+    } else {
+      item.color = gaugeOption.pointer.color;
+    }
+    var totalAngle = gaugeOption.startAngle - gaugeOption.endAngle + 1;
+    item._endAngle_ = totalAngle * item.data + gaugeOption.startAngle;
+    item._oldAngle_ = gaugeOption.oldAngle;
+    if (gaugeOption.oldAngle < gaugeOption.endAngle) {
+      item._oldAngle_ += 2;
+    }
+    if (item.data >= gaugeOption.oldData) {
+      item._proportion_ = (item._endAngle_ - item._oldAngle_) * process + gaugeOption.oldAngle;
+    } else {
+      item._proportion_ = item._oldAngle_ - (item._oldAngle_ - item._endAngle_) * process;
+    }
+    if (item._proportion_ >= 2) {
+      item._proportion_ = item._proportion_ % 2;
+    }
+  }
+  return series;
+}
+function getPieTextMaxLength(series) {
+  series = getPieDataPoints(series);
+  var maxLength = 0;
+  for (var i = 0; i < series.length; i++) {
+    var item = series[i];
+    var text = item.format ? item.format(+item._proportion_.toFixed(2)) : util.toFixed(item._proportion_ * 100) + '%';
+    maxLength = Math.max(maxLength, measureText(text));
+  }
+  return maxLength;
+}
+function fixColumeData(points, eachSpacing, columnLen, index, config, opts) {
+  return points.map(function (item) {
+    if (item === null) {
+      return null;
+    }
+    item.width = Math.ceil((eachSpacing - 2 * config.columePadding) / columnLen);
+    if (opts.extra.column && opts.extra.column.width && +opts.extra.column.width > 0) {
+      item.width = Math.min(item.width, +opts.extra.column.width);
+    }
+    if (item.width <= 0) {
+      item.width = 1;
+    }
+    item.x += (index + 0.5 - columnLen / 2) * item.width;
+    return item;
+  });
+}
+function fixColumeMeterData(points, eachSpacing, columnLen, index, config, opts, border) {
+  return points.map(function (item) {
+    if (item === null) {
+      return null;
+    }
+    item.width = Math.ceil((eachSpacing - 2 * config.columePadding) / 2);
+    if (opts.extra.column && opts.extra.column.width && +opts.extra.column.width > 0) {
+      item.width = Math.min(item.width, +opts.extra.column.width);
+    }
+    if (index > 0) {
+      item.width -= 2 * border;
+    }
+    return item;
+  });
+}
+function fixColumeStackData(points, eachSpacing, columnLen, index, config, opts, series) {
+  return points.map(function (item, indexn) {
+    if (item === null) {
+      return null;
+    }
+    item.width = Math.ceil((eachSpacing - 2 * config.columePadding) / 2);
+    if (opts.extra.column && opts.extra.column.width && +opts.extra.column.width > 0) {
+      item.width = Math.min(item.width, +opts.extra.column.width);
+    }
+    return item;
+  });
+}
+function getXAxisPoints(categories, opts, config) {
+  var yAxisTotalWidth = config.yAxisWidth + config.yAxisTitleWidth;
+  var spacingValid = opts.width - opts.area[1] - opts.area[3];
+  var dataCount = opts.enableScroll ? Math.min(opts.xAxis.itemCount, categories.length) : categories.length;
+  if ((opts.type == 'line' || opts.type == 'area') && dataCount > 1 && opts.xAxis.boundaryGap == 'justify') {
+    dataCount -= 1;
+  }
+  var eachSpacing = spacingValid / dataCount;
+  var xAxisPoints = [];
+  var startX = opts.area[3];
+  var endX = opts.width - opts.area[1];
+  categories.forEach(function (item, index) {
+    xAxisPoints.push(startX + index * eachSpacing);
+  });
+  if (opts.xAxis.boundaryGap !== 'justify') {
+    if (opts.enableScroll === true) {
+      xAxisPoints.push(startX + categories.length * eachSpacing);
+    } else {
+      xAxisPoints.push(endX);
+    }
+  }
+  return {
+    xAxisPoints: xAxisPoints,
+    startX: startX,
+    endX: endX,
+    eachSpacing: eachSpacing
+  };
+}
+function getCandleDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config) {
+  var process = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 1;
+  var points = [];
+  var validHeight = opts.height - opts.area[0] - opts.area[2];
+  data.forEach(function (item, index) {
+    if (item === null) {
+      points.push(null);
+    } else {
+      var cPoints = [];
+      item.forEach(function (items, indexs) {
+        var point = {};
+        point.x = xAxisPoints[index] + Math.round(eachSpacing / 2);
+        var value = items.value || items;
+        var height = validHeight * (value - minRange) / (maxRange - minRange);
+        height *= process;
+        point.y = opts.height - Math.round(height) - opts.area[2];
+        cPoints.push(point);
+      });
+      points.push(cPoints);
+    }
+  });
+  return points;
+}
+function getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config) {
+  var process = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 1;
+  var boundaryGap = 'center';
+  if (opts.type == 'line' || opts.type == 'area') {
+    boundaryGap = opts.xAxis.boundaryGap;
+  }
+  var points = [];
+  var validHeight = opts.height - opts.area[0] - opts.area[2];
+  data.forEach(function (item, index) {
+    if (item === null) {
+      points.push(null);
+    } else {
+      var point = {};
+      point.color = item.color;
+      point.x = xAxisPoints[index];
+      if (boundaryGap == 'center') {
+        point.x += Math.round(eachSpacing / 2);
+      }
+      var value = item;
+      if (_typeof(item) === 'object' && item !== null) {
+        value = item.value;
+      }
+      var height = validHeight * (value - minRange) / (maxRange - minRange);
+      height *= process;
+      point.y = opts.height - Math.round(height) - opts.area[2];
+      points.push(point);
+    }
+  });
+  return points;
+}
+function getStackDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, seriesIndex, stackSeries) {
+  var process = arguments.length > 9 && arguments[9] !== undefined ? arguments[9] : 1;
+  var points = [];
+  var validHeight = opts.height - opts.area[0] - opts.area[2];
+  data.forEach(function (item, index) {
+    if (item === null) {
+      points.push(null);
+    } else {
+      var point = {};
+      point.color = item.color;
+      point.x = xAxisPoints[index] + Math.round(eachSpacing / 2);
+      if (seriesIndex > 0) {
+        var value = 0;
+        for (var i = 0; i <= seriesIndex; i++) {
+          value += stackSeries[i].data[index];
+        }
+        var value0 = value - item;
+        var height = validHeight * (value - minRange) / (maxRange - minRange);
+        var height0 = validHeight * (value0 - minRange) / (maxRange - minRange);
+      } else {
+        var value = item;
+        var height = validHeight * (value - minRange) / (maxRange - minRange);
+        var height0 = 0;
+      }
+      var heightc = height0;
+      height *= process;
+      heightc *= process;
+      point.y = opts.height - Math.round(height) - opts.area[2];
+      point.y0 = opts.height - Math.round(heightc) - opts.area[2];
+      points.push(point);
+    }
+  });
+  return points;
+}
+function getYAxisTextList(series, opts, config, stack) {
+  var data;
+  if (stack == 'stack') {
+    data = dataCombineStack(series, opts.categories.length);
+  } else {
+    data = dataCombine(series);
+  }
+  var sorted = [];
+  // remove null from data
+  data = data.filter(function (item) {
+    //return item !== null;
+    if (_typeof(item) === 'object' && item !== null) {
+      if (Array.isArray(item)) {
+        return item !== null;
+      } else {
+        return item.value !== null;
+      }
+    } else {
+      return item !== null;
+    }
+  });
+  data.map(function (item) {
+    if (_typeof(item) === 'object') {
+      if (Array.isArray(item)) {
+        item.map(function (subitem) {
+          sorted.push(subitem);
+        });
+      } else {
+        sorted.push(item.value);
+      }
+    } else {
+      sorted.push(item);
+    }
+  });
+  var minData = 0;
+  var maxData = 0;
+  if (sorted.length > 0) {
+    minData = Math.min.apply(this, sorted);
+    maxData = Math.max.apply(this, sorted);
+  }
+  if (typeof opts.yAxis.min === 'number') {
+    minData = Math.min(opts.yAxis.min, minData);
+  }
+  if (typeof opts.yAxis.max === 'number') {
+    maxData = Math.max(opts.yAxis.max, maxData);
+  }
+  if (minData === maxData) {
+    var rangeSpan = maxData || 10;
+    maxData += rangeSpan;
+  }
+  var dataRange = getDataRange(minData, maxData);
+  var minRange = dataRange.minRange;
+  var maxRange = dataRange.maxRange;
+  var range = [];
+  var eachRange = (maxRange - minRange) / config.yAxisSplit;
+  for (var i = 0; i <= config.yAxisSplit; i++) {
+    range.push(minRange + eachRange * i);
+  }
+  return range.reverse();
+}
+function calYAxisData(series, opts, config) {
+  //堆叠图重算Y轴
+  var columnstyle = assign({}, {
+    type: ""
+  }, opts.extra.column);
+  var ranges = getYAxisTextList(series, opts, config, columnstyle.type);
+  var yAxisWidth = config.yAxisWidth;
+  var yAxisFontSize = opts.yAxis.fontSize || config.fontSize;
+  var rangesFormat = ranges.map(function (item) {
+    item = util.toFixed(item, 6);
+    item = opts.yAxis.format ? opts.yAxis.format(Number(item)) : item;
+    yAxisWidth = Math.max(yAxisWidth, measureText(item, yAxisFontSize) + 5);
+    return item;
+  });
+  if (opts.yAxis.disabled === true) {
+    yAxisWidth = 0;
+  }
+  return {
+    rangesFormat: rangesFormat,
+    ranges: ranges,
+    yAxisWidth: yAxisWidth
+  };
+}
+function calTooltipYAxisData(point, series, opts, config, eachSpacing) {
+  var ranges = getYAxisTextList(series, opts, config);
+  var spacingValid = opts.height - opts.area[0] - opts.area[2];
+  var maxVal = ranges[0];
+  var minVal = ranges[ranges.length - 1];
+  var minAxis = opts.padding[3];
+  var maxAxis = opts.padding[1] + spacingValid;
+  var item = maxVal - (maxVal - minVal) * (point - minAxis) / (maxAxis - minAxis);
+  item = opts.yAxis.format ? opts.yAxis.format(Number(item)) : item;
+  return item;
+}
+function calMarkLineData(minRange, maxRange, points, opts) {
+  var spacingValid = opts.height - opts.area[0] - opts.area[2];
+  for (var i = 0; i < points.length; i++) {
+    var height = spacingValid * (points[i].value - minRange) / (maxRange - minRange);
+    points[i].y = opts.height - Math.round(height) - opts.area[2];
+  }
+  return points;
+}
+function contextRotate(context, opts) {
+  if (opts.rotateLock !== true) {
+    context.translate(opts.height, 0);
+    context.rotate(90 * Math.PI / 180);
+  } else if (opts._rotate_ !== true) {
+    context.translate(opts.height, 0);
+    context.rotate(90 * Math.PI / 180);
+    opts._rotate_ = true;
+  }
+}
+function drawPointShape(points, color, shape, context, opts) {
+  context.beginPath();
+  context.setStrokeStyle("#ffffff");
+  context.setLineWidth(1 * opts.pixelRatio);
+  context.setFillStyle(color);
+  if (shape === 'diamond') {
+    points.forEach(function (item, index) {
+      if (item !== null) {
+        context.moveTo(item.x, item.y - 4.5);
+        context.lineTo(item.x - 4.5, item.y);
+        context.lineTo(item.x, item.y + 4.5);
+        context.lineTo(item.x + 4.5, item.y);
+        context.lineTo(item.x, item.y - 4.5);
+      }
+    });
+  } else if (shape === 'circle') {
+    points.forEach(function (item, index) {
+      if (item !== null) {
+        context.moveTo(item.x + 3.5 * opts.pixelRatio, item.y);
+        context.arc(item.x, item.y, 4 * opts.pixelRatio, 0, 2 * Math.PI, false);
+      }
+    });
+  } else if (shape === 'rect') {
+    points.forEach(function (item, index) {
+      if (item !== null) {
+        context.moveTo(item.x - 3.5, item.y - 3.5);
+        context.rect(item.x - 3.5, item.y - 3.5, 7, 7);
+      }
+    });
+  } else if (shape === 'triangle') {
+    points.forEach(function (item, index) {
+      if (item !== null) {
+        context.moveTo(item.x, item.y - 4.5);
+        context.lineTo(item.x - 4.5, item.y + 4.5);
+        context.lineTo(item.x + 4.5, item.y + 4.5);
+        context.lineTo(item.x, item.y - 4.5);
+      }
+    });
+  }
+  context.closePath();
+  context.fill();
+  context.stroke();
+}
+function drawRingTitle(opts, config, context, center) {
+  var titlefontSize = opts.title.fontSize || config.titleFontSize;
+  var subtitlefontSize = opts.subtitle.fontSize || config.subtitleFontSize;
+  var title = opts.title.name || '';
+  var subtitle = opts.subtitle.name || '';
+  var titleFontColor = opts.title.color || config.titleColor;
+  var subtitleFontColor = opts.subtitle.color || config.subtitleColor;
+  var titleHeight = title ? titlefontSize : 0;
+  var subtitleHeight = subtitle ? subtitlefontSize : 0;
+  var margin = 5;
+  if (subtitle) {
+    var textWidth = measureText(subtitle, subtitlefontSize);
+    var startX = center.x - textWidth / 2 + (opts.subtitle.offsetX || 0);
+    var startY = center.y + subtitlefontSize / 2 + (opts.subtitle.offsetY || 0);
+    if (title) {
+      startY += (titleHeight + margin) / 2;
+    }
+    context.beginPath();
+    context.setFontSize(subtitlefontSize);
+    context.setFillStyle(subtitleFontColor);
+    context.fillText(subtitle, startX, startY);
+    context.closePath();
+    context.stroke();
+  }
+  if (title) {
+    var _textWidth = measureText(title, titlefontSize);
+    var _startX = center.x - _textWidth / 2 + (opts.title.offsetX || 0);
+    var _startY = center.y + titlefontSize / 2 + (opts.title.offsetY || 0);
+    if (subtitle) {
+      _startY -= (subtitleHeight + margin) / 2;
+    }
+    context.beginPath();
+    context.setFontSize(titlefontSize);
+    context.setFillStyle(titleFontColor);
+    context.fillText(title, _startX, _startY);
+    context.closePath();
+    context.stroke();
+  }
+}
+function drawPointText(points, series, config, context) {
+  // 绘制数据文案
+  var data = series.data;
+  points.forEach(function (item, index) {
+    if (item !== null) {
+      //var formatVal = series.format ? series.format(data[index]) : data[index];
+      context.beginPath();
+      context.setFontSize(series.textSize || config.fontSize);
+      context.setFillStyle(series.textColor || '#666666');
+      var value = data[index];
+      if (_typeof(data[index]) === 'object' && data[index] !== null) {
+        value = data[index].value;
+      }
+      var formatVal = series.format ? series.format(value) : value;
+      context.fillText(String(formatVal), item.x - measureText(formatVal, series.textSize || config.fontSize) / 2, item.y - 2);
+      context.closePath();
+      context.stroke();
+    }
+  });
+}
+function drawGaugeLabel(gaugeOption, radius, centerPosition, opts, config, context) {
+  radius -= gaugeOption.width / 2 + config.gaugeLabelTextMargin;
+  var totalAngle = gaugeOption.startAngle - gaugeOption.endAngle + 1;
+  var splitAngle = totalAngle / gaugeOption.splitLine.splitNumber;
+  var totalNumber = gaugeOption.endNumber - gaugeOption.startNumber;
+  var splitNumber = totalNumber / gaugeOption.splitLine.splitNumber;
+  var nowAngle = gaugeOption.startAngle;
+  var nowNumber = gaugeOption.startNumber;
+  for (var i = 0; i < gaugeOption.splitLine.splitNumber + 1; i++) {
+    var pos = {
+      x: radius * Math.cos(nowAngle * Math.PI),
+      y: radius * Math.sin(nowAngle * Math.PI)
+    };
+    var labelText = gaugeOption.labelFormat ? gaugeOption.labelFormat(nowNumber) : nowNumber;
+    pos.x += centerPosition.x - measureText(labelText) / 2;
+    pos.y += centerPosition.y;
+    var startX = pos.x;
+    var startY = pos.y;
+    context.beginPath();
+    context.setFontSize(config.fontSize);
+    context.setFillStyle(gaugeOption.labelColor || '#666666');
+    context.fillText(labelText, startX, startY + config.fontSize / 2);
+    context.closePath();
+    context.stroke();
+    nowAngle += splitAngle;
+    if (nowAngle >= 2) {
+      nowAngle = nowAngle % 2;
+    }
+    nowNumber += splitNumber;
+  }
+}
+function drawRadarLabel(angleList, radius, centerPosition, opts, config, context) {
+  var radarOption = opts.extra.radar || {};
+  radius += config.radarLabelTextMargin;
+  angleList.forEach(function (angle, index) {
+    var pos = {
+      x: radius * Math.cos(angle),
+      y: radius * Math.sin(angle)
+    };
+    var posRelativeCanvas = convertCoordinateOrigin(pos.x, pos.y, centerPosition);
+    var startX = posRelativeCanvas.x;
+    var startY = posRelativeCanvas.y;
+    if (util.approximatelyEqual(pos.x, 0)) {
+      startX -= measureText(opts.categories[index] || '') / 2;
+    } else if (pos.x < 0) {
+      startX -= measureText(opts.categories[index] || '');
+    }
+    context.beginPath();
+    context.setFontSize(config.fontSize);
+    context.setFillStyle(radarOption.labelColor || '#666666');
+    context.fillText(opts.categories[index] || '', startX, startY + config.fontSize / 2);
+    context.closePath();
+    context.stroke();
+  });
+}
+function drawPieText(series, opts, config, context, radius, center) {
+  var lineRadius = config.pieChartLinePadding;
+  var textObjectCollection = [];
+  var lastTextObject = null;
+  var seriesConvert = series.map(function (item) {
+    var text = item.format ? item.format(+item._proportion_.toFixed(2)) : util.toFixed(item._proportion_.toFixed(4) * 100) + '%';
+    if (item._rose_proportion_) item._proportion_ = item._rose_proportion_;
+    var arc = 2 * Math.PI - (item._start_ + 2 * Math.PI * item._proportion_ / 2);
+    var color = item.color;
+    var radius = item._radius_;
+    return {
+      arc: arc,
+      text: text,
+      color: color,
+      radius: radius,
+      textColor: item.textColor,
+      textSize: item.textSize
+    };
+  });
+  for (var i = 0; i < seriesConvert.length; i++) {
+    var item = seriesConvert[i];
+    // line end
+    var orginX1 = Math.cos(item.arc) * (item.radius + lineRadius);
+    var orginY1 = Math.sin(item.arc) * (item.radius + lineRadius);
+
+    // line start
+    var orginX2 = Math.cos(item.arc) * item.radius;
+    var orginY2 = Math.sin(item.arc) * item.radius;
+
+    // text start
+    var orginX3 = orginX1 >= 0 ? orginX1 + config.pieChartTextPadding : orginX1 - config.pieChartTextPadding;
+    var orginY3 = orginY1;
+    var textWidth = measureText(item.text);
+    var startY = orginY3;
+    if (lastTextObject && util.isSameXCoordinateArea(lastTextObject.start, {
+      x: orginX3
+    })) {
+      if (orginX3 > 0) {
+        startY = Math.min(orginY3, lastTextObject.start.y);
+      } else if (orginX1 < 0) {
+        startY = Math.max(orginY3, lastTextObject.start.y);
+      } else {
+        if (orginY3 > 0) {
+          startY = Math.max(orginY3, lastTextObject.start.y);
+        } else {
+          startY = Math.min(orginY3, lastTextObject.start.y);
+        }
+      }
+    }
+    if (orginX3 < 0) {
+      orginX3 -= textWidth;
+    }
+    var textObject = {
+      lineStart: {
+        x: orginX2,
+        y: orginY2
+      },
+      lineEnd: {
+        x: orginX1,
+        y: orginY1
+      },
+      start: {
+        x: orginX3,
+        y: startY
+      },
+      width: textWidth,
+      height: config.fontSize,
+      text: item.text,
+      color: item.color,
+      textColor: item.textColor,
+      textSize: item.textSize
+    };
+    lastTextObject = avoidCollision(textObject, lastTextObject);
+    textObjectCollection.push(lastTextObject);
+  }
+  for (var _i11 = 0; _i11 < textObjectCollection.length; _i11++) {
+    var _item6 = textObjectCollection[_i11];
+    var lineStartPoistion = convertCoordinateOrigin(_item6.lineStart.x, _item6.lineStart.y, center);
+    var lineEndPoistion = convertCoordinateOrigin(_item6.lineEnd.x, _item6.lineEnd.y, center);
+    var textPosition = convertCoordinateOrigin(_item6.start.x, _item6.start.y, center);
+    context.setLineWidth(1 * opts.pixelRatio);
+    context.setFontSize(config.fontSize);
+    context.beginPath();
+    context.setStrokeStyle(_item6.color);
+    context.setFillStyle(_item6.color);
+    context.moveTo(lineStartPoistion.x, lineStartPoistion.y);
+    var curveStartX = _item6.start.x < 0 ? textPosition.x + _item6.width : textPosition.x;
+    var textStartX = _item6.start.x < 0 ? textPosition.x - 5 : textPosition.x + 5;
+    context.quadraticCurveTo(lineEndPoistion.x, lineEndPoistion.y, curveStartX, textPosition.y);
+    context.moveTo(lineStartPoistion.x, lineStartPoistion.y);
+    context.stroke();
+    context.closePath();
+    context.beginPath();
+    context.moveTo(textPosition.x + _item6.width, textPosition.y);
+    context.arc(curveStartX, textPosition.y, 2, 0, 2 * Math.PI);
+    context.closePath();
+    context.fill();
+    context.beginPath();
+    context.setFontSize(_item6.textSize || config.fontSize);
+    context.setFillStyle(_item6.textColor || '#666666');
+    context.fillText(_item6.text, textStartX, textPosition.y + 3);
+    context.closePath();
+    context.stroke();
+    context.closePath();
+  }
+}
+function drawToolTipSplitLine(offsetX, opts, config, context) {
+  var toolTipOption = opts.extra.tooltip || {};
+  toolTipOption.gridType = toolTipOption.gridType == undefined ? 'solid' : toolTipOption.gridType;
+  toolTipOption.dashLength = toolTipOption.dashLength == undefined ? 4 : toolTipOption.dashLength;
+  var startY = opts.area[0];
+  var endY = opts.height - opts.area[2];
+  if (toolTipOption.gridType == 'dash') {
+    context.setLineDash([toolTipOption.dashLength, toolTipOption.dashLength]);
+  }
+  context.setStrokeStyle(toolTipOption.gridColor || '#cccccc');
+  context.setLineWidth(1 * opts.pixelRatio);
+  context.beginPath();
+  context.moveTo(offsetX, startY);
+  context.lineTo(offsetX, endY);
+  context.stroke();
+  context.setLineDash([]);
+  if (toolTipOption.xAxisLabel) {
+    var labelText = opts.categories[opts.tooltip.index];
+    context.setFontSize(config.fontSize);
+    var textWidth = measureText(labelText, config.fontSize);
+    var textX = offsetX - 0.5 * textWidth;
+    var textY = endY;
+    context.beginPath();
+    context.setFillStyle(hexToRgb(toolTipOption.labelBgColor || config.toolTipBackground, toolTipOption.labelBgOpacity || config.toolTipOpacity));
+    context.setStrokeStyle(toolTipOption.labelBgColor || config.toolTipBackground);
+    context.setLineWidth(1 * opts.pixelRatio);
+    context.rect(textX - config.toolTipPadding, textY, textWidth + 2 * config.toolTipPadding, config.fontSize + 2 * config.toolTipPadding);
+    context.closePath();
+    context.stroke();
+    context.fill();
+    context.beginPath();
+    context.setFontSize(config.fontSize);
+    context.setFillStyle(toolTipOption.labelFontColor || config.fontColor);
+    context.fillText(String(labelText), textX, textY + config.toolTipPadding + config.fontSize);
+    context.closePath();
+    context.stroke();
+  }
+}
+function drawMarkLine(minRange, maxRange, opts, config, context) {
+  var markLineOption = assign({}, {
+    type: 'solid',
+    dashLength: 4,
+    data: []
+  }, opts.extra.markLine);
+  var startX = opts.area[3];
+  var endX = opts.width - opts.padding[1];
+  var points = calMarkLineData(minRange, maxRange, markLineOption.data, opts);
+  for (var i = 0; i < points.length; i++) {
+    var item = assign({}, {
+      lineColor: '#DE4A42',
+      showLabel: false,
+      labelFontColor: '#666666',
+      labelBgColor: '#DFE8FF',
+      labelBgOpacity: 0.8,
+      yAxisIndex: 0
+    }, points[i]);
+    if (markLineOption.type == 'dash') {
+      context.setLineDash([markLineOption.dashLength, markLineOption.dashLength]);
+    }
+    context.setStrokeStyle(item.lineColor);
+    context.setLineWidth(1 * opts.pixelRatio);
+    context.beginPath();
+    context.moveTo(startX, item.y);
+    context.lineTo(endX, item.y);
+    context.stroke();
+    context.setLineDash([]);
+    if (item.showLabel) {
+      var labelText = opts.yAxis.format ? opts.yAxis.format(Number(item.value)) : item.value;
+      context.setFontSize(config.fontSize);
+      var textWidth = measureText(labelText, config.fontSize);
+      var bgStartX = opts.padding[3] + config.yAxisTitleWidth - config.toolTipPadding;
+      var bgEndX = Math.max(opts.area[3], textWidth + config.toolTipPadding * 2);
+      var bgWidth = bgEndX - bgStartX;
+      var textX = bgStartX + (bgWidth - textWidth) / 2;
+      var textY = item.y;
+      context.setFillStyle(hexToRgb(item.labelBgColor, item.labelBgOpacity));
+      context.setStrokeStyle(item.labelBgColor);
+      context.setLineWidth(1 * opts.pixelRatio);
+      context.beginPath();
+      context.rect(bgStartX, textY - 0.5 * config.fontSize - config.toolTipPadding, bgWidth, config.fontSize + 2 * config.toolTipPadding);
+      context.closePath();
+      context.stroke();
+      context.fill();
+      context.beginPath();
+      context.setFontSize(config.fontSize);
+      context.setFillStyle(item.labelFontColor);
+      context.fillText(String(labelText), textX, textY + 0.5 * config.fontSize);
+      context.stroke();
+    }
+  }
+}
+function drawToolTipHorizentalLine(opts, config, context, eachSpacing, xAxisPoints) {
+  var toolTipOption = assign({}, {
+    gridType: 'solid',
+    dashLength: 4
+  }, opts.extra.tooltip);
+  var startX = opts.area[3];
+  var endX = opts.width - opts.padding[1];
+  if (toolTipOption.gridType == 'dash') {
+    context.setLineDash([toolTipOption.dashLength, toolTipOption.dashLength]);
+  }
+  context.setStrokeStyle(toolTipOption.gridColor || '#cccccc');
+  context.setLineWidth(1 * opts.pixelRatio);
+  context.beginPath();
+  context.moveTo(startX, opts.tooltip.offset.y);
+  context.lineTo(endX, opts.tooltip.offset.y);
+  context.stroke();
+  context.setLineDash([]);
+  if (toolTipOption.yAxisLabel) {
+    var labelText = calTooltipYAxisData(opts.tooltip.offset.y, opts.series, opts, config, eachSpacing);
+    context.setFontSize(config.fontSize);
+    var textWidth = measureText(labelText, config.fontSize);
+    var bgStartX = opts.padding[3] + config.yAxisTitleWidth - config.toolTipPadding;
+    var bgEndX = Math.max(opts.area[3], textWidth + config.toolTipPadding * 2);
+    var bgWidth = bgEndX - bgStartX;
+    var textX = bgStartX + (bgWidth - textWidth) / 2;
+    var textY = opts.tooltip.offset.y;
+    context.beginPath();
+    context.setFillStyle(hexToRgb(toolTipOption.labelBgColor || config.toolTipBackground, toolTipOption.labelBgOpacity || config.toolTipOpacity));
+    context.setStrokeStyle(toolTipOption.labelBgColor || config.toolTipBackground);
+    context.setLineWidth(1 * opts.pixelRatio);
+    context.rect(bgStartX, textY - 0.5 * config.fontSize - config.toolTipPadding, bgWidth, config.fontSize + 2 * config.toolTipPadding);
+    context.closePath();
+    context.stroke();
+    context.fill();
+    context.beginPath();
+    context.setFontSize(config.fontSize);
+    context.setFillStyle(toolTipOption.labelFontColor || config.fontColor);
+    context.fillText(labelText, textX, textY + 0.5 * config.fontSize);
+    context.closePath();
+    context.stroke();
+  }
+}
+function drawToolTipSplitArea(offsetX, opts, config, context, eachSpacing) {
+  var toolTipOption = assign({}, {
+    activeBgColor: '#000000',
+    activeBgOpacity: 0.08
+  }, opts.extra.tooltip);
+  var startY = opts.area[0];
+  var endY = opts.height - opts.area[2];
+  context.beginPath();
+  context.setFillStyle(hexToRgb(toolTipOption.activeBgColor, toolTipOption.activeBgOpacity));
+  context.rect(offsetX - eachSpacing / 2, startY, eachSpacing, endY - startY);
+  context.closePath();
+  context.fill();
+}
+function drawToolTip(textList, offset, opts, config, context, eachSpacing, xAxisPoints) {
+  var toolTipOption = assign({}, {
+    bgColor: '#000000',
+    bgOpacity: 0.7,
+    fontColor: '#FFFFFF'
+  }, opts.extra.tooltip);
+  var legendWidth = 4 * opts.pixelRatio;
+  var legendMarginRight = 5 * opts.pixelRatio;
+  var arrowWidth = 8 * opts.pixelRatio;
+  var isOverRightBorder = false;
+  if (opts.type == 'line' || opts.type == 'area' || opts.type == 'candle' || opts.type == 'mix') {
+    drawToolTipSplitLine(opts.tooltip.offset.x, opts, config, context);
+  }
+  offset = assign({
+    x: 0,
+    y: 0
+  }, offset);
+  offset.y -= 8 * opts.pixelRatio;
+  var textWidth = textList.map(function (item) {
+    return measureText(item.text, config.fontSize);
+  });
+  var toolTipWidth = legendWidth + legendMarginRight + 4 * config.toolTipPadding + Math.max.apply(null, textWidth);
+  var toolTipHeight = 2 * config.toolTipPadding + textList.length * config.toolTipLineHeight;
+
+  // if beyond the right border
+  if (offset.x - Math.abs(opts._scrollDistance_) + arrowWidth + toolTipWidth > opts.width) {
+    isOverRightBorder = true;
+  }
+  if (toolTipHeight + offset.y > opts.height) {
+    offset.y = opts.height - toolTipHeight;
+  }
+  // draw background rect
+  context.beginPath();
+  context.setFillStyle(hexToRgb(toolTipOption.bgColor || config.toolTipBackground, toolTipOption.bgOpacity || config.toolTipOpacity));
+  if (isOverRightBorder) {
+    context.moveTo(offset.x, offset.y + 10 * opts.pixelRatio);
+    context.lineTo(offset.x - arrowWidth, offset.y + 10 * opts.pixelRatio - 5 * opts.pixelRatio);
+    context.lineTo(offset.x - arrowWidth, offset.y);
+    context.lineTo(offset.x - arrowWidth - Math.round(toolTipWidth), offset.y);
+    context.lineTo(offset.x - arrowWidth - Math.round(toolTipWidth), offset.y + toolTipHeight);
+    context.lineTo(offset.x - arrowWidth, offset.y + toolTipHeight);
+    context.lineTo(offset.x - arrowWidth, offset.y + 10 * opts.pixelRatio + 5 * opts.pixelRatio);
+    context.lineTo(offset.x, offset.y + 10 * opts.pixelRatio);
+  } else {
+    context.moveTo(offset.x, offset.y + 10 * opts.pixelRatio);
+    context.lineTo(offset.x + arrowWidth, offset.y + 10 * opts.pixelRatio - 5 * opts.pixelRatio);
+    context.lineTo(offset.x + arrowWidth, offset.y);
+    context.lineTo(offset.x + arrowWidth + Math.round(toolTipWidth), offset.y);
+    context.lineTo(offset.x + arrowWidth + Math.round(toolTipWidth), offset.y + toolTipHeight);
+    context.lineTo(offset.x + arrowWidth, offset.y + toolTipHeight);
+    context.lineTo(offset.x + arrowWidth, offset.y + 10 * opts.pixelRatio + 5 * opts.pixelRatio);
+    context.lineTo(offset.x, offset.y + 10 * opts.pixelRatio);
+  }
+  context.closePath();
+  context.fill();
+
+  // draw legend
+  textList.forEach(function (item, index) {
+    if (item.color !== null) {
+      context.beginPath();
+      context.setFillStyle(item.color);
+      var startX = offset.x + arrowWidth + 2 * config.toolTipPadding;
+      var startY = offset.y + (config.toolTipLineHeight - config.fontSize) / 2 + config.toolTipLineHeight * index + config.toolTipPadding + 1;
+      if (isOverRightBorder) {
+        startX = offset.x - toolTipWidth - arrowWidth + 2 * config.toolTipPadding;
+      }
+      context.fillRect(startX, startY, legendWidth, config.fontSize);
+      context.closePath();
+    }
+  });
+
+  // draw text list
+
+  textList.forEach(function (item, index) {
+    var startX = offset.x + arrowWidth + 2 * config.toolTipPadding + legendWidth + legendMarginRight;
+    if (isOverRightBorder) {
+      startX = offset.x - toolTipWidth - arrowWidth + 2 * config.toolTipPadding + +legendWidth + legendMarginRight;
+    }
+    var startY = offset.y + (config.toolTipLineHeight - config.fontSize) / 2 + config.toolTipLineHeight * index + config.toolTipPadding;
+    context.beginPath();
+    context.setFontSize(config.fontSize);
+    context.setFillStyle(toolTipOption.fontColor);
+    context.fillText(item.text, startX, startY + config.fontSize);
+    context.closePath();
+    context.stroke();
+  });
+}
+function drawYAxisTitle(title, opts, config, context) {
+  var startX = config.xAxisHeight + (opts.height - config.xAxisHeight - measureText(title)) / 2;
+  context.save();
+  context.beginPath();
+  context.setFontSize(config.fontSize);
+  context.setFillStyle(opts.yAxis.titleFontColor || '#333333');
+  context.translate(0, opts.height);
+  context.rotate(-90 * Math.PI / 180);
+  context.fillText(title, startX, opts.padding[3] + 0.5 * config.fontSize);
+  context.closePath();
+  context.stroke();
+  context.restore();
+}
+function drawColumnDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var ranges = [].concat(opts.chartData.yAxisData.ranges);
+  var xAxisData = opts.chartData.xAxisData,
+    xAxisPoints = xAxisData.xAxisPoints,
+    eachSpacing = xAxisData.eachSpacing;
+  var columnOption = assign({}, {
+    type: 'group',
+    width: eachSpacing / 2,
+    meter: {
+      border: 4,
+      fillColor: '#FFFFFF'
+    }
+  }, opts.extra.column);
+  var minRange = ranges.pop();
+  var maxRange = ranges.shift();
+  var calPoints = [];
+  context.save();
+  if (opts._scrollDistance_ && opts._scrollDistance_ !== 0 && opts.enableScroll === true) {
+    context.translate(opts._scrollDistance_, 0);
+  }
+  if (opts.tooltip && opts.tooltip.textList && opts.tooltip.textList.length && process === 1) {
+    drawToolTipSplitArea(opts.tooltip.offset.x, opts, config, context, eachSpacing);
+  }
+  series.forEach(function (eachSeries, seriesIndex) {
+    var data = eachSeries.data;
+    switch (columnOption.type) {
+      case 'group':
+        var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+        var tooltipPoints = getStackDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, seriesIndex, series, process);
+        calPoints.push(tooltipPoints);
+        points = fixColumeData(points, eachSpacing, series.length, seriesIndex, config, opts);
+        points.forEach(function (item, index) {
+          if (item !== null) {
+            context.beginPath();
+            context.setStrokeStyle(item.color || eachSeries.color);
+            context.setLineWidth(1);
+            context.setFillStyle(item.color || eachSeries.color);
+            var startX = item.x - item.width / 2;
+            var height = opts.height - item.y - opts.area[2];
+            context.moveTo(startX - 1, item.y);
+            context.lineTo(startX + item.width - 2, item.y);
+            context.lineTo(startX + item.width - 2, opts.height - opts.area[2]);
+            context.lineTo(startX, opts.height - opts.area[2]);
+            context.lineTo(startX, item.y);
+            //context.rect(startX, item.y, item.width, height);
+            context.closePath();
+            context.stroke();
+            context.fill();
+          }
+        });
+        break;
+      case 'stack':
+        // 绘制堆叠数据图
+        var points = getStackDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, seriesIndex, series, process);
+        calPoints.push(points);
+        points = fixColumeStackData(points, eachSpacing, series.length, seriesIndex, config, opts, series);
+        points.forEach(function (item, index) {
+          if (item !== null) {
+            context.beginPath();
+            context.setFillStyle(item.color || eachSeries.color);
+            var startX = item.x - item.width / 2 + 1;
+            var height = opts.height - item.y - opts.area[2];
+            var height0 = opts.height - item.y0 - opts.area[2];
+            if (seriesIndex > 0) {
+              height -= height0;
+            }
+            context.moveTo(startX, item.y);
+            context.fillRect(startX, item.y, item.width - 2, height);
+            context.closePath();
+            context.fill();
+          }
+        });
+        break;
+      case 'meter':
+        // 绘制温度计数据图
+        var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+        calPoints.push(points);
+        points = fixColumeMeterData(points, eachSpacing, series.length, seriesIndex, config, opts, columnOption.meter.border);
+        if (seriesIndex == 0) {
+          points.forEach(function (item, index) {
+            if (item !== null) {
+              //画背景颜色
+              context.beginPath();
+              context.setFillStyle(columnOption.meter.fillColor);
+              var startX = item.x - item.width / 2;
+              var height = opts.height - item.y - opts.area[2];
+              context.moveTo(startX, item.y);
+              context.fillRect(startX, item.y, item.width, height);
+              context.closePath();
+              context.fill();
+              //画边框线
+              if (columnOption.meter.border > 0) {
+                context.beginPath();
+                context.setStrokeStyle(eachSeries.color);
+                context.setLineWidth(columnOption.meter.border * opts.pixelRatio);
+                context.moveTo(startX + columnOption.meter.border * 0.5, item.y + height);
+                context.lineTo(startX + columnOption.meter.border * 0.5, item.y + columnOption.meter.border * 0.5);
+                context.lineTo(startX + item.width - columnOption.meter.border * 0.5, item.y + columnOption.meter.border * 0.5);
+                context.lineTo(startX + item.width - columnOption.meter.border * 0.5, item.y + height);
+                context.stroke();
+              }
+            }
+          });
+        } else {
+          points.forEach(function (item, index) {
+            if (item !== null) {
+              context.beginPath();
+              context.setFillStyle(item.color || eachSeries.color);
+              var startX = item.x - item.width / 2;
+              var height = opts.height - item.y - opts.area[2];
+              context.moveTo(startX, item.y);
+              context.fillRect(startX, item.y, item.width, height);
+              context.closePath();
+              context.fill();
+            }
+          });
+        }
+        break;
+    }
+  });
+  if (opts.dataLabel !== false && process === 1) {
+    series.forEach(function (eachSeries, seriesIndex) {
+      var data = eachSeries.data;
+      switch (columnOption.type) {
+        case 'group':
+          var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+          points = fixColumeData(points, eachSpacing, series.length, seriesIndex, config, opts);
+          drawPointText(points, eachSeries, config, context);
+          break;
+        case 'stack':
+          var points = getStackDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, seriesIndex, series, process);
+          drawPointText(points, eachSeries, config, context);
+          break;
+        case 'meter':
+          var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+          drawPointText(points, eachSeries, config, context);
+          break;
+      }
+    });
+  }
+  context.restore();
+  return {
+    xAxisPoints: xAxisPoints,
+    calPoints: calPoints,
+    eachSpacing: eachSpacing,
+    minRange: minRange,
+    maxRange: maxRange
+  };
+}
+function drawCandleDataPoints(series, seriesMA, opts, config, context) {
+  var process = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1;
+  var candleOption = assign({}, {
+    color: {},
+    average: {}
+  }, opts.extra.candle);
+  candleOption.color = assign({}, {
+    upLine: '#f04864',
+    upFill: '#f04864',
+    downLine: '#2fc25b',
+    downFill: '#2fc25b'
+  }, candleOption.color);
+  candleOption.average = assign({}, {
+    show: false,
+    name: [],
+    day: [],
+    color: config.colors
+  }, candleOption.average);
+  opts.extra.candle = candleOption;
+  var ranges = [].concat(opts.chartData.yAxisData.ranges);
+  var xAxisData = opts.chartData.xAxisData,
+    xAxisPoints = xAxisData.xAxisPoints,
+    eachSpacing = xAxisData.eachSpacing;
+  var minRange = ranges.pop();
+  var maxRange = ranges.shift();
+  var calPoints = [];
+  context.save();
+  if (opts._scrollDistance_ && opts._scrollDistance_ !== 0 && opts.enableScroll === true) {
+    context.translate(opts._scrollDistance_, 0);
+  }
+  //画均线
+  if (candleOption.average.show) {
+    seriesMA.forEach(function (eachSeries, seriesIndex) {
+      var data = eachSeries.data;
+      var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+      //calPoints.push(points);
+      var splitPointList = splitPoints(points);
+      splitPointList.forEach(function (points, index) {
+        context.beginPath();
+        context.setStrokeStyle(eachSeries.color);
+        context.setLineWidth(1);
+        if (points.length === 1) {
+          context.moveTo(points[0].x, points[0].y);
+          context.arc(points[0].x, points[0].y, 1, 0, 2 * Math.PI);
+        } else {
+          context.moveTo(points[0].x, points[0].y);
+          points.forEach(function (item, index) {
+            if (index > 0) {
+              var ctrlPoint = createCurveControlPoints(points, index - 1);
+              context.bezierCurveTo(ctrlPoint.ctrA.x, ctrlPoint.ctrA.y, ctrlPoint.ctrB.x, ctrlPoint.ctrB.y, item.x, item.y);
+            }
+          });
+          context.moveTo(points[0].x, points[0].y);
+        }
+        context.closePath();
+        context.stroke();
+      });
+    });
+  }
+  //画K线
+  series.forEach(function (eachSeries, seriesIndex) {
+    var data = eachSeries.data;
+    var points = getCandleDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+    calPoints.push(points);
+    var splitPointList = splitPoints(points);
+    splitPointList = splitPointList[0];
+    splitPointList.forEach(function (points, index) {
+      context.beginPath();
+      //如果上涨
+      if (data[index][1] - data[index][0] > 0) {
+        context.setStrokeStyle(candleOption.color.upLine);
+        context.setFillStyle(candleOption.color.upFill);
+        context.setLineWidth(1 * opts.pixelRatio);
+        context.moveTo(points[3].x, points[3].y); //顶点
+        context.lineTo(points[1].x, points[1].y); //收盘中间点
+        context.lineTo(points[1].x - eachSpacing / 4, points[1].y); //收盘左侧点
+        context.lineTo(points[0].x - eachSpacing / 4, points[0].y); //开盘左侧点
+        context.lineTo(points[0].x, points[0].y); //开盘中间点
+        context.lineTo(points[2].x, points[2].y); //底点
+        context.lineTo(points[0].x, points[0].y); //开盘中间点
+        context.lineTo(points[0].x + eachSpacing / 4, points[0].y); //开盘右侧点
+        context.lineTo(points[1].x + eachSpacing / 4, points[1].y); //收盘右侧点
+        context.lineTo(points[1].x, points[1].y); //收盘中间点
+        context.moveTo(points[3].x, points[3].y); //顶点
+      } else {
+        context.setStrokeStyle(candleOption.color.downLine);
+        context.setFillStyle(candleOption.color.downFill);
+        context.setLineWidth(1 * opts.pixelRatio);
+        context.moveTo(points[3].x, points[3].y); //顶点
+        context.lineTo(points[0].x, points[0].y); //开盘中间点
+        context.lineTo(points[0].x - eachSpacing / 4, points[0].y); //开盘左侧点
+        context.lineTo(points[1].x - eachSpacing / 4, points[1].y); //收盘左侧点
+        context.lineTo(points[1].x, points[1].y); //收盘中间点
+        context.lineTo(points[2].x, points[2].y); //底点
+        context.lineTo(points[1].x, points[1].y); //收盘中间点
+        context.lineTo(points[1].x + eachSpacing / 4, points[1].y); //收盘右侧点
+        context.lineTo(points[0].x + eachSpacing / 4, points[0].y); //开盘右侧点
+        context.lineTo(points[0].x, points[0].y); //开盘中间点
+        context.moveTo(points[3].x, points[3].y); //顶点
+      }
+
+      context.closePath();
+      context.fill();
+      context.stroke();
+    });
+  });
+  context.restore();
+  return {
+    xAxisPoints: xAxisPoints,
+    calPoints: calPoints,
+    eachSpacing: eachSpacing,
+    minRange: minRange,
+    maxRange: maxRange
+  };
+}
+function drawAreaDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var areaOption = assign({}, {
+    type: 'straight',
+    opacity: 0.2,
+    addLine: false,
+    width: 2
+  }, opts.extra.area);
+  var ranges = [].concat(opts.chartData.yAxisData.ranges);
+  var xAxisData = opts.chartData.xAxisData,
+    xAxisPoints = xAxisData.xAxisPoints,
+    eachSpacing = xAxisData.eachSpacing;
+  var minRange = ranges.pop();
+  var maxRange = ranges.shift();
+  var endY = opts.height - opts.area[2];
+  var calPoints = [];
+  context.save();
+  if (opts._scrollDistance_ && opts._scrollDistance_ !== 0 && opts.enableScroll === true) {
+    context.translate(opts._scrollDistance_, 0);
+  }
+  series.forEach(function (eachSeries, seriesIndex) {
+    var data = eachSeries.data;
+    var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+    calPoints.push(points);
+    var splitPointList = splitPoints(points);
+    var _loop3 = function _loop3(i) {
+      var points = splitPointList[i];
+      // 绘制区域数
+      context.beginPath();
+      context.setStrokeStyle(hexToRgb(eachSeries.color, areaOption.opacity));
+      context.setFillStyle(hexToRgb(eachSeries.color, areaOption.opacity));
+      context.setLineWidth(areaOption.width * opts.pixelRatio);
+      if (points.length > 1) {
+        var firstPoint = points[0];
+        var lastPoint = points[points.length - 1];
+        context.moveTo(firstPoint.x, firstPoint.y);
+        if (areaOption.type === 'curve') {
+          points.forEach(function (item, index) {
+            if (index > 0) {
+              var ctrlPoint = createCurveControlPoints(points, index - 1);
+              context.bezierCurveTo(ctrlPoint.ctrA.x, ctrlPoint.ctrA.y, ctrlPoint.ctrB.x, ctrlPoint.ctrB.y, item.x, item.y);
+            }
+          });
+        } else {
+          points.forEach(function (item, index) {
+            if (index > 0) {
+              context.lineTo(item.x, item.y);
+            }
+          });
+        }
+        context.lineTo(lastPoint.x, endY);
+        context.lineTo(firstPoint.x, endY);
+        context.lineTo(firstPoint.x, firstPoint.y);
+      } else {
+        var item = points[0];
+        context.moveTo(item.x - eachSpacing / 2, item.y);
+        context.lineTo(item.x + eachSpacing / 2, item.y);
+        context.lineTo(item.x + eachSpacing / 2, endY);
+        context.lineTo(item.x - eachSpacing / 2, endY);
+        context.moveTo(item.x - eachSpacing / 2, item.y);
+      }
+      context.closePath();
+      context.fill();
+
+      //画连线
+      if (areaOption.addLine) {
+        context.beginPath();
+        context.setStrokeStyle(eachSeries.color);
+        context.setLineWidth(areaOption.width * opts.pixelRatio);
+        if (points.length === 1) {
+          context.moveTo(points[0].x, points[0].y);
+          context.arc(points[0].x, points[0].y, 1, 0, 2 * Math.PI);
+        } else {
+          context.moveTo(points[0].x, points[0].y);
+          if (areaOption.type === 'curve') {
+            points.forEach(function (item, index) {
+              if (index > 0) {
+                var ctrlPoint = createCurveControlPoints(points, index - 1);
+                context.bezierCurveTo(ctrlPoint.ctrA.x, ctrlPoint.ctrA.y, ctrlPoint.ctrB.x, ctrlPoint.ctrB.y, item.x, item.y);
+              }
+            });
+          } else {
+            points.forEach(function (item, index) {
+              if (index > 0) {
+                context.lineTo(item.x, item.y);
+              }
+            });
+          }
+          context.moveTo(points[0].x, points[0].y);
+        }
+        context.closePath();
+        context.stroke();
+      }
+    };
+    for (var i = 0; i < splitPointList.length; i++) {
+      _loop3(i);
+    }
+
+    //画点
+    if (opts.dataPointShape !== false) {
+      var shape = config.dataPointShape[seriesIndex % config.dataPointShape.length];
+      drawPointShape(points, eachSeries.color, shape, context, opts);
+    }
+  });
+  if (opts.dataLabel !== false && process === 1) {
+    series.forEach(function (eachSeries, seriesIndex) {
+      var data = eachSeries.data;
+      var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+      drawPointText(points, eachSeries, config, context);
+    });
+  }
+  context.restore();
+  return {
+    xAxisPoints: xAxisPoints,
+    calPoints: calPoints,
+    eachSpacing: eachSpacing,
+    minRange: minRange,
+    maxRange: maxRange
+  };
+}
+function drawLineDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var lineOption = opts.extra.line || {
+    type: 'straight',
+    width: 2
+  };
+  lineOption.type = lineOption.type ? lineOption.type : 'straight';
+  lineOption.width = lineOption.width ? lineOption.width : 2;
+  var ranges = [].concat(opts.chartData.yAxisData.ranges);
+  var xAxisData = opts.chartData.xAxisData,
+    xAxisPoints = xAxisData.xAxisPoints,
+    eachSpacing = xAxisData.eachSpacing;
+  var minRange = ranges.pop();
+  var maxRange = ranges.shift();
+  var calPoints = [];
+  context.save();
+  if (opts._scrollDistance_ && opts._scrollDistance_ !== 0 && opts.enableScroll === true) {
+    context.translate(opts._scrollDistance_, 0);
+  }
+  series.forEach(function (eachSeries, seriesIndex) {
+    var data = eachSeries.data;
+    var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+    calPoints.push(points);
+    var splitPointList = splitPoints(points);
+    splitPointList.forEach(function (points, index) {
+      context.beginPath();
+      context.setStrokeStyle(eachSeries.color);
+      context.setLineWidth(lineOption.width * opts.pixelRatio);
+      if (points.length === 1) {
+        context.moveTo(points[0].x, points[0].y);
+        context.arc(points[0].x, points[0].y, 1, 0, 2 * Math.PI);
+      } else {
+        context.moveTo(points[0].x, points[0].y);
+        if (lineOption.type === 'curve') {
+          points.forEach(function (item, index) {
+            if (index > 0) {
+              var ctrlPoint = createCurveControlPoints(points, index - 1);
+              context.bezierCurveTo(ctrlPoint.ctrA.x, ctrlPoint.ctrA.y, ctrlPoint.ctrB.x, ctrlPoint.ctrB.y, item.x, item.y);
+            }
+          });
+        } else {
+          points.forEach(function (item, index) {
+            if (index > 0) {
+              context.lineTo(item.x, item.y);
+            }
+          });
+        }
+        context.moveTo(points[0].x, points[0].y);
+      }
+      context.closePath();
+      context.stroke();
+    });
+    if (opts.dataPointShape !== false) {
+      var shape = config.dataPointShape[seriesIndex % config.dataPointShape.length];
+      drawPointShape(points, eachSeries.color, shape, context, opts);
+    }
+  });
+  if (opts.dataLabel !== false && process === 1) {
+    series.forEach(function (eachSeries, seriesIndex) {
+      var data = eachSeries.data;
+      var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+      drawPointText(points, eachSeries, config, context);
+    });
+  }
+  context.restore();
+  return {
+    xAxisPoints: xAxisPoints,
+    calPoints: calPoints,
+    eachSpacing: eachSpacing,
+    minRange: minRange,
+    maxRange: maxRange
+  };
+}
+function drawMixDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var ranges = [].concat(opts.chartData.yAxisData.ranges);
+  var xAxisData = opts.chartData.xAxisData,
+    xAxisPoints = xAxisData.xAxisPoints,
+    eachSpacing = xAxisData.eachSpacing;
+  var minRange = ranges.pop();
+  var maxRange = ranges.shift();
+  var endY = opts.height - opts.area[2];
+  var calPoints = [];
+  var columnIndex = 0;
+  var columnLength = 0;
+  series.forEach(function (eachSeries, seriesIndex) {
+    if (eachSeries.type == 'column') {
+      columnLength += 1;
+    }
+  });
+  context.save();
+  if (opts._scrollDistance_ && opts._scrollDistance_ !== 0 && opts.enableScroll === true) {
+    context.translate(opts._scrollDistance_, 0);
+  }
+  series.forEach(function (eachSeries, seriesIndex) {
+    var data = eachSeries.data;
+    var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+    calPoints.push(points);
+
+    // 绘制柱状数据图
+    if (eachSeries.type == 'column') {
+      points = fixColumeData(points, eachSpacing, columnLength, columnIndex, config, opts);
+      points.forEach(function (item, index) {
+        if (item !== null) {
+          context.beginPath();
+          context.setStrokeStyle(item.color || eachSeries.color);
+          context.setLineWidth(1);
+          context.setFillStyle(item.color || eachSeries.color);
+          var startX = item.x - item.width / 2;
+          var height = opts.height - item.y - opts.area[2];
+          context.moveTo(startX, item.y);
+          context.moveTo(startX - 1, item.y);
+          context.lineTo(startX + item.width - 2, item.y);
+          context.lineTo(startX + item.width - 2, opts.height - opts.area[2]);
+          context.lineTo(startX, opts.height - opts.area[2]);
+          context.lineTo(startX, item.y);
+          //context.rect(startX, item.y, item.width, height);
+          context.closePath();
+          context.stroke();
+          context.fill();
+          context.closePath();
+          context.fill();
+        }
+      });
+      columnIndex += 1;
+    }
+
+    //绘制区域图数据
+
+    if (eachSeries.type == 'area') {
+      var _splitPointList = splitPoints(points);
+      var _loop4 = function _loop4(i) {
+        var points = _splitPointList[i];
+        // 绘制区域数据
+        context.beginPath();
+        context.setStrokeStyle(eachSeries.color);
+        context.setFillStyle(hexToRgb(eachSeries.color, 0.2));
+        context.setLineWidth(2 * opts.pixelRatio);
+        if (points.length > 1) {
+          firstPoint = points[0];
+          var lastPoint = points[points.length - 1];
+          context.moveTo(firstPoint.x, firstPoint.y);
+          if (eachSeries.style === 'curve') {
+            points.forEach(function (item, index) {
+              if (index > 0) {
+                var ctrlPoint = createCurveControlPoints(points, index - 1);
+                context.bezierCurveTo(ctrlPoint.ctrA.x, ctrlPoint.ctrA.y, ctrlPoint.ctrB.x, ctrlPoint.ctrB.y, item.x, item.y);
+              }
+            });
+          } else {
+            points.forEach(function (item, index) {
+              if (index > 0) {
+                context.lineTo(item.x, item.y);
+              }
+            });
+          }
+          context.lineTo(lastPoint.x, endY);
+          context.lineTo(firstPoint.x, endY);
+          context.lineTo(firstPoint.x, firstPoint.y);
+        } else {
+          var item = points[0];
+          context.moveTo(item.x - eachSpacing / 2, item.y);
+          context.lineTo(item.x + eachSpacing / 2, item.y);
+          context.lineTo(item.x + eachSpacing / 2, endY);
+          context.lineTo(item.x - eachSpacing / 2, endY);
+          context.moveTo(item.x - eachSpacing / 2, item.y);
+        }
+        context.closePath();
+        context.fill();
+      };
+      for (var i = 0; i < _splitPointList.length; i++) {
+        var firstPoint;
+        _loop4(i);
+      }
+    }
+
+    // 绘制折线数据图
+    if (eachSeries.type == 'line') {
+      var splitPointList = splitPoints(points);
+      splitPointList.forEach(function (points, index) {
+        context.beginPath();
+        context.setStrokeStyle(eachSeries.color);
+        context.setLineWidth(2 * opts.pixelRatio);
+        if (points.length === 1) {
+          context.moveTo(points[0].x, points[0].y);
+          context.arc(points[0].x, points[0].y, 1, 0, 2 * Math.PI);
+        } else {
+          context.moveTo(points[0].x, points[0].y);
+          if (eachSeries.style == 'curve') {
+            points.forEach(function (item, index) {
+              if (index > 0) {
+                var ctrlPoint = createCurveControlPoints(points, index - 1);
+                context.bezierCurveTo(ctrlPoint.ctrA.x, ctrlPoint.ctrA.y, ctrlPoint.ctrB.x, ctrlPoint.ctrB.y, item.x, item.y);
+              }
+            });
+          } else {
+            points.forEach(function (item, index) {
+              if (index > 0) {
+                context.lineTo(item.x, item.y);
+              }
+            });
+          }
+          context.moveTo(points[0].x, points[0].y);
+        }
+        context.closePath();
+        context.stroke();
+      });
+    }
+
+    // 绘制点数据图
+    if (eachSeries.type == 'point') {
+      points.forEach(function (pointsa, index) {
+        if (pointsa) {
+          context.beginPath();
+          context.setFillStyle(eachSeries.color);
+          context.setStrokeStyle('#FFFFFF');
+          context.setLineWidth(1 * opts.pixelRatio);
+          context.moveTo(pointsa.x + 3.5 * opts.pixelRatio, pointsa.y);
+          context.arc(pointsa.x, pointsa.y, 4 * opts.pixelRatio, 0, 2 * Math.PI);
+          context.closePath();
+          context.fill();
+          context.stroke();
+        }
+      });
+    }
+    if (eachSeries.addPoint == true && eachSeries.type !== 'column') {
+      var shape = config.dataPointShape[seriesIndex % config.dataPointShape.length];
+      drawPointShape(points, eachSeries.color, shape, context, opts);
+    }
+  });
+  if (opts.dataLabel !== false && process === 1) {
+    var columnIndex = 0;
+    series.forEach(function (eachSeries, seriesIndex) {
+      var data = eachSeries.data;
+      var points = getDataPoints(data, minRange, maxRange, xAxisPoints, eachSpacing, opts, config, process);
+      if (eachSeries.type !== 'column') {
+        drawPointText(points, eachSeries, config, context);
+      } else {
+        points = fixColumeData(points, eachSpacing, columnLength, columnIndex, config, opts);
+        drawPointText(points, eachSeries, config, context);
+        columnIndex += 1;
+      }
+    });
+  }
+  context.restore();
+  return {
+    xAxisPoints: xAxisPoints,
+    calPoints: calPoints,
+    eachSpacing: eachSpacing,
+    minRange: minRange,
+    maxRange: maxRange
+  };
+}
+function drawToolTipBridge(opts, config, context, process, eachSpacing, xAxisPoints) {
+  var toolTipOption = opts.extra.tooltip || {};
+  if (toolTipOption.horizentalLine && opts.tooltip && process === 1 && (opts.type == 'line' || opts.type == 'area' || opts.type == 'column' || opts.type == 'candle' || opts.type == 'mix')) {
+    drawToolTipHorizentalLine(opts, config, context, eachSpacing, xAxisPoints);
+  }
+  context.save();
+  if (opts._scrollDistance_ && opts._scrollDistance_ !== 0 && opts.enableScroll === true) {
+    context.translate(opts._scrollDistance_, 0);
+  }
+  if (opts.tooltip && opts.tooltip.textList && opts.tooltip.textList.length && process === 1) {
+    drawToolTip(opts.tooltip.textList, opts.tooltip.offset, opts, config, context, eachSpacing, xAxisPoints);
+  }
+  context.restore();
+}
+function drawXAxis(categories, opts, config, context) {
+  var xAxisData = opts.chartData.xAxisData,
+    xAxisPoints = xAxisData.xAxisPoints,
+    startX = xAxisData.startX,
+    endX = xAxisData.endX,
+    eachSpacing = xAxisData.eachSpacing;
+  var boundaryGap = 'center';
+  if (opts.type == 'line' || opts.type == 'area') {
+    boundaryGap = opts.xAxis.boundaryGap;
+  }
+  var startY = opts.height - opts.area[2];
+  var endY = opts.area[0];
+
+  //绘制滚动条
+  if (opts.enableScroll && opts.xAxis.scrollShow) {
+    var scrollY = opts.height - opts.area[2] + config.xAxisHeight;
+    var scrollScreenWidth = endX - startX;
+    var scrollTotalWidth = eachSpacing * (xAxisPoints.length - 1);
+    var scrollWidth = scrollScreenWidth * scrollScreenWidth / scrollTotalWidth;
+    var scrollLeft = 0;
+    if (opts._scrollDistance_) {
+      scrollLeft = -opts._scrollDistance_ * scrollScreenWidth / scrollTotalWidth;
+    }
+    context.beginPath();
+    context.setLineCap('round');
+    context.setLineWidth(6 * opts.pixelRatio);
+    context.setStrokeStyle(opts.xAxis.scrollBackgroundColor || "#EFEBEF");
+    context.moveTo(startX, scrollY);
+    context.lineTo(endX, scrollY);
+    context.stroke();
+    context.closePath();
+    context.beginPath();
+    context.setLineCap('round');
+    context.setLineWidth(6 * opts.pixelRatio);
+    context.setStrokeStyle(opts.xAxis.scrollColor || "#A6A6A6");
+    context.moveTo(startX + scrollLeft, scrollY);
+    context.lineTo(startX + scrollLeft + scrollWidth, scrollY);
+    context.stroke();
+    context.closePath();
+    context.setLineCap('butt');
+  }
+  context.save();
+  if (opts._scrollDistance_ && opts._scrollDistance_ !== 0) {
+    context.translate(opts._scrollDistance_, 0);
+  }
+  if (opts.xAxis.disableGrid !== true) {
+    context.setStrokeStyle(opts.xAxis.gridColor || "#cccccc");
+    context.setLineCap('butt');
+    context.setLineWidth(1 * opts.pixelRatio);
+    if (opts.xAxis.gridType == 'dash') {
+      context.setLineDash([opts.xAxis.dashLength, opts.xAxis.dashLength]);
+    }
+    if (opts.xAxis.type === 'calibration') {
+      xAxisPoints.forEach(function (item, index) {
+        if (index > 0) {
+          context.beginPath();
+          context.moveTo(item - eachSpacing / 2, startY);
+          context.lineTo(item - eachSpacing / 2, startY + 4 * opts.pixelRatio);
+          context.closePath();
+          context.stroke();
+        }
+      });
+    } else {
+      opts.xAxis.gridEval = opts.xAxis.gridEval || 1;
+      xAxisPoints.forEach(function (item, index) {
+        if (index % opts.xAxis.gridEval == 0) {
+          context.beginPath();
+          context.moveTo(item, startY);
+          context.lineTo(item, endY);
+          context.stroke();
+        }
+      });
+    }
+    context.setLineDash([]);
+  }
+
+  //不绘制X轴
+  if (opts.xAxis.disabled !== true) {
+    // 对X轴列表做抽稀处理
+    var validWidth = opts.width - opts.padding[1] - opts.padding[3] - config.yAxisWidth - config.yAxisTitleWidth;
+    //默认全部显示X轴标签
+    var maxXAxisListLength = categories.length;
+    //如果设置了X轴单屏数量
+    if (opts.xAxis.labelCount) {
+      //如果设置X轴密度
+      if (opts.xAxis.itemCount) {
+        maxXAxisListLength = Math.ceil(categories.length / opts.xAxis.itemCount * opts.xAxis.labelCount);
+      } else {
+        maxXAxisListLength = opts.xAxis.labelCount;
+      }
+      maxXAxisListLength -= 1;
+    }
+    var ratio = Math.ceil(categories.length / maxXAxisListLength);
+    var newCategories = [];
+    var cgLength = categories.length;
+    for (var i = 0; i < cgLength; i++) {
+      if (i % ratio !== 0) {
+        newCategories.push("");
+      } else {
+        newCategories.push(categories[i]);
+      }
+    }
+    newCategories[cgLength - 1] = categories[cgLength - 1];
+    var xAxisFontSize = opts.xAxis.fontSize || config.fontSize;
+    if (config._xAxisTextAngle_ === 0) {
+      newCategories.forEach(function (item, index) {
+        var offset = -measureText(item, xAxisFontSize) / 2;
+        if (boundaryGap == 'center') {
+          offset += eachSpacing / 2;
+        }
+        context.beginPath();
+        context.setFontSize(xAxisFontSize);
+        context.setFillStyle(opts.xAxis.fontColor || '#666666');
+        context.fillText(item, xAxisPoints[index] + offset, startY + xAxisFontSize + (config.xAxisHeight - xAxisFontSize) / 2);
+        context.closePath();
+        context.stroke();
+      });
+    } else {
+      newCategories.forEach(function (item, index) {
+        context.save();
+        context.beginPath();
+        context.setFontSize(xAxisFontSize);
+        context.setFillStyle(opts.xAxis.fontColor || '#666666');
+        var textWidth = measureText(item);
+        var offset = -textWidth;
+        if (boundaryGap == 'center') {
+          offset += eachSpacing / 2;
+        }
+        var _calRotateTranslate = calRotateTranslate(xAxisPoints[index] + eachSpacing / 2, startY + xAxisFontSize / 2 + 5, opts.height),
+          transX = _calRotateTranslate.transX,
+          transY = _calRotateTranslate.transY;
+        context.rotate(-1 * config._xAxisTextAngle_);
+        context.translate(transX, transY);
+        context.fillText(item, xAxisPoints[index] + offset, startY + xAxisFontSize + 5);
+        context.closePath();
+        context.stroke();
+        context.restore();
+      });
+    }
+  }
+  context.restore();
+}
+function drawYAxisGrid(categories, opts, config, context) {
+  if (opts.yAxis.disableGrid === true) {
+    return;
+  }
+  var spacingValid = opts.height - opts.area[0] - opts.area[2];
+  var eachSpacing = spacingValid / config.yAxisSplit;
+  var startX = opts.area[3];
+  var xAxisPoints = opts.chartData.xAxisData.xAxisPoints,
+    xAxiseachSpacing = opts.chartData.xAxisData.eachSpacing;
+  var TotalWidth = xAxiseachSpacing * (xAxisPoints.length - 1);
+  var endX = startX + TotalWidth;
+  var points = [];
+  for (var i = 0; i < config.yAxisSplit + 1; i++) {
+    points.push(opts.height - opts.area[2] - eachSpacing * i);
+  }
+  context.save();
+  if (opts._scrollDistance_ && opts._scrollDistance_ !== 0) {
+    context.translate(opts._scrollDistance_, 0);
+  }
+  if (opts.yAxis.gridType == 'dash') {
+    context.setLineDash([opts.yAxis.dashLength, opts.yAxis.dashLength]);
+  }
+  context.setStrokeStyle(opts.yAxis.gridColor || "#cccccc");
+  context.setLineWidth(1 * opts.pixelRatio);
+  points.forEach(function (item, index) {
+    context.beginPath();
+    context.moveTo(startX, item);
+    context.lineTo(endX, item);
+    context.stroke();
+  });
+  context.setLineDash([]);
+  context.restore();
+}
+function drawYAxis(series, opts, config, context) {
+  if (opts.yAxis.disabled === true) {
+    return;
+  }
+  var rangesFormat = opts.chartData.yAxisData.rangesFormat;
+  var spacingValid = opts.height - opts.area[0] - opts.area[2];
+  var eachSpacing = Math.floor(spacingValid / config.yAxisSplit);
+  var startX = opts.area[3];
+  var endX = opts.width - opts.area[1];
+  var endY = opts.height - opts.area[2];
+  var fillEndY = endY + config.xAxisHeight;
+  if (opts.xAxis.scrollShow) {
+    fillEndY -= 3 * opts.pixelRatio;
+  }
+  // set YAxis background
+  context.beginPath();
+  context.setFillStyle(opts.background || '#ffffff');
+  if (opts._scrollDistance_ < 0) {
+    context.fillRect(0, 0, startX, fillEndY);
+  }
+  if (opts.enableScroll == true) {
+    context.fillRect(endX, 0, opts.width, fillEndY);
+  }
+  context.closePath();
+  context.stroke();
+  var points = [];
+  for (var i = 0; i <= config.yAxisSplit; i++) {
+    points.push(opts.area[0] + eachSpacing * i);
+  }
+  var yAxisFontSize = opts.yAxis.fontSize || config.fontSize;
+  rangesFormat.forEach(function (item, index) {
+    var pos = points[index] ? points[index] : endY;
+    context.beginPath();
+    context.setFontSize(yAxisFontSize);
+    context.setFillStyle(opts.yAxis.fontColor || '#666666');
+    context.fillText(String(item), opts.area[3] - config.yAxisWidth, pos + yAxisFontSize / 2);
+    context.closePath();
+    context.stroke();
+  });
+  if (opts.yAxis.title) {
+    drawYAxisTitle(opts.yAxis.title, opts, config, context);
+  }
+}
+function drawLegend(series, opts, config, context, chartData) {
+  if (opts.legend.show === false) {
+    return;
+  }
+  var legendData = chartData.legendData;
+  var legendList = legendData.points;
+  var legendArea = legendData.area;
+  var padding = opts.legend.padding;
+  var fontSize = opts.legend.fontSize;
+  var shapeWidth = 15 * opts.pixelRatio;
+  var shapeRight = 5 * opts.pixelRatio;
+  var itemGap = opts.legend.itemGap;
+  var lineHeight = Math.max(opts.legend.lineHeight * opts.pixelRatio, fontSize);
+
+  //画背景及边框
+  context.beginPath();
+  context.setLineWidth(opts.legend.borderWidth);
+  context.setStrokeStyle(opts.legend.borderColor);
+  context.setFillStyle(opts.legend.backgroundColor);
+  context.moveTo(legendArea.start.x, legendArea.start.y);
+  context.rect(legendArea.start.x, legendArea.start.y, legendArea.width, legendArea.height);
+  context.closePath();
+  context.fill();
+  context.stroke();
+  legendList.forEach(function (itemList, listIndex) {
+    var width = 0;
+    var height = 0;
+    width = legendData.widthArr[listIndex];
+    height = legendData.heightArr[listIndex];
+    var startX = 0;
+    var startY = 0;
+    if (opts.legend.position == 'top' || opts.legend.position == 'bottom') {
+      startX = legendArea.start.x + (legendArea.width - width) / 2;
+      startY = legendArea.start.y + padding + listIndex * lineHeight;
+    } else {
+      if (listIndex == 0) {
+        width = 0;
+      } else {
+        width = legendData.widthArr[listIndex - 1];
+      }
+      startX = legendArea.start.x + padding + width;
+      startY = legendArea.start.y + padding + (legendArea.height - height) / 2;
+    }
+    context.setFontSize(config.fontSize);
+    for (var i = 0; i < itemList.length; i++) {
+      var item = itemList[i];
+      item.area = [0, 0, 0, 0];
+      item.area[0] = startX;
+      item.area[1] = startY;
+      item.area[3] = startY + lineHeight;
+      context.beginPath();
+      context.setLineWidth(1 * opts.pixelRatio);
+      context.setStrokeStyle(item.show ? item.color : opts.legend.hiddenColor);
+      context.setFillStyle(item.show ? item.color : opts.legend.hiddenColor);
+      switch (item.legendShape) {
+        case 'line':
+          context.moveTo(startX, startY + 0.5 * lineHeight - 2 * opts.pixelRatio);
+          context.fillRect(startX, startY + 0.5 * lineHeight - 2 * opts.pixelRatio, 15 * opts.pixelRatio, 4 * opts.pixelRatio);
+          break;
+        case 'triangle':
+          context.moveTo(startX + 7.5 * opts.pixelRatio, startY + 0.5 * lineHeight - 5 * opts.pixelRatio);
+          context.lineTo(startX + 2.5 * opts.pixelRatio, startY + 0.5 * lineHeight + 5 * opts.pixelRatio);
+          context.lineTo(startX + 12.5 * opts.pixelRatio, startY + 0.5 * lineHeight + 5 * opts.pixelRatio);
+          context.lineTo(startX + 7.5 * opts.pixelRatio, startY + 0.5 * lineHeight - 5 * opts.pixelRatio);
+          break;
+        case 'diamond':
+          context.moveTo(startX + 7.5 * opts.pixelRatio, startY + 0.5 * lineHeight - 5 * opts.pixelRatio);
+          context.lineTo(startX + 2.5 * opts.pixelRatio, startY + 0.5 * lineHeight);
+          context.lineTo(startX + 7.5 * opts.pixelRatio, startY + 0.5 * lineHeight + 5 * opts.pixelRatio);
+          context.lineTo(startX + 12.5 * opts.pixelRatio, startY + 0.5 * lineHeight);
+          context.lineTo(startX + 7.5 * opts.pixelRatio, startY + 0.5 * lineHeight - 5 * opts.pixelRatio);
+          break;
+        case 'circle':
+          context.moveTo(startX + 7.5 * opts.pixelRatio, startY + 0.5 * lineHeight);
+          context.arc(startX + 7.5 * opts.pixelRatio, startY + 0.5 * lineHeight, 5 * opts.pixelRatio, 0, 2 * Math.PI);
+          break;
+        case 'rect':
+          context.moveTo(startX, startY + 0.5 * lineHeight - 5 * opts.pixelRatio);
+          context.fillRect(startX, startY + 0.5 * lineHeight - 5 * opts.pixelRatio, 15 * opts.pixelRatio, 10 * opts.pixelRatio);
+          break;
+        default:
+          context.moveTo(startX, startY + 0.5 * lineHeight - 5 * opts.pixelRatio);
+          context.fillRect(startX, startY + 0.5 * lineHeight - 5 * opts.pixelRatio, 15 * opts.pixelRatio, 10 * opts.pixelRatio);
+      }
+      context.closePath();
+      context.fill();
+      context.stroke();
+      startX += shapeWidth + shapeRight;
+      var fontTrans = 0.5 * lineHeight + 0.5 * fontSize - 2;
+      context.beginPath();
+      context.setFontSize(fontSize);
+      context.setFillStyle(item.show ? opts.legend.fontColor : opts.legend.hiddenColor);
+      context.fillText(item.name, startX, startY + fontTrans);
+      context.closePath();
+      context.stroke();
+      if (opts.legend.position == 'top' || opts.legend.position == 'bottom') {
+        startX += measureText(item.name, fontSize) + itemGap;
+        item.area[2] = startX;
+      } else {
+        item.area[2] = startX + measureText(item.name, fontSize) + itemGap;
+        ;
+        startX -= shapeWidth + shapeRight;
+        startY += lineHeight;
+      }
+    }
+  });
+}
+function drawPieDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var pieOption = assign({}, {
+    activeOpacity: 0.5,
+    activeRadius: 10 * opts.pixelRatio,
+    offsetAngle: 0,
+    labelWidth: 15 * opts.pixelRatio,
+    ringWidth: 0,
+    border: false,
+    borderWidth: 2,
+    borderColor: '#FFFFFF'
+  }, opts.extra.pie);
+  var centerPosition = {
+    x: opts.area[3] + (opts.width - opts.area[1] - opts.area[3]) / 2,
+    y: opts.area[0] + (opts.height - opts.area[0] - opts.area[2]) / 2
+  };
+  if (config.pieChartLinePadding == 0) {
+    config.pieChartLinePadding = pieOption.activeRadius;
+  }
+  var radius = Math.min((opts.width - opts.area[1] - opts.area[3]) / 2 - config.pieChartLinePadding - config.pieChartTextPadding - config._pieTextMaxLength_, (opts.height - opts.area[0] - opts.area[2]) / 2 - config.pieChartLinePadding - config.pieChartTextPadding);
+  series = getPieDataPoints(series, radius, process);
+  var activeRadius = pieOption.activeRadius;
+  series = series.map(function (eachSeries) {
+    eachSeries._start_ += pieOption.offsetAngle * Math.PI / 180;
+    return eachSeries;
+  });
+  series.forEach(function (eachSeries, seriesIndex) {
+    if (opts.tooltip) {
+      if (opts.tooltip.index == seriesIndex) {
+        context.beginPath();
+        context.setFillStyle(hexToRgb(eachSeries.color, opts.extra.pie.activeOpacity || 0.5));
+        context.moveTo(centerPosition.x, centerPosition.y);
+        context.arc(centerPosition.x, centerPosition.y, eachSeries._radius_ + activeRadius, eachSeries._start_, eachSeries._start_ + 2 * eachSeries._proportion_ * Math.PI);
+        context.closePath();
+        context.fill();
+      }
+    }
+    context.beginPath();
+    context.setLineWidth(pieOption.borderWidth * opts.pixelRatio);
+    context.lineJoin = "round";
+    context.setStrokeStyle(pieOption.borderColor);
+    context.setFillStyle(eachSeries.color);
+    context.moveTo(centerPosition.x, centerPosition.y);
+    context.arc(centerPosition.x, centerPosition.y, eachSeries._radius_, eachSeries._start_, eachSeries._start_ + 2 * eachSeries._proportion_ * Math.PI);
+    context.closePath();
+    context.fill();
+    if (pieOption.border == true) {
+      context.stroke();
+    }
+  });
+  if (opts.type === 'ring') {
+    var innerPieWidth = radius * 0.6;
+    if (typeof opts.extra.pie.ringWidth === 'number' && opts.extra.pie.ringWidth > 0) {
+      innerPieWidth = Math.max(0, radius - opts.extra.pie.ringWidth);
+    }
+    context.beginPath();
+    context.setFillStyle(opts.background || '#ffffff');
+    context.moveTo(centerPosition.x, centerPosition.y);
+    context.arc(centerPosition.x, centerPosition.y, innerPieWidth, 0, 2 * Math.PI);
+    context.closePath();
+    context.fill();
+  }
+  if (opts.dataLabel !== false && process === 1) {
+    var valid = false;
+    for (var i = 0, len = series.length; i < len; i++) {
+      if (series[i].data > 0) {
+        valid = true;
+        break;
+      }
+    }
+    if (valid) {
+      drawPieText(series, opts, config, context, radius, centerPosition);
+    }
+  }
+  if (process === 1 && opts.type === 'ring') {
+    drawRingTitle(opts, config, context, centerPosition);
+  }
+  return {
+    center: centerPosition,
+    radius: radius,
+    series: series
+  };
+}
+function drawRoseDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var roseOption = assign({}, {
+    type: 'area',
+    activeOpacity: 0.5,
+    activeRadius: 10 * opts.pixelRatio,
+    offsetAngle: 0,
+    labelWidth: 15 * opts.pixelRatio,
+    border: false,
+    borderWidth: 2,
+    borderColor: '#FFFFFF'
+  }, opts.extra.rose);
+  if (config.pieChartLinePadding == 0) {
+    config.pieChartLinePadding = roseOption.activeRadius;
+  }
+  var centerPosition = {
+    x: opts.area[3] + (opts.width - opts.area[1] - opts.area[3]) / 2,
+    y: opts.area[0] + (opts.height - opts.area[0] - opts.area[2]) / 2
+  };
+  var radius = Math.min((opts.width - opts.area[1] - opts.area[3]) / 2 - config.pieChartLinePadding - config.pieChartTextPadding - config._pieTextMaxLength_, (opts.height - opts.area[0] - opts.area[2]) / 2 - config.pieChartLinePadding - config.pieChartTextPadding);
+  var minRadius = roseOption.minRadius || radius * 0.5;
+  series = getRoseDataPoints(series, roseOption.type, minRadius, radius, process);
+  var activeRadius = roseOption.activeRadius;
+  series = series.map(function (eachSeries) {
+    eachSeries._start_ += (roseOption.offsetAngle || 0) * Math.PI / 180;
+    return eachSeries;
+  });
+  series.forEach(function (eachSeries, seriesIndex) {
+    if (opts.tooltip) {
+      if (opts.tooltip.index == seriesIndex) {
+        context.beginPath();
+        context.setFillStyle(hexToRgb(eachSeries.color, roseOption.activeOpacity || 0.5));
+        context.moveTo(centerPosition.x, centerPosition.y);
+        context.arc(centerPosition.x, centerPosition.y, activeRadius + eachSeries._radius_, eachSeries._start_, eachSeries._start_ + 2 * eachSeries._rose_proportion_ * Math.PI);
+        context.closePath();
+        context.fill();
+      }
+    }
+    context.beginPath();
+    context.setLineWidth(roseOption.borderWidth * opts.pixelRatio);
+    context.lineJoin = "round";
+    context.setStrokeStyle(roseOption.borderColor);
+    context.setFillStyle(eachSeries.color);
+    context.moveTo(centerPosition.x, centerPosition.y);
+    context.arc(centerPosition.x, centerPosition.y, eachSeries._radius_, eachSeries._start_, eachSeries._start_ + 2 * eachSeries._rose_proportion_ * Math.PI);
+    context.closePath();
+    context.fill();
+    if (roseOption.border == true) {
+      context.stroke();
+    }
+  });
+  if (opts.dataLabel !== false && process === 1) {
+    var valid = false;
+    for (var i = 0, len = series.length; i < len; i++) {
+      if (series[i].data > 0) {
+        valid = true;
+        break;
+      }
+    }
+    if (valid) {
+      drawPieText(series, opts, config, context, radius, centerPosition);
+    }
+  }
+  return {
+    center: centerPosition,
+    radius: radius,
+    series: series
+  };
+}
+function drawArcbarDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var arcbarOption = assign({}, {
+    startAngle: 0.75,
+    endAngle: 0.25,
+    type: 'default',
+    width: 12 * opts.pixelRatio
+  }, opts.extra.arcbar);
+  series = getArcbarDataPoints(series, arcbarOption, process);
+  var centerPosition = {
+    x: opts.width / 2,
+    y: opts.height / 2
+  };
+  var radius = Math.min(centerPosition.x, centerPosition.y);
+  radius -= 5 * opts.pixelRatio;
+  radius -= arcbarOption.width / 2;
+
+  //背景颜色
+  context.setLineWidth(arcbarOption.width);
+  context.setStrokeStyle(arcbarOption.backgroundColor || '#E9E9E9');
+  context.setLineCap('round');
+  context.beginPath();
+  if (arcbarOption.type == 'default') {
+    context.arc(centerPosition.x, centerPosition.y, radius, arcbarOption.startAngle * Math.PI, arcbarOption.endAngle * Math.PI, false);
+  } else {
+    context.arc(centerPosition.x, centerPosition.y, radius, 0, 2 * Math.PI, false);
+  }
+  context.stroke();
+  for (var i = 0; i < series.length; i++) {
+    var eachSeries = series[i];
+    context.setLineWidth(arcbarOption.width);
+    context.setStrokeStyle(eachSeries.color);
+    context.setLineCap('round');
+    context.beginPath();
+    context.arc(centerPosition.x, centerPosition.y, radius, arcbarOption.startAngle * Math.PI, eachSeries._proportion_ * Math.PI, false);
+    context.stroke();
+  }
+  drawRingTitle(opts, config, context, centerPosition);
+  return {
+    center: centerPosition,
+    radius: radius,
+    series: series
+  };
+}
+function drawGaugeDataPoints(categories, series, opts, config, context) {
+  var process = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1;
+  var gaugeOption = assign({}, {
+    startAngle: 0.75,
+    endAngle: 0.25,
+    width: 15,
+    splitLine: {
+      fixRadius: 0,
+      splitNumber: 10,
+      width: 15,
+      color: '#FFFFFF',
+      childNumber: 5,
+      childWidth: 5
+    },
+    pointer: {
+      width: 15,
+      color: 'auto'
+    }
+  }, opts.extra.gauge);
+  if (gaugeOption.oldAngle == undefined) {
+    gaugeOption.oldAngle = gaugeOption.startAngle;
+  }
+  if (gaugeOption.oldData == undefined) {
+    gaugeOption.oldData = 0;
+  }
+  categories = getGaugeAxisPoints(categories, gaugeOption.startAngle, gaugeOption.endAngle);
+  var centerPosition = {
+    x: opts.width / 2,
+    y: opts.height / 2
+  };
+  var radius = Math.min(centerPosition.x, centerPosition.y);
+  radius -= 5 * opts.pixelRatio;
+  radius -= gaugeOption.width / 2;
+  var innerRadius = radius - gaugeOption.width;
+
+  //画背景
+  context.setLineWidth(gaugeOption.width);
+  context.setLineCap('butt');
+  for (var i = 0; i < categories.length; i++) {
+    var eachCategories = categories[i];
+    context.beginPath();
+    context.setStrokeStyle(eachCategories.color);
+    context.arc(centerPosition.x, centerPosition.y, radius, eachCategories._startAngle_ * Math.PI, eachCategories._endAngle_ * Math.PI, false);
+    context.stroke();
+  }
+  context.save();
+
+  //画刻度线
+  var totalAngle = gaugeOption.startAngle - gaugeOption.endAngle + 1;
+  var splitAngle = totalAngle / gaugeOption.splitLine.splitNumber;
+  var childAngle = totalAngle / gaugeOption.splitLine.splitNumber / gaugeOption.splitLine.childNumber;
+  var startX = -radius - gaugeOption.width * 0.5 - gaugeOption.splitLine.fixRadius;
+  var endX = -radius - gaugeOption.width * 0.5 - gaugeOption.splitLine.fixRadius + gaugeOption.splitLine.width;
+  var childendX = -radius - gaugeOption.width * 0.5 - gaugeOption.splitLine.fixRadius + gaugeOption.splitLine.childWidth;
+  context.translate(centerPosition.x, centerPosition.y);
+  context.rotate((gaugeOption.startAngle - 1) * Math.PI);
+  for (var _i12 = 0; _i12 < gaugeOption.splitLine.splitNumber + 1; _i12++) {
+    context.beginPath();
+    context.setStrokeStyle(gaugeOption.splitLine.color);
+    context.setLineWidth(2 * opts.pixelRatio);
+    context.moveTo(startX, 0);
+    context.lineTo(endX, 0);
+    context.stroke();
+    context.rotate(splitAngle * Math.PI);
+  }
+  context.restore();
+  context.save();
+  context.translate(centerPosition.x, centerPosition.y);
+  context.rotate((gaugeOption.startAngle - 1) * Math.PI);
+  for (var _i13 = 0; _i13 < gaugeOption.splitLine.splitNumber * gaugeOption.splitLine.childNumber + 1; _i13++) {
+    context.beginPath();
+    context.setStrokeStyle(gaugeOption.splitLine.color);
+    context.setLineWidth(1 * opts.pixelRatio);
+    context.moveTo(startX, 0);
+    context.lineTo(childendX, 0);
+    context.stroke();
+    context.rotate(childAngle * Math.PI);
+  }
+  context.restore();
+
+  //画指针
+  series = getGaugeDataPoints(series, categories, gaugeOption, process);
+  for (var _i14 = 0; _i14 < series.length; _i14++) {
+    var eachSeries = series[_i14];
+    context.save();
+    context.translate(centerPosition.x, centerPosition.y);
+    context.rotate((eachSeries._proportion_ - 1) * Math.PI);
+    context.beginPath();
+    context.setFillStyle(eachSeries.color);
+    context.moveTo(gaugeOption.pointer.width, 0);
+    context.lineTo(0, -gaugeOption.pointer.width / 2);
+    context.lineTo(-innerRadius, 0);
+    context.lineTo(0, gaugeOption.pointer.width / 2);
+    context.lineTo(gaugeOption.pointer.width, 0);
+    context.closePath();
+    context.fill();
+    context.beginPath();
+    context.setFillStyle('#FFFFFF');
+    context.arc(0, 0, gaugeOption.pointer.width / 6, 0, 2 * Math.PI, false);
+    context.fill();
+    context.restore();
+  }
+  if (opts.dataLabel !== false) {
+    drawGaugeLabel(gaugeOption, radius, centerPosition, opts, config, context);
+  }
+  drawRingTitle(opts, config, context, centerPosition);
+  if (process === 1 && opts.type === 'gauge') {
+    opts.extra.gauge.oldAngle = series[0]._proportion_;
+    opts.extra.gauge.oldData = series[0].data;
+  }
+  return {
+    center: centerPosition,
+    radius: radius,
+    innerRadius: innerRadius,
+    categories: categories,
+    totalAngle: totalAngle
+  };
+}
+function drawRadarDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var radarOption = assign({}, {
+    gridColor: '#cccccc',
+    labelColor: '#666666',
+    opacity: 0.2
+  }, opts.extra.radar);
+  var coordinateAngle = getRadarCoordinateSeries(opts.categories.length);
+  var centerPosition = {
+    x: opts.area[3] + (opts.width - opts.area[1] - opts.area[3]) / 2,
+    y: opts.area[0] + (opts.height - opts.area[0] - opts.area[2]) / 2
+  };
+  var radius = Math.min(centerPosition.x - (getMaxTextListLength(opts.categories) + config.radarLabelTextMargin), centerPosition.y - config.radarLabelTextMargin);
+  //TODO逻辑不对
+  radius -= opts.padding[1];
+
+  // draw grid
+  context.beginPath();
+  context.setLineWidth(1 * opts.pixelRatio);
+  context.setStrokeStyle(radarOption.gridColor);
+  coordinateAngle.forEach(function (angle) {
+    var pos = convertCoordinateOrigin(radius * Math.cos(angle), radius * Math.sin(angle), centerPosition);
+    context.moveTo(centerPosition.x, centerPosition.y);
+    context.lineTo(pos.x, pos.y);
+  });
+  context.stroke();
+  context.closePath();
+  // draw split line grid
+
+  var _loop = function _loop(i) {
+    var startPos = {};
+    context.beginPath();
+    context.setLineWidth(1 * opts.pixelRatio);
+    context.setStrokeStyle(radarOption.gridColor);
+    coordinateAngle.forEach(function (angle, index) {
+      var pos = convertCoordinateOrigin(radius / config.radarGridCount * i * Math.cos(angle), radius / config.radarGridCount * i * Math.sin(angle), centerPosition);
+      if (index === 0) {
+        startPos = pos;
+        context.moveTo(pos.x, pos.y);
+      } else {
+        context.lineTo(pos.x, pos.y);
+      }
+    });
+    context.lineTo(startPos.x, startPos.y);
+    context.stroke();
+    context.closePath();
+  };
+  for (var i = 1; i <= config.radarGridCount; i++) {
+    _loop(i);
+  }
+  var radarDataPoints = getRadarDataPoints(coordinateAngle, centerPosition, radius, series, opts, process);
+  radarDataPoints.forEach(function (eachSeries, seriesIndex) {
+    // 绘制区域数据
+    context.beginPath();
+    context.setFillStyle(hexToRgb(eachSeries.color, radarOption.opacity));
+    eachSeries.data.forEach(function (item, index) {
+      if (index === 0) {
+        context.moveTo(item.position.x, item.position.y);
+      } else {
+        context.lineTo(item.position.x, item.position.y);
+      }
+    });
+    context.closePath();
+    context.fill();
+    if (opts.dataPointShape !== false) {
+      var shape = config.dataPointShape[seriesIndex % config.dataPointShape.length];
+      var points = eachSeries.data.map(function (item) {
+        return item.position;
+      });
+      drawPointShape(points, eachSeries.color, shape, context, opts);
+    }
+  });
+  // draw label text
+  drawRadarLabel(coordinateAngle, radius, centerPosition, opts, config, context);
+  return {
+    center: centerPosition,
+    radius: radius,
+    angleList: coordinateAngle
+  };
+}
+function normalInt(min, max, iter) {
+  iter = iter == 0 ? 1 : iter;
+  var arr = [];
+  for (var i = 0; i < iter; i++) {
+    arr[i] = Math.random();
+  }
+  ;
+  return Math.floor(arr.reduce(function (i, j) {
+    return i + j;
+  }) / iter * (max - min)) + min;
+}
+;
+function collisionNew(area, points, width, height) {
+  var isIn = false;
+  for (var i = 0; i < points.length; i++) {
+    if (points[i].area) {
+      if (area[3] < points[i].area[1] || area[0] > points[i].area[2] || area[1] > points[i].area[3] || area[2] < points[i].area[0]) {
+        if (area[0] < 0 || area[1] < 0 || area[2] > width || area[3] > height) {
+          isIn = true;
+          break;
+        } else {
+          isIn = false;
+        }
+      } else {
+        isIn = true;
+        break;
+      }
+    }
+  }
+  return isIn;
+}
+;
+function getBoundingBox(data) {
+  var bounds = {},
+    coords;
+  bounds.xMin = 180;
+  bounds.xMax = 0;
+  bounds.yMin = 90;
+  bounds.yMax = 0;
+  for (var i = 0; i < data.length; i++) {
+    var coorda = data[i].geometry.coordinates;
+    for (var k = 0; k < coorda.length; k++) {
+      coords = coorda[k];
+      if (coords.length == 1) {
+        coords = coords[0];
+      }
+      for (var j = 0; j < coords.length; j++) {
+        var longitude = coords[j][0];
+        var latitude = coords[j][1];
+        var point = {
+          x: longitude,
+          y: latitude
+        };
+        bounds.xMin = bounds.xMin < point.x ? bounds.xMin : point.x;
+        bounds.xMax = bounds.xMax > point.x ? bounds.xMax : point.x;
+        bounds.yMin = bounds.yMin < point.y ? bounds.yMin : point.y;
+        bounds.yMax = bounds.yMax > point.y ? bounds.yMax : point.y;
+      }
+    }
+  }
+  return bounds;
+}
+function coordinateToPoint(latitude, longitude, bounds, scale, xoffset, yoffset) {
+  return {
+    x: (longitude - bounds.xMin) * scale + xoffset,
+    y: (bounds.yMax - latitude) * scale + yoffset
+  };
+}
+function pointToCoordinate(pointY, pointX, bounds, scale, xoffset, yoffset) {
+  return {
+    x: (pointX - xoffset) / scale + bounds.xMin,
+    y: bounds.yMax - (pointY - yoffset) / scale
+  };
+}
+function isRayIntersectsSegment(poi, s_poi, e_poi) {
+  if (s_poi[1] == e_poi[1]) {
+    return false;
+  }
+  if (s_poi[1] > poi[1] && e_poi[1] > poi[1]) {
+    return false;
+  }
+  if (s_poi[1] < poi[1] && e_poi[1] < poi[1]) {
+    return false;
+  }
+  if (s_poi[1] == poi[1] && e_poi[1] > poi[1]) {
+    return false;
+  }
+  if (e_poi[1] == poi[1] && s_poi[1] > poi[1]) {
+    return false;
+  }
+  if (s_poi[0] < poi[0] && e_poi[1] < poi[1]) {
+    return false;
+  }
+  var xseg = e_poi[0] - (e_poi[0] - s_poi[0]) * (e_poi[1] - poi[1]) / (e_poi[1] - s_poi[1]);
+  if (xseg < poi[0]) {
+    return false;
+  } else {
+    return true;
+  }
+}
+function isPoiWithinPoly(poi, poly) {
+  var sinsc = 0;
+  for (var i = 0; i < poly.length; i++) {
+    var epoly = poly[i][0];
+    if (poly.length == 1) {
+      epoly = poly[i][0];
+    }
+    for (var j = 0; j < epoly.length - 1; j++) {
+      var s_poi = epoly[j];
+      var e_poi = epoly[j + 1];
+      if (isRayIntersectsSegment(poi, s_poi, e_poi)) {
+        sinsc += 1;
+      }
+    }
+  }
+  if (sinsc % 2 == 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function drawMapDataPoints(series, opts, config, context) {
+  var mapOption = assign({}, {
+    border: true,
+    borderWidth: 1,
+    borderColor: '#666666',
+    fillOpacity: 0.6,
+    activeBorderColor: '#f04864',
+    activeFillColor: '#facc14',
+    activeFillOpacity: 1
+  }, opts.extra.map);
+  var coords, point;
+  var data = series;
+  var bounds = getBoundingBox(data);
+  var xScale = opts.width / Math.abs(bounds.xMax - bounds.xMin);
+  var yScale = opts.height / Math.abs(bounds.yMax - bounds.yMin);
+  var scale = xScale < yScale ? xScale : yScale;
+  var xoffset = opts.width / 2 - Math.abs(bounds.xMax - bounds.xMin) / 2 * scale;
+  var yoffset = opts.height / 2 - Math.abs(bounds.yMax - bounds.yMin) / 2 * scale;
+  context.beginPath();
+  context.clearRect(0, 0, opts.width, opts.height);
+  context.setFillStyle(opts.background || '#FFFFFF');
+  context.rect(0, 0, opts.width, opts.height);
+  context.fill();
+  for (var i = 0; i < data.length; i++) {
+    context.beginPath();
+    context.setLineWidth(mapOption.borderWidth * opts.pixelRatio);
+    context.setStrokeStyle(mapOption.borderColor);
+    context.setFillStyle(hexToRgb(series[i].color, mapOption.fillOpacity));
+    if (opts.tooltip) {
+      if (opts.tooltip.index == i) {
+        context.setStrokeStyle(mapOption.activeBorderColor);
+        context.setFillStyle(hexToRgb(mapOption.activeFillColor, mapOption.activeFillOpacity));
+      }
+    }
+    var coorda = data[i].geometry.coordinates;
+    for (var k = 0; k < coorda.length; k++) {
+      coords = coorda[k];
+      if (coords.length == 1) {
+        coords = coords[0];
+      }
+      for (var j = 0; j < coords.length; j++) {
+        point = coordinateToPoint(coords[j][1], coords[j][0], bounds, scale, xoffset, yoffset);
+        if (j === 0) {
+          context.beginPath();
+          context.moveTo(point.x, point.y);
+        } else {
+          context.lineTo(point.x, point.y);
+        }
+      }
+      context.fill();
+      if (mapOption.border == true) {
+        context.stroke();
+      }
+    }
+    if (opts.dataLabel == true) {
+      var centerPoint = data[i].properties.centroid;
+      if (centerPoint) {
+        point = coordinateToPoint(centerPoint[1], centerPoint[0], bounds, scale, xoffset, yoffset);
+        var fontSize = data[i].textSize || config.fontSize;
+        var text = data[i].properties.name;
+        context.beginPath();
+        context.setFontSize(fontSize);
+        context.setFillStyle(data[i].textColor || '#666666');
+        context.fillText(text, point.x - measureText(text, fontSize) / 2, point.y + fontSize / 2);
+        context.closePath();
+        context.stroke();
+      }
+    }
+  }
+  opts.chartData.mapData = {
+    bounds: bounds,
+    scale: scale,
+    xoffset: xoffset,
+    yoffset: yoffset
+  };
+  drawToolTipBridge(opts, config, context, 1);
+  context.draw();
+}
+function getWordCloudPoint(opts, type) {
+  var points = opts.series.sort(function (a, b) {
+    return parseInt(b.textSize) - parseInt(a.textSize);
+  });
+  switch (type) {
+    case 'normal':
+      for (var i = 0; i < points.length; i++) {
+        var text = points[i].name;
+        var tHeight = points[i].textSize;
+        var tWidth = measureText(text, tHeight);
+        var x = void 0,
+          y = void 0;
+        var area = void 0;
+        var breaknum = 0;
+        while (true) {
+          breaknum++;
+          x = normalInt(-opts.width / 2, opts.width / 2, 5) - tWidth / 2;
+          y = normalInt(-opts.height / 2, opts.height / 2, 5) + tHeight / 2;
+          area = [x - 5 + opts.width / 2, y - 5 - tHeight + opts.height / 2, x + tWidth + 5 + opts.width / 2, y + 5 + opts.height / 2];
+          var isCollision = collisionNew(area, points, opts.width, opts.height);
+          if (!isCollision) break;
+          if (breaknum == 1000) {
+            area = [-100, -100, -100, -100];
+            break;
+          }
+        }
+        ;
+        points[i].area = area;
+      }
+      break;
+    case 'vertical':
+      var Spin = function Spin() {
+        //获取均匀随机值，是否旋转，旋转的概率为（1-0.5）
+        if (Math.random() > 0.7) {
+          return true;
+        } else {
+          return false;
+        }
+        ;
+      };
+      ;
+      for (var _i15 = 0; _i15 < points.length; _i15++) {
+        var _text = points[_i15].name;
+        var _tHeight = points[_i15].textSize;
+        var _tWidth = measureText(_text, _tHeight);
+        var isSpin = Spin();
+        var _x = void 0,
+          _y = void 0,
+          _area = void 0,
+          areav = void 0;
+        var _breaknum = 0;
+        while (true) {
+          _breaknum++;
+          var _isCollision = void 0;
+          if (isSpin) {
+            _x = normalInt(-opts.width / 2, opts.width / 2, 5) - _tWidth / 2;
+            _y = normalInt(-opts.height / 2, opts.height / 2, 5) + _tHeight / 2;
+            _area = [_y - 5 - _tWidth + opts.width / 2, -_x - 5 + opts.height / 2, _y + 5 + opts.width / 2, -_x + _tHeight + 5 + opts.height / 2];
+            areav = [opts.width - (opts.width / 2 - opts.height / 2) - (-_x + _tHeight + 5 + opts.height / 2) - 5, opts.height / 2 - opts.width / 2 + (_y - 5 - _tWidth + opts.width / 2) - 5, opts.width - (opts.width / 2 - opts.height / 2) - (-_x + _tHeight + 5 + opts.height / 2) + _tHeight, opts.height / 2 - opts.width / 2 + (_y - 5 - _tWidth + opts.width / 2) + _tWidth + 5];
+            _isCollision = collisionNew(areav, points, opts.height, opts.width);
+          } else {
+            _x = normalInt(-opts.width / 2, opts.width / 2, 5) - _tWidth / 2;
+            _y = normalInt(-opts.height / 2, opts.height / 2, 5) + _tHeight / 2;
+            _area = [_x - 5 + opts.width / 2, _y - 5 - _tHeight + opts.height / 2, _x + _tWidth + 5 + opts.width / 2, _y + 5 + opts.height / 2];
+            _isCollision = collisionNew(_area, points, opts.width, opts.height);
+          }
+          if (!_isCollision) break;
+          if (_breaknum == 1000) {
+            _area = [-1000, -1000, -1000, -1000];
+            break;
+          }
+        }
+        ;
+        if (isSpin) {
+          points[_i15].area = areav;
+          points[_i15].areav = _area;
+        } else {
+          points[_i15].area = _area;
+        }
+        points[_i15].rotate = isSpin;
+      }
+      ;
+      break;
+  }
+  return points;
+}
+function drawWordCloudDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var wordOption = assign({}, {
+    type: 'normal',
+    autoColors: true
+  }, opts.extra.word);
+  context.beginPath();
+  context.setFillStyle(opts.background || '#FFFFFF');
+  context.rect(0, 0, opts.width, opts.height);
+  context.fill();
+  context.save();
+  var points = opts.chartData.wordCloudData;
+  context.translate(opts.width / 2, opts.height / 2);
+  for (var i = 0; i < points.length; i++) {
+    context.save();
+    if (points[i].rotate) {
+      context.rotate(90 * Math.PI / 180);
+    }
+    var text = points[i].name;
+    var tHeight = points[i].textSize;
+    var tWidth = measureText(text, tHeight);
+    context.beginPath();
+    context.setStrokeStyle(points[i].color);
+    context.setFillStyle(points[i].color);
+    context.setFontSize(tHeight);
+    if (points[i].rotate) {
+      if (points[i].areav[0] > 0) {
+        if (opts.tooltip) {
+          if (opts.tooltip.index == i) {
+            context.strokeText(text, (points[i].areav[0] + 5 - opts.width / 2) * process - tWidth * (1 - process) / 2, (points[i].areav[1] + 5 + tHeight - opts.height / 2) * process);
+          } else {
+            context.fillText(text, (points[i].areav[0] + 5 - opts.width / 2) * process - tWidth * (1 - process) / 2, (points[i].areav[1] + 5 + tHeight - opts.height / 2) * process);
+          }
+        } else {
+          context.fillText(text, (points[i].areav[0] + 5 - opts.width / 2) * process - tWidth * (1 - process) / 2, (points[i].areav[1] + 5 + tHeight - opts.height / 2) * process);
+        }
+      }
+    } else {
+      if (points[i].area[0] > 0) {
+        if (opts.tooltip) {
+          if (opts.tooltip.index == i) {
+            context.strokeText(text, (points[i].area[0] + 5 - opts.width / 2) * process - tWidth * (1 - process) / 2, (points[i].area[1] + 5 + tHeight - opts.height / 2) * process);
+          } else {
+            context.fillText(text, (points[i].area[0] + 5 - opts.width / 2) * process - tWidth * (1 - process) / 2, (points[i].area[1] + 5 + tHeight - opts.height / 2) * process);
+          }
+        } else {
+          context.fillText(text, (points[i].area[0] + 5 - opts.width / 2) * process - tWidth * (1 - process) / 2, (points[i].area[1] + 5 + tHeight - opts.height / 2) * process);
+        }
+      }
+    }
+    context.stroke();
+    context.restore();
+  }
+  context.restore();
+}
+function drawFunnelDataPoints(series, opts, config, context) {
+  var process = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
+  var funnelOption = assign({}, {
+    activeWidth: 10,
+    activeOpacity: 0.3,
+    border: false,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+    fillOpacity: 1,
+    labelAlign: 'right'
+  }, opts.extra.funnel);
+  var eachSpacing = (opts.height - opts.area[0] - opts.area[2]) / series.length;
+  var centerPosition = {
+    x: opts.area[3] + (opts.width - opts.area[1] - opts.area[3]) / 2,
+    y: opts.height - opts.area[2]
+  };
+  var activeWidth = funnelOption.activeWidth;
+  var radius = Math.min((opts.width - opts.area[1] - opts.area[3]) / 2 - activeWidth, (opts.height - opts.area[0] - opts.area[2]) / 2 - activeWidth);
+  series = getFunnelDataPoints(series, radius, process);
+  context.save();
+  context.translate(centerPosition.x, centerPosition.y);
+  for (var i = 0; i < series.length; i++) {
+    if (i == 0) {
+      if (opts.tooltip) {
+        if (opts.tooltip.index == i) {
+          context.beginPath();
+          context.setFillStyle(hexToRgb(series[i].color, funnelOption.activeOpacity));
+          context.moveTo(-activeWidth, 0);
+          context.lineTo(-series[i].radius - activeWidth, -eachSpacing);
+          context.lineTo(series[i].radius + activeWidth, -eachSpacing);
+          context.lineTo(activeWidth, 0);
+          context.lineTo(-activeWidth, 0);
+          context.closePath();
+          context.fill();
+        }
+      }
+      series[i].funnelArea = [centerPosition.x - series[i].radius, centerPosition.y - eachSpacing, centerPosition.x + series[i].radius, centerPosition.y];
+      context.beginPath();
+      context.setLineWidth(funnelOption.borderWidth * opts.pixelRatio);
+      context.setStrokeStyle(funnelOption.borderColor);
+      context.setFillStyle(hexToRgb(series[i].color, funnelOption.fillOpacity));
+      context.moveTo(0, 0);
+      context.lineTo(-series[i].radius, -eachSpacing);
+      context.lineTo(series[i].radius, -eachSpacing);
+      context.lineTo(0, 0);
+      context.closePath();
+      context.fill();
+      if (funnelOption.border == true) {
+        context.stroke();
+      }
+    } else {
+      if (opts.tooltip) {
+        if (opts.tooltip.index == i) {
+          context.beginPath();
+          context.setFillStyle(hexToRgb(series[i].color, funnelOption.activeOpacity));
+          context.moveTo(0, 0);
+          context.lineTo(-series[i - 1].radius - activeWidth, 0);
+          context.lineTo(-series[i].radius - activeWidth, -eachSpacing);
+          context.lineTo(series[i].radius + activeWidth, -eachSpacing);
+          context.lineTo(series[i - 1].radius + activeWidth, 0);
+          context.lineTo(0, 0);
+          context.closePath();
+          context.fill();
+          context.closePath();
+          context.fill();
+        }
+      }
+      series[i].funnelArea = [centerPosition.x - series[i].radius, centerPosition.y - eachSpacing * (i + 1), centerPosition.x + series[i].radius, centerPosition.y - eachSpacing * i];
+      context.beginPath();
+      context.setLineWidth(funnelOption.borderWidth * opts.pixelRatio);
+      context.setStrokeStyle(funnelOption.borderColor);
+      context.setFillStyle(hexToRgb(series[i].color, funnelOption.fillOpacity));
+      context.moveTo(0, 0);
+      context.lineTo(-series[i - 1].radius, 0);
+      context.lineTo(-series[i].radius, -eachSpacing);
+      context.lineTo(series[i].radius, -eachSpacing);
+      context.lineTo(series[i - 1].radius, 0);
+      context.lineTo(0, 0);
+      context.closePath();
+      context.fill();
+      if (funnelOption.border == true) {
+        context.stroke();
+      }
+    }
+    context.translate(0, -eachSpacing);
+  }
+  context.restore();
+  if (opts.dataLabel !== false && process === 1) {
+    drawFunnelText(series, opts, context, eachSpacing, funnelOption.labelAlign, activeWidth, centerPosition);
+  }
+  return {
+    center: centerPosition,
+    radius: radius,
+    series: series
+  };
+}
+function drawFunnelText(series, opts, context, eachSpacing, labelAlign, activeWidth, centerPosition) {
+  for (var i = 0; i < series.length; i++) {
+    var item = series[i];
+    var startX = void 0,
+      endX = void 0,
+      startY = void 0,
+      fontSize = void 0;
+    var text = item.format ? item.format(+item._proportion_.toFixed(2)) : util.toFixed(item._proportion_ * 100) + '%';
+    if (labelAlign == 'right') {
+      if (i == 0) {
+        startX = (item.funnelArea[2] + centerPosition.x) / 2;
+      } else {
+        startX = (item.funnelArea[2] + series[i - 1].funnelArea[2]) / 2;
+      }
+      endX = startX + activeWidth * 2;
+      startY = item.funnelArea[1] + eachSpacing / 2;
+      fontSize = item.textSize || opts.fontSize;
+      context.setLineWidth(1 * opts.pixelRatio);
+      context.setStrokeStyle(item.color);
+      context.setFillStyle(item.color);
+      context.beginPath();
+      context.moveTo(startX, startY);
+      context.lineTo(endX, startY);
+      context.stroke();
+      context.closePath();
+      context.beginPath();
+      context.moveTo(endX, startY);
+      context.arc(endX, startY, 2, 0, 2 * Math.PI);
+      context.closePath();
+      context.fill();
+      context.beginPath();
+      context.setFontSize(fontSize);
+      context.setFillStyle(item.textColor || '#666666');
+      context.fillText(text, endX + 5, startY + fontSize / 2 - 2);
+      context.closePath();
+      context.stroke();
+      context.closePath();
+    } else {
+      if (i == 0) {
+        startX = (item.funnelArea[0] + centerPosition.x) / 2;
+      } else {
+        startX = (item.funnelArea[0] + series[i - 1].funnelArea[0]) / 2;
+      }
+      endX = startX - activeWidth * 2;
+      startY = item.funnelArea[1] + eachSpacing / 2;
+      fontSize = item.textSize || opts.fontSize;
+      context.setLineWidth(1 * opts.pixelRatio);
+      context.setStrokeStyle(item.color);
+      context.setFillStyle(item.color);
+      context.beginPath();
+      context.moveTo(startX, startY);
+      context.lineTo(endX, startY);
+      context.stroke();
+      context.closePath();
+      context.beginPath();
+      context.moveTo(endX, startY);
+      context.arc(endX, startY, 2, 0, 2 * Math.PI);
+      context.closePath();
+      context.fill();
+      context.beginPath();
+      context.setFontSize(fontSize);
+      context.setFillStyle(item.textColor || '#666666');
+      context.fillText(text, endX - 5 - measureText(text), startY + fontSize / 2 - 2);
+      context.closePath();
+      context.stroke();
+      context.closePath();
+    }
+  }
+}
+function drawCanvas(opts, context) {
+  context.draw();
+}
+var Timing = {
+  easeIn: function easeIn(pos) {
+    return Math.pow(pos, 3);
+  },
+  easeOut: function easeOut(pos) {
+    return Math.pow(pos - 1, 3) + 1;
+  },
+  easeInOut: function easeInOut(pos) {
+    if ((pos /= 0.5) < 1) {
+      return 0.5 * Math.pow(pos, 3);
+    } else {
+      return 0.5 * (Math.pow(pos - 2, 3) + 2);
+    }
+  },
+  linear: function linear(pos) {
+    return pos;
+  }
+};
+function Animation(opts) {
+  this.isStop = false;
+  opts.duration = typeof opts.duration === 'undefined' ? 1000 : opts.duration;
+  opts.timing = opts.timing || 'linear';
+  var delay = 17;
+  function createAnimationFrame() {
+    if (typeof setTimeout !== 'undefined') {
+      return function (step, delay) {
+        setTimeout(function () {
+          var timeStamp = +new Date();
+          step(timeStamp);
+        }, delay);
+      };
+    } else if (typeof requestAnimationFrame !== 'undefined') {
+      return requestAnimationFrame;
+    } else {
+      return function (step) {
+        step(null);
+      };
+    }
+  }
+  ;
+  var animationFrame = createAnimationFrame();
+  var startTimeStamp = null;
+  var _step = function step(timestamp) {
+    if (timestamp === null || this.isStop === true) {
+      opts.onProcess && opts.onProcess(1);
+      opts.onAnimationFinish && opts.onAnimationFinish();
+      return;
+    }
+    if (startTimeStamp === null) {
+      startTimeStamp = timestamp;
+    }
+    if (timestamp - startTimeStamp < opts.duration) {
+      var process = (timestamp - startTimeStamp) / opts.duration;
+      var timingFunction = Timing[opts.timing];
+      process = timingFunction(process);
+      opts.onProcess && opts.onProcess(process);
+      animationFrame(_step, delay);
+    } else {
+      opts.onProcess && opts.onProcess(1);
+      opts.onAnimationFinish && opts.onAnimationFinish();
+    }
+  };
+  _step = _step.bind(this);
+  animationFrame(_step, delay);
+}
+
+// stop animation immediately
+// and tigger onAnimationFinish
+Animation.prototype.stop = function () {
+  this.isStop = true;
+};
+function drawCharts(type, opts, config, context) {
+  var _this = this;
+  var series = opts.series;
+  var categories = opts.categories;
+  series = fillSeries(series, opts, config);
+  var duration = opts.animation ? opts.duration : 0;
+  this.animationInstance && this.animationInstance.stop();
+  var seriesMA = null;
+  if (type == 'candle') {
+    var average = assign({}, opts.extra.candle.average);
+    if (average.show) {
+      seriesMA = calCandleMA(average.day, average.name, average.color, series[0].data);
+      seriesMA = fillSeries(seriesMA, opts, config);
+      opts.seriesMA = seriesMA;
+    } else if (opts.seriesMA) {
+      seriesMA = opts.seriesMA = fillSeries(opts.seriesMA, opts, config);
+    } else {
+      seriesMA = series;
+    }
+  } else {
+    seriesMA = series;
+  }
+
+  /* 过滤掉show=false的series */
+  opts._series_ = series = filterSeries(series);
+
+  //重新计算图表区域
+
+  opts.area = new Array(4);
+  //复位绘图区域
+  for (var j = 0; j < 4; j++) {
+    opts.area[j] = opts.padding[j];
+  }
+
+  //通过计算三大区域：图例、X轴、Y轴的大小，确定绘图区域
+  var _calLegendData = calLegendData(seriesMA, opts, config, opts.chartData),
+    legendHeight = _calLegendData.area.wholeHeight,
+    legendWidth = _calLegendData.area.wholeWidth;
+  //TODO废弃config.legendHeight参数
+  config.legendHeight = legendHeight;
+  switch (opts.legend.position) {
+    case 'top':
+      opts.area[0] += legendHeight;
+      break;
+    case 'bottom':
+      opts.area[2] += legendHeight;
+      break;
+    case 'left':
+      opts.area[3] += legendWidth;
+      break;
+    case 'right':
+      opts.area[1] += legendWidth;
+      break;
+  }
+  var _calYAxisData = {},
+    yAxisWidth = 0;
+  if (opts.type === 'line' || opts.type === 'column' || opts.type === 'area' || opts.type === 'mix' || opts.type === 'candle') {
+    _calYAxisData = calYAxisData(series, opts, config);
+    yAxisWidth = _calYAxisData.yAxisWidth;
+    config.yAxisWidth = yAxisWidth;
+    opts.area[3] += yAxisWidth;
+  } else {
+    config.yAxisWidth = yAxisWidth;
+  }
+  opts.chartData.yAxisData = _calYAxisData;
+  if (opts.categories && opts.categories.length) {
+    opts.chartData.xAxisData = getXAxisPoints(opts.categories, opts, config);
+    var _calCategoriesData = calCategoriesData(opts.categories, opts, config, opts.chartData.xAxisData.eachSpacing),
+      xAxisHeight = _calCategoriesData.xAxisHeight,
+      angle = _calCategoriesData.angle;
+    config.xAxisHeight = xAxisHeight;
+    config._xAxisTextAngle_ = angle;
+    opts.area[2] += xAxisHeight;
+    opts.chartData.categoriesData = _calCategoriesData;
+  }
+
+  //计算右对齐偏移距离
+  if (opts.enableScroll && opts.xAxis.scrollAlign == 'right' && opts._scrollDistance_ === undefined) {
+    var offsetLeft = 0,
+      xAxisPoints = opts.chartData.xAxisData.xAxisPoints,
+      startX = opts.chartData.xAxisData.startX,
+      endX = opts.chartData.xAxisData.endX,
+      eachSpacing = opts.chartData.xAxisData.eachSpacing;
+    var totalWidth = eachSpacing * (xAxisPoints.length - 1);
+    var screenWidth = endX - startX;
+    offsetLeft = screenWidth - totalWidth;
+    _this.scrollOption = {
+      currentOffset: offsetLeft,
+      startTouchX: offsetLeft,
+      distance: 0,
+      lastMoveTime: 0
+    };
+    opts._scrollDistance_ = offsetLeft;
+  }
+  if (type === 'pie' || type === 'ring' || type === 'rose') {
+    config._pieTextMaxLength_ = opts.dataLabel === false ? 0 : getPieTextMaxLength(seriesMA);
+  }
+  switch (type) {
+    case 'word':
+      var wordOption = assign({}, {
+        type: 'normal',
+        autoColors: true
+      }, opts.extra.word);
+      if (opts.updateData == true || opts.updateData == undefined) {
+        opts.chartData.wordCloudData = getWordCloudPoint(opts, wordOption.type);
+      }
+      this.animationInstance = new Animation({
+        timing: 'easeInOut',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          drawWordCloudDataPoints(series, opts, config, context, process);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'map':
+      context.clearRect(0, 0, opts.width, opts.height);
+      drawMapDataPoints(series, opts, config, context);
+      break;
+    case 'funnel':
+      this.animationInstance = new Animation({
+        timing: 'easeInOut',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          opts.chartData.funnelData = drawFunnelDataPoints(series, opts, config, context, process);
+          drawLegend(opts.series, opts, config, context, opts.chartData);
+          drawToolTipBridge(opts, config, context, process);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'line':
+      this.animationInstance = new Animation({
+        timing: 'easeIn',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          drawYAxisGrid(categories, opts, config, context);
+          drawXAxis(categories, opts, config, context);
+          var _drawLineDataPoints = drawLineDataPoints(series, opts, config, context, process),
+            xAxisPoints = _drawLineDataPoints.xAxisPoints,
+            calPoints = _drawLineDataPoints.calPoints,
+            eachSpacing = _drawLineDataPoints.eachSpacing,
+            minRange = _drawLineDataPoints.minRange,
+            maxRange = _drawLineDataPoints.maxRange;
+          opts.chartData.xAxisPoints = xAxisPoints;
+          opts.chartData.calPoints = calPoints;
+          opts.chartData.eachSpacing = eachSpacing;
+          drawYAxis(series, opts, config, context);
+          if (opts.enableMarkLine !== false && process === 1) {
+            drawMarkLine(minRange, maxRange, opts, config, context);
+          }
+          drawLegend(opts.series, opts, config, context, opts.chartData);
+          drawToolTipBridge(opts, config, context, process, eachSpacing, xAxisPoints);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'mix':
+      this.animationInstance = new Animation({
+        timing: 'easeIn',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          drawYAxisGrid(categories, opts, config, context);
+          drawXAxis(categories, opts, config, context);
+          var _drawMixDataPoints = drawMixDataPoints(series, opts, config, context, process),
+            xAxisPoints = _drawMixDataPoints.xAxisPoints,
+            calPoints = _drawMixDataPoints.calPoints,
+            eachSpacing = _drawMixDataPoints.eachSpacing,
+            minRange = _drawMixDataPoints.minRange,
+            maxRange = _drawMixDataPoints.maxRange;
+          opts.chartData.xAxisPoints = xAxisPoints;
+          opts.chartData.calPoints = calPoints;
+          opts.chartData.eachSpacing = eachSpacing;
+          drawYAxis(series, opts, config, context);
+          if (opts.enableMarkLine !== false && process === 1) {
+            drawMarkLine(minRange, maxRange, opts, config, context);
+          }
+          drawLegend(opts.series, opts, config, context, opts.chartData);
+          drawToolTipBridge(opts, config, context, process, eachSpacing, xAxisPoints);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'column':
+      this.animationInstance = new Animation({
+        timing: 'easeIn',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          drawYAxisGrid(categories, opts, config, context);
+          drawXAxis(categories, opts, config, context);
+          var _drawColumnDataPoints = drawColumnDataPoints(series, opts, config, context, process),
+            xAxisPoints = _drawColumnDataPoints.xAxisPoints,
+            calPoints = _drawColumnDataPoints.calPoints,
+            eachSpacing = _drawColumnDataPoints.eachSpacing,
+            minRange = _drawColumnDataPoints.minRange,
+            maxRange = _drawColumnDataPoints.maxRange;
+          opts.chartData.xAxisPoints = xAxisPoints;
+          opts.chartData.calPoints = calPoints;
+          opts.chartData.eachSpacing = eachSpacing;
+          drawYAxis(series, opts, config, context);
+          if (opts.enableMarkLine !== false && process === 1) {
+            drawMarkLine(minRange, maxRange, opts, config, context);
+          }
+          drawLegend(opts.series, opts, config, context, opts.chartData);
+          drawToolTipBridge(opts, config, context, process, eachSpacing, xAxisPoints);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'area':
+      this.animationInstance = new Animation({
+        timing: 'easeIn',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          drawYAxisGrid(categories, opts, config, context);
+          drawXAxis(categories, opts, config, context);
+          var _drawAreaDataPoints = drawAreaDataPoints(series, opts, config, context, process),
+            xAxisPoints = _drawAreaDataPoints.xAxisPoints,
+            calPoints = _drawAreaDataPoints.calPoints,
+            eachSpacing = _drawAreaDataPoints.eachSpacing,
+            minRange = _drawAreaDataPoints.minRange,
+            maxRange = _drawAreaDataPoints.maxRange;
+          opts.chartData.xAxisPoints = xAxisPoints;
+          opts.chartData.calPoints = calPoints;
+          opts.chartData.eachSpacing = eachSpacing;
+          drawYAxis(series, opts, config, context);
+          if (opts.enableMarkLine !== false && process === 1) {
+            drawMarkLine(minRange, maxRange, opts, config, context);
+          }
+          drawLegend(opts.series, opts, config, context, opts.chartData);
+          drawToolTipBridge(opts, config, context, process, eachSpacing, xAxisPoints);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'ring':
+    case 'pie':
+      this.animationInstance = new Animation({
+        timing: 'easeInOut',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          opts.chartData.pieData = drawPieDataPoints(series, opts, config, context, process);
+          drawLegend(opts.series, opts, config, context, opts.chartData);
+          drawToolTipBridge(opts, config, context, process);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'rose':
+      this.animationInstance = new Animation({
+        timing: 'easeInOut',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          opts.chartData.pieData = drawRoseDataPoints(series, opts, config, context, process);
+          drawLegend(opts.series, opts, config, context, opts.chartData);
+          drawToolTipBridge(opts, config, context, process);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'radar':
+      this.animationInstance = new Animation({
+        timing: 'easeInOut',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          opts.chartData.radarData = drawRadarDataPoints(series, opts, config, context, process);
+          drawLegend(opts.series, opts, config, context, opts.chartData);
+          drawToolTipBridge(opts, config, context, process);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'arcbar':
+      this.animationInstance = new Animation({
+        timing: 'easeInOut',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          opts.chartData.arcbarData = drawArcbarDataPoints(series, opts, config, context, process);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'gauge':
+      this.animationInstance = new Animation({
+        timing: 'easeInOut',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          opts.chartData.gaugeData = drawGaugeDataPoints(categories, series, opts, config, context, process);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+    case 'candle':
+      this.animationInstance = new Animation({
+        timing: 'easeIn',
+        duration: duration,
+        onProcess: function onProcess(process) {
+          context.clearRect(0, 0, opts.width, opts.height);
+          if (opts.rotate) {
+            contextRotate(context, opts);
+          }
+          drawYAxisGrid(categories, opts, config, context);
+          drawXAxis(categories, opts, config, context);
+          var _drawCandleDataPoints = drawCandleDataPoints(series, seriesMA, opts, config, context, process),
+            xAxisPoints = _drawCandleDataPoints.xAxisPoints,
+            calPoints = _drawCandleDataPoints.calPoints,
+            eachSpacing = _drawCandleDataPoints.eachSpacing,
+            minRange = _drawCandleDataPoints.minRange,
+            maxRange = _drawCandleDataPoints.maxRange;
+          opts.chartData.xAxisPoints = xAxisPoints;
+          opts.chartData.calPoints = calPoints;
+          opts.chartData.eachSpacing = eachSpacing;
+          drawYAxis(series, opts, config, context);
+          if (opts.enableMarkLine !== false && process === 1) {
+            drawMarkLine(minRange, maxRange, opts, config, context);
+          }
+          if (seriesMA) {
+            drawLegend(seriesMA, opts, config, context, opts.chartData);
+          } else {
+            drawLegend(opts.series, opts, config, context, opts.chartData);
+          }
+          drawToolTipBridge(opts, config, context, process, eachSpacing, xAxisPoints);
+          drawCanvas(opts, context);
+        },
+        onAnimationFinish: function onAnimationFinish() {
+          _this.event.trigger('renderComplete');
+        }
+      });
+      break;
+  }
+}
+
+// simple event implement
+
+function Event() {
+  this.events = {};
+}
+Event.prototype.addEventListener = function (type, listener) {
+  this.events[type] = this.events[type] || [];
+  this.events[type].push(listener);
+};
+Event.prototype.trigger = function () {
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+  var type = args[0];
+  var params = args.slice(1);
+  if (!!this.events[type]) {
+    this.events[type].forEach(function (listener) {
+      try {
+        listener.apply(null, params);
+      } catch (e) {
+        console.error(e);
+      }
+    });
+  }
+};
+var Charts = function Charts(opts) {
+  opts.pixelRatio = opts.pixelRatio ? opts.pixelRatio : 1;
+  opts.fontSize = opts.fontSize ? opts.fontSize * opts.pixelRatio : 13 * opts.pixelRatio;
+  opts.title = assign({}, opts.title);
+  opts.subtitle = assign({}, opts.subtitle);
+  opts.duration = opts.duration ? opts.duration : 1000;
+  opts.yAxis = assign({}, {
+    gridType: 'solid',
+    dashLength: 4 * opts.pixelRatio
+  }, opts.yAxis);
+  opts.xAxis = assign({}, {
+    rotateLabel: false,
+    type: 'calibration',
+    gridType: 'solid',
+    dashLength: 4 * opts.pixelRatio,
+    scrollAlign: 'left',
+    boundaryGap: 'center'
+  }, opts.xAxis);
+  opts.legend = assign({}, {
+    show: true,
+    position: 'bottom',
+    float: 'center',
+    backgroundColor: 'rgba(0,0,0,0)',
+    borderColor: 'rgba(0,0,0,0)',
+    borderWidth: 0,
+    padding: 5,
+    margin: 5,
+    itemGap: 10,
+    fontSize: opts.fontSize,
+    lineHeight: opts.fontSize,
+    fontColor: '#333333',
+    format: {},
+    hiddenColor: '#CECECE'
+  }, opts.legend);
+  opts.legend.borderWidth = opts.legend.borderWidth * opts.pixelRatio;
+  opts.legend.itemGap = opts.legend.itemGap * opts.pixelRatio;
+  opts.legend.padding = opts.legend.padding * opts.pixelRatio;
+  opts.legend.margin = opts.legend.margin * opts.pixelRatio;
+  opts.extra = assign({}, opts.extra);
+  opts.rotate = opts.rotate ? true : false;
+  opts.animation = opts.animation ? true : false;
+  var config$$1 = JSON.parse(JSON.stringify(config));
+  config$$1.colors = opts.colors ? opts.colors : config$$1.colors;
+  config$$1.yAxisTitleWidth = opts.yAxis.disabled !== true && opts.yAxis.title ? config$$1.yAxisTitleWidth : 0;
+  if (opts.type == 'pie' || opts.type == 'ring') {
+    config$$1.pieChartLinePadding = opts.dataLabel === false ? 0 : opts.extra.pie.labelWidth * opts.pixelRatio || config$$1.pieChartLinePadding * opts.pixelRatio;
+  }
+  if (opts.type == 'rose') {
+    config$$1.pieChartLinePadding = opts.dataLabel === false ? 0 : opts.extra.rose.labelWidth * opts.pixelRatio || config$$1.pieChartLinePadding * opts.pixelRatio;
+  }
+  config$$1.pieChartTextPadding = opts.dataLabel === false ? 0 : config$$1.pieChartTextPadding * opts.pixelRatio;
+  config$$1.yAxisSplit = opts.yAxis.splitNumber ? opts.yAxis.splitNumber : config.yAxisSplit;
+
+  //屏幕旋转
+  config$$1.rotate = opts.rotate;
+  if (opts.rotate) {
+    var tempWidth = opts.width;
+    var tempHeight = opts.height;
+    opts.width = tempHeight;
+    opts.height = tempWidth;
+  }
+
+  //适配高分屏
+  opts.padding = opts.padding ? opts.padding : config$$1.padding;
+  for (var i = 0; i < 4; i++) {
+    opts.padding[i] *= opts.pixelRatio;
+  }
+  config$$1.yAxisWidth = config.yAxisWidth * opts.pixelRatio;
+  config$$1.xAxisHeight = config.xAxisHeight * opts.pixelRatio;
+  if (opts.enableScroll && opts.xAxis.scrollShow) {
+    config$$1.xAxisHeight += 6 * opts.pixelRatio;
+  }
+  config$$1.xAxisLineHeight = config.xAxisLineHeight * opts.pixelRatio;
+  config$$1.legendHeight = config.legendHeight * opts.pixelRatio;
+  config$$1.fontSize = opts.fontSize;
+  config$$1.titleFontSize = config.titleFontSize * opts.pixelRatio;
+  config$$1.subtitleFontSize = config.subtitleFontSize * opts.pixelRatio;
+  config$$1.toolTipPadding = config.toolTipPadding * opts.pixelRatio;
+  config$$1.toolTipLineHeight = config.toolTipLineHeight * opts.pixelRatio;
+  config$$1.columePadding = config.columePadding * opts.pixelRatio;
+  opts.$this = opts.$this ? opts.$this : this;
+  this.context = uni.createCanvasContext(opts.canvasId, opts.$this);
+  /* 兼容原生H5
+  this.context = document.getElementById(opts.canvasId).getContext("2d");
+  this.context.setStrokeStyle = function(e){ return this.strokeStyle=e; }
+  this.context.setLineWidth = function(e){ return this.lineWidth=e; }
+  this.context.setLineCap = function(e){ return this.lineCap=e; }
+  this.context.setFontSize = function(e){ return this.font=e+"px sans-serif"; }
+  this.context.setFillStyle = function(e){ return this.fillStyle=e; }
+  this.context.draw = function(){ }
+  */
+
+  opts.chartData = {};
+  this.event = new Event();
+  this.scrollOption = {
+    currentOffset: 0,
+    startTouchX: 0,
+    distance: 0,
+    lastMoveTime: 0
+  };
+  this.opts = opts;
+  this.config = config$$1;
+  drawCharts.call(this, opts.type, opts, config$$1, this.context);
+};
+Charts.prototype.updateData = function () {
+  var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  this.opts = assign({}, this.opts, data);
+  this.opts.updateData = true;
+  var scrollPosition = data.scrollPosition || 'current';
+  switch (scrollPosition) {
+    case 'current':
+      this.opts._scrollDistance_ = this.scrollOption.currentOffset;
+      break;
+    case 'left':
+      this.opts._scrollDistance_ = 0;
+      this.scrollOption = {
+        currentOffset: 0,
+        startTouchX: 0,
+        distance: 0,
+        lastMoveTime: 0
+      };
+      break;
+    case 'right':
+      var _calYAxisData = calYAxisData(this.opts.series, this.opts, this.config),
+        yAxisWidth = _calYAxisData.yAxisWidth;
+      this.config.yAxisWidth = yAxisWidth;
+      var offsetLeft = 0;
+      var _getXAxisPoints0 = getXAxisPoints(this.opts.categories, this.opts, this.config),
+        xAxisPoints = _getXAxisPoints0.xAxisPoints,
+        startX = _getXAxisPoints0.startX,
+        endX = _getXAxisPoints0.endX,
+        eachSpacing = _getXAxisPoints0.eachSpacing;
+      var totalWidth = eachSpacing * (xAxisPoints.length - 1);
+      var screenWidth = endX - startX;
+      offsetLeft = screenWidth - totalWidth;
+      this.scrollOption = {
+        currentOffset: offsetLeft,
+        startTouchX: offsetLeft,
+        distance: 0,
+        lastMoveTime: 0
+      };
+      this.opts._scrollDistance_ = offsetLeft;
+      break;
+  }
+  drawCharts.call(this, this.opts.type, this.opts, this.config, this.context);
+};
+Charts.prototype.zoom = function () {
+  var val = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.opts.xAxis.itemCount;
+  if (this.opts.enableScroll !== true) {
+    console.log('请启用滚动条后使用！');
+    return;
+  }
+  //当前屏幕中间点
+  var centerPoint = Math.round(Math.abs(this.scrollOption.currentOffset) / this.opts.chartData.eachSpacing) + Math.round(this.opts.xAxis.itemCount / 2);
+  this.opts.animation = false;
+  this.opts.xAxis.itemCount = val.itemCount;
+  //重新计算x轴偏移距离
+  var _calYAxisData = calYAxisData(this.opts.series, this.opts, this.config),
+    yAxisWidth = _calYAxisData.yAxisWidth;
+  this.config.yAxisWidth = yAxisWidth;
+  var offsetLeft = 0;
+  var _getXAxisPoints0 = getXAxisPoints(this.opts.categories, this.opts, this.config),
+    xAxisPoints = _getXAxisPoints0.xAxisPoints,
+    startX = _getXAxisPoints0.startX,
+    endX = _getXAxisPoints0.endX,
+    eachSpacing = _getXAxisPoints0.eachSpacing;
+  var centerLeft = eachSpacing * centerPoint;
+  var screenWidth = endX - startX;
+  var MaxLeft = screenWidth - eachSpacing * (xAxisPoints.length - 1);
+  offsetLeft = screenWidth / 2 - centerLeft;
+  if (offsetLeft > 0) {
+    offsetLeft = 0;
+  }
+  if (offsetLeft < MaxLeft) {
+    offsetLeft = MaxLeft;
+  }
+  this.scrollOption = {
+    currentOffset: offsetLeft,
+    startTouchX: offsetLeft,
+    distance: 0,
+    lastMoveTime: 0
+  };
+  this.opts._scrollDistance_ = offsetLeft;
+  drawCharts.call(this, this.opts.type, this.opts, this.config, this.context);
+};
+Charts.prototype.stopAnimation = function () {
+  this.animationInstance && this.animationInstance.stop();
+};
+Charts.prototype.addEventListener = function (type, listener) {
+  this.event.addEventListener(type, listener);
+};
+Charts.prototype.getCurrentDataIndex = function (e) {
+  var touches = null;
+  if (e.changedTouches) {
+    touches = e.changedTouches[0];
+  } else {
+    touches = e.mp.changedTouches[0];
+  }
+  if (touches) {
+    var _touches$ = getTouches(touches, this.opts, e);
+    if (this.opts.type === 'pie' || this.opts.type === 'ring' || this.opts.type === 'rose') {
+      return findPieChartCurrentIndex({
+        x: _touches$.x,
+        y: _touches$.y
+      }, this.opts.chartData.pieData);
+    } else if (this.opts.type === 'radar') {
+      return findRadarChartCurrentIndex({
+        x: _touches$.x,
+        y: _touches$.y
+      }, this.opts.chartData.radarData, this.opts.categories.length);
+    } else if (this.opts.type === 'funnel') {
+      return findFunnelChartCurrentIndex({
+        x: _touches$.x,
+        y: _touches$.y
+      }, this.opts.chartData.funnelData);
+    } else if (this.opts.type === 'map') {
+      return findMapChartCurrentIndex({
+        x: _touches$.x,
+        y: _touches$.y
+      }, this.opts);
+    } else if (this.opts.type === 'word') {
+      return findWordChartCurrentIndex({
+        x: _touches$.x,
+        y: _touches$.y
+      }, this.opts.chartData.wordCloudData);
+    } else {
+      return findCurrentIndex({
+        x: _touches$.x,
+        y: _touches$.y
+      }, this.opts.chartData.xAxisPoints, this.opts, this.config, Math.abs(this.scrollOption.currentOffset));
+    }
+  }
+  return -1;
+};
+Charts.prototype.getLegendDataIndex = function (e) {
+  var touches = null;
+  if (e.changedTouches) {
+    touches = e.changedTouches[0];
+  } else {
+    touches = e.mp.changedTouches[0];
+  }
+  if (touches) {
+    var _touches$ = getTouches(touches, this.opts, e);
+    return findLegendIndex({
+      x: _touches$.x,
+      y: _touches$.y
+    }, this.opts.chartData.legendData);
+  }
+  return -1;
+};
+Charts.prototype.touchLegend = function (e) {
+  var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var touches = null;
+  if (e.changedTouches) {
+    touches = e.changedTouches[0];
+  } else {
+    touches = e.mp.changedTouches[0];
+  }
+  if (touches) {
+    var _touches$ = getTouches(touches, this.opts, e);
+    var index = this.getLegendDataIndex(e);
+    if (index >= 0) {
+      this.opts.series[index].show = !this.opts.series[index].show;
+      this.opts.animation = option.animation ? true : false;
+      drawCharts.call(this, this.opts.type, this.opts, this.config, this.context);
+    }
+  }
+};
+Charts.prototype.showToolTip = function (e) {
+  var option = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var touches = null;
+  if (e.changedTouches) {
+    touches = e.changedTouches[0];
+  } else {
+    touches = e.mp.changedTouches[0];
+  }
+  if (!touches) {
+    console.log("touchError");
+  }
+  var _touches$ = getTouches(touches, this.opts, e);
+  var currentOffset = this.scrollOption.currentOffset;
+  var opts = assign({}, this.opts, {
+    _scrollDistance_: currentOffset,
+    animation: false
+  });
+  if (this.opts.type === 'line' || this.opts.type === 'area' || this.opts.type === 'column') {
+    var index = this.getCurrentDataIndex(e);
+    if (index > -1) {
+      var seriesData = getSeriesDataItem(this.opts.series, index);
+      if (seriesData.length !== 0) {
+        var _getToolTipData = getToolTipData(seriesData, this.opts.chartData.calPoints, index, this.opts.categories, option),
+          textList = _getToolTipData.textList,
+          offset = _getToolTipData.offset;
+        offset.y = _touches$.y;
+        opts.tooltip = {
+          textList: textList,
+          offset: offset,
+          option: option,
+          index: index
+        };
+      }
+    }
+    drawCharts.call(this, opts.type, opts, this.config, this.context);
+  }
+  if (this.opts.type === 'mix') {
+    var index = this.getCurrentDataIndex(e);
+    if (index > -1) {
+      var currentOffset = this.scrollOption.currentOffset;
+      var opts = assign({}, this.opts, {
+        _scrollDistance_: currentOffset,
+        animation: false
+      });
+      var seriesData = getSeriesDataItem(this.opts.series, index);
+      if (seriesData.length !== 0) {
+        var _getMixToolTipData = getMixToolTipData(seriesData, this.opts.chartData.calPoints, index, this.opts.categories, option),
+          textList = _getMixToolTipData.textList,
+          offset = _getMixToolTipData.offset;
+        offset.y = _touches$.y;
+        opts.tooltip = {
+          textList: textList,
+          offset: offset,
+          option: option,
+          index: index
+        };
+      }
+    }
+    drawCharts.call(this, opts.type, opts, this.config, this.context);
+  }
+  if (this.opts.type === 'candle') {
+    var index = this.getCurrentDataIndex(e);
+    if (index > -1) {
+      var currentOffset = this.scrollOption.currentOffset;
+      var opts = assign({}, this.opts, {
+        _scrollDistance_: currentOffset,
+        animation: false
+      });
+      var seriesData = getSeriesDataItem(this.opts.series, index);
+      if (seriesData.length !== 0) {
+        var _getToolTipData = getCandleToolTipData(this.opts.series[0].data, seriesData, this.opts.chartData.calPoints, index, this.opts.categories, this.opts.extra.candle, option),
+          textList = _getToolTipData.textList,
+          offset = _getToolTipData.offset;
+        offset.y = _touches$.y;
+        opts.tooltip = {
+          textList: textList,
+          offset: offset,
+          option: option,
+          index: index
+        };
+      }
+    }
+    drawCharts.call(this, opts.type, opts, this.config, this.context);
+  }
+  if (this.opts.type === 'pie' || this.opts.type === 'ring' || this.opts.type === 'rose' || this.opts.type === 'funnel') {
+    var index = this.getCurrentDataIndex(e);
+    if (index > -1) {
+      var currentOffset = this.scrollOption.currentOffset;
+      var opts = assign({}, this.opts, {
+        _scrollDistance_: currentOffset,
+        animation: false
+      });
+      var seriesData = this.opts._series_[index];
+      var textList = [{
+        text: option.format ? option.format(seriesData) : seriesData.name + ': ' + seriesData.data,
+        color: seriesData.color
+      }];
+      var offset = {
+        x: _touches$.x,
+        y: _touches$.y
+      };
+      opts.tooltip = {
+        textList: textList,
+        offset: offset,
+        option: option,
+        index: index
+      };
+    }
+    drawCharts.call(this, opts.type, opts, this.config, this.context);
+  }
+  if (this.opts.type === 'map' || this.opts.type === 'word') {
+    var index = this.getCurrentDataIndex(e);
+    if (index > -1) {
+      var currentOffset = this.scrollOption.currentOffset;
+      var opts = assign({}, this.opts, {
+        _scrollDistance_: currentOffset,
+        animation: false
+      });
+      var seriesData = this.opts._series_[index];
+      var textList = [{
+        text: option.format ? option.format(seriesData) : seriesData.properties.name,
+        color: seriesData.color
+      }];
+      var offset = {
+        x: _touches$.x,
+        y: _touches$.y
+      };
+      opts.tooltip = {
+        textList: textList,
+        offset: offset,
+        option: option,
+        index: index
+      };
+    }
+    opts.updateData = false;
+    drawCharts.call(this, opts.type, opts, this.config, this.context);
+  }
+  if (this.opts.type === 'radar') {
+    var index = this.getCurrentDataIndex(e);
+    if (index > -1) {
+      var currentOffset = this.scrollOption.currentOffset;
+      var opts = assign({}, this.opts, {
+        _scrollDistance_: currentOffset,
+        animation: false
+      });
+      var seriesData = getSeriesDataItem(this.opts.series, index);
+      if (seriesData.length !== 0) {
+        var textList = seriesData.map(function (item) {
+          return {
+            text: option.format ? option.format(item) : item.name + ': ' + item.data,
+            color: item.color
+          };
+        });
+        var offset = {
+          x: _touches$.x,
+          y: _touches$.y
+        };
+        opts.tooltip = {
+          textList: textList,
+          offset: offset,
+          option: option,
+          index: index
+        };
+      }
+    }
+    drawCharts.call(this, opts.type, opts, this.config, this.context);
+  }
+};
+Charts.prototype.translate = function (distance) {
+  this.scrollOption = {
+    currentOffset: distance,
+    startTouchX: distance,
+    distance: 0,
+    lastMoveTime: 0
+  };
+  var opts = assign({}, this.opts, {
+    _scrollDistance_: distance,
+    animation: false
+  });
+  drawCharts.call(this, this.opts.type, opts, this.config, this.context);
+};
+Charts.prototype.scrollStart = function (e) {
+  var touches = null;
+  if (e.changedTouches) {
+    touches = e.changedTouches[0];
+  } else {
+    touches = e.mp.changedTouches[0];
+  }
+  var _touches$ = getTouches(touches, this.opts, e);
+  if (touches && this.opts.enableScroll === true) {
+    this.scrollOption.startTouchX = _touches$.x;
+  }
+};
+Charts.prototype.scroll = function (e) {
+  if (this.scrollOption.lastMoveTime === 0) {
+    this.scrollOption.lastMoveTime = Date.now();
+  }
+  var Limit = this.opts.extra.touchMoveLimit || 20;
+  var currMoveTime = Date.now();
+  var duration = currMoveTime - this.scrollOption.lastMoveTime;
+  if (duration < Math.floor(1000 / Limit)) return;
+  this.scrollOption.lastMoveTime = currMoveTime;
+  var touches = null;
+  if (e.changedTouches) {
+    touches = e.changedTouches[0];
+  } else {
+    touches = e.mp.changedTouches[0];
+  }
+  if (touches && this.opts.enableScroll === true) {
+    var _touches$ = getTouches(touches, this.opts, e);
+    var _distance;
+    _distance = _touches$.x - this.scrollOption.startTouchX;
+    var currentOffset = this.scrollOption.currentOffset;
+    var validDistance = calValidDistance(currentOffset + _distance, this.opts.chartData, this.config, this.opts);
+    this.scrollOption.distance = _distance = validDistance - currentOffset;
+    var opts = assign({}, this.opts, {
+      _scrollDistance_: currentOffset + _distance,
+      animation: false
+    });
+    drawCharts.call(this, opts.type, opts, this.config, this.context);
+    return currentOffset + _distance;
+  }
+};
+Charts.prototype.scrollEnd = function (e) {
+  if (this.opts.enableScroll === true) {
+    var _scrollOption = this.scrollOption,
+      currentOffset = _scrollOption.currentOffset,
+      distance = _scrollOption.distance;
+    this.scrollOption.currentOffset = currentOffset + distance;
+    this.scrollOption.distance = 0;
+  }
+};
+if (( false ? undefined : _typeof(module)) === "object" && _typeof(module.exports) === "object") {
+  module.exports = Charts;
+  //export default Charts;//建议使用nodejs的module导出方式，如报错请使用export方式导出
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./../../../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/webpack/buildin/module.js */ 1126)(module)))
+
+/***/ }),
+
+/***/ 1126:
+/*!***********************************!*\
+  !*** (webpack)/buildin/module.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if (!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if (!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
+/***/ 1155:
+/*!**************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/common/html-parser.js ***!
+  \**************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/*
+ * HTML5 Parser By Sam Blowes
+ *
+ * Designed for HTML5 documents
+ *
+ * Original code by John Resig (ejohn.org)
+ * http://ejohn.org/blog/pure-javascript-html-parser/
+ * Original code by Erik Arvidsson, Mozilla Public License
+ * http://erik.eae.net/simplehtmlparser/simplehtmlparser.js
+ *
+ * ----------------------------------------------------------------------------
+ * License
+ * ----------------------------------------------------------------------------
+ *
+ * This code is triple licensed using Apache Software License 2.0,
+ * Mozilla Public License or GNU Public License
+ *
+ * ////////////////////////////////////////////////////////////////////////////
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License.  You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * ////////////////////////////////////////////////////////////////////////////
+ *
+ * The contents of this file are subject to the Mozilla Public License
+ * Version 1.1 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at
+ * http://www.mozilla.org/MPL/
+ *
+ * Software distributed under the License is distributed on an "AS IS"
+ * basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+ * License for the specific language governing rights and limitations
+ * under the License.
+ *
+ * The Original Code is Simple HTML Parser.
+ *
+ * The Initial Developer of the Original Code is Erik Arvidsson.
+ * Portions created by Erik Arvidssson are Copyright (C) 2004. All Rights
+ * Reserved.
+ *
+ * ////////////////////////////////////////////////////////////////////////////
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * ----------------------------------------------------------------------------
+ * Usage
+ * ----------------------------------------------------------------------------
+ *
+ * // Use like so:
+ * HTMLParser(htmlString, {
+ *     start: function(tag, attrs, unary) {},
+ *     end: function(tag) {},
+ *     chars: function(text) {},
+ *     comment: function(text) {}
+ * });
+ *
+ * // or to get an XML string:
+ * HTMLtoXML(htmlString);
+ *
+ * // or to get an XML DOM Document
+ * HTMLtoDOM(htmlString);
+ *
+ * // or to inject into an existing document/DOM node
+ * HTMLtoDOM(htmlString, document);
+ * HTMLtoDOM(htmlString, document.body);
+ *
+ */
+// Regular Expressions for parsing tags and attributes
+var startTag = /^<([-A-Za-z0-9_]+)((?:\s+[a-zA-Z_:][-a-zA-Z0-9_:.]*(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/;
+var endTag = /^<\/([-A-Za-z0-9_]+)[^>]*>/;
+var attr = /([a-zA-Z_:][-a-zA-Z0-9_:.]*)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|([^>\s]+)))?/g; // Empty Elements - HTML 5
+
+var empty = makeMap('area,base,basefont,br,col,frame,hr,img,input,link,meta,param,embed,command,keygen,source,track,wbr'); // Block Elements - HTML 5
+// fixed by xxx 将 ins 标签从块级名单中移除
+
+var block = makeMap('a,address,article,applet,aside,audio,blockquote,button,canvas,center,dd,del,dir,div,dl,dt,fieldset,figcaption,figure,footer,form,frameset,h1,h2,h3,h4,h5,h6,header,hgroup,hr,iframe,isindex,li,map,menu,noframes,noscript,object,ol,output,p,pre,section,script,table,tbody,td,tfoot,th,thead,tr,ul,video'); // Inline Elements - HTML 5
+
+var inline = makeMap('abbr,acronym,applet,b,basefont,bdo,big,br,button,cite,code,del,dfn,em,font,i,iframe,img,input,ins,kbd,label,map,object,q,s,samp,script,select,small,span,strike,strong,sub,sup,textarea,tt,u,var'); // Elements that you can, intentionally, leave open
+// (and which close themselves)
+
+var closeSelf = makeMap('colgroup,dd,dt,li,options,p,td,tfoot,th,thead,tr'); // Attributes that have their values filled in disabled="disabled"
+
+var fillAttrs = makeMap('checked,compact,declare,defer,disabled,ismap,multiple,nohref,noresize,noshade,nowrap,readonly,selected'); // Special Elements (can contain anything)
+
+var special = makeMap('script,style');
+function HTMLParser(html, handler) {
+  var index;
+  var chars;
+  var match;
+  var stack = [];
+  var last = html;
+  stack.last = function () {
+    return this[this.length - 1];
+  };
+  while (html) {
+    chars = true; // Make sure we're not in a script or style element
+
+    if (!stack.last() || !special[stack.last()]) {
+      // Comment
+      if (html.indexOf('<!--') == 0) {
+        index = html.indexOf('-->');
+        if (index >= 0) {
+          if (handler.comment) {
+            handler.comment(html.substring(4, index));
+          }
+          html = html.substring(index + 3);
+          chars = false;
+        } // end tag
+      } else if (html.indexOf('</') == 0) {
+        match = html.match(endTag);
+        if (match) {
+          html = html.substring(match[0].length);
+          match[0].replace(endTag, parseEndTag);
+          chars = false;
+        } // start tag
+      } else if (html.indexOf('<') == 0) {
+        match = html.match(startTag);
+        if (match) {
+          html = html.substring(match[0].length);
+          match[0].replace(startTag, parseStartTag);
+          chars = false;
+        }
+      }
+      if (chars) {
+        index = html.indexOf('<');
+        var text = index < 0 ? html : html.substring(0, index);
+        html = index < 0 ? '' : html.substring(index);
+        if (handler.chars) {
+          handler.chars(text);
+        }
+      }
+    } else {
+      html = html.replace(new RegExp('([\\s\\S]*?)<\/' + stack.last() + '[^>]*>'), function (all, text) {
+        text = text.replace(/<!--([\s\S]*?)-->|<!\[CDATA\[([\s\S]*?)]]>/g, '$1$2');
+        if (handler.chars) {
+          handler.chars(text);
+        }
+        return '';
+      });
+      parseEndTag('', stack.last());
+    }
+    if (html == last) {
+      throw 'Parse Error: ' + html;
+    }
+    last = html;
+  } // Clean up any remaining tags
+
+  parseEndTag();
+  function parseStartTag(tag, tagName, rest, unary) {
+    tagName = tagName.toLowerCase();
+    if (block[tagName]) {
+      while (stack.last() && inline[stack.last()]) {
+        parseEndTag('', stack.last());
+      }
+    }
+    if (closeSelf[tagName] && stack.last() == tagName) {
+      parseEndTag('', tagName);
+    }
+    unary = empty[tagName] || !!unary;
+    if (!unary) {
+      stack.push(tagName);
+    }
+    if (handler.start) {
+      var attrs = [];
+      rest.replace(attr, function (match, name) {
+        var value = arguments[2] ? arguments[2] : arguments[3] ? arguments[3] : arguments[4] ? arguments[4] : fillAttrs[name] ? name : '';
+        attrs.push({
+          name: name,
+          value: value,
+          escaped: value.replace(/(^|[^\\])"/g, '$1\\\"') // "
+        });
+      });
+
+      if (handler.start) {
+        handler.start(tagName, attrs, unary);
+      }
+    }
+  }
+  function parseEndTag(tag, tagName) {
+    // If no tag name is provided, clean shop
+    if (!tagName) {
+      var pos = 0;
+    } // Find the closest opened tag of the same type
+    else {
+      for (var pos = stack.length - 1; pos >= 0; pos--) {
+        if (stack[pos] == tagName) {
+          break;
+        }
+      }
+    }
+    if (pos >= 0) {
+      // Close all the open elements, up the stack
+      for (var i = stack.length - 1; i >= pos; i--) {
+        if (handler.end) {
+          handler.end(stack[i]);
+        }
+      } // Remove the open elements from the stack
+
+      stack.length = pos;
+    }
+  }
+}
+function makeMap(str) {
+  var obj = {};
+  var items = str.split(',');
+  for (var i = 0; i < items.length; i++) {
+    obj[items[i]] = true;
+  }
+  return obj;
+}
+function removeDOCTYPE(html) {
+  return html.replace(/<\?xml.*\?>\n/, '').replace(/<!doctype.*>\n/, '').replace(/<!DOCTYPE.*>\n/, '');
+}
+function parseAttrs(attrs) {
+  return attrs.reduce(function (pre, attr) {
+    var value = attr.value;
+    var name = attr.name;
+    if (pre[name]) {
+      pre[name] = pre[name] + " " + value;
+    } else {
+      pre[name] = value;
+    }
+    return pre;
+  }, {});
+}
+function parseHtml(html) {
+  html = removeDOCTYPE(html);
+  var stacks = [];
+  var results = {
+    node: 'root',
+    children: []
+  };
+  HTMLParser(html, {
+    start: function start(tag, attrs, unary) {
+      var node = {
+        name: tag
+      };
+      if (attrs.length !== 0) {
+        node.attrs = parseAttrs(attrs);
+      }
+      if (unary) {
+        var parent = stacks[0] || results;
+        if (!parent.children) {
+          parent.children = [];
+        }
+        parent.children.push(node);
+      } else {
+        stacks.unshift(node);
+      }
+    },
+    end: function end(tag) {
+      var node = stacks.shift();
+      if (node.name !== tag) console.error('invalid state: mismatch end tag');
+      if (stacks.length === 0) {
+        results.children.push(node);
+      } else {
+        var parent = stacks[0];
+        if (!parent.children) {
+          parent.children = [];
+        }
+        parent.children.push(node);
+      }
+    },
+    chars: function chars(text) {
+      var node = {
+        type: 'text',
+        text: text
+      };
+      if (stacks.length === 0) {
+        results.children.push(node);
+      } else {
+        var parent = stacks[0];
+        if (!parent.children) {
+          parent.children = [];
+        }
+        parent.children.push(node);
+      }
+    },
+    comment: function comment(text) {
+      var node = {
+        node: 'comment',
+        text: text
+      };
+      var parent = stacks[0];
+      if (!parent.children) {
+        parent.children = [];
+      }
+      parent.children.push(node);
+    }
+  });
+  return results.children;
+}
+var _default = parseHtml;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 12:
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toPropertyKey.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
+var toPrimitive = __webpack_require__(/*! ./toPrimitive.js */ 14);
+function toPropertyKey(t) {
+  var i = toPrimitive(t, "string");
+  return "symbol" == _typeof(i) ? i : i + "";
+}
+module.exports = toPropertyKey, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 1250:
+/*!********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-icons/components/uni-icons/uniicons_file_vue.js ***!
+  \********************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fontData = void 0;
+var fontData = [{
+  "font_class": "arrow-down",
+  "unicode": "\uE6BE"
+}, {
+  "font_class": "arrow-left",
+  "unicode": "\uE6BC"
+}, {
+  "font_class": "arrow-right",
+  "unicode": "\uE6BB"
+}, {
+  "font_class": "arrow-up",
+  "unicode": "\uE6BD"
+}, {
+  "font_class": "auth",
+  "unicode": "\uE6AB"
+}, {
+  "font_class": "auth-filled",
+  "unicode": "\uE6CC"
+}, {
+  "font_class": "back",
+  "unicode": "\uE6B9"
+}, {
+  "font_class": "bars",
+  "unicode": "\uE627"
+}, {
+  "font_class": "calendar",
+  "unicode": "\uE6A0"
+}, {
+  "font_class": "calendar-filled",
+  "unicode": "\uE6C0"
+}, {
+  "font_class": "camera",
+  "unicode": "\uE65A"
+}, {
+  "font_class": "camera-filled",
+  "unicode": "\uE658"
+}, {
+  "font_class": "cart",
+  "unicode": "\uE631"
+}, {
+  "font_class": "cart-filled",
+  "unicode": "\uE6D0"
+}, {
+  "font_class": "chat",
+  "unicode": "\uE65D"
+}, {
+  "font_class": "chat-filled",
+  "unicode": "\uE659"
+}, {
+  "font_class": "chatboxes",
+  "unicode": "\uE696"
+}, {
+  "font_class": "chatboxes-filled",
+  "unicode": "\uE692"
+}, {
+  "font_class": "chatbubble",
+  "unicode": "\uE697"
+}, {
+  "font_class": "chatbubble-filled",
+  "unicode": "\uE694"
+}, {
+  "font_class": "checkbox",
+  "unicode": "\uE62B"
+}, {
+  "font_class": "checkbox-filled",
+  "unicode": "\uE62C"
+}, {
+  "font_class": "checkmarkempty",
+  "unicode": "\uE65C"
+}, {
+  "font_class": "circle",
+  "unicode": "\uE65B"
+}, {
+  "font_class": "circle-filled",
+  "unicode": "\uE65E"
+}, {
+  "font_class": "clear",
+  "unicode": "\uE66D"
+}, {
+  "font_class": "close",
+  "unicode": "\uE673"
+}, {
+  "font_class": "closeempty",
+  "unicode": "\uE66C"
+}, {
+  "font_class": "cloud-download",
+  "unicode": "\uE647"
+}, {
+  "font_class": "cloud-download-filled",
+  "unicode": "\uE646"
+}, {
+  "font_class": "cloud-upload",
+  "unicode": "\uE645"
+}, {
+  "font_class": "cloud-upload-filled",
+  "unicode": "\uE648"
+}, {
+  "font_class": "color",
+  "unicode": "\uE6CF"
+}, {
+  "font_class": "color-filled",
+  "unicode": "\uE6C9"
+}, {
+  "font_class": "compose",
+  "unicode": "\uE67F"
+}, {
+  "font_class": "contact",
+  "unicode": "\uE693"
+}, {
+  "font_class": "contact-filled",
+  "unicode": "\uE695"
+}, {
+  "font_class": "down",
+  "unicode": "\uE6B8"
+}, {
+  "font_class": "bottom",
+  "unicode": "\uE6B8"
+}, {
+  "font_class": "download",
+  "unicode": "\uE68D"
+}, {
+  "font_class": "download-filled",
+  "unicode": "\uE681"
+}, {
+  "font_class": "email",
+  "unicode": "\uE69E"
+}, {
+  "font_class": "email-filled",
+  "unicode": "\uE69A"
+}, {
+  "font_class": "eye",
+  "unicode": "\uE651"
+}, {
+  "font_class": "eye-filled",
+  "unicode": "\uE66A"
+}, {
+  "font_class": "eye-slash",
+  "unicode": "\uE6B3"
+}, {
+  "font_class": "eye-slash-filled",
+  "unicode": "\uE6B4"
+}, {
+  "font_class": "fire",
+  "unicode": "\uE6A1"
+}, {
+  "font_class": "fire-filled",
+  "unicode": "\uE6C5"
+}, {
+  "font_class": "flag",
+  "unicode": "\uE65F"
+}, {
+  "font_class": "flag-filled",
+  "unicode": "\uE660"
+}, {
+  "font_class": "folder-add",
+  "unicode": "\uE6A9"
+}, {
+  "font_class": "folder-add-filled",
+  "unicode": "\uE6C8"
+}, {
+  "font_class": "font",
+  "unicode": "\uE6A3"
+}, {
+  "font_class": "forward",
+  "unicode": "\uE6BA"
+}, {
+  "font_class": "gear",
+  "unicode": "\uE664"
+}, {
+  "font_class": "gear-filled",
+  "unicode": "\uE661"
+}, {
+  "font_class": "gift",
+  "unicode": "\uE6A4"
+}, {
+  "font_class": "gift-filled",
+  "unicode": "\uE6C4"
+}, {
+  "font_class": "hand-down",
+  "unicode": "\uE63D"
+}, {
+  "font_class": "hand-down-filled",
+  "unicode": "\uE63C"
+}, {
+  "font_class": "hand-up",
+  "unicode": "\uE63F"
+}, {
+  "font_class": "hand-up-filled",
+  "unicode": "\uE63E"
+}, {
+  "font_class": "headphones",
+  "unicode": "\uE630"
+}, {
+  "font_class": "heart",
+  "unicode": "\uE639"
+}, {
+  "font_class": "heart-filled",
+  "unicode": "\uE641"
+}, {
+  "font_class": "help",
+  "unicode": "\uE679"
+}, {
+  "font_class": "help-filled",
+  "unicode": "\uE674"
+}, {
+  "font_class": "home",
+  "unicode": "\uE662"
+}, {
+  "font_class": "home-filled",
+  "unicode": "\uE663"
+}, {
+  "font_class": "image",
+  "unicode": "\uE670"
+}, {
+  "font_class": "image-filled",
+  "unicode": "\uE678"
+}, {
+  "font_class": "images",
+  "unicode": "\uE650"
+}, {
+  "font_class": "images-filled",
+  "unicode": "\uE64B"
+}, {
+  "font_class": "info",
+  "unicode": "\uE669"
+}, {
+  "font_class": "info-filled",
+  "unicode": "\uE649"
+}, {
+  "font_class": "left",
+  "unicode": "\uE6B7"
+}, {
+  "font_class": "link",
+  "unicode": "\uE6A5"
+}, {
+  "font_class": "list",
+  "unicode": "\uE644"
+}, {
+  "font_class": "location",
+  "unicode": "\uE6AE"
+}, {
+  "font_class": "location-filled",
+  "unicode": "\uE6AF"
+}, {
+  "font_class": "locked",
+  "unicode": "\uE66B"
+}, {
+  "font_class": "locked-filled",
+  "unicode": "\uE668"
+}, {
+  "font_class": "loop",
+  "unicode": "\uE633"
+}, {
+  "font_class": "mail-open",
+  "unicode": "\uE643"
+}, {
+  "font_class": "mail-open-filled",
+  "unicode": "\uE63A"
+}, {
+  "font_class": "map",
+  "unicode": "\uE667"
+}, {
+  "font_class": "map-filled",
+  "unicode": "\uE666"
+}, {
+  "font_class": "map-pin",
+  "unicode": "\uE6AD"
+}, {
+  "font_class": "map-pin-ellipse",
+  "unicode": "\uE6AC"
+}, {
+  "font_class": "medal",
+  "unicode": "\uE6A2"
+}, {
+  "font_class": "medal-filled",
+  "unicode": "\uE6C3"
+}, {
+  "font_class": "mic",
+  "unicode": "\uE671"
+}, {
+  "font_class": "mic-filled",
+  "unicode": "\uE677"
+}, {
+  "font_class": "micoff",
+  "unicode": "\uE67E"
+}, {
+  "font_class": "micoff-filled",
+  "unicode": "\uE6B0"
+}, {
+  "font_class": "minus",
+  "unicode": "\uE66F"
+}, {
+  "font_class": "minus-filled",
+  "unicode": "\uE67D"
+}, {
+  "font_class": "more",
+  "unicode": "\uE64D"
+}, {
+  "font_class": "more-filled",
+  "unicode": "\uE64E"
+}, {
+  "font_class": "navigate",
+  "unicode": "\uE66E"
+}, {
+  "font_class": "navigate-filled",
+  "unicode": "\uE67A"
+}, {
+  "font_class": "notification",
+  "unicode": "\uE6A6"
+}, {
+  "font_class": "notification-filled",
+  "unicode": "\uE6C1"
+}, {
+  "font_class": "paperclip",
+  "unicode": "\uE652"
+}, {
+  "font_class": "paperplane",
+  "unicode": "\uE672"
+}, {
+  "font_class": "paperplane-filled",
+  "unicode": "\uE675"
+}, {
+  "font_class": "person",
+  "unicode": "\uE699"
+}, {
+  "font_class": "person-filled",
+  "unicode": "\uE69D"
+}, {
+  "font_class": "personadd",
+  "unicode": "\uE69F"
+}, {
+  "font_class": "personadd-filled",
+  "unicode": "\uE698"
+}, {
+  "font_class": "personadd-filled-copy",
+  "unicode": "\uE6D1"
+}, {
+  "font_class": "phone",
+  "unicode": "\uE69C"
+}, {
+  "font_class": "phone-filled",
+  "unicode": "\uE69B"
+}, {
+  "font_class": "plus",
+  "unicode": "\uE676"
+}, {
+  "font_class": "plus-filled",
+  "unicode": "\uE6C7"
+}, {
+  "font_class": "plusempty",
+  "unicode": "\uE67B"
+}, {
+  "font_class": "pulldown",
+  "unicode": "\uE632"
+}, {
+  "font_class": "pyq",
+  "unicode": "\uE682"
+}, {
+  "font_class": "qq",
+  "unicode": "\uE680"
+}, {
+  "font_class": "redo",
+  "unicode": "\uE64A"
+}, {
+  "font_class": "redo-filled",
+  "unicode": "\uE655"
+}, {
+  "font_class": "refresh",
+  "unicode": "\uE657"
+}, {
+  "font_class": "refresh-filled",
+  "unicode": "\uE656"
+}, {
+  "font_class": "refreshempty",
+  "unicode": "\uE6BF"
+}, {
+  "font_class": "reload",
+  "unicode": "\uE6B2"
+}, {
+  "font_class": "right",
+  "unicode": "\uE6B5"
+}, {
+  "font_class": "scan",
+  "unicode": "\uE62A"
+}, {
+  "font_class": "search",
+  "unicode": "\uE654"
+}, {
+  "font_class": "settings",
+  "unicode": "\uE653"
+}, {
+  "font_class": "settings-filled",
+  "unicode": "\uE6CE"
+}, {
+  "font_class": "shop",
+  "unicode": "\uE62F"
+}, {
+  "font_class": "shop-filled",
+  "unicode": "\uE6CD"
+}, {
+  "font_class": "smallcircle",
+  "unicode": "\uE67C"
+}, {
+  "font_class": "smallcircle-filled",
+  "unicode": "\uE665"
+}, {
+  "font_class": "sound",
+  "unicode": "\uE684"
+}, {
+  "font_class": "sound-filled",
+  "unicode": "\uE686"
+}, {
+  "font_class": "spinner-cycle",
+  "unicode": "\uE68A"
+}, {
+  "font_class": "staff",
+  "unicode": "\uE6A7"
+}, {
+  "font_class": "staff-filled",
+  "unicode": "\uE6CB"
+}, {
+  "font_class": "star",
+  "unicode": "\uE688"
+}, {
+  "font_class": "star-filled",
+  "unicode": "\uE68F"
+}, {
+  "font_class": "starhalf",
+  "unicode": "\uE683"
+}, {
+  "font_class": "trash",
+  "unicode": "\uE687"
+}, {
+  "font_class": "trash-filled",
+  "unicode": "\uE685"
+}, {
+  "font_class": "tune",
+  "unicode": "\uE6AA"
+}, {
+  "font_class": "tune-filled",
+  "unicode": "\uE6CA"
+}, {
+  "font_class": "undo",
+  "unicode": "\uE64F"
+}, {
+  "font_class": "undo-filled",
+  "unicode": "\uE64C"
+}, {
+  "font_class": "up",
+  "unicode": "\uE6B6"
+}, {
+  "font_class": "top",
+  "unicode": "\uE6B6"
+}, {
+  "font_class": "upload",
+  "unicode": "\uE690"
+}, {
+  "font_class": "upload-filled",
+  "unicode": "\uE68E"
+}, {
+  "font_class": "videocam",
+  "unicode": "\uE68C"
+}, {
+  "font_class": "videocam-filled",
+  "unicode": "\uE689"
+}, {
+  "font_class": "vip",
+  "unicode": "\uE6A8"
+}, {
+  "font_class": "vip-filled",
+  "unicode": "\uE6C6"
+}, {
+  "font_class": "wallet",
+  "unicode": "\uE6B1"
+}, {
+  "font_class": "wallet-filled",
+  "unicode": "\uE6C2"
+}, {
+  "font_class": "weibo",
+  "unicode": "\uE68B"
+}, {
+  "font_class": "weixin",
+  "unicode": "\uE691"
+}];
+
+// export const fontData = JSON.parse<IconsDataItem>(fontDataJson)
+exports.fontData = fontData;
+
+/***/ }),
+
+/***/ 1279:
+/*!***********************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-forms/components/uni-forms/validate.js ***!
+  \***********************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 29));
+var _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ 33));
+var _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ 34));
+var _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ 35));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 32));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0, _getPrototypeOf2.default)(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0, _getPrototypeOf2.default)(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0, _possibleConstructorReturn2.default)(this, result); }; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+var pattern = {
+  email: /^\S+?@\S+?\.\S+?$/,
+  idcard: /^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
+  url: new RegExp("^(?!mailto:)(?:(?:http|https|ftp)://|//)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-*)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-*)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$", 'i')
+};
+var FORMAT_MAPPING = {
+  "int": 'integer',
+  "bool": 'boolean',
+  "double": 'number',
+  "long": 'number',
+  "password": 'string'
+  // "fileurls": 'array'
+};
+
+function formatMessage(args) {
+  var resources = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var defaultMessage = ['label'];
+  defaultMessage.forEach(function (item) {
+    if (args[item] === undefined) {
+      args[item] = '';
+    }
+  });
+  var str = resources;
+  for (var key in args) {
+    var reg = new RegExp('{' + key + '}');
+    str = str.replace(reg, args[key]);
+  }
+  return str;
+}
+function isEmptyValue(value, type) {
+  if (value === undefined || value === null) {
+    return true;
+  }
+  if (typeof value === 'string' && !value) {
+    return true;
+  }
+  if (Array.isArray(value) && !value.length) {
+    return true;
+  }
+  if (type === 'object' && !Object.keys(value).length) {
+    return true;
+  }
+  return false;
+}
+var types = {
+  integer: function integer(value) {
+    return types.number(value) && parseInt(value, 10) === value;
+  },
+  string: function string(value) {
+    return typeof value === 'string';
+  },
+  number: function number(value) {
+    if (isNaN(value)) {
+      return false;
+    }
+    return typeof value === 'number';
+  },
+  "boolean": function boolean(value) {
+    return typeof value === 'boolean';
+  },
+  "float": function float(value) {
+    return types.number(value) && !types.integer(value);
+  },
+  array: function array(value) {
+    return Array.isArray(value);
+  },
+  object: function object(value) {
+    return (0, _typeof2.default)(value) === 'object' && !types.array(value);
+  },
+  date: function date(value) {
+    return value instanceof Date;
+  },
+  timestamp: function timestamp(value) {
+    if (!this.integer(value) || Math.abs(value).toString().length > 16) {
+      return false;
+    }
+    return true;
+  },
+  file: function file(value) {
+    return typeof value.url === 'string';
+  },
+  email: function email(value) {
+    return typeof value === 'string' && !!value.match(pattern.email) && value.length < 255;
+  },
+  url: function url(value) {
+    return typeof value === 'string' && !!value.match(pattern.url);
+  },
+  pattern: function pattern(reg, value) {
+    try {
+      return new RegExp(reg).test(value);
+    } catch (e) {
+      return false;
+    }
+  },
+  method: function method(value) {
+    return typeof value === 'function';
+  },
+  idcard: function idcard(value) {
+    return typeof value === 'string' && !!value.match(pattern.idcard);
+  },
+  'url-https': function urlHttps(value) {
+    return this.url(value) && value.startsWith('https://');
+  },
+  'url-scheme': function urlScheme(value) {
+    return value.startsWith('://');
+  },
+  'url-web': function urlWeb(value) {
+    return false;
+  }
+};
+var RuleValidator = /*#__PURE__*/function () {
+  function RuleValidator(message) {
+    (0, _classCallCheck2.default)(this, RuleValidator);
+    this._message = message;
+  }
+  (0, _createClass2.default)(RuleValidator, [{
+    key: "validateRule",
+    value: function () {
+      var _validateRule = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(fieldKey, fieldValue, value, data, allData) {
+        var result, rules, hasRequired, message, i, rule, vt, now, resultExpr;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                result = null;
+                rules = fieldValue.rules;
+                hasRequired = rules.findIndex(function (item) {
+                  return item.required;
+                });
+                if (!(hasRequired < 0)) {
+                  _context.next = 8;
+                  break;
+                }
+                if (!(value === null || value === undefined)) {
+                  _context.next = 6;
+                  break;
+                }
+                return _context.abrupt("return", result);
+              case 6:
+                if (!(typeof value === 'string' && !value.length)) {
+                  _context.next = 8;
+                  break;
+                }
+                return _context.abrupt("return", result);
+              case 8:
+                message = this._message;
+                if (!(rules === undefined)) {
+                  _context.next = 11;
+                  break;
+                }
+                return _context.abrupt("return", message['default']);
+              case 11:
+                i = 0;
+              case 12:
+                if (!(i < rules.length)) {
+                  _context.next = 35;
+                  break;
+                }
+                rule = rules[i];
+                vt = this._getValidateType(rule);
+                Object.assign(rule, {
+                  label: fieldValue.label || "[\"".concat(fieldKey, "\"]")
+                });
+                if (!RuleValidatorHelper[vt]) {
+                  _context.next = 20;
+                  break;
+                }
+                result = RuleValidatorHelper[vt](rule, value, message);
+                if (!(result != null)) {
+                  _context.next = 20;
+                  break;
+                }
+                return _context.abrupt("break", 35);
+              case 20:
+                if (!rule.validateExpr) {
+                  _context.next = 26;
+                  break;
+                }
+                now = Date.now();
+                resultExpr = rule.validateExpr(value, allData, now);
+                if (!(resultExpr === false)) {
+                  _context.next = 26;
+                  break;
+                }
+                result = this._getMessage(rule, rule.errorMessage || this._message['default']);
+                return _context.abrupt("break", 35);
+              case 26:
+                if (!rule.validateFunction) {
+                  _context.next = 32;
+                  break;
+                }
+                _context.next = 29;
+                return this.validateFunction(rule, value, data, allData, vt);
+              case 29:
+                result = _context.sent;
+                if (!(result !== null)) {
+                  _context.next = 32;
+                  break;
+                }
+                return _context.abrupt("break", 35);
+              case 32:
+                i++;
+                _context.next = 12;
+                break;
+              case 35:
+                if (result !== null) {
+                  result = message.TAG + result;
+                }
+                return _context.abrupt("return", result);
+              case 37:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+      function validateRule(_x, _x2, _x3, _x4, _x5) {
+        return _validateRule.apply(this, arguments);
+      }
+      return validateRule;
+    }()
+  }, {
+    key: "validateFunction",
+    value: function () {
+      var _validateFunction = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(rule, value, data, allData, vt) {
+        var result, callbackMessage, res;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                result = null;
+                _context2.prev = 1;
+                callbackMessage = null;
+                _context2.next = 5;
+                return rule.validateFunction(rule, value, allData || data, function (message) {
+                  callbackMessage = message;
+                });
+              case 5:
+                res = _context2.sent;
+                if (callbackMessage || typeof res === 'string' && res || res === false) {
+                  result = this._getMessage(rule, callbackMessage || res, vt);
+                }
+                _context2.next = 12;
+                break;
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](1);
+                result = this._getMessage(rule, _context2.t0.message, vt);
+              case 12:
+                return _context2.abrupt("return", result);
+              case 13:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this, [[1, 9]]);
+      }));
+      function validateFunction(_x6, _x7, _x8, _x9, _x10) {
+        return _validateFunction.apply(this, arguments);
+      }
+      return validateFunction;
+    }()
+  }, {
+    key: "_getMessage",
+    value: function _getMessage(rule, message, vt) {
+      return formatMessage(rule, message || rule.errorMessage || this._message[vt] || message['default']);
+    }
+  }, {
+    key: "_getValidateType",
+    value: function _getValidateType(rule) {
+      var result = '';
+      if (rule.required) {
+        result = 'required';
+      } else if (rule.format) {
+        result = 'format';
+      } else if (rule.arrayType) {
+        result = 'arrayTypeFormat';
+      } else if (rule.range) {
+        result = 'range';
+      } else if (rule.maximum !== undefined || rule.minimum !== undefined) {
+        result = 'rangeNumber';
+      } else if (rule.maxLength !== undefined || rule.minLength !== undefined) {
+        result = 'rangeLength';
+      } else if (rule.pattern) {
+        result = 'pattern';
+      } else if (rule.validateFunction) {
+        result = 'validateFunction';
+      }
+      return result;
+    }
+  }]);
+  return RuleValidator;
+}();
+var RuleValidatorHelper = {
+  required: function required(rule, value, message) {
+    if (rule.required && isEmptyValue(value, rule.format || (0, _typeof2.default)(value))) {
+      return formatMessage(rule, rule.errorMessage || message.required);
+    }
+    return null;
+  },
+  range: function range(rule, value, message) {
+    var range = rule.range,
+      errorMessage = rule.errorMessage;
+    var list = new Array(range.length);
+    for (var i = 0; i < range.length; i++) {
+      var item = range[i];
+      if (types.object(item) && item.value !== undefined) {
+        list[i] = item.value;
+      } else {
+        list[i] = item;
+      }
+    }
+    var result = false;
+    if (Array.isArray(value)) {
+      result = new Set(value.concat(list)).size === list.length;
+    } else {
+      if (list.indexOf(value) > -1) {
+        result = true;
+      }
+    }
+    if (!result) {
+      return formatMessage(rule, errorMessage || message['enum']);
+    }
+    return null;
+  },
+  rangeNumber: function rangeNumber(rule, value, message) {
+    if (!types.number(value)) {
+      return formatMessage(rule, rule.errorMessage || message.pattern.mismatch);
+    }
+    var minimum = rule.minimum,
+      maximum = rule.maximum,
+      exclusiveMinimum = rule.exclusiveMinimum,
+      exclusiveMaximum = rule.exclusiveMaximum;
+    var min = exclusiveMinimum ? value <= minimum : value < minimum;
+    var max = exclusiveMaximum ? value >= maximum : value > maximum;
+    if (minimum !== undefined && min) {
+      return formatMessage(rule, rule.errorMessage || message['number'][exclusiveMinimum ? 'exclusiveMinimum' : 'minimum']);
+    } else if (maximum !== undefined && max) {
+      return formatMessage(rule, rule.errorMessage || message['number'][exclusiveMaximum ? 'exclusiveMaximum' : 'maximum']);
+    } else if (minimum !== undefined && maximum !== undefined && (min || max)) {
+      return formatMessage(rule, rule.errorMessage || message['number'].range);
+    }
+    return null;
+  },
+  rangeLength: function rangeLength(rule, value, message) {
+    if (!types.string(value) && !types.array(value)) {
+      return formatMessage(rule, rule.errorMessage || message.pattern.mismatch);
+    }
+    var min = rule.minLength;
+    var max = rule.maxLength;
+    var val = value.length;
+    if (min !== undefined && val < min) {
+      return formatMessage(rule, rule.errorMessage || message['length'].minLength);
+    } else if (max !== undefined && val > max) {
+      return formatMessage(rule, rule.errorMessage || message['length'].maxLength);
+    } else if (min !== undefined && max !== undefined && (val < min || val > max)) {
+      return formatMessage(rule, rule.errorMessage || message['length'].range);
+    }
+    return null;
+  },
+  pattern: function pattern(rule, value, message) {
+    if (!types['pattern'](rule.pattern, value)) {
+      return formatMessage(rule, rule.errorMessage || message.pattern.mismatch);
+    }
+    return null;
+  },
+  format: function format(rule, value, message) {
+    var customTypes = Object.keys(types);
+    var format = FORMAT_MAPPING[rule.format] ? FORMAT_MAPPING[rule.format] : rule.format || rule.arrayType;
+    if (customTypes.indexOf(format) > -1) {
+      if (!types[format](value)) {
+        return formatMessage(rule, rule.errorMessage || message.typeError);
+      }
+    }
+    return null;
+  },
+  arrayTypeFormat: function arrayTypeFormat(rule, value, message) {
+    if (!Array.isArray(value)) {
+      return formatMessage(rule, rule.errorMessage || message.typeError);
+    }
+    for (var i = 0; i < value.length; i++) {
+      var element = value[i];
+      var formatResult = this.format(rule, element, message);
+      if (formatResult !== null) {
+        return formatResult;
+      }
+    }
+    return null;
+  }
+};
+var SchemaValidator = /*#__PURE__*/function (_RuleValidator) {
+  (0, _inherits2.default)(SchemaValidator, _RuleValidator);
+  var _super = _createSuper(SchemaValidator);
+  function SchemaValidator(schema, options) {
+    var _this;
+    (0, _classCallCheck2.default)(this, SchemaValidator);
+    _this = _super.call(this, SchemaValidator.message);
+    _this._schema = schema;
+    _this._options = options || null;
+    return _this;
+  }
+  (0, _createClass2.default)(SchemaValidator, [{
+    key: "updateSchema",
+    value: function updateSchema(schema) {
+      this._schema = schema;
+    }
+  }, {
+    key: "validate",
+    value: function () {
+      var _validate = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(data, allData) {
+        var result;
+        return _regenerator.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                result = this._checkFieldInSchema(data);
+                if (result) {
+                  _context3.next = 5;
+                  break;
+                }
+                _context3.next = 4;
+                return this.invokeValidate(data, false, allData);
+              case 4:
+                result = _context3.sent;
+              case 5:
+                return _context3.abrupt("return", result.length ? result[0] : null);
+              case 6:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+      function validate(_x11, _x12) {
+        return _validate.apply(this, arguments);
+      }
+      return validate;
+    }()
+  }, {
+    key: "validateAll",
+    value: function () {
+      var _validateAll = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee4(data, allData) {
+        var result;
+        return _regenerator.default.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                result = this._checkFieldInSchema(data);
+                if (result) {
+                  _context4.next = 5;
+                  break;
+                }
+                _context4.next = 4;
+                return this.invokeValidate(data, true, allData);
+              case 4:
+                result = _context4.sent;
+              case 5:
+                return _context4.abrupt("return", result);
+              case 6:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+      function validateAll(_x13, _x14) {
+        return _validateAll.apply(this, arguments);
+      }
+      return validateAll;
+    }()
+  }, {
+    key: "validateUpdate",
+    value: function () {
+      var _validateUpdate = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee5(data, allData) {
+        var result;
+        return _regenerator.default.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                result = this._checkFieldInSchema(data);
+                if (result) {
+                  _context5.next = 5;
+                  break;
+                }
+                _context5.next = 4;
+                return this.invokeValidateUpdate(data, false, allData);
+              case 4:
+                result = _context5.sent;
+              case 5:
+                return _context5.abrupt("return", result.length ? result[0] : null);
+              case 6:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+      function validateUpdate(_x15, _x16) {
+        return _validateUpdate.apply(this, arguments);
+      }
+      return validateUpdate;
+    }()
+  }, {
+    key: "invokeValidate",
+    value: function () {
+      var _invokeValidate = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee6(data, all, allData) {
+        var result, schema, key, value, errorMessage;
+        return _regenerator.default.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                result = [];
+                schema = this._schema;
+                _context6.t0 = _regenerator.default.keys(schema);
+              case 3:
+                if ((_context6.t1 = _context6.t0()).done) {
+                  _context6.next = 15;
+                  break;
+                }
+                key = _context6.t1.value;
+                value = schema[key];
+                _context6.next = 8;
+                return this.validateRule(key, value, data[key], data, allData);
+              case 8:
+                errorMessage = _context6.sent;
+                if (!(errorMessage != null)) {
+                  _context6.next = 13;
+                  break;
+                }
+                result.push({
+                  key: key,
+                  errorMessage: errorMessage
+                });
+                if (all) {
+                  _context6.next = 13;
+                  break;
+                }
+                return _context6.abrupt("break", 15);
+              case 13:
+                _context6.next = 3;
+                break;
+              case 15:
+                return _context6.abrupt("return", result);
+              case 16:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this);
+      }));
+      function invokeValidate(_x17, _x18, _x19) {
+        return _invokeValidate.apply(this, arguments);
+      }
+      return invokeValidate;
+    }()
+  }, {
+    key: "invokeValidateUpdate",
+    value: function () {
+      var _invokeValidateUpdate = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee7(data, all, allData) {
+        var result, key, errorMessage;
+        return _regenerator.default.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                result = [];
+                _context7.t0 = _regenerator.default.keys(data);
+              case 2:
+                if ((_context7.t1 = _context7.t0()).done) {
+                  _context7.next = 13;
+                  break;
+                }
+                key = _context7.t1.value;
+                _context7.next = 6;
+                return this.validateRule(key, this._schema[key], data[key], data, allData);
+              case 6:
+                errorMessage = _context7.sent;
+                if (!(errorMessage != null)) {
+                  _context7.next = 11;
+                  break;
+                }
+                result.push({
+                  key: key,
+                  errorMessage: errorMessage
+                });
+                if (all) {
+                  _context7.next = 11;
+                  break;
+                }
+                return _context7.abrupt("break", 13);
+              case 11:
+                _context7.next = 2;
+                break;
+              case 13:
+                return _context7.abrupt("return", result);
+              case 14:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, this);
+      }));
+      function invokeValidateUpdate(_x20, _x21, _x22) {
+        return _invokeValidateUpdate.apply(this, arguments);
+      }
+      return invokeValidateUpdate;
+    }()
+  }, {
+    key: "_checkFieldInSchema",
+    value: function _checkFieldInSchema(data) {
+      var keys = Object.keys(data);
+      var keys2 = Object.keys(this._schema);
+      if (new Set(keys.concat(keys2)).size === keys2.length) {
+        return '';
+      }
+      var noExistFields = keys.filter(function (key) {
+        return keys2.indexOf(key) < 0;
+      });
+      var errorMessage = formatMessage({
+        field: JSON.stringify(noExistFields)
+      }, SchemaValidator.message.TAG + SchemaValidator.message['defaultInvalid']);
+      return [{
+        key: 'invalid',
+        errorMessage: errorMessage
+      }];
+    }
+  }]);
+  return SchemaValidator;
+}(RuleValidator);
+function Message() {
+  return {
+    TAG: "",
+    default: '验证错误',
+    defaultInvalid: '提交的字段{field}在数据库中并不存在',
+    validateFunction: '验证无效',
+    required: '{label}必填',
+    'enum': '{label}超出范围',
+    timestamp: '{label}格式无效',
+    whitespace: '{label}不能为空',
+    typeError: '{label}类型无效',
+    date: {
+      format: '{label}日期{value}格式无效',
+      parse: '{label}日期无法解析,{value}无效',
+      invalid: '{label}日期{value}无效'
+    },
+    length: {
+      minLength: '{label}长度不能少于{minLength}',
+      maxLength: '{label}长度不能超过{maxLength}',
+      range: '{label}必须介于{minLength}和{maxLength}之间'
+    },
+    number: {
+      minimum: '{label}不能小于{minimum}',
+      maximum: '{label}不能大于{maximum}',
+      exclusiveMinimum: '{label}不能小于等于{minimum}',
+      exclusiveMaximum: '{label}不能大于等于{maximum}',
+      range: '{label}必须介于{minimum}and{maximum}之间'
+    },
+    pattern: {
+      mismatch: '{label}格式不匹配'
+    }
+  };
+}
+SchemaValidator.message = new Message();
+var _default = SchemaValidator;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1280:
+/*!********************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-forms/components/uni-forms/utils.js ***!
+  \********************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.typeFilter = exports.type = exports.setDataValue = exports.realName = exports.rawData = exports.objSet = exports.objGet = exports.name2arr = exports.isRequiredField = exports.isRealName = exports.isNumber = exports.isEqual = exports.isBoolean = exports.getValue = exports.getDataValueType = exports.getDataValue = exports.deepCopy = void 0;
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+/**
+ * 简单处理对象拷贝
+ * @param {Obejct} 被拷贝对象
+ * @@return {Object} 拷贝对象
+ */
+var deepCopy = function deepCopy(val) {
+  return JSON.parse(JSON.stringify(val));
+};
+/**
+ * 过滤数字类型
+ * @param {String} format 数字类型
+ * @@return {Boolean} 返回是否为数字类型
+ */
+exports.deepCopy = deepCopy;
+var typeFilter = function typeFilter(format) {
+  return format === 'int' || format === 'double' || format === 'number' || format === 'timestamp';
+};
+
+/**
+ * 把 value 转换成指定的类型，用于处理初始值，原因是初始值需要入库不能为 undefined
+ * @param {String} key 字段名
+ * @param {any} value 字段值
+ * @param {Object} rules 表单校验规则
+ */
+exports.typeFilter = typeFilter;
+var getValue = function getValue(key, value, rules) {
+  var isRuleNumType = rules.find(function (val) {
+    return val.format && typeFilter(val.format);
+  });
+  var isRuleBoolType = rules.find(function (val) {
+    return val.format && val.format === 'boolean' || val.format === 'bool';
+  });
+  // 输入类型为 number
+  if (!!isRuleNumType) {
+    if (!value && value !== 0) {
+      value = null;
+    } else {
+      value = isNumber(Number(value)) ? Number(value) : value;
+    }
+  }
+
+  // 输入类型为 boolean
+  if (!!isRuleBoolType) {
+    value = isBoolean(value) ? value : false;
+  }
+  return value;
+};
+
+/**
+ * 获取表单数据
+ * @param {String|Array} name 真实名称，需要使用 realName 获取
+ * @param {Object} data 原始数据
+ * @param {any} value  需要设置的值
+ */
+exports.getValue = getValue;
+var setDataValue = function setDataValue(field, formdata, value) {
+  formdata[field] = value;
+  return value || '';
+};
+
+/**
+ * 获取表单数据
+ * @param {String|Array} field 真实名称，需要使用 realName 获取
+ * @param {Object} data 原始数据
+ */
+exports.setDataValue = setDataValue;
+var getDataValue = function getDataValue(field, data) {
+  return objGet(data, field);
+};
+
+/**
+ * 获取表单类型
+ * @param {String|Array} field 真实名称，需要使用 realName 获取
+ */
+exports.getDataValue = getDataValue;
+var getDataValueType = function getDataValueType(field, data) {
+  var value = getDataValue(field, data);
+  return {
+    type: type(value),
+    value: value
+  };
+};
+
+/**
+ * 获取表单可用的真实name
+ * @param {String|Array} name 表单name
+ * @@return {String} 表单可用的真实name
+ */
+exports.getDataValueType = getDataValueType;
+var realName = function realName(name) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var base_name = _basePath(name);
+  if ((0, _typeof2.default)(base_name) === 'object' && Array.isArray(base_name) && base_name.length > 1) {
+    var realname = base_name.reduce(function (a, b) {
+      return a += "#".concat(b);
+    }, '_formdata_');
+    return realname;
+  }
+  return base_name[0] || name;
+};
+
+/**
+ * 判断是否表单可用的真实name
+ * @param {String|Array} name 表单name
+ * @@return {String} 表单可用的真实name
+ */
+exports.realName = realName;
+var isRealName = function isRealName(name) {
+  var reg = /^_formdata_#*/;
+  return reg.test(name);
+};
+
+/**
+ * 获取表单数据的原始格式
+ * @@return {Object|Array} object 需要解析的数据
+ */
+exports.isRealName = isRealName;
+var rawData = function rawData() {
+  var object = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var name = arguments.length > 1 ? arguments[1] : undefined;
+  var newData = JSON.parse(JSON.stringify(object));
+  var formData = {};
+  for (var i in newData) {
+    var path = name2arr(i);
+    objSet(formData, path, newData[i]);
+  }
+  return formData;
+};
+
+/**
+ * 真实name还原为 array
+ * @param {*} name 
+ */
+exports.rawData = rawData;
+var name2arr = function name2arr(name) {
+  var field = name.replace('_formdata_#', '');
+  field = field.split('#').map(function (v) {
+    return isNumber(v) ? Number(v) : v;
+  });
+  return field;
+};
+
+/**
+ * 对象中设置值
+ * @param {Object|Array} object 源数据
+ * @param {String| Array} path 'a.b.c' 或 ['a',0,'b','c']
+ * @param {String} value 需要设置的值
+ */
+exports.name2arr = name2arr;
+var objSet = function objSet(object, path, value) {
+  if ((0, _typeof2.default)(object) !== 'object') return object;
+  _basePath(path).reduce(function (o, k, i, _) {
+    if (i === _.length - 1) {
+      // 若遍历结束直接赋值
+      o[k] = value;
+      return null;
+    } else if (k in o) {
+      // 若存在对应路径，则返回找到的对象，进行下一次遍历
+      return o[k];
+    } else {
+      // 若不存在对应路径，则创建对应对象，若下一路径是数字，新对象赋值为空数组，否则赋值为空对象
+      o[k] = /^[0-9]{1,}$/.test(_[i + 1]) ? [] : {};
+      return o[k];
+    }
+  }, object);
+  // 返回object
+  return object;
+};
+
+// 处理 path， path有三种形式：'a[0].b.c'、'a.0.b.c' 和 ['a','0','b','c']，需要统一处理成数组，便于后续使用
+exports.objSet = objSet;
+function _basePath(path) {
+  // 若是数组，则直接返回
+  if (Array.isArray(path)) return path;
+  // 若有 '[',']'，则替换成将 '[' 替换成 '.',去掉 ']'
+  return path.replace(/\[/g, '.').replace(/\]/g, '').split('.');
+}
+
+/**
+ * 从对象中获取值
+ * @param {Object|Array} object 源数据
+ * @param {String| Array} path 'a.b.c' 或 ['a',0,'b','c']
+ * @param {String} defaultVal 如果无法从调用链中获取值的默认值
+ */
+var objGet = function objGet(object, path) {
+  var defaultVal = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'undefined';
+  // 先将path处理成统一格式
+  var newPath = _basePath(path);
+  // 递归处理，返回最后结果
+  var val = newPath.reduce(function (o, k) {
+    return (o || {})[k];
+  }, object);
+  return !val || val !== undefined ? val : defaultVal;
+};
+
+/**
+ * 是否为 number 类型 
+ * @param {any} num 需要判断的值
+ * @return {Boolean} 是否为 number
+ */
+exports.objGet = objGet;
+var isNumber = function isNumber(num) {
+  return !isNaN(Number(num));
+};
+
+/**
+ * 是否为 boolean 类型 
+ * @param {any} bool 需要判断的值
+ * @return {Boolean} 是否为 boolean
+ */
+exports.isNumber = isNumber;
+var isBoolean = function isBoolean(bool) {
+  return typeof bool === 'boolean';
+};
+/**
+ * 是否有必填字段
+ * @param {Object} rules 规则
+ * @return {Boolean} 是否有必填字段
+ */
+exports.isBoolean = isBoolean;
+var isRequiredField = function isRequiredField(rules) {
+  var isNoField = false;
+  for (var i = 0; i < rules.length; i++) {
+    var ruleData = rules[i];
+    if (ruleData.required) {
+      isNoField = true;
+      break;
+    }
+  }
+  return isNoField;
+};
+
+/**
+ * 获取数据类型
+ * @param {Any} obj 需要获取数据类型的值
+ */
+exports.isRequiredField = isRequiredField;
+var type = function type(obj) {
+  var class2type = {};
+
+  // 生成class2type映射
+  "Boolean Number String Function Array Date RegExp Object Error".split(" ").map(function (item, index) {
+    class2type["[object " + item + "]"] = item.toLowerCase();
+  });
+  if (obj == null) {
+    return obj + "";
+  }
+  return (0, _typeof2.default)(obj) === "object" || typeof obj === "function" ? class2type[Object.prototype.toString.call(obj)] || "object" : (0, _typeof2.default)(obj);
+};
+
+/**
+ * 判断两个值是否相等
+ * @param {any} a 值  
+ * @param {any} b 值  
+ * @return {Boolean} 是否相等
+ */
+exports.type = type;
+var isEqual = function isEqual(a, b) {
+  //如果a和b本来就全等
+  if (a === b) {
+    //判断是否为0和-0
+    return a !== 0 || 1 / a === 1 / b;
+  }
+  //判断是否为null和undefined
+  if (a == null || b == null) {
+    return a === b;
+  }
+  //接下来判断a和b的数据类型
+  var classNameA = toString.call(a),
+    classNameB = toString.call(b);
+  //如果数据类型不相等，则返回false
+  if (classNameA !== classNameB) {
+    return false;
+  }
+  //如果数据类型相等，再根据不同数据类型分别判断
+  switch (classNameA) {
+    case '[object RegExp]':
+    case '[object String]':
+      //进行字符串转换比较
+      return '' + a === '' + b;
+    case '[object Number]':
+      //进行数字转换比较,判断是否为NaN
+      if (+a !== +a) {
+        return +b !== +b;
+      }
+      //判断是否为0或-0
+      return +a === 0 ? 1 / +a === 1 / b : +a === +b;
+    case '[object Date]':
+    case '[object Boolean]':
+      return +a === +b;
+  }
+  //如果是对象类型
+  if (classNameA == '[object Object]') {
+    //获取a和b的属性长度
+    var propsA = Object.getOwnPropertyNames(a),
+      propsB = Object.getOwnPropertyNames(b);
+    if (propsA.length != propsB.length) {
+      return false;
+    }
+    for (var i = 0; i < propsA.length; i++) {
+      var propName = propsA[i];
+      //如果对应属性对应值不相等，则返回false
+      if (a[propName] !== b[propName]) {
+        return false;
+      }
+    }
+    return true;
+  }
+  //如果是数组类型
+  if (classNameA == '[object Array]') {
+    if (a.toString() == b.toString()) {
+      return true;
+    }
+    return false;
+  }
+};
+exports.isEqual = isEqual;
+
+/***/ }),
+
+/***/ 13:
+/*!*******************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(o) {
+  "@babel/helpers - typeof";
+
+  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(o);
+}
+module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 1309:
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/index.js ***!
+  \*********************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 1310));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 1311));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1312));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1310:
+/*!********************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/en.json ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.SUN, uni-calender.confirm, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"select date\",\"uni-datetime-picker.selectTime\":\"select time\",\"uni-datetime-picker.selectDateTime\":\"select date and time\",\"uni-datetime-picker.startDate\":\"start date\",\"uni-datetime-picker.endDate\":\"end date\",\"uni-datetime-picker.startTime\":\"start time\",\"uni-datetime-picker.endTime\":\"end time\",\"uni-datetime-picker.ok\":\"ok\",\"uni-datetime-picker.clear\":\"clear\",\"uni-datetime-picker.cancel\":\"cancel\",\"uni-datetime-picker.year\":\"-\",\"uni-datetime-picker.month\":\"\",\"uni-calender.MON\":\"MON\",\"uni-calender.TUE\":\"TUE\",\"uni-calender.WED\":\"WED\",\"uni-calender.THU\":\"THU\",\"uni-calender.FRI\":\"FRI\",\"uni-calender.SAT\":\"SAT\",\"uni-calender.SUN\":\"SUN\",\"uni-calender.confirm\":\"confirm\"}");
+
+/***/ }),
+
+/***/ 1311:
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hans.json ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.confirm, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"选择日期\",\"uni-datetime-picker.selectTime\":\"选择时间\",\"uni-datetime-picker.selectDateTime\":\"选择日期时间\",\"uni-datetime-picker.startDate\":\"开始日期\",\"uni-datetime-picker.endDate\":\"结束日期\",\"uni-datetime-picker.startTime\":\"开始时间\",\"uni-datetime-picker.endTime\":\"结束时间\",\"uni-datetime-picker.ok\":\"确定\",\"uni-datetime-picker.clear\":\"清除\",\"uni-datetime-picker.cancel\":\"取消\",\"uni-datetime-picker.year\":\"年\",\"uni-datetime-picker.month\":\"月\",\"uni-calender.SUN\":\"日\",\"uni-calender.MON\":\"一\",\"uni-calender.TUE\":\"二\",\"uni-calender.WED\":\"三\",\"uni-calender.THU\":\"四\",\"uni-calender.FRI\":\"五\",\"uni-calender.SAT\":\"六\",\"uni-calender.confirm\":\"确认\"}");
+
+/***/ }),
+
+/***/ 1312:
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hant.json ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-datetime-picker.year, uni-datetime-picker.month, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.confirm, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"選擇日期\",\"uni-datetime-picker.selectTime\":\"選擇時間\",\"uni-datetime-picker.selectDateTime\":\"選擇日期時間\",\"uni-datetime-picker.startDate\":\"開始日期\",\"uni-datetime-picker.endDate\":\"結束日期\",\"uni-datetime-picker.startTime\":\"開始时间\",\"uni-datetime-picker.endTime\":\"結束时间\",\"uni-datetime-picker.ok\":\"確定\",\"uni-datetime-picker.clear\":\"清除\",\"uni-datetime-picker.cancel\":\"取消\",\"uni-datetime-picker.year\":\"年\",\"uni-datetime-picker.month\":\"月\",\"uni-calender.SUN\":\"日\",\"uni-calender.MON\":\"一\",\"uni-calender.TUE\":\"二\",\"uni-calender.WED\":\"三\",\"uni-calender.THU\":\"四\",\"uni-calender.FRI\":\"五\",\"uni-calender.SAT\":\"六\",\"uni-calender.confirm\":\"確認\"}");
+
+/***/ }),
+
+/***/ 1313:
+/*!***************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-datetime-picker/components/uni-datetime-picker/util.js ***!
+  \***************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Calendar = void 0;
+exports.addZero = addZero;
+exports.checkDate = checkDate;
+exports.dateCompare = dateCompare;
+exports.fixIosDateFormat = fixIosDateFormat;
+exports.getDate = getDate;
+exports.getDateTime = getDateTime;
+exports.getDefaultSecond = getDefaultSecond;
+exports.getTime = getTime;
+var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 18));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var Calendar = /*#__PURE__*/function () {
+  function Calendar() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      selected = _ref.selected,
+      startDate = _ref.startDate,
+      endDate = _ref.endDate,
+      range = _ref.range;
+    (0, _classCallCheck2.default)(this, Calendar);
+    // 当前日期
+    this.date = this.getDateObj(new Date()); // 当前初入日期
+    // 打点信息
+    this.selected = selected || [];
+    // 起始时间
+    this.startDate = startDate;
+    // 终止时间
+    this.endDate = endDate;
+    // 是否范围选择
+    this.range = range;
+    // 多选状态
+    this.cleanMultipleStatus();
+    // 每周日期
+    this.weeks = {};
+    this.lastHover = false;
+  }
+  /**
+   * 设置日期
+   * @param {Object} date
+   */
+  (0, _createClass2.default)(Calendar, [{
+    key: "setDate",
+    value: function setDate(date) {
+      var selectDate = this.getDateObj(date);
+      this.getWeeks(selectDate.fullDate);
+    }
+
+    /**
+     * 清理多选状态
+     */
+  }, {
+    key: "cleanMultipleStatus",
+    value: function cleanMultipleStatus() {
+      this.multipleStatus = {
+        before: '',
+        after: '',
+        data: []
+      };
+    }
+  }, {
+    key: "setStartDate",
+    value: function setStartDate(startDate) {
+      this.startDate = startDate;
+    }
+  }, {
+    key: "setEndDate",
+    value: function setEndDate(endDate) {
+      this.endDate = endDate;
+    }
+  }, {
+    key: "getPreMonthObj",
+    value: function getPreMonthObj(date) {
+      date = fixIosDateFormat(date);
+      date = new Date(date);
+      var oldMonth = date.getMonth();
+      date.setMonth(oldMonth - 1);
+      var newMonth = date.getMonth();
+      if (oldMonth !== 0 && newMonth - oldMonth === 0) {
+        date.setMonth(newMonth - 1);
+      }
+      return this.getDateObj(date);
+    }
+  }, {
+    key: "getNextMonthObj",
+    value: function getNextMonthObj(date) {
+      date = fixIosDateFormat(date);
+      date = new Date(date);
+      var oldMonth = date.getMonth();
+      date.setMonth(oldMonth + 1);
+      var newMonth = date.getMonth();
+      if (newMonth - oldMonth > 1) {
+        date.setMonth(newMonth - 1);
+      }
+      return this.getDateObj(date);
+    }
+
+    /**
+     * 获取指定格式Date对象
+     */
+  }, {
+    key: "getDateObj",
+    value: function getDateObj(date) {
+      date = fixIosDateFormat(date);
+      date = new Date(date);
+      return {
+        fullDate: getDate(date),
+        year: date.getFullYear(),
+        month: addZero(date.getMonth() + 1),
+        date: addZero(date.getDate()),
+        day: date.getDay()
+      };
+    }
+
+    /**
+     * 获取上一个月日期集合
+     */
+  }, {
+    key: "getPreMonthDays",
+    value: function getPreMonthDays(amount, dateObj) {
+      var result = [];
+      for (var i = amount - 1; i >= 0; i--) {
+        var month = dateObj.month - 1;
+        result.push({
+          date: new Date(dateObj.year, month, -i).getDate(),
+          month: month,
+          disable: true
+        });
+      }
+      return result;
+    }
+    /**
+     * 获取本月日期集合
+     */
+  }, {
+    key: "getCurrentMonthDays",
+    value: function getCurrentMonthDays(amount, dateObj) {
+      var _this = this;
+      var result = [];
+      var fullDate = this.date.fullDate;
+      var _loop = function _loop(i) {
+        var currentDate = "".concat(dateObj.year, "-").concat(dateObj.month, "-").concat(addZero(i));
+        var isToday = fullDate === currentDate;
+        // 获取打点信息
+        var info = _this.selected && _this.selected.find(function (item) {
+          if (_this.dateEqual(currentDate, item.date)) {
+            return item;
+          }
+        });
+
+        // 日期禁用
+        var disableBefore = true;
+        var disableAfter = true;
+        if (_this.startDate) {
+          disableBefore = dateCompare(_this.startDate, currentDate);
+        }
+        if (_this.endDate) {
+          disableAfter = dateCompare(currentDate, _this.endDate);
+        }
+        var multiples = _this.multipleStatus.data;
+        var multiplesStatus = -1;
+        if (_this.range && multiples) {
+          multiplesStatus = multiples.findIndex(function (item) {
+            return _this.dateEqual(item, currentDate);
+          });
+        }
+        var checked = multiplesStatus !== -1;
+        result.push({
+          fullDate: currentDate,
+          year: dateObj.year,
+          date: i,
+          multiple: _this.range ? checked : false,
+          beforeMultiple: _this.isLogicBefore(currentDate, _this.multipleStatus.before, _this.multipleStatus.after),
+          afterMultiple: _this.isLogicAfter(currentDate, _this.multipleStatus.before, _this.multipleStatus.after),
+          month: dateObj.month,
+          disable: _this.startDate && !dateCompare(_this.startDate, currentDate) || _this.endDate && !dateCompare(currentDate, _this.endDate),
+          isToday: isToday,
+          userChecked: false,
+          extraInfo: info
+        });
+      };
+      for (var i = 1; i <= amount; i++) {
+        _loop(i);
+      }
+      return result;
+    }
+    /**
+     * 获取下一个月日期集合
+     */
+  }, {
+    key: "_getNextMonthDays",
+    value: function _getNextMonthDays(amount, dateObj) {
+      var result = [];
+      var month = dateObj.month + 1;
+      for (var i = 1; i <= amount; i++) {
+        result.push({
+          date: i,
+          month: month,
+          disable: true
+        });
+      }
+      return result;
+    }
+
+    /**
+     * 获取当前日期详情
+     * @param {Object} date
+     */
+  }, {
+    key: "getInfo",
+    value: function getInfo(date) {
+      var _this2 = this;
+      if (!date) {
+        date = new Date();
+      }
+      var res = this.calendar.find(function (item) {
+        return item.fullDate === _this2.getDateObj(date).fullDate;
+      });
+      return res ? res : this.getDateObj(date);
+    }
+
+    /**
+     * 比较时间是否相等
+     */
+  }, {
+    key: "dateEqual",
+    value: function dateEqual(before, after) {
+      before = new Date(fixIosDateFormat(before));
+      after = new Date(fixIosDateFormat(after));
+      return before.valueOf() === after.valueOf();
+    }
+
+    /**
+     *  比较真实起始日期
+     */
+  }, {
+    key: "isLogicBefore",
+    value: function isLogicBefore(currentDate, before, after) {
+      var logicBefore = before;
+      if (before && after) {
+        logicBefore = dateCompare(before, after) ? before : after;
+      }
+      return this.dateEqual(logicBefore, currentDate);
+    }
+  }, {
+    key: "isLogicAfter",
+    value: function isLogicAfter(currentDate, before, after) {
+      var logicAfter = after;
+      if (before && after) {
+        logicAfter = dateCompare(before, after) ? after : before;
+      }
+      return this.dateEqual(logicAfter, currentDate);
+    }
+
+    /**
+     * 获取日期范围内所有日期
+     * @param {Object} begin
+     * @param {Object} end
+     */
+  }, {
+    key: "geDateAll",
+    value: function geDateAll(begin, end) {
+      var arr = [];
+      var ab = begin.split('-');
+      var ae = end.split('-');
+      var db = new Date();
+      db.setFullYear(ab[0], ab[1] - 1, ab[2]);
+      var de = new Date();
+      de.setFullYear(ae[0], ae[1] - 1, ae[2]);
+      var unixDb = db.getTime() - 24 * 60 * 60 * 1000;
+      var unixDe = de.getTime() - 24 * 60 * 60 * 1000;
+      for (var k = unixDb; k <= unixDe;) {
+        k = k + 24 * 60 * 60 * 1000;
+        arr.push(this.getDateObj(new Date(parseInt(k))).fullDate);
+      }
+      return arr;
+    }
+
+    /**
+     *  获取多选状态
+     */
+  }, {
+    key: "setMultiple",
+    value: function setMultiple(fullDate) {
+      if (!this.range) return;
+      var _this$multipleStatus = this.multipleStatus,
+        before = _this$multipleStatus.before,
+        after = _this$multipleStatus.after;
+      if (before && after) {
+        if (!this.lastHover) {
+          this.lastHover = true;
+          return;
+        }
+        this.multipleStatus.before = fullDate;
+        this.multipleStatus.after = '';
+        this.multipleStatus.data = [];
+        this.multipleStatus.fulldate = '';
+        this.lastHover = false;
+      } else {
+        if (!before) {
+          this.multipleStatus.before = fullDate;
+          this.multipleStatus.after = undefined;
+          this.lastHover = false;
+        } else {
+          this.multipleStatus.after = fullDate;
+          if (dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
+            this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
+          } else {
+            this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
+          }
+          this.lastHover = true;
+        }
+      }
+      this.getWeeks(fullDate);
+    }
+
+    /**
+     *  鼠标 hover 更新多选状态
+     */
+  }, {
+    key: "setHoverMultiple",
+    value: function setHoverMultiple(fullDate) {
+      //抖音小程序点击会触发hover事件，需要避免一下
+
+      if (!this.range || this.lastHover) return;
+      var before = this.multipleStatus.before;
+      if (!before) {
+        this.multipleStatus.before = fullDate;
+      } else {
+        this.multipleStatus.after = fullDate;
+        if (dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
+          this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
+        } else {
+          this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
+        }
+      }
+      this.getWeeks(fullDate);
+    }
+
+    /**
+     * 更新默认值多选状态
+     */
+  }, {
+    key: "setDefaultMultiple",
+    value: function setDefaultMultiple(before, after) {
+      this.multipleStatus.before = before;
+      this.multipleStatus.after = after;
+      if (before && after) {
+        if (dateCompare(before, after)) {
+          this.multipleStatus.data = this.geDateAll(before, after);
+          this.getWeeks(after);
+        } else {
+          this.multipleStatus.data = this.geDateAll(after, before);
+          this.getWeeks(before);
+        }
+      }
+    }
+
+    /**
+     * 获取每周数据
+     * @param {Object} dateData
+     */
+  }, {
+    key: "getWeeks",
+    value: function getWeeks(dateData) {
+      var _this$getDateObj = this.getDateObj(dateData),
+        year = _this$getDateObj.year,
+        month = _this$getDateObj.month;
+      var preMonthDayAmount = new Date(year, month - 1, 1).getDay();
+      var preMonthDays = this.getPreMonthDays(preMonthDayAmount, this.getDateObj(dateData));
+      var currentMonthDayAmount = new Date(year, month, 0).getDate();
+      var currentMonthDays = this.getCurrentMonthDays(currentMonthDayAmount, this.getDateObj(dateData));
+      var nextMonthDayAmount = 42 - preMonthDayAmount - currentMonthDayAmount;
+      var nextMonthDays = this._getNextMonthDays(nextMonthDayAmount, this.getDateObj(dateData));
+      var calendarDays = [].concat((0, _toConsumableArray2.default)(preMonthDays), (0, _toConsumableArray2.default)(currentMonthDays), (0, _toConsumableArray2.default)(nextMonthDays));
+      var weeks = new Array(6);
+      for (var i = 0; i < calendarDays.length; i++) {
+        var index = Math.floor(i / 7);
+        if (!weeks[index]) {
+          weeks[index] = new Array(7);
+        }
+        weeks[index][i % 7] = calendarDays[i];
+      }
+      this.calendar = calendarDays;
+      this.weeks = weeks;
+    }
+  }]);
+  return Calendar;
+}();
+exports.Calendar = Calendar;
+function getDateTime(date, hideSecond) {
+  return "".concat(getDate(date), " ").concat(getTime(date, hideSecond));
+}
+function getDate(date) {
+  date = fixIosDateFormat(date);
+  date = new Date(date);
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return "".concat(year, "-").concat(addZero(month), "-").concat(addZero(day));
+}
+function getTime(date, hideSecond) {
+  date = fixIosDateFormat(date);
+  date = new Date(date);
+  var hour = date.getHours();
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  return hideSecond ? "".concat(addZero(hour), ":").concat(addZero(minute)) : "".concat(addZero(hour), ":").concat(addZero(minute), ":").concat(addZero(second));
+}
+function addZero(num) {
+  if (num < 10) {
+    num = "0".concat(num);
+  }
+  return num;
+}
+function getDefaultSecond(hideSecond) {
+  return hideSecond ? '00:00' : '00:00:00';
+}
+function dateCompare(startDate, endDate) {
+  startDate = new Date(fixIosDateFormat(startDate));
+  endDate = new Date(fixIosDateFormat(endDate));
+  return startDate <= endDate;
+}
+function checkDate(date) {
+  var dateReg = /((19|20)\d{2})(-|\/)\d{1,2}(-|\/)\d{1,2}/g;
+  return date.match(dateReg);
+}
+//ios低版本15及以下，无法匹配 没有 ’秒‘ 时的情况，所以需要在末尾 秒 加上 问号
+var dateTimeReg = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])( [0-5]?[0-9]:[0-5]?[0-9](:[0-5]?[0-9])?)?$/;
+function fixIosDateFormat(value) {
+  if (typeof value === 'string' && dateTimeReg.test(value)) {
+    value = value.replace(/-/g, '/');
+  }
+  return value;
+}
+
+/***/ }),
+
+/***/ 1321:
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-data-picker/components/uni-data-pickerview/uni-data-picker.js ***!
+  \**********************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uniCloud) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 29));
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 32));
+var _default2 = {
+  props: {
+    localdata: {
+      type: [Array, Object],
+      default: function _default() {
+        return [];
+      }
+    },
+    spaceInfo: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    collection: {
+      type: String,
+      default: ''
+    },
+    action: {
+      type: String,
+      default: ''
+    },
+    field: {
+      type: String,
+      default: ''
+    },
+    orderby: {
+      type: String,
+      default: ''
+    },
+    where: {
+      type: [String, Object],
+      default: ''
+    },
+    pageData: {
+      type: String,
+      default: 'add'
+    },
+    pageCurrent: {
+      type: Number,
+      default: 1
+    },
+    pageSize: {
+      type: Number,
+      default: 500
+    },
+    getcount: {
+      type: [Boolean, String],
+      default: false
+    },
+    getone: {
+      type: [Boolean, String],
+      default: false
+    },
+    gettree: {
+      type: [Boolean, String],
+      default: false
+    },
+    manual: {
+      type: Boolean,
+      default: false
+    },
+    value: {
+      type: [Array, String, Number],
+      default: function _default() {
+        return [];
+      }
+    },
+    modelValue: {
+      type: [Array, String, Number],
+      default: function _default() {
+        return [];
+      }
+    },
+    preload: {
+      type: Boolean,
+      default: false
+    },
+    stepSearh: {
+      type: Boolean,
+      default: true
+    },
+    selfField: {
+      type: String,
+      default: ''
+    },
+    parentField: {
+      type: String,
+      default: ''
+    },
+    multiple: {
+      type: Boolean,
+      default: false
+    },
+    map: {
+      type: Object,
+      default: function _default() {
+        return {
+          text: "text",
+          value: "value"
+        };
+      }
+    }
+  },
+  data: function data() {
+    return {
+      loading: false,
+      errorMessage: '',
+      loadMore: {
+        contentdown: '',
+        contentrefresh: '',
+        contentnomore: ''
+      },
+      dataList: [],
+      selected: [],
+      selectedIndex: 0,
+      page: {
+        current: this.pageCurrent,
+        size: this.pageSize,
+        count: 0
+      }
+    };
+  },
+  computed: {
+    isLocalData: function isLocalData() {
+      return !this.collection.length;
+    },
+    isCloudData: function isCloudData() {
+      return this.collection.length > 0;
+    },
+    isCloudDataList: function isCloudDataList() {
+      return this.isCloudData && !this.parentField && !this.selfField;
+    },
+    isCloudDataTree: function isCloudDataTree() {
+      return this.isCloudData && this.parentField && this.selfField;
+    },
+    dataValue: function dataValue() {
+      var isModelValue = Array.isArray(this.modelValue) ? this.modelValue.length > 0 : this.modelValue !== null || this.modelValue !== undefined;
+      return isModelValue ? this.modelValue : this.value;
+    },
+    hasValue: function hasValue() {
+      if (typeof this.dataValue === 'number') {
+        return true;
+      }
+      return this.dataValue != null && this.dataValue.length > 0;
+    }
+  },
+  created: function created() {
+    var _this = this;
+    this.$watch(function () {
+      var al = [];
+      ['pageCurrent', 'pageSize', 'spaceInfo', 'value', 'modelValue', 'localdata', 'collection', 'action', 'field', 'orderby', 'where', 'getont', 'getcount', 'gettree'].forEach(function (key) {
+        al.push(_this[key]);
+      });
+      return al;
+    }, function (newValue, oldValue) {
+      var needReset = false;
+      for (var i = 2; i < newValue.length; i++) {
+        if (newValue[i] != oldValue[i]) {
+          needReset = true;
+          break;
+        }
+      }
+      if (newValue[0] != oldValue[0]) {
+        _this.page.current = _this.pageCurrent;
+      }
+      _this.page.size = _this.pageSize;
+      _this.onPropsChange();
+    });
+    this._treeData = [];
+  },
+  methods: {
+    onPropsChange: function onPropsChange() {
+      this._treeData = [];
+    },
+    // 填充 pickview 数据
+    loadData: function loadData() {
+      var _this2 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                if (_this2.isLocalData) {
+                  _this2.loadLocalData();
+                } else if (_this2.isCloudDataList) {
+                  _this2.loadCloudDataList();
+                } else if (_this2.isCloudDataTree) {
+                  _this2.loadCloudDataTree();
+                }
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    // 加载本地数据
+    loadLocalData: function loadLocalData() {
+      var _this3 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
+        var inputValue;
+        return _regenerator.default.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this3._treeData = [];
+                _this3._extractTree(_this3.localdata, _this3._treeData);
+                inputValue = _this3.dataValue;
+                if (!(inputValue === undefined)) {
+                  _context2.next = 5;
+                  break;
+                }
+                return _context2.abrupt("return");
+              case 5:
+                if (Array.isArray(inputValue)) {
+                  inputValue = inputValue[inputValue.length - 1];
+                  if ((0, _typeof2.default)(inputValue) === 'object' && inputValue[_this3.map.value]) {
+                    inputValue = inputValue[_this3.map.value];
+                  }
+                }
+                _this3.selected = _this3._findNodePath(inputValue, _this3.localdata);
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    // 加载 Cloud 数据 (单列)
+    loadCloudDataList: function loadCloudDataList() {
+      var _this4 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
+        var response, responseData;
+        return _regenerator.default.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (!_this4.loading) {
+                  _context3.next = 2;
+                  break;
+                }
+                return _context3.abrupt("return");
+              case 2:
+                _this4.loading = true;
+                _context3.prev = 3;
+                _context3.next = 6;
+                return _this4.getCommand();
+              case 6:
+                response = _context3.sent;
+                responseData = response.result.data;
+                _this4._treeData = responseData;
+                _this4._updateBindData();
+                _this4._updateSelected();
+                _this4.onDataChange();
+                _context3.next = 17;
+                break;
+              case 14:
+                _context3.prev = 14;
+                _context3.t0 = _context3["catch"](3);
+                _this4.errorMessage = _context3.t0;
+              case 17:
+                _context3.prev = 17;
+                _this4.loading = false;
+                return _context3.finish(17);
+              case 20:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[3, 14, 17, 20]]);
+      }))();
+    },
+    // 加载 Cloud 数据 (树形)
+    loadCloudDataTree: function loadCloudDataTree() {
+      var _this5 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee4() {
+        var commandOptions, response, responseData;
+        return _regenerator.default.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                if (!_this5.loading) {
+                  _context4.next = 2;
+                  break;
+                }
+                return _context4.abrupt("return");
+              case 2:
+                _this5.loading = true;
+                _context4.prev = 3;
+                commandOptions = {
+                  field: _this5._cloudDataPostField(),
+                  where: _this5._cloudDataTreeWhere()
+                };
+                if (_this5.gettree) {
+                  commandOptions.startwith = "".concat(_this5.selfField, "=='").concat(_this5.dataValue, "'");
+                }
+                _context4.next = 8;
+                return _this5.getCommand(commandOptions);
+              case 8:
+                response = _context4.sent;
+                responseData = response.result.data;
+                _this5._treeData = responseData;
+                _this5._updateBindData();
+                _this5._updateSelected();
+                _this5.onDataChange();
+                _context4.next = 19;
+                break;
+              case 16:
+                _context4.prev = 16;
+                _context4.t0 = _context4["catch"](3);
+                _this5.errorMessage = _context4.t0;
+              case 19:
+                _context4.prev = 19;
+                _this5.loading = false;
+                return _context4.finish(19);
+              case 22:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[3, 16, 19, 22]]);
+      }))();
+    },
+    // 加载 Cloud 数据 (节点)
+    loadCloudDataNode: function loadCloudDataNode(callback) {
+      var _this6 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee5() {
+        var commandOptions, response, responseData;
+        return _regenerator.default.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                if (!_this6.loading) {
+                  _context5.next = 2;
+                  break;
+                }
+                return _context5.abrupt("return");
+              case 2:
+                _this6.loading = true;
+                _context5.prev = 3;
+                commandOptions = {
+                  field: _this6._cloudDataPostField(),
+                  where: _this6._cloudDataNodeWhere()
+                };
+                _context5.next = 7;
+                return _this6.getCommand(commandOptions);
+              case 7:
+                response = _context5.sent;
+                responseData = response.result.data;
+                callback(responseData);
+                _context5.next = 15;
+                break;
+              case 12:
+                _context5.prev = 12;
+                _context5.t0 = _context5["catch"](3);
+                _this6.errorMessage = _context5.t0;
+              case 15:
+                _context5.prev = 15;
+                _this6.loading = false;
+                return _context5.finish(15);
+              case 18:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[3, 12, 15, 18]]);
+      }))();
+    },
+    // 回显 Cloud 数据
+    getCloudDataValue: function getCloudDataValue() {
+      if (this.isCloudDataList) {
+        return this.getCloudDataListValue();
+      }
+      if (this.isCloudDataTree) {
+        return this.getCloudDataTreeValue();
+      }
+    },
+    // 回显 Cloud 数据 (单列)
+    getCloudDataListValue: function getCloudDataListValue() {
+      var _this7 = this;
+      // 根据 field's as value标识匹配 where 条件
+      var where = [];
+      var whereField = this._getForeignKeyByField();
+      if (whereField) {
+        where.push("".concat(whereField, " == '").concat(this.dataValue, "'"));
+      }
+      where = where.join(' || ');
+      if (this.where) {
+        where = "(".concat(this.where, ") && (").concat(where, ")");
+      }
+      return this.getCommand({
+        field: this._cloudDataPostField(),
+        where: where
+      }).then(function (res) {
+        _this7.selected = res.result.data;
+        return res.result.data;
+      });
+    },
+    // 回显 Cloud 数据 (树形)
+    getCloudDataTreeValue: function getCloudDataTreeValue() {
+      var _this8 = this;
+      return this.getCommand({
+        field: this._cloudDataPostField(),
+        getTreePath: {
+          startWith: "".concat(this.selfField, "=='").concat(this.dataValue, "'")
+        }
+      }).then(function (res) {
+        var treePath = [];
+        _this8._extractTreePath(res.result.data, treePath);
+        _this8.selected = treePath;
+        return treePath;
+      });
+    },
+    getCommand: function getCommand() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      /* eslint-disable no-undef */
+      var db = uniCloud.database(this.spaceInfo);
+      var action = options.action || this.action;
+      if (action) {
+        db = db.action(action);
+      }
+      var collection = options.collection || this.collection;
+      db = db.collection(collection);
+      var where = options.where || this.where;
+      if (!(!where || !Object.keys(where).length)) {
+        db = db.where(where);
+      }
+      var field = options.field || this.field;
+      if (field) {
+        db = db.field(field);
+      }
+      var orderby = options.orderby || this.orderby;
+      if (orderby) {
+        db = db.orderBy(orderby);
+      }
+      var current = options.pageCurrent !== undefined ? options.pageCurrent : this.page.current;
+      var size = options.pageSize !== undefined ? options.pageSize : this.page.size;
+      var getCount = options.getcount !== undefined ? options.getcount : this.getcount;
+      var getTree = options.gettree !== undefined ? options.gettree : this.gettree;
+      var getOptions = {
+        getCount: getCount,
+        getTree: getTree
+      };
+      if (options.getTreePath) {
+        getOptions.getTreePath = options.getTreePath;
+      }
+      db = db.skip(size * (current - 1)).limit(size).get(getOptions);
+      return db;
+    },
+    _cloudDataPostField: function _cloudDataPostField() {
+      var fields = [this.field];
+      if (this.parentField) {
+        fields.push("".concat(this.parentField, " as parent_value"));
+      }
+      return fields.join(',');
+    },
+    _cloudDataTreeWhere: function _cloudDataTreeWhere() {
+      var result = [];
+      var selected = this.selected;
+      var parentField = this.parentField;
+      if (parentField) {
+        result.push("".concat(parentField, " == null || ").concat(parentField, " == \"\""));
+      }
+      if (selected.length) {
+        for (var i = 0; i < selected.length - 1; i++) {
+          result.push("".concat(parentField, " == '").concat(selected[i].value, "'"));
+        }
+      }
+      var where = [];
+      if (this.where) {
+        where.push("(".concat(this.where, ")"));
+      }
+      if (result.length) {
+        where.push("(".concat(result.join(' || '), ")"));
+      }
+      return where.join(' && ');
+    },
+    _cloudDataNodeWhere: function _cloudDataNodeWhere() {
+      var where = [];
+      var selected = this.selected;
+      if (selected.length) {
+        where.push("".concat(this.parentField, " == '").concat(selected[selected.length - 1].value, "'"));
+      }
+      where = where.join(' || ');
+      if (this.where) {
+        return "(".concat(this.where, ") && (").concat(where, ")");
+      }
+      return where;
+    },
+    _getWhereByForeignKey: function _getWhereByForeignKey() {
+      var result = [];
+      var whereField = this._getForeignKeyByField();
+      if (whereField) {
+        result.push("".concat(whereField, " == '").concat(this.dataValue, "'"));
+      }
+      if (this.where) {
+        return "(".concat(this.where, ") && (").concat(result.join(' || '), ")");
+      }
+      return result.join(' || ');
+    },
+    _getForeignKeyByField: function _getForeignKeyByField() {
+      var fields = this.field.split(',');
+      var whereField = null;
+      for (var i = 0; i < fields.length; i++) {
+        var items = fields[i].split('as');
+        if (items.length < 2) {
+          continue;
+        }
+        if (items[1].trim() === 'value') {
+          whereField = items[0].trim();
+          break;
+        }
+      }
+      return whereField;
+    },
+    _updateBindData: function _updateBindData(node) {
+      var _this$_filterData = this._filterData(this._treeData, this.selected),
+        dataList = _this$_filterData.dataList,
+        hasNodes = _this$_filterData.hasNodes;
+      var isleaf = this._stepSearh === false && !hasNodes;
+      if (node) {
+        node.isleaf = isleaf;
+      }
+      this.dataList = dataList;
+      this.selectedIndex = dataList.length - 1;
+      if (!isleaf && this.selected.length < dataList.length) {
+        this.selected.push({
+          value: null,
+          text: "请选择"
+        });
+      }
+      return {
+        isleaf: isleaf,
+        hasNodes: hasNodes
+      };
+    },
+    _updateSelected: function _updateSelected() {
+      var dl = this.dataList;
+      var sl = this.selected;
+      var textField = this.map.text;
+      var valueField = this.map.value;
+      for (var i = 0; i < sl.length; i++) {
+        var value = sl[i].value;
+        var dl2 = dl[i];
+        for (var j = 0; j < dl2.length; j++) {
+          var item2 = dl2[j];
+          if (item2[valueField] === value) {
+            sl[i].text = item2[textField];
+            break;
+          }
+        }
+      }
+    },
+    _filterData: function _filterData(data, paths) {
+      var dataList = [];
+      var hasNodes = true;
+      dataList.push(data.filter(function (item) {
+        return item.parent_value === null || item.parent_value === undefined || item.parent_value === '';
+      }));
+      var _loop = function _loop(i) {
+        var value = paths[i].value;
+        var nodes = data.filter(function (item) {
+          return item.parent_value === value;
+        });
+        if (nodes.length) {
+          dataList.push(nodes);
+        } else {
+          hasNodes = false;
+        }
+      };
+      for (var i = 0; i < paths.length; i++) {
+        _loop(i);
+      }
+      return {
+        dataList: dataList,
+        hasNodes: hasNodes
+      };
+    },
+    _extractTree: function _extractTree(nodes, result, parent_value) {
+      var list = result || [];
+      var valueField = this.map.value;
+      for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        var child = {};
+        for (var key in node) {
+          if (key !== 'children') {
+            child[key] = node[key];
+          }
+        }
+        if (parent_value !== null && parent_value !== undefined && parent_value !== '') {
+          child.parent_value = parent_value;
+        }
+        result.push(child);
+        var children = node.children;
+        if (children) {
+          this._extractTree(children, result, node[valueField]);
+        }
+      }
+    },
+    _extractTreePath: function _extractTreePath(nodes, result) {
+      var list = result || [];
+      for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        var child = {};
+        for (var key in node) {
+          if (key !== 'children') {
+            child[key] = node[key];
+          }
+        }
+        result.push(child);
+        var children = node.children;
+        if (children) {
+          this._extractTreePath(children, result);
+        }
+      }
+    },
+    _findNodePath: function _findNodePath(key, nodes) {
+      var path = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+      var textField = this.map.text;
+      var valueField = this.map.value;
+      for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        var children = node.children;
+        var text = node[textField];
+        var value = node[valueField];
+        path.push({
+          value: value,
+          text: text
+        });
+        if (value === key) {
+          return path;
+        }
+        if (children) {
+          var p = this._findNodePath(key, children, path);
+          if (p.length) {
+            return p;
+          }
+        }
+        path.pop();
+      }
+      return [];
+    }
+  }
+};
+exports.default = _default2;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 28)["uniCloud"]))
+
+/***/ }),
+
+/***/ 1371:
+/*!*********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-countdown/components/uni-countdown/i18n/index.js ***!
+  \*********************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 1372));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 1373));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1374));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1372:
+/*!********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-countdown/components/uni-countdown/i18n/en.json ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: uni-countdown.day, uni-countdown.h, uni-countdown.m, uni-countdown.s, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-countdown.day\":\"day\",\"uni-countdown.h\":\"h\",\"uni-countdown.m\":\"m\",\"uni-countdown.s\":\"s\"}");
+
+/***/ }),
+
+/***/ 1373:
+/*!*************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-countdown/components/uni-countdown/i18n/zh-Hans.json ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: uni-countdown.day, uni-countdown.h, uni-countdown.m, uni-countdown.s, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-countdown.day\":\"天\",\"uni-countdown.h\":\"时\",\"uni-countdown.m\":\"分\",\"uni-countdown.s\":\"秒\"}");
+
+/***/ }),
+
+/***/ 1374:
+/*!*************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-countdown/components/uni-countdown/i18n/zh-Hant.json ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: uni-countdown.day, uni-countdown.h, uni-countdown.m, uni-countdown.s, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-countdown.day\":\"天\",\"uni-countdown.h\":\"時\",\"uni-countdown.m\":\"分\",\"uni-countdown.s\":\"秒\"}");
+
+/***/ }),
+
+/***/ 1389:
+/*!*********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-load-more/components/uni-load-more/i18n/index.js ***!
+  \*********************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 1390));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 1391));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1392));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1390:
+/*!********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-load-more/components/uni-load-more/i18n/en.json ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"Pull up to show more\",\"uni-load-more.contentrefresh\":\"loading...\",\"uni-load-more.contentnomore\":\"No more data\"}");
+
+/***/ }),
+
+/***/ 1391:
+/*!*************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hans.json ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉显示更多\",\"uni-load-more.contentrefresh\":\"正在加载...\",\"uni-load-more.contentnomore\":\"没有更多数据了\"}");
+
+/***/ }),
+
+/***/ 1392:
+/*!*************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-load-more/components/uni-load-more/i18n/zh-Hant.json ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: uni-load-more.contentdown, uni-load-more.contentrefresh, uni-load-more.contentnomore, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-load-more.contentdown\":\"上拉顯示更多\",\"uni-load-more.contentrefresh\":\"正在加載...\",\"uni-load-more.contentnomore\":\"沒有更多數據了\"}");
+
+/***/ }),
+
+/***/ 14:
+/*!************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toPrimitive.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
+function toPrimitive(t, r) {
+  if ("object" != _typeof(t) || !t) return t;
+  var e = t[Symbol.toPrimitive];
+  if (void 0 !== e) {
+    var i = e.call(t, r || "default");
+    if ("object" != _typeof(i)) return i;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return ("string" === r ? String : Number)(t);
+}
+module.exports = toPrimitive, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 1414:
+/*!********************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-popup/components/uni-popup/popup.js ***!
+  \********************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  data: function data() {
+    return {};
+  },
+  created: function created() {
+    this.popup = this.getParent();
+  },
+  methods: {
+    /**
+     * 获取父元素实例
+     */
+    getParent: function getParent() {
+      var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'uniPopup';
+      var parent = this.$parent;
+      var parentName = parent.$options.name;
+      while (parentName !== name) {
+        parent = parent.$parent;
+        if (!parent) return false;
+        parentName = parent.$options.name;
+      }
+      return parent;
+    }
+  }
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1422:
+/*!*************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-popup/components/uni-popup/i18n/index.js ***!
+  \*************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 1423));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 1424));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1425));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1423:
+/*!************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-popup/components/uni-popup/i18n/en.json ***!
+  \************************************************************************************************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"cancel\",\"uni-popup.ok\":\"ok\",\"uni-popup.placeholder\":\"pleace enter\",\"uni-popup.title\":\"Hint\",\"uni-popup.shareTitle\":\"Share to\"}");
+
+/***/ }),
+
+/***/ 1424:
+/*!*****************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hans.json ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"确定\",\"uni-popup.placeholder\":\"请输入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
+
+/***/ }),
+
+/***/ 1425:
+/*!*****************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-popup/components/uni-popup/i18n/zh-Hant.json ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: uni-popup.cancel, uni-popup.ok, uni-popup.placeholder, uni-popup.title, uni-popup.shareTitle, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-popup.cancel\":\"取消\",\"uni-popup.ok\":\"確定\",\"uni-popup.placeholder\":\"請輸入\",\"uni-popup.title\":\"提示\",\"uni-popup.shareTitle\":\"分享到\"}");
+
+/***/ }),
+
+/***/ 1475:
+/*!***********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-pagination/components/uni-pagination/i18n/index.js ***!
+  \***********************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 1476));
+var _es = _interopRequireDefault(__webpack_require__(/*! ./es.json */ 1477));
+var _fr = _interopRequireDefault(__webpack_require__(/*! ./fr.json */ 1478));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 1479));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1480));
+var _default = {
+  en: _en.default,
+  es: _es.default,
+  fr: _fr.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1476:
+/*!**********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-pagination/components/uni-pagination/i18n/en.json ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: uni-pagination.prevText, uni-pagination.nextText, uni-pagination.piecePerPage, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-pagination.prevText\":\"prev\",\"uni-pagination.nextText\":\"next\",\"uni-pagination.piecePerPage\":\"piece/page\"}");
+
+/***/ }),
+
+/***/ 1477:
+/*!**********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-pagination/components/uni-pagination/i18n/es.json ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: uni-pagination.prevText, uni-pagination.nextText, uni-pagination.piecePerPage, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-pagination.prevText\":\"anterior\",\"uni-pagination.nextText\":\"prxima\",\"uni-pagination.piecePerPage\":\"Art��culo/P��gina\"}");
+
+/***/ }),
+
+/***/ 1478:
+/*!**********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-pagination/components/uni-pagination/i18n/fr.json ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: uni-pagination.prevText, uni-pagination.nextText, uni-pagination.piecePerPage, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-pagination.prevText\":\"précédente\",\"uni-pagination.nextText\":\"suivante\",\"uni-pagination.piecePerPage\":\"Articles/Pages\"}");
+
+/***/ }),
+
+/***/ 1479:
+/*!***************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-pagination/components/uni-pagination/i18n/zh-Hans.json ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: uni-pagination.prevText, uni-pagination.nextText, uni-pagination.piecePerPage, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-pagination.prevText\":\"上一页\",\"uni-pagination.nextText\":\"下一页\",\"uni-pagination.piecePerPage\":\"条/页\"}");
+
+/***/ }),
+
+/***/ 1480:
+/*!***************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-pagination/components/uni-pagination/i18n/zh-Hant.json ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: uni-pagination.prevText, uni-pagination.nextText, uni-pagination.piecePerPage, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-pagination.prevText\":\"上一頁\",\"uni-pagination.nextText\":\"下一頁\",\"uni-pagination.piecePerPage\":\"條/頁\"}");
+
+/***/ }),
+
+/***/ 15:
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/construct.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf.js */ 16);
+var isNativeReflectConstruct = __webpack_require__(/*! ./isNativeReflectConstruct.js */ 17);
+function _construct(t, e, r) {
+  if (isNativeReflectConstruct()) return Reflect.construct.apply(null, arguments);
+  var o = [null];
+  o.push.apply(o, e);
+  var p = new (t.bind.apply(t, o))();
+  return r && setPrototypeOf(p, r.prototype), p;
+}
+module.exports = _construct, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 1535:
+/*!***************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpwxs.js ***!
+  \***************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var mpMixins = {};
+var is_pc = null;
+mpMixins = {
+  data: function data() {
+    return {
+      is_show: 'none'
+    };
+  },
+  watch: {
+    show: function show(newVal) {
+      this.is_show = this.show;
+    }
+  },
+  created: function created() {
+    this.swipeaction = this.getSwipeAction();
+    if (this.swipeaction && Array.isArray(this.swipeaction.children)) {
+      this.swipeaction.children.push(this);
+    }
+  },
+  mounted: function mounted() {
+    this.is_show = this.show;
+  },
+  methods: {
+    // wxs 中调用
+    closeSwipe: function closeSwipe(e) {
+      if (this.autoClose && this.swipeaction) {
+        this.swipeaction.closeOther(this);
+      }
+    },
+    change: function change(e) {
+      this.$emit('change', e.open);
+      if (this.is_show !== e.open) {
+        this.is_show = e.open;
+      }
+    },
+    appTouchStart: function appTouchStart(e) {
+      if (is_pc) return;
+      var clientX = e.changedTouches[0].clientX;
+      this.clientX = clientX;
+      this.timestamp = new Date().getTime();
+    },
+    appTouchEnd: function appTouchEnd(e, index, item, position) {
+      if (is_pc) return;
+      var clientX = e.changedTouches[0].clientX;
+      // fixed by xxxx 模拟点击事件，解决 ios 13 点击区域错位的问题
+      var diff = Math.abs(this.clientX - clientX);
+      var time = new Date().getTime() - this.timestamp;
+      if (diff < 40 && time < 300) {
+        this.$emit('click', {
+          content: item,
+          index: index,
+          position: position
+        });
+      }
+    },
+    onClickForPC: function onClickForPC(index, item, position) {
+      if (!is_pc) return;
+    }
+  }
+};
+var _default = mpMixins;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1536:
+/*!******************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-swipe-action/components/uni-swipe-action-item/bindingx.js ***!
+  \******************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var bindIngXMixins = {};
+var _default = bindIngXMixins;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1537:
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-swipe-action/components/uni-swipe-action-item/mpother.js ***!
+  \*****************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var otherMixins = {};
+var _default = otherMixins;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1547:
+/*!***********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
+  \***********************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 1548));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 1549));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1550));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1548:
+/*!**********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
+
+/***/ }),
+
+/***/ 1549:
+/*!***************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 1550:
+/*!***************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"取消\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
+
+/***/ }),
+
+/***/ 1558:
+/*!*************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-calendar/components/uni-calendar/util.js ***!
+  \*************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 1559));
+var Calendar = /*#__PURE__*/function () {
+  function Calendar() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      date = _ref.date,
+      selected = _ref.selected,
+      startDate = _ref.startDate,
+      endDate = _ref.endDate,
+      range = _ref.range;
+    (0, _classCallCheck2.default)(this, Calendar);
+    // 当前日期
+    this.date = this.getDate(new Date()); // 当前初入日期
+    // 打点信息
+    this.selected = selected || [];
+    // 范围开始
+    this.startDate = startDate;
+    // 范围结束
+    this.endDate = endDate;
+    this.range = range;
+    // 多选状态
+    this.cleanMultipleStatus();
+    // 每周日期
+    this.weeks = {};
+    // this._getWeek(this.date.fullDate)
+  }
+  /**
+   * 设置日期
+   * @param {Object} date
+   */
+  (0, _createClass2.default)(Calendar, [{
+    key: "setDate",
+    value: function setDate(date) {
+      this.selectDate = this.getDate(date);
+      this._getWeek(this.selectDate.fullDate);
+    }
+
+    /**
+     * 清理多选状态
+     */
+  }, {
+    key: "cleanMultipleStatus",
+    value: function cleanMultipleStatus() {
+      this.multipleStatus = {
+        before: '',
+        after: '',
+        data: []
+      };
+    }
+
+    /**
+     * 重置开始日期
+     */
+  }, {
+    key: "resetSatrtDate",
+    value: function resetSatrtDate(startDate) {
+      // 范围开始
+      this.startDate = startDate;
+    }
+
+    /**
+     * 重置结束日期
+     */
+  }, {
+    key: "resetEndDate",
+    value: function resetEndDate(endDate) {
+      // 范围结束
+      this.endDate = endDate;
+    }
+
+    /**
+     * 获取任意时间
+     */
+  }, {
+    key: "getDate",
+    value: function getDate(date) {
+      var AddDayCount = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var str = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'day';
+      if (!date) {
+        date = new Date();
+      }
+      if ((0, _typeof2.default)(date) !== 'object') {
+        date = date.replace(/-/g, '/');
+      }
+      var dd = new Date(date);
+      switch (str) {
+        case 'day':
+          dd.setDate(dd.getDate() + AddDayCount); // 获取AddDayCount天后的日期
+          break;
+        case 'month':
+          if (dd.getDate() === 31 && AddDayCount > 0) {
+            dd.setDate(dd.getDate() + AddDayCount);
+          } else {
+            var preMonth = dd.getMonth();
+            dd.setMonth(preMonth + AddDayCount); // 获取AddDayCount天后的日期
+            var nextMonth = dd.getMonth();
+            // 处理 pre 切换月份目标月份为2月没有当前日(30 31) 切换错误问题
+            if (AddDayCount < 0 && preMonth !== 0 && nextMonth - preMonth > AddDayCount) {
+              dd.setMonth(nextMonth + (nextMonth - preMonth + AddDayCount));
+            }
+            // 处理 next 切换月份目标月份为2月没有当前日(30 31) 切换错误问题
+            if (AddDayCount > 0 && nextMonth - preMonth > AddDayCount) {
+              dd.setMonth(nextMonth - (nextMonth - preMonth - AddDayCount));
+            }
+          }
+          break;
+        case 'year':
+          dd.setFullYear(dd.getFullYear() + AddDayCount); // 获取AddDayCount天后的日期
+          break;
+      }
+      var y = dd.getFullYear();
+      var m = dd.getMonth() + 1 < 10 ? '0' + (dd.getMonth() + 1) : dd.getMonth() + 1; // 获取当前月份的日期，不足10补0
+      var d = dd.getDate() < 10 ? '0' + dd.getDate() : dd.getDate(); // 获取当前几号，不足10补0
+      return {
+        fullDate: y + '-' + m + '-' + d,
+        year: y,
+        month: m,
+        date: d,
+        day: dd.getDay()
+      };
+    }
+
+    /**
+     * 获取上月剩余天数
+     */
+  }, {
+    key: "_getLastMonthDays",
+    value: function _getLastMonthDays(firstDay, full) {
+      var dateArr = [];
+      for (var i = firstDay; i > 0; i--) {
+        var beforeDate = new Date(full.year, full.month - 1, -i + 1).getDate();
+        dateArr.push({
+          date: beforeDate,
+          month: full.month - 1,
+          lunar: this.getlunar(full.year, full.month - 1, beforeDate),
+          disable: true
+        });
+      }
+      return dateArr;
+    }
+    /**
+     * 获取本月天数
+     */
+  }, {
+    key: "_currentMonthDys",
+    value: function _currentMonthDys(dateData, full) {
+      var _this = this;
+      var dateArr = [];
+      var fullDate = this.date.fullDate;
+      var _loop = function _loop(i) {
+        var nowDate = full.year + '-' + (full.month < 10 ? full.month : full.month) + '-' + (i < 10 ? '0' + i : i);
+        // 是否今天
+        var isDay = fullDate === nowDate;
+        // 获取打点信息
+        var info = _this.selected && _this.selected.find(function (item) {
+          if (_this.dateEqual(nowDate, item.date)) {
+            return item;
+          }
+        });
+
+        // 日期禁用
+        var disableBefore = true;
+        var disableAfter = true;
+        if (_this.startDate) {
+          // let dateCompBefore = this.dateCompare(this.startDate, fullDate)
+          // disableBefore = this.dateCompare(dateCompBefore ? this.startDate : fullDate, nowDate)
+          disableBefore = _this.dateCompare(_this.startDate, nowDate);
+        }
+        if (_this.endDate) {
+          // let dateCompAfter = this.dateCompare(fullDate, this.endDate)
+          // disableAfter = this.dateCompare(nowDate, dateCompAfter ? this.endDate : fullDate)
+          disableAfter = _this.dateCompare(nowDate, _this.endDate);
+        }
+        var multiples = _this.multipleStatus.data;
+        var checked = false;
+        var multiplesStatus = -1;
+        if (_this.range) {
+          if (multiples) {
+            multiplesStatus = multiples.findIndex(function (item) {
+              return _this.dateEqual(item, nowDate);
+            });
+          }
+          if (multiplesStatus !== -1) {
+            checked = true;
+          }
+        }
+        var data = {
+          fullDate: nowDate,
+          year: full.year,
+          date: i,
+          multiple: _this.range ? checked : false,
+          beforeMultiple: _this.dateEqual(_this.multipleStatus.before, nowDate),
+          afterMultiple: _this.dateEqual(_this.multipleStatus.after, nowDate),
+          month: full.month,
+          lunar: _this.getlunar(full.year, full.month, i),
+          disable: !(disableBefore && disableAfter),
+          isDay: isDay
+        };
+        if (info) {
+          data.extraInfo = info;
+        }
+        dateArr.push(data);
+      };
+      for (var i = 1; i <= dateData; i++) {
+        _loop(i);
+      }
+      return dateArr;
+    }
+    /**
+     * 获取下月天数
+     */
+  }, {
+    key: "_getNextMonthDays",
+    value: function _getNextMonthDays(surplus, full) {
+      var dateArr = [];
+      for (var i = 1; i < surplus + 1; i++) {
+        dateArr.push({
+          date: i,
+          month: Number(full.month) + 1,
+          lunar: this.getlunar(full.year, Number(full.month) + 1, i),
+          disable: true
+        });
+      }
+      return dateArr;
+    }
+
+    /**
+     * 获取当前日期详情
+     * @param {Object} date
+     */
+  }, {
+    key: "getInfo",
+    value: function getInfo(date) {
+      var _this2 = this;
+      if (!date) {
+        date = new Date();
+      }
+      var dateInfo = this.canlender.find(function (item) {
+        return item.fullDate === _this2.getDate(date).fullDate;
+      });
+      return dateInfo;
+    }
+
+    /**
+     * 比较时间大小
+     */
+  }, {
+    key: "dateCompare",
+    value: function dateCompare(startDate, endDate) {
+      // 计算截止时间
+      startDate = new Date(startDate.replace('-', '/').replace('-', '/'));
+      // 计算详细项的截止时间
+      endDate = new Date(endDate.replace('-', '/').replace('-', '/'));
+      if (startDate <= endDate) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    /**
+     * 比较时间是否相等
+     */
+  }, {
+    key: "dateEqual",
+    value: function dateEqual(before, after) {
+      // 计算截止时间
+      before = new Date(before.replace('-', '/').replace('-', '/'));
+      // 计算详细项的截止时间
+      after = new Date(after.replace('-', '/').replace('-', '/'));
+      if (before.getTime() - after.getTime() === 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    /**
+     * 获取日期范围内所有日期
+     * @param {Object} begin
+     * @param {Object} end
+     */
+  }, {
+    key: "geDateAll",
+    value: function geDateAll(begin, end) {
+      var arr = [];
+      var ab = begin.split('-');
+      var ae = end.split('-');
+      var db = new Date();
+      db.setFullYear(ab[0], ab[1] - 1, ab[2]);
+      var de = new Date();
+      de.setFullYear(ae[0], ae[1] - 1, ae[2]);
+      var unixDb = db.getTime() - 24 * 60 * 60 * 1000;
+      var unixDe = de.getTime() - 24 * 60 * 60 * 1000;
+      for (var k = unixDb; k <= unixDe;) {
+        k = k + 24 * 60 * 60 * 1000;
+        arr.push(this.getDate(new Date(parseInt(k))).fullDate);
+      }
+      return arr;
+    }
+    /**
+     * 计算阴历日期显示
+     */
+  }, {
+    key: "getlunar",
+    value: function getlunar(year, month, date) {
+      return _calendar.default.solar2lunar(year, month, date);
+    }
+    /**
+     * 设置打点
+     */
+  }, {
+    key: "setSelectInfo",
+    value: function setSelectInfo(data, value) {
+      this.selected = value;
+      this._getWeek(data);
+    }
+
+    /**
+     *  获取多选状态
+     */
+  }, {
+    key: "setMultiple",
+    value: function setMultiple(fullDate) {
+      var _this$multipleStatus = this.multipleStatus,
+        before = _this$multipleStatus.before,
+        after = _this$multipleStatus.after;
+      if (!this.range) return;
+      if (before && after) {
+        this.multipleStatus.before = fullDate;
+        this.multipleStatus.after = '';
+        this.multipleStatus.data = [];
+      } else {
+        if (!before) {
+          this.multipleStatus.before = fullDate;
+        } else {
+          this.multipleStatus.after = fullDate;
+          if (this.dateCompare(this.multipleStatus.before, this.multipleStatus.after)) {
+            this.multipleStatus.data = this.geDateAll(this.multipleStatus.before, this.multipleStatus.after);
+          } else {
+            this.multipleStatus.data = this.geDateAll(this.multipleStatus.after, this.multipleStatus.before);
+          }
+        }
+      }
+      this._getWeek(fullDate);
+    }
+
+    /**
+     * 获取每周数据
+     * @param {Object} dateData
+     */
+  }, {
+    key: "_getWeek",
+    value: function _getWeek(dateData) {
+      var _this$getDate = this.getDate(dateData),
+        year = _this$getDate.year,
+        month = _this$getDate.month;
+      var firstDay = new Date(year, month - 1, 1).getDay();
+      var currentDay = new Date(year, month, 0).getDate();
+      var dates = {
+        lastMonthDays: this._getLastMonthDays(firstDay, this.getDate(dateData)),
+        // 上个月末尾几天
+        currentMonthDys: this._currentMonthDys(currentDay, this.getDate(dateData)),
+        // 本月天数
+        nextMonthDays: [],
+        // 下个月开始几天
+        weeks: []
+      };
+      var canlender = [];
+      var surplus = 42 - (dates.lastMonthDays.length + dates.currentMonthDys.length);
+      dates.nextMonthDays = this._getNextMonthDays(surplus, this.getDate(dateData));
+      canlender = canlender.concat(dates.lastMonthDays, dates.currentMonthDys, dates.nextMonthDays);
+      var weeks = {};
+      // 拼接数组  上个月开始几天 + 本月天数+ 下个月开始几天
+      for (var i = 0; i < canlender.length; i++) {
+        if (i % 7 === 0) {
+          weeks[parseInt(i / 7)] = new Array(7);
+        }
+        weeks[parseInt(i / 7)][i % 7] = canlender[i];
+      }
+      this.canlender = canlender;
+      this.weeks = weeks;
+    }
+
+    //静态方法
+    // static init(date) {
+    // 	if (!this.instance) {
+    // 		this.instance = new Calendar(date);
+    // 	}
+    // 	return this.instance;
+    // }
+  }]);
+  return Calendar;
+}();
+var _default = Calendar;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1559:
+/*!*****************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-calendar/components/uni-calendar/calendar.js ***!
+  \*****************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/**
+* @1900-2100区间内的公历、农历互转
+* @charset UTF-8
+* @github  https://github.com/jjonline/calendar.js
+* @Author  Jea杨(JJonline@JJonline.Cn)
+* @Time    2014-7-21
+* @Time    2016-8-13 Fixed 2033hex、Attribution Annals
+* @Time    2016-9-25 Fixed lunar LeapMonth Param Bug
+* @Time    2017-7-24 Fixed use getTerm Func Param Error.use solar year,NOT lunar year
+* @Version 1.0.3
+* @公历转农历：calendar.solar2lunar(1987,11,01); //[you can ignore params of prefix 0]
+* @农历转公历：calendar.lunar2solar(1987,09,10); //[you can ignore params of prefix 0]
+*/
+/* eslint-disable */
+var calendar = {
+  /**
+      * 农历1900-2100的润大小信息表
+      * @Array Of Property
+      * @return Hex
+      */
+  lunarInfo: [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2,
+  // 1900-1909
+  0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977,
+  // 1910-1919
+  0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970,
+  // 1920-1929
+  0x06566, 0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950,
+  // 1930-1939
+  0x0d4a0, 0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0, 0x092d0, 0x0d2b2, 0x0a950, 0x0b557,
+  // 1940-1949
+  0x06ca0, 0x0b550, 0x15355, 0x04da0, 0x0a5b0, 0x14573, 0x052b0, 0x0a9a8, 0x0e950, 0x06aa0,
+  // 1950-1959
+  0x0aea6, 0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260, 0x0f263, 0x0d950, 0x05b57, 0x056a0,
+  // 1960-1969
+  0x096d0, 0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250, 0x0d558, 0x0b540, 0x0b6a0, 0x195a6,
+  // 1970-1979
+  0x095b0, 0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50, 0x06d40, 0x0af46, 0x0ab60, 0x09570,
+  // 1980-1989
+  0x04af5, 0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58, 0x05ac0, 0x0ab60, 0x096d5, 0x092e0,
+  // 1990-1999
+  0x0c960, 0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0, 0x0abb7, 0x025d0, 0x092d0, 0x0cab5,
+  // 2000-2009
+  0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930,
+  // 2010-2019
+  0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530,
+  // 2020-2029
+  0x05aa0, 0x076a3, 0x096d0, 0x04afb, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45,
+  // 2030-2039
+  0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0,
+  // 2040-2049
+  /** Add By JJonline@JJonline.Cn**/
+  0x14b63, 0x09370, 0x049f8, 0x04970, 0x064b0, 0x168a6, 0x0ea50, 0x06b20, 0x1a6c4, 0x0aae0,
+  // 2050-2059
+  0x0a2e0, 0x0d2e3, 0x0c960, 0x0d557, 0x0d4a0, 0x0da50, 0x05d55, 0x056a0, 0x0a6d0, 0x055d4,
+  // 2060-2069
+  0x052d0, 0x0a9b8, 0x0a950, 0x0b4a0, 0x0b6a6, 0x0ad50, 0x055a0, 0x0aba4, 0x0a5b0, 0x052b0,
+  // 2070-2079
+  0x0b273, 0x06930, 0x07337, 0x06aa0, 0x0ad50, 0x14b55, 0x04b60, 0x0a570, 0x054e4, 0x0d160,
+  // 2080-2089
+  0x0e968, 0x0d520, 0x0daa0, 0x16aa6, 0x056d0, 0x04ae0, 0x0a9d4, 0x0a2d0, 0x0d150, 0x0f252,
+  // 2090-2099
+  0x0d520],
+  // 2100
+
+  /**
+      * 公历每个月份的天数普通表
+      * @Array Of Property
+      * @return Number
+      */
+  solarMonth: [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+  /**
+      * 天干地支之天干速查表
+      * @Array Of Property trans["甲","乙","丙","丁","戊","己","庚","辛","壬","癸"]
+      * @return Cn string
+      */
+  Gan: ["\u7532", "\u4E59", "\u4E19", "\u4E01", "\u620A", "\u5DF1", "\u5E9A", "\u8F9B", "\u58EC", "\u7678"],
+  /**
+      * 天干地支之地支速查表
+      * @Array Of Property
+      * @trans["子","丑","寅","卯","辰","巳","午","未","申","酉","戌","亥"]
+      * @return Cn string
+      */
+  Zhi: ["\u5B50", "\u4E11", "\u5BC5", "\u536F", "\u8FB0", "\u5DF3", "\u5348", "\u672A", "\u7533", "\u9149", "\u620C", "\u4EA5"],
+  /**
+      * 天干地支之地支速查表<=>生肖
+      * @Array Of Property
+      * @trans["鼠","牛","虎","兔","龙","蛇","马","羊","猴","鸡","狗","猪"]
+      * @return Cn string
+      */
+  Animals: ["\u9F20", "\u725B", "\u864E", "\u5154", "\u9F99", "\u86C7", "\u9A6C", "\u7F8A", "\u7334", "\u9E21", "\u72D7", "\u732A"],
+  /**
+      * 24节气速查表
+      * @Array Of Property
+      * @trans["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
+      * @return Cn string
+      */
+  solarTerm: ["\u5C0F\u5BD2", "\u5927\u5BD2", "\u7ACB\u6625", "\u96E8\u6C34", "\u60CA\u86F0", "\u6625\u5206", "\u6E05\u660E", "\u8C37\u96E8", "\u7ACB\u590F", "\u5C0F\u6EE1", "\u8292\u79CD", "\u590F\u81F3", "\u5C0F\u6691", "\u5927\u6691", "\u7ACB\u79CB", "\u5904\u6691", "\u767D\u9732", "\u79CB\u5206", "\u5BD2\u9732", "\u971C\u964D", "\u7ACB\u51AC", "\u5C0F\u96EA", "\u5927\u96EA", "\u51AC\u81F3"],
+  /**
+      * 1900-2100各年的24节气日期速查表
+      * @Array Of Property
+      * @return 0x string For splice
+      */
+  sTermInfo: ['9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd0b06bdb0722c965ce1cfcc920f', 'b027097bd097c36b0b6fc9274c91aa', '9778397bd19801ec9210c965cc920e', '97b6b97bd19801ec95f8c965cc920f', '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd197c36c9210c9274c91aa', '97b6b97bd19801ec95f8c965cc920e', '97bd09801d98082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec95f8c965cc920e', '97bcf97c3598082c95f8e1cfcc920f', '97bd097bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c3598082c95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd097bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf97c359801ec95f8c965cc920f', '97bd097bd07f595b0b6fc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '9778397bd19801ec9210c9274c920e', '97b6b97bd19801ec95f8c965cc920f', '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e', '97b6b97bd19801ec95f8c965cc920f', '97bd07f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bd07f1487f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c965cc920e', '97bcf7f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b97bd19801ec9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c91aa', '97b6b97bd197c36c9210c9274c920e', '97bcf7f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '9778397bd097c36c9210c9274c920e', '97b6b7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c36b0b6fc9210c8dc2', '9778397bd097c36b0b70c9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc9210c8dc2', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9274c91aa', '97b6b7f0e47f531b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c91aa', '97b6b7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '9778397bd097c36b0b6fc9210c8dc2', '977837f0e37f149b0723b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f5307f595b0b0bc920fb0722', '7f0e397bd097c35b0b6fc9210c8dc2', '977837f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e37f1487f595b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc9210c8dc2', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd097c35b0b6fc920fb0722', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0787b06bd', '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0b0bb0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14998082b0723b06bd', '7f07e7f0e37f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722', '7f0e397bd07f595b0b0bc920fb0722', '977837f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f595b0b0bb0b6fb0722', '7f0e37f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e37f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e37f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f149b0723b0787b0721', '7f0e27f1487f531b0b0bb0b6fb0722', '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0723b06bd', '7f07e7f0e47f149b0723b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722', '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14998082b0723b06bd', '7f07e7f0e37f14998083b0787b0721', '7f0e27f0e47f531b0723b0b6fb0722', '7f0e37f0e366aa89801eb072297c35', '7ec967f0e37f14898082b0723b02d5', '7f07e7f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66aa89801e9808297c35', '665f67f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b0721', '7f07e7f0e47f531b0723b0b6fb0722', '7f0e36665b66a449801e9808297c35', '665f67f0e37f14898082b0723b02d5', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e36665b66a449801e9808297c35', '665f67f0e37f14898082b072297c35', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e26665b66a449801e9808297c35', '665f67f0e37f1489801eb072297c35', '7ec967f0e37f14998082b0787b06bd', '7f07e7f0e47f531b0723b0b6fb0721', '7f0e27f1487f531b0b0bb0b6fb0722'],
+  /**
+      * 数字转中文速查表
+      * @Array Of Property
+      * @trans ['日','一','二','三','四','五','六','七','八','九','十']
+      * @return Cn string
+      */
+  nStr1: ["\u65E5", "\u4E00", "\u4E8C", "\u4E09", "\u56DB", "\u4E94", "\u516D", "\u4E03", "\u516B", "\u4E5D", "\u5341"],
+  /**
+      * 日期转农历称呼速查表
+      * @Array Of Property
+      * @trans ['初','十','廿','卅']
+      * @return Cn string
+      */
+  nStr2: ["\u521D", "\u5341", "\u5EFF", "\u5345"],
+  /**
+      * 月份转农历称呼速查表
+      * @Array Of Property
+      * @trans ['正','一','二','三','四','五','六','七','八','九','十','冬','腊']
+      * @return Cn string
+      */
+  nStr3: ["\u6B63", "\u4E8C", "\u4E09", "\u56DB", "\u4E94", "\u516D", "\u4E03", "\u516B", "\u4E5D", "\u5341", "\u51AC", "\u814A"],
+  /**
+      * 返回农历y年一整年的总天数
+      * @param lunar Year
+      * @return Number
+      * @eg:var count = calendar.lYearDays(1987) ;//count=387
+      */
+  lYearDays: function lYearDays(y) {
+    var i;
+    var sum = 348;
+    for (i = 0x8000; i > 0x8; i >>= 1) {
+      sum += this.lunarInfo[y - 1900] & i ? 1 : 0;
+    }
+    return sum + this.leapDays(y);
+  },
+  /**
+      * 返回农历y年闰月是哪个月；若y年没有闰月 则返回0
+      * @param lunar Year
+      * @return Number (0-12)
+      * @eg:var leapMonth = calendar.leapMonth(1987) ;//leapMonth=6
+      */
+  leapMonth: function leapMonth(y) {
+    // 闰字编码 \u95f0
+    return this.lunarInfo[y - 1900] & 0xf;
+  },
+  /**
+      * 返回农历y年闰月的天数 若该年没有闰月则返回0
+      * @param lunar Year
+      * @return Number (0、29、30)
+      * @eg:var leapMonthDay = calendar.leapDays(1987) ;//leapMonthDay=29
+      */
+  leapDays: function leapDays(y) {
+    if (this.leapMonth(y)) {
+      return this.lunarInfo[y - 1900] & 0x10000 ? 30 : 29;
+    }
+    return 0;
+  },
+  /**
+      * 返回农历y年m月（非闰月）的总天数，计算m为闰月时的天数请使用leapDays方法
+      * @param lunar Year
+      * @return Number (-1、29、30)
+      * @eg:var MonthDay = calendar.monthDays(1987,9) ;//MonthDay=29
+      */
+  monthDays: function monthDays(y, m) {
+    if (m > 12 || m < 1) {
+      return -1;
+    } // 月份参数从1至12，参数错误返回-1
+    return this.lunarInfo[y - 1900] & 0x10000 >> m ? 30 : 29;
+  },
+  /**
+      * 返回公历(!)y年m月的天数
+      * @param solar Year
+      * @return Number (-1、28、29、30、31)
+      * @eg:var solarMonthDay = calendar.leapDays(1987) ;//solarMonthDay=30
+      */
+  solarDays: function solarDays(y, m) {
+    if (m > 12 || m < 1) {
+      return -1;
+    } // 若参数错误 返回-1
+    var ms = m - 1;
+    if (ms == 1) {
+      // 2月份的闰平规律测算后确认返回28或29
+      return y % 4 == 0 && y % 100 != 0 || y % 400 == 0 ? 29 : 28;
+    } else {
+      return this.solarMonth[ms];
+    }
+  },
+  /**
+     * 农历年份转换为干支纪年
+     * @param  lYear 农历年的年份数
+     * @return Cn string
+     */
+  toGanZhiYear: function toGanZhiYear(lYear) {
+    var ganKey = (lYear - 3) % 10;
+    var zhiKey = (lYear - 3) % 12;
+    if (ganKey == 0) ganKey = 10; // 如果余数为0则为最后一个天干
+    if (zhiKey == 0) zhiKey = 12; // 如果余数为0则为最后一个地支
+    return this.Gan[ganKey - 1] + this.Zhi[zhiKey - 1];
+  },
+  /**
+     * 公历月、日判断所属星座
+     * @param  cMonth [description]
+     * @param  cDay [description]
+     * @return Cn string
+     */
+  toAstro: function toAstro(cMonth, cDay) {
+    var s = "\u9B54\u7FAF\u6C34\u74F6\u53CC\u9C7C\u767D\u7F8A\u91D1\u725B\u53CC\u5B50\u5DE8\u87F9\u72EE\u5B50\u5904\u5973\u5929\u79E4\u5929\u874E\u5C04\u624B\u9B54\u7FAF";
+    var arr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
+    return s.substr(cMonth * 2 - (cDay < arr[cMonth - 1] ? 2 : 0), 2) + "\u5EA7"; // 座
+  },
+
+  /**
+      * 传入offset偏移量返回干支
+      * @param offset 相对甲子的偏移量
+      * @return Cn string
+      */
+  toGanZhi: function toGanZhi(offset) {
+    return this.Gan[offset % 10] + this.Zhi[offset % 12];
+  },
+  /**
+      * 传入公历(!)y年获得该年第n个节气的公历日期
+      * @param y公历年(1900-2100)；n二十四节气中的第几个节气(1~24)；从n=1(小寒)算起
+      * @return day Number
+      * @eg:var _24 = calendar.getTerm(1987,3) ;//_24=4;意即1987年2月4日立春
+      */
+  getTerm: function getTerm(y, n) {
+    if (y < 1900 || y > 2100) {
+      return -1;
+    }
+    if (n < 1 || n > 24) {
+      return -1;
+    }
+    var _table = this.sTermInfo[y - 1900];
+    var _info = [parseInt('0x' + _table.substr(0, 5)).toString(), parseInt('0x' + _table.substr(5, 5)).toString(), parseInt('0x' + _table.substr(10, 5)).toString(), parseInt('0x' + _table.substr(15, 5)).toString(), parseInt('0x' + _table.substr(20, 5)).toString(), parseInt('0x' + _table.substr(25, 5)).toString()];
+    var _calday = [_info[0].substr(0, 1), _info[0].substr(1, 2), _info[0].substr(3, 1), _info[0].substr(4, 2), _info[1].substr(0, 1), _info[1].substr(1, 2), _info[1].substr(3, 1), _info[1].substr(4, 2), _info[2].substr(0, 1), _info[2].substr(1, 2), _info[2].substr(3, 1), _info[2].substr(4, 2), _info[3].substr(0, 1), _info[3].substr(1, 2), _info[3].substr(3, 1), _info[3].substr(4, 2), _info[4].substr(0, 1), _info[4].substr(1, 2), _info[4].substr(3, 1), _info[4].substr(4, 2), _info[5].substr(0, 1), _info[5].substr(1, 2), _info[5].substr(3, 1), _info[5].substr(4, 2)];
+    return parseInt(_calday[n - 1]);
+  },
+  /**
+      * 传入农历数字月份返回汉语通俗表示法
+      * @param lunar month
+      * @return Cn string
+      * @eg:var cnMonth = calendar.toChinaMonth(12) ;//cnMonth='腊月'
+      */
+  toChinaMonth: function toChinaMonth(m) {
+    // 月 => \u6708
+    if (m > 12 || m < 1) {
+      return -1;
+    } // 若参数错误 返回-1
+    var s = this.nStr3[m - 1];
+    s += "\u6708"; // 加上月字
+    return s;
+  },
+  /**
+      * 传入农历日期数字返回汉字表示法
+      * @param lunar day
+      * @return Cn string
+      * @eg:var cnDay = calendar.toChinaDay(21) ;//cnMonth='廿一'
+      */
+  toChinaDay: function toChinaDay(d) {
+    // 日 => \u65e5
+    var s;
+    switch (d) {
+      case 10:
+        s = "\u521D\u5341";
+        break;
+      case 20:
+        s = "\u4E8C\u5341";
+        break;
+      case 30:
+        s = "\u4E09\u5341";
+        break;
+      default:
+        s = this.nStr2[Math.floor(d / 10)];
+        s += this.nStr1[d % 10];
+    }
+    return s;
+  },
+  /**
+      * 年份转生肖[!仅能大致转换] => 精确划分生肖分界线是“立春”
+      * @param y year
+      * @return Cn string
+      * @eg:var animal = calendar.getAnimal(1987) ;//animal='兔'
+      */
+  getAnimal: function getAnimal(y) {
+    return this.Animals[(y - 4) % 12];
+  },
+  /**
+      * 传入阳历年月日获得详细的公历、农历object信息 <=>JSON
+      * @param y  solar year
+      * @param m  solar month
+      * @param d  solar day
+      * @return JSON object
+      * @eg:console.log(calendar.solar2lunar(1987,11,01));
+      */
+  solar2lunar: function solar2lunar(y, m, d) {
+    // 参数区间1900.1.31~2100.12.31
+    // 年份限定、上限
+    if (y < 1900 || y > 2100) {
+      return -1; // undefined转换为数字变为NaN
+    }
+    // 公历传参最下限
+    if (y == 1900 && m == 1 && d < 31) {
+      return -1;
+    }
+    // 未传参  获得当天
+    if (!y) {
+      var objDate = new Date();
+    } else {
+      var objDate = new Date(y, parseInt(m) - 1, d);
+    }
+    var i;
+    var leap = 0;
+    var temp = 0;
+    // 修正ymd参数
+    var y = objDate.getFullYear();
+    var m = objDate.getMonth() + 1;
+    var d = objDate.getDate();
+    var offset = (Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate()) - Date.UTC(1900, 0, 31)) / 86400000;
+    for (i = 1900; i < 2101 && offset > 0; i++) {
+      temp = this.lYearDays(i);
+      offset -= temp;
+    }
+    if (offset < 0) {
+      offset += temp;
+      i--;
+    }
+
+    // 是否今天
+    var isTodayObj = new Date();
+    var isToday = false;
+    if (isTodayObj.getFullYear() == y && isTodayObj.getMonth() + 1 == m && isTodayObj.getDate() == d) {
+      isToday = true;
+    }
+    // 星期几
+    var nWeek = objDate.getDay();
+    var cWeek = this.nStr1[nWeek];
+    // 数字表示周几顺应天朝周一开始的惯例
+    if (nWeek == 0) {
+      nWeek = 7;
+    }
+    // 农历年
+    var year = i;
+    var leap = this.leapMonth(i); // 闰哪个月
+    var isLeap = false;
+
+    // 效验闰月
+    for (i = 1; i < 13 && offset > 0; i++) {
+      // 闰月
+      if (leap > 0 && i == leap + 1 && isLeap == false) {
+        --i;
+        isLeap = true;
+        temp = this.leapDays(year); // 计算农历闰月天数
+      } else {
+        temp = this.monthDays(year, i); // 计算农历普通月天数
+      }
+      // 解除闰月
+      if (isLeap == true && i == leap + 1) {
+        isLeap = false;
+      }
+      offset -= temp;
+    }
+    // 闰月导致数组下标重叠取反
+    if (offset == 0 && leap > 0 && i == leap + 1) {
+      if (isLeap) {
+        isLeap = false;
+      } else {
+        isLeap = true;
+        --i;
+      }
+    }
+    if (offset < 0) {
+      offset += temp;
+      --i;
+    }
+    // 农历月
+    var month = i;
+    // 农历日
+    var day = offset + 1;
+    // 天干地支处理
+    var sm = m - 1;
+    var gzY = this.toGanZhiYear(year);
+
+    // 当月的两个节气
+    // bugfix-2017-7-24 11:03:38 use lunar Year Param `y` Not `year`
+    var firstNode = this.getTerm(y, m * 2 - 1); // 返回当月「节」为几日开始
+    var secondNode = this.getTerm(y, m * 2); // 返回当月「节」为几日开始
+
+    // 依据12节气修正干支月
+    var gzM = this.toGanZhi((y - 1900) * 12 + m + 11);
+    if (d >= firstNode) {
+      gzM = this.toGanZhi((y - 1900) * 12 + m + 12);
+    }
+
+    // 传入的日期的节气与否
+    var isTerm = false;
+    var Term = null;
+    if (firstNode == d) {
+      isTerm = true;
+      Term = this.solarTerm[m * 2 - 2];
+    }
+    if (secondNode == d) {
+      isTerm = true;
+      Term = this.solarTerm[m * 2 - 1];
+    }
+    // 日柱 当月一日与 1900/1/1 相差天数
+    var dayCyclical = Date.UTC(y, sm, 1, 0, 0, 0, 0) / 86400000 + 25567 + 10;
+    var gzD = this.toGanZhi(dayCyclical + d - 1);
+    // 该日期所属的星座
+    var astro = this.toAstro(m, d);
+    return {
+      'lYear': year,
+      'lMonth': month,
+      'lDay': day,
+      'Animal': this.getAnimal(year),
+      'IMonthCn': (isLeap ? "\u95F0" : '') + this.toChinaMonth(month),
+      'IDayCn': this.toChinaDay(day),
+      'cYear': y,
+      'cMonth': m,
+      'cDay': d,
+      'gzYear': gzY,
+      'gzMonth': gzM,
+      'gzDay': gzD,
+      'isToday': isToday,
+      'isLeap': isLeap,
+      'nWeek': nWeek,
+      'ncWeek': "\u661F\u671F" + cWeek,
+      'isTerm': isTerm,
+      'Term': Term,
+      'astro': astro
+    };
+  },
+  /**
+      * 传入农历年月日以及传入的月份是否闰月获得详细的公历、农历object信息 <=>JSON
+      * @param y  lunar year
+      * @param m  lunar month
+      * @param d  lunar day
+      * @param isLeapMonth  lunar month is leap or not.[如果是农历闰月第四个参数赋值true即可]
+      * @return JSON object
+      * @eg:console.log(calendar.lunar2solar(1987,9,10));
+      */
+  lunar2solar: function lunar2solar(y, m, d, isLeapMonth) {
+    // 参数区间1900.1.31~2100.12.1
+    var isLeapMonth = !!isLeapMonth;
+    var leapOffset = 0;
+    var leapMonth = this.leapMonth(y);
+    var leapDay = this.leapDays(y);
+    if (isLeapMonth && leapMonth != m) {
+      return -1;
+    } // 传参要求计算该闰月公历 但该年得出的闰月与传参的月份并不同
+    if (y == 2100 && m == 12 && d > 1 || y == 1900 && m == 1 && d < 31) {
+      return -1;
+    } // 超出了最大极限值
+    var day = this.monthDays(y, m);
+    var _day = day;
+    // bugFix 2016-9-25
+    // if month is leap, _day use leapDays method
+    if (isLeapMonth) {
+      _day = this.leapDays(y, m);
+    }
+    if (y < 1900 || y > 2100 || d > _day) {
+      return -1;
+    } // 参数合法性效验
+
+    // 计算农历的时间差
+    var offset = 0;
+    for (var i = 1900; i < y; i++) {
+      offset += this.lYearDays(i);
+    }
+    var leap = 0;
+    var isAdd = false;
+    for (var i = 1; i < m; i++) {
+      leap = this.leapMonth(y);
+      if (!isAdd) {
+        // 处理闰月
+        if (leap <= i && leap > 0) {
+          offset += this.leapDays(y);
+          isAdd = true;
+        }
+      }
+      offset += this.monthDays(y, i);
+    }
+    // 转换闰月农历 需补充该年闰月的前一个月的时差
+    if (isLeapMonth) {
+      offset += day;
+    }
+    // 1900年农历正月一日的公历时间为1900年1月30日0时0分0秒(该时间也是本农历的最开始起始点)
+    var stmap = Date.UTC(1900, 1, 30, 0, 0, 0);
+    var calObj = new Date((offset + d - 31) * 86400000 + stmap);
+    var cY = calObj.getUTCFullYear();
+    var cM = calObj.getUTCMonth() + 1;
+    var cD = calObj.getUTCDate();
+    return this.solar2lunar(cY, cM, cD);
+  }
+};
+var _default = calendar;
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1560:
+/*!*******************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-calendar/components/uni-calendar/i18n/index.js ***!
+  \*******************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 1561));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 1562));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1563));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1561:
+/*!******************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-calendar/components/uni-calendar/i18n/en.json ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: uni-calender.ok, uni-calender.cancel, uni-calender.today, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.SUN, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-calender.ok\":\"ok\",\"uni-calender.cancel\":\"cancel\",\"uni-calender.today\":\"today\",\"uni-calender.MON\":\"MON\",\"uni-calender.TUE\":\"TUE\",\"uni-calender.WED\":\"WED\",\"uni-calender.THU\":\"THU\",\"uni-calender.FRI\":\"FRI\",\"uni-calender.SAT\":\"SAT\",\"uni-calender.SUN\":\"SUN\"}");
+
+/***/ }),
+
+/***/ 1562:
+/*!***********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-calendar/components/uni-calendar/i18n/zh-Hans.json ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: uni-calender.ok, uni-calender.cancel, uni-calender.today, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-calender.ok\":\"确定\",\"uni-calender.cancel\":\"取消\",\"uni-calender.today\":\"今日\",\"uni-calender.SUN\":\"日\",\"uni-calender.MON\":\"一\",\"uni-calender.TUE\":\"二\",\"uni-calender.WED\":\"三\",\"uni-calender.THU\":\"四\",\"uni-calender.FRI\":\"五\",\"uni-calender.SAT\":\"六\"}");
+
+/***/ }),
+
+/***/ 1563:
+/*!***********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-calendar/components/uni-calendar/i18n/zh-Hant.json ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: uni-calender.ok, uni-calender.cancel, uni-calender.today, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-calender.ok\":\"確定\",\"uni-calender.cancel\":\"取消\",\"uni-calender.today\":\"今日\",\"uni-calender.SUN\":\"日\",\"uni-calender.MON\":\"一\",\"uni-calender.TUE\":\"二\",\"uni-calender.WED\":\"三\",\"uni-calender.THU\":\"四\",\"uni-calender.FRI\":\"五\",\"uni-calender.SAT\":\"六\"}");
+
+/***/ }),
+
+/***/ 1585:
+/*!*********************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-fav/components/uni-fav/i18n/index.js ***!
+  \*********************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 1586));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 1587));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1588));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1586:
+/*!********************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-fav/components/uni-fav/i18n/en.json ***!
+  \********************************************************************************************************************************************************/
+/*! exports provided: uni-fav.collect, uni-fav.collected, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-fav.collect\":\"collect\",\"uni-fav.collected\":\"collected\"}");
+
+/***/ }),
+
+/***/ 1587:
+/*!*************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-fav/components/uni-fav/i18n/zh-Hans.json ***!
+  \*************************************************************************************************************************************************************/
+/*! exports provided: uni-fav.collect, uni-fav.collected, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-fav.collect\":\"收藏\",\"uni-fav.collected\":\"已收藏\"}");
+
+/***/ }),
+
+/***/ 1588:
+/*!*************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-fav/components/uni-fav/i18n/zh-Hant.json ***!
+  \*************************************************************************************************************************************************************/
+/*! exports provided: uni-fav.collect, uni-fav.collected, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-fav.collect\":\"收藏\",\"uni-fav.collected\":\"已收藏\"}");
+
+/***/ }),
+
+/***/ 1596:
+/*!*********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/index.js ***!
+  \*********************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 1597));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 1598));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1599));
+var _default = {
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 1597:
+/*!********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/en.json ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"shop\",\"uni-goods-nav.options.cart\":\"cart\",\"uni-goods-nav.buttonGroup.addToCart\":\"add to cart\",\"uni-goods-nav.buttonGroup.buyNow\":\"buy now\"}");
+
+/***/ }),
+
+/***/ 1598:
+/*!*************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hans.json ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店铺\",\"uni-goods-nav.options.cart\":\"购物车\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入购物车\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即购买\"}");
+
+/***/ }),
+
+/***/ 1599:
+/*!*************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-goods-nav/components/uni-goods-nav/i18n/zh-Hant.json ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: uni-goods-nav.options.shop, uni-goods-nav.options.cart, uni-goods-nav.buttonGroup.addToCart, uni-goods-nav.buttonGroup.buyNow, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-goods-nav.options.shop\":\"店鋪\",\"uni-goods-nav.options.cart\":\"購物車\",\"uni-goods-nav.buttonGroup.addToCart\":\"加入購物車\",\"uni-goods-nav.buttonGroup.buyNow\":\"立即購買\"}");
+
+/***/ }),
+
+/***/ 16:
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  return _setPrototypeOf(o, p);
+}
+module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 1607:
+/*!****************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
+  \****************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createAnimation = createAnimation;
+var _defineProperty2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/defineProperty */ 11));
+var _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ 23));
+var _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ 24));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2.default)(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+// const defaultOption = {
+// 	duration: 300,
+// 	timingFunction: 'linear',
+// 	delay: 0,
+// 	transformOrigin: '50% 50% 0'
+// }
+var MPAnimation = /*#__PURE__*/function () {
+  function MPAnimation(options, _this) {
+    (0, _classCallCheck2.default)(this, MPAnimation);
+    this.options = options;
+    // 在iOS10+QQ小程序平台下，传给原生的对象一定是个普通对象而不是Proxy对象，否则会报parameter should be Object instead of ProxyObject的错误
+    this.animation = uni.createAnimation(_objectSpread({}, options));
+    this.currentStepAnimates = {};
+    this.next = 0;
+    this.$ = _this;
+  }
+  (0, _createClass2.default)(MPAnimation, [{
+    key: "_nvuePushAnimates",
+    value: function _nvuePushAnimates(type, args) {
+      var aniObj = this.currentStepAnimates[this.next];
+      var styles = {};
+      if (!aniObj) {
+        styles = {
+          styles: {},
+          config: {}
+        };
+      } else {
+        styles = aniObj;
+      }
+      if (animateTypes1.includes(type)) {
+        if (!styles.styles.transform) {
+          styles.styles.transform = '';
+        }
+        var unit = '';
+        if (type === 'rotate') {
+          unit = 'deg';
+        }
+        styles.styles.transform += "".concat(type, "(").concat(args + unit, ") ");
+      } else {
+        styles.styles[type] = "".concat(args);
+      }
+      this.currentStepAnimates[this.next] = styles;
+    }
+  }, {
+    key: "_animateRun",
+    value: function _animateRun() {
+      var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var ref = this.$.$refs['ani'].ref;
+      if (!ref) return;
+      return new Promise(function (resolve, reject) {
+        nvueAnimation.transition(ref, _objectSpread({
+          styles: styles
+        }, config), function (res) {
+          resolve();
+        });
+      });
+    }
+  }, {
+    key: "_nvueNextAnimate",
+    value: function _nvueNextAnimate(animates) {
+      var _this2 = this;
+      var step = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var fn = arguments.length > 2 ? arguments[2] : undefined;
+      var obj = animates[step];
+      if (obj) {
+        var styles = obj.styles,
+          config = obj.config;
+        this._animateRun(styles, config).then(function () {
+          step += 1;
+          _this2._nvueNextAnimate(animates, step, fn);
+        });
+      } else {
+        this.currentStepAnimates = {};
+        typeof fn === 'function' && fn();
+        this.isEnd = true;
+      }
+    }
+  }, {
+    key: "step",
+    value: function step() {
+      var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.animation.step(config);
+      return this;
+    }
+  }, {
+    key: "run",
+    value: function run(fn) {
+      this.$.animationData = this.animation.export();
+      this.$.timer = setTimeout(function () {
+        typeof fn === 'function' && fn();
+      }, this.$.durationTime);
+    }
+  }]);
+  return MPAnimation;
+}();
+var animateTypes1 = ['matrix', 'matrix3d', 'rotate', 'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scale3d', 'scaleX', 'scaleY', 'scaleZ', 'skew', 'skewX', 'skewY', 'translate', 'translate3d', 'translateX', 'translateY', 'translateZ'];
+var animateTypes2 = ['opacity', 'backgroundColor'];
+var animateTypes3 = ['width', 'height', 'left', 'right', 'top', 'bottom'];
+animateTypes1.concat(animateTypes2, animateTypes3).forEach(function (type) {
+  MPAnimation.prototype[type] = function () {
+    var _this$animation;
+    (_this$animation = this.animation)[type].apply(_this$animation, arguments);
+    return this;
+  };
+});
+function createAnimation(option, _this) {
+  if (!_this) return;
+  clearTimeout(_this.timer);
+  return new MPAnimation(option, _this);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 1676:
+/*!************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-dateformat/components/uni-dateformat/date-format.js ***!
+  \************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.formatDate = formatDate;
+exports.friendlyDate = friendlyDate;
+var _typeof2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/typeof */ 13));
+// yyyy-MM-dd hh:mm:ss.SSS 所有支持的类型
+function pad(str) {
+  var length = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 2;
+  str += '';
+  while (str.length < length) {
+    str = '0' + str;
+  }
+  return str.slice(-length);
+}
+var parser = {
+  yyyy: function yyyy(dateObj) {
+    return pad(dateObj.year, 4);
+  },
+  yy: function yy(dateObj) {
+    return pad(dateObj.year);
+  },
+  MM: function MM(dateObj) {
+    return pad(dateObj.month);
+  },
+  M: function M(dateObj) {
+    return dateObj.month;
+  },
+  dd: function dd(dateObj) {
+    return pad(dateObj.day);
+  },
+  d: function d(dateObj) {
+    return dateObj.day;
+  },
+  hh: function hh(dateObj) {
+    return pad(dateObj.hour);
+  },
+  h: function h(dateObj) {
+    return dateObj.hour;
+  },
+  mm: function mm(dateObj) {
+    return pad(dateObj.minute);
+  },
+  m: function m(dateObj) {
+    return dateObj.minute;
+  },
+  ss: function ss(dateObj) {
+    return pad(dateObj.second);
+  },
+  s: function s(dateObj) {
+    return dateObj.second;
+  },
+  SSS: function SSS(dateObj) {
+    return pad(dateObj.millisecond, 3);
+  },
+  S: function S(dateObj) {
+    return dateObj.millisecond;
+  }
+};
+
+// 这都n年了iOS依然不认识2020-12-12，需要转换为2020/12/12
+function getDate(time) {
+  if (time instanceof Date) {
+    return time;
+  }
+  switch ((0, _typeof2.default)(time)) {
+    case 'string':
+      {
+        // 2020-12-12T12:12:12.000Z、2020-12-12T12:12:12.000
+        if (time.indexOf('T') > -1) {
+          return new Date(time);
+        }
+        return new Date(time.replace(/-/g, '/'));
+      }
+    default:
+      return new Date(time);
+  }
+}
+function formatDate(date) {
+  var format = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'yyyy/MM/dd hh:mm:ss';
+  if (!date && date !== 0) {
+    return '';
+  }
+  date = getDate(date);
+  var dateObj = {
+    year: date.getFullYear(),
+    month: date.getMonth() + 1,
+    day: date.getDate(),
+    hour: date.getHours(),
+    minute: date.getMinutes(),
+    second: date.getSeconds(),
+    millisecond: date.getMilliseconds()
+  };
+  var tokenRegExp = /yyyy|yy|MM|M|dd|d|hh|h|mm|m|ss|s|SSS|SS|S/;
+  var flag = true;
+  var result = format;
+  while (flag) {
+    flag = false;
+    result = result.replace(tokenRegExp, function (matched) {
+      flag = true;
+      return parser[matched](dateObj);
+    });
+  }
+  return result;
+}
+function friendlyDate(time, _ref) {
+  var _ref$locale = _ref.locale,
+    locale = _ref$locale === void 0 ? 'zh' : _ref$locale,
+    _ref$threshold = _ref.threshold,
+    threshold = _ref$threshold === void 0 ? [60000, 3600000] : _ref$threshold,
+    _ref$format = _ref.format,
+    format = _ref$format === void 0 ? 'yyyy/MM/dd hh:mm:ss' : _ref$format;
+  if (time === '-') {
+    return time;
+  }
+  if (!time && time !== 0) {
+    return '';
+  }
+  var localeText = {
+    zh: {
+      year: '年',
+      month: '月',
+      day: '天',
+      hour: '小时',
+      minute: '分钟',
+      second: '秒',
+      ago: '前',
+      later: '后',
+      justNow: '刚刚',
+      soon: '马上',
+      template: '{num}{unit}{suffix}'
+    },
+    en: {
+      year: 'year',
+      month: 'month',
+      day: 'day',
+      hour: 'hour',
+      minute: 'minute',
+      second: 'second',
+      ago: 'ago',
+      later: 'later',
+      justNow: 'just now',
+      soon: 'soon',
+      template: '{num} {unit} {suffix}'
+    }
+  };
+  var text = localeText[locale] || localeText.zh;
+  var date = getDate(time);
+  var ms = date.getTime() - Date.now();
+  var absMs = Math.abs(ms);
+  if (absMs < threshold[0]) {
+    return ms < 0 ? text.justNow : text.soon;
+  }
+  if (absMs >= threshold[1]) {
+    return formatDate(date, format);
+  }
+  var num;
+  var unit;
+  var suffix = text.later;
+  if (ms < 0) {
+    suffix = text.ago;
+    ms = -ms;
+  }
+  var seconds = Math.floor(ms / 1000);
+  var minutes = Math.floor(seconds / 60);
+  var hours = Math.floor(minutes / 60);
+  var days = Math.floor(hours / 24);
+  var months = Math.floor(days / 30);
+  var years = Math.floor(months / 12);
+  switch (true) {
+    case years > 0:
+      num = years;
+      unit = text.year;
+      break;
+    case months > 0:
+      num = months;
+      unit = text.month;
+      break;
+    case days > 0:
+      num = days;
+      unit = text.day;
+      break;
+    case hours > 0:
+      num = hours;
+      unit = text.hour;
+      break;
+    case minutes > 0:
+      num = minutes;
+      unit = text.minute;
+      break;
+    default:
+      num = seconds;
+      unit = text.second;
+      break;
+  }
+  if (locale === 'en') {
+    if (num === 1) {
+      num = 'a';
+    } else {
+      unit += 's';
+    }
+  }
+  return text.template.replace(/{\s*num\s*}/g, num + '').replace(/{\s*unit\s*}/g, unit).replace(/{\s*suffix\s*}/g, suffix);
+}
+
+/***/ }),
+
+/***/ 1696:
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-file-picker/components/uni-file-picker/choose-and-upload-file.js ***!
+  \*************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni, wx, uniCloud) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.chooseAndUploadFile = chooseAndUploadFile;
+exports.uploadCloudFiles = uploadCloudFiles;
+var ERR_MSG_OK = 'chooseAndUploadFile:ok';
+var ERR_MSG_FAIL = 'chooseAndUploadFile:fail';
+function chooseImage(opts) {
+  var count = opts.count,
+    _opts$sizeType = opts.sizeType,
+    sizeType = _opts$sizeType === void 0 ? ['original', 'compressed'] : _opts$sizeType,
+    sourceType = opts.sourceType,
+    extension = opts.extension;
+  return new Promise(function (resolve, reject) {
+    // 微信由于旧接口不再维护，针对微信小程序平台改用chooseMedia接口
+
+    uni.chooseMedia({
+      count: count,
+      sizeType: sizeType,
+      sourceType: sourceType,
+      mediaType: ['image'],
+      extension: extension,
+      success: function success(res) {
+        res.tempFiles.forEach(function (item) {
+          item.path = item.tempFilePath;
+        });
+        resolve(normalizeChooseAndUploadFileRes(res, 'image'));
+      },
+      fail: function fail(res) {
+        reject({
+          errMsg: res.errMsg.replace('chooseImage:fail', ERR_MSG_FAIL)
+        });
+      }
+    });
+  });
+}
+function chooseVideo(opts) {
+  var count = opts.count,
+    camera = opts.camera,
+    compressed = opts.compressed,
+    maxDuration = opts.maxDuration,
+    sourceType = opts.sourceType,
+    extension = opts.extension;
+  return new Promise(function (resolve, reject) {
+    // 微信由于旧接口不再维护，针对微信小程序平台改用chooseMedia接口
+
+    uni.chooseMedia({
+      count: count,
+      compressed: compressed,
+      maxDuration: maxDuration,
+      sourceType: sourceType,
+      extension: extension,
+      mediaType: ['video'],
+      success: function success(res) {
+        var tempFiles = res.tempFiles;
+        resolve(normalizeChooseAndUploadFileRes({
+          errMsg: 'chooseVideo:ok',
+          tempFiles: tempFiles.map(function (item) {
+            return {
+              name: item.name || '',
+              path: item.tempFilePath,
+              thumbTempFilePath: item.thumbTempFilePath,
+              size: item.size,
+              type: res.tempFile && res.tempFile.type || '',
+              width: item.width,
+              height: item.height,
+              duration: item.duration,
+              fileType: 'video',
+              cloudPath: ''
+            };
+          })
+        }, 'video'));
+      },
+      fail: function fail(res) {
+        reject({
+          errMsg: res.errMsg.replace('chooseVideo:fail', ERR_MSG_FAIL)
+        });
+      }
+    });
+  });
+}
+function chooseAll(opts) {
+  var count = opts.count,
+    extension = opts.extension;
+  return new Promise(function (resolve, reject) {
+    var chooseFile = uni.chooseFile;
+    if (typeof wx !== 'undefined' && typeof wx.chooseMessageFile === 'function') {
+      chooseFile = wx.chooseMessageFile;
+    }
+    if (typeof chooseFile !== 'function') {
+      return reject({
+        errMsg: ERR_MSG_FAIL + ' 请指定 type 类型，该平台仅支持选择 image 或 video。'
+      });
+    }
+    chooseFile({
+      type: 'all',
+      count: count,
+      extension: extension,
+      success: function success(res) {
+        resolve(normalizeChooseAndUploadFileRes(res));
+      },
+      fail: function fail(res) {
+        reject({
+          errMsg: res.errMsg.replace('chooseFile:fail', ERR_MSG_FAIL)
+        });
+      }
+    });
+  });
+}
+function normalizeChooseAndUploadFileRes(res, fileType) {
+  res.tempFiles.forEach(function (item, index) {
+    if (!item.name) {
+      item.name = item.path.substring(item.path.lastIndexOf('/') + 1);
+    }
+    if (fileType) {
+      item.fileType = fileType;
+    }
+    item.cloudPath = Date.now() + '_' + index + item.name.substring(item.name.lastIndexOf('.'));
+  });
+  if (!res.tempFilePaths) {
+    res.tempFilePaths = res.tempFiles.map(function (file) {
+      return file.path;
+    });
+  }
+  return res;
+}
+function uploadCloudFiles(files) {
+  var max = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
+  var _onUploadProgress = arguments.length > 2 ? arguments[2] : undefined;
+  files = JSON.parse(JSON.stringify(files));
+  var len = files.length;
+  var count = 0;
+  var self = this;
+  return new Promise(function (resolve) {
+    while (count < max) {
+      next();
+    }
+    function next() {
+      var cur = count++;
+      if (cur >= len) {
+        !files.find(function (item) {
+          return !item.url && !item.errMsg;
+        }) && resolve(files);
+        return;
+      }
+      var fileItem = files[cur];
+      var index = self.files.findIndex(function (v) {
+        return v.uuid === fileItem.uuid;
+      });
+      fileItem.url = '';
+      delete fileItem.errMsg;
+      uniCloud.uploadFile({
+        filePath: fileItem.path,
+        cloudPath: fileItem.cloudPath,
+        fileType: fileItem.fileType,
+        onUploadProgress: function onUploadProgress(res) {
+          res.index = index;
+          _onUploadProgress && _onUploadProgress(res);
+        }
+      }).then(function (res) {
+        fileItem.url = res.fileID;
+        fileItem.index = index;
+        if (cur < len) {
+          next();
+        }
+      }).catch(function (res) {
+        fileItem.errMsg = res.errMsg || res.message;
+        fileItem.index = index;
+        if (cur < len) {
+          next();
+        }
+      });
+    }
+  });
+}
+function uploadFiles(choosePromise, _ref) {
+  var onChooseFile = _ref.onChooseFile,
+    onUploadProgress = _ref.onUploadProgress;
+  return choosePromise.then(function (res) {
+    if (onChooseFile) {
+      var customChooseRes = onChooseFile(res);
+      if (typeof customChooseRes !== 'undefined') {
+        return Promise.resolve(customChooseRes).then(function (chooseRes) {
+          return typeof chooseRes === 'undefined' ? res : chooseRes;
+        });
+      }
+    }
+    return res;
+  }).then(function (res) {
+    if (res === false) {
+      return {
+        errMsg: ERR_MSG_OK,
+        tempFilePaths: [],
+        tempFiles: []
+      };
+    }
+    return res;
+  });
+}
+function chooseAndUploadFile() {
+  var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    type: 'all'
+  };
+  if (opts.type === 'image') {
+    return uploadFiles(chooseImage(opts), opts);
+  } else if (opts.type === 'video') {
+    return uploadFiles(chooseVideo(opts), opts);
+  }
+  return uploadFiles(chooseAll(opts), opts);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 28)["uniCloud"]))
+
+/***/ }),
+
+/***/ 1697:
+/*!********************************************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/uni_modules/uni-file-picker/components/uni-file-picker/utils.js ***!
+  \********************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.get_files_and_is_max = exports.get_file_info = exports.get_file_ext = exports.get_file_data = exports.get_extname = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 29));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 32));
+/**
+ * 获取文件名和后缀
+ * @param {String} name
+ */
+var get_file_ext = function get_file_ext(name) {
+  var last_len = name.lastIndexOf('.');
+  var len = name.length;
+  return {
+    name: name.substring(0, last_len),
+    ext: name.substring(last_len + 1, len)
+  };
+};
+
+/**
+ * 获取扩展名
+ * @param {Array} fileExtname
+ */
+exports.get_file_ext = get_file_ext;
+var get_extname = function get_extname(fileExtname) {
+  if (!Array.isArray(fileExtname)) {
+    var extname = fileExtname.replace(/(\[|\])/g, '');
+    return extname.split(',');
+  } else {
+    return fileExtname;
+  }
+  return [];
+};
+
+/**
+ * 获取文件和检测是否可选
+ */
+exports.get_extname = get_extname;
+var get_files_and_is_max = function get_files_and_is_max(res, _extname) {
+  var filePaths = [];
+  var files = [];
+  if (!_extname || _extname.length === 0) {
+    return {
+      filePaths: filePaths,
+      files: files
+    };
+  }
+  res.tempFiles.forEach(function (v) {
+    var fileFullName = get_file_ext(v.name);
+    var extname = fileFullName.ext.toLowerCase();
+    if (_extname.indexOf(extname) !== -1) {
+      files.push(v);
+      filePaths.push(v.path);
+    }
+  });
+  if (files.length !== res.tempFiles.length) {
+    uni.showToast({
+      title: "\u5F53\u524D\u9009\u62E9\u4E86".concat(res.tempFiles.length, "\u4E2A\u6587\u4EF6 \uFF0C").concat(res.tempFiles.length - files.length, " \u4E2A\u6587\u4EF6\u683C\u5F0F\u4E0D\u6B63\u786E"),
+      icon: 'none',
+      duration: 5000
+    });
+  }
+  return {
+    filePaths: filePaths,
+    files: files
+  };
+};
+
+/**
+ * 获取图片信息
+ * @param {Object} filepath
+ */
+exports.get_files_and_is_max = get_files_and_is_max;
+var get_file_info = function get_file_info(filepath) {
+  return new Promise(function (resolve, reject) {
+    uni.getImageInfo({
+      src: filepath,
+      success: function success(res) {
+        resolve(res);
+      },
+      fail: function fail(err) {
+        reject(err);
+      }
+    });
+  });
+};
+/**
+ * 获取封装数据
+ */
+exports.get_file_info = get_file_info;
+var get_file_data = /*#__PURE__*/function () {
+  var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(files) {
+    var type,
+      fileFullName,
+      extname,
+      filedata,
+      imageinfo,
+      _args = arguments;
+    return _regenerator.default.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            type = _args.length > 1 && _args[1] !== undefined ? _args[1] : 'image';
+            // 最终需要上传数据库的数据
+            fileFullName = get_file_ext(files.name);
+            extname = fileFullName.ext.toLowerCase();
+            filedata = {
+              name: files.name,
+              uuid: files.uuid,
+              extname: extname || '',
+              cloudPath: files.cloudPath,
+              fileType: files.fileType,
+              thumbTempFilePath: files.thumbTempFilePath,
+              url: files.path || files.path,
+              size: files.size,
+              //单位是字节
+              image: {},
+              path: files.path,
+              video: {}
+            };
+            if (!(type === 'image')) {
+              _context.next = 14;
+              break;
+            }
+            _context.next = 7;
+            return get_file_info(files.path);
+          case 7:
+            imageinfo = _context.sent;
+            delete filedata.video;
+            filedata.image.width = imageinfo.width;
+            filedata.image.height = imageinfo.height;
+            filedata.image.location = imageinfo.path;
+            _context.next = 15;
+            break;
+          case 14:
+            delete filedata.image;
+          case 15:
+            return _context.abrupt("return", filedata);
+          case 16:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return function get_file_data(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+exports.get_file_data = get_file_data;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 17:
+/*!*************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _isNativeReflectConstruct() {
+  try {
+    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+  } catch (t) {}
+  return (module.exports = _isNativeReflectConstruct = function _isNativeReflectConstruct() {
+    return !!t;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports)();
+}
+module.exports = _isNativeReflectConstruct, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 174:
+/*!***************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/common/graceChecker.js ***!
+  \***************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/**
+数据验证（表单验证）
+来自 grace.hcoder.net 
+作者 hcoder 深海
+*/
+var _default = {
+  error: '',
+  check: function check(data, rule) {
+    for (var i = 0; i < rule.length; i++) {
+      if (!rule[i].checkType) {
+        return true;
+      }
+      if (!rule[i].name) {
+        return true;
+      }
+      if (!rule[i].errorMsg) {
+        return true;
+      }
+      if (!data[rule[i].name]) {
+        this.error = rule[i].errorMsg;
+        return false;
+      }
+      switch (rule[i].checkType) {
+        case 'string':
+          var reg = new RegExp('^.{' + rule[i].checkRule + '}$');
+          if (!reg.test(data[rule[i].name])) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'int':
+          var reg = new RegExp('^(-[1-9]|[1-9])[0-9]{' + rule[i].checkRule + '}$');
+          if (!reg.test(data[rule[i].name])) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+          break;
+        case 'between':
+          if (!this.isNumber(data[rule[i].name])) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          var minMax = rule[i].checkRule.split(',');
+          minMax[0] = Number(minMax[0]);
+          minMax[1] = Number(minMax[1]);
+          if (data[rule[i].name] > minMax[1] || data[rule[i].name] < minMax[0]) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'betweenD':
+          var reg = /^-?[1-9][0-9]?$/;
+          if (!reg.test(data[rule[i].name])) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          var minMax = rule[i].checkRule.split(',');
+          minMax[0] = Number(minMax[0]);
+          minMax[1] = Number(minMax[1]);
+          if (data[rule[i].name] > minMax[1] || data[rule[i].name] < minMax[0]) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'betweenF':
+          var reg = /^-?[0-9][0-9]?.+[0-9]+$/;
+          if (!reg.test(data[rule[i].name])) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          var minMax = rule[i].checkRule.split(',');
+          minMax[0] = Number(minMax[0]);
+          minMax[1] = Number(minMax[1]);
+          if (data[rule[i].name] > minMax[1] || data[rule[i].name] < minMax[0]) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'same':
+          if (data[rule[i].name] != rule[i].checkRule) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'notsame':
+          if (data[rule[i].name] == rule[i].checkRule) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'email':
+          var reg = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+          if (!reg.test(data[rule[i].name])) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'phoneno':
+          var reg = /^1[0-9]{10,10}$/;
+          if (!reg.test(data[rule[i].name])) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'zipcode':
+          var reg = /^[0-9]{6}$/;
+          if (!reg.test(data[rule[i].name])) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'reg':
+          var reg = new RegExp(rule[i].checkRule);
+          if (!reg.test(data[rule[i].name])) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'in':
+          if (rule[i].checkRule.indexOf(data[rule[i].name]) == -1) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+        case 'notnull':
+          if (data[rule[i].name] == null || data[rule[i].name].length < 1) {
+            this.error = rule[i].errorMsg;
+            return false;
+          }
+          break;
+      }
+    }
+    return true;
+  },
+  isNumber: function isNumber(checkVal) {
+    var reg = /^-?[1-9][0-9]?.?[0-9]*$/;
+    return reg.test(checkVal);
+  }
+};
+exports.default = _default;
+
+/***/ }),
+
+/***/ 18:
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles.js */ 19);
+var iterableToArray = __webpack_require__(/*! ./iterableToArray.js */ 20);
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
+var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread.js */ 21);
+function _toConsumableArray(arr) {
+  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
+}
+module.exports = _toConsumableArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 19:
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 9);
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return arrayLikeToArray(arr);
+}
+module.exports = _arrayWithoutHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 2:
 /*!************************************************************!*\
   !*** ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js ***!
   \************************************************************/
@@ -2542,336 +13277,8 @@ exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"], __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 3)))
 
 /***/ }),
-/* 3 */
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
 
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 4 */
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    "default": obj
-  };
-}
-module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 5 */
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles.js */ 6);
-var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit.js */ 7);
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
-var nonIterableRest = __webpack_require__(/*! ./nonIterableRest.js */ 10);
-function _slicedToArray(arr, i) {
-  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
-}
-module.exports = _slicedToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 6 */
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-module.exports = _arrayWithHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 7 */
-/*!*********************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _iterableToArrayLimit(r, l) {
-  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
-  if (null != t) {
-    var e,
-      n,
-      i,
-      u,
-      a = [],
-      f = !0,
-      o = !1;
-    try {
-      if (i = (t = t.call(r)).next, 0 === l) {
-        if (Object(t) !== t) return;
-        f = !1;
-      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0) {
-        ;
-      }
-    } catch (r) {
-      o = !0, n = r;
-    } finally {
-      try {
-        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
-      } finally {
-        if (o) throw n;
-      }
-    }
-    return a;
-  }
-}
-module.exports = _iterableToArrayLimit, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 8 */
-/*!***************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 9);
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
-}
-module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 9 */
-/*!*****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
-  return arr2;
-}
-module.exports = _arrayLikeToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 10 */
-/*!****************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/nonIterableRest.js ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-module.exports = _nonIterableRest, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 11 */
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var toPropertyKey = __webpack_require__(/*! ./toPropertyKey.js */ 12);
-function _defineProperty(obj, key, value) {
-  key = toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-module.exports = _defineProperty, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 12 */
-/*!**************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toPropertyKey.js ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-var toPrimitive = __webpack_require__(/*! ./toPrimitive.js */ 14);
-function toPropertyKey(t) {
-  var i = toPrimitive(t, "string");
-  return "symbol" == _typeof(i) ? i : i + "";
-}
-module.exports = toPropertyKey, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 13 */
-/*!*******************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _typeof(o) {
-  "@babel/helpers - typeof";
-
-  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
-    return typeof o;
-  } : function (o) {
-    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(o);
-}
-module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 14 */
-/*!************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toPrimitive.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(/*! ./typeof.js */ 13)["default"];
-function toPrimitive(t, r) {
-  if ("object" != _typeof(t) || !t) return t;
-  var e = t[Symbol.toPrimitive];
-  if (void 0 !== e) {
-    var i = e.call(t, r || "default");
-    if ("object" != _typeof(i)) return i;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return ("string" === r ? String : Number)(t);
-}
-module.exports = toPrimitive, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 15 */
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/construct.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(/*! ./setPrototypeOf.js */ 16);
-var isNativeReflectConstruct = __webpack_require__(/*! ./isNativeReflectConstruct.js */ 17);
-function _construct(t, e, r) {
-  if (isNativeReflectConstruct()) return Reflect.construct.apply(null, arguments);
-  var o = [null];
-  o.push.apply(o, e);
-  var p = new (t.bind.apply(t, o))();
-  return r && setPrototypeOf(p, r.prototype), p;
-}
-module.exports = _construct, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 16 */
-/*!***************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/setPrototypeOf.js ***!
-  \***************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
-  return _setPrototypeOf(o, p);
-}
-module.exports = _setPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 17 */
-/*!*************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-function _isNativeReflectConstruct() {
-  try {
-    var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-  } catch (t) {}
-  return (module.exports = _isNativeReflectConstruct = function _isNativeReflectConstruct() {
-    return !!t;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports)();
-}
-module.exports = _isNativeReflectConstruct, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 18 */
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/toConsumableArray.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayWithoutHoles = __webpack_require__(/*! ./arrayWithoutHoles.js */ 19);
-var iterableToArray = __webpack_require__(/*! ./iterableToArray.js */ 20);
-var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
-var nonIterableSpread = __webpack_require__(/*! ./nonIterableSpread.js */ 21);
-function _toConsumableArray(arr) {
-  return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
-}
-module.exports = _toConsumableArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 19 */
-/*!******************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/arrayWithoutHoles.js ***!
-  \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 9);
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return arrayLikeToArray(arr);
-}
-module.exports = _arrayWithoutHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-/* 20 */
+/***/ 20:
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/iterableToArray.js ***!
   \****************************************************************/
@@ -2884,7 +13291,8 @@ function _iterableToArray(iter) {
 module.exports = _iterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 21 */
+
+/***/ 21:
 /*!******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/nonIterableSpread.js ***!
   \******************************************************************/
@@ -2897,7 +13305,8 @@ function _nonIterableSpread() {
 module.exports = _nonIterableSpread, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 22 */
+
+/***/ 22:
 /*!*************************************************************!*\
   !*** ./node_modules/@dcloudio/uni-i18n/dist/uni-i18n.es.js ***!
   \*************************************************************/
@@ -3433,7 +13842,8 @@ function resolveLocaleChain(locale) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./../../../webpack/buildin/global.js */ 3)))
 
 /***/ }),
-/* 23 */
+
+/***/ 23:
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/classCallCheck.js ***!
   \***************************************************************/
@@ -3448,7 +13858,8 @@ function _classCallCheck(instance, Constructor) {
 module.exports = _classCallCheck, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 24 */
+
+/***/ 24:
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/createClass.js ***!
   \************************************************************/
@@ -3476,7 +13887,8 @@ function _createClass(Constructor, protoProps, staticProps) {
 module.exports = _createClass, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 25 */
+
+/***/ 25:
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
   \******************************************************************************************/
@@ -9557,17 +19969,19 @@ internalMixin(Vue);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ 3)))
 
 /***/ }),
-/* 26 */
-/*!*****************************************************************************!*\
-  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery/pages.json ***!
-  \*****************************************************************************/
+
+/***/ 26:
+/*!***************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/pages.json ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 27 */
+
+/***/ 27:
 /*!*******************************************************************!*\
   !*** ./node_modules/@dcloudio/uni-stat/dist/uni-cloud-stat.es.js ***!
   \*******************************************************************/
@@ -11134,7 +21548,8 @@ main();
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 28)["uniCloud"]))
 
 /***/ }),
-/* 28 */
+
+/***/ 28:
 /*!************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js ***!
   \************************************************************************************/
@@ -19543,7 +29958,8 @@ exports.default = er;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ 3), __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/wx.js */ 1)["default"]))
 
 /***/ }),
-/* 29 */
+
+/***/ 29:
 /*!************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/@babel/runtime/regenerator/index.js ***!
   \************************************************************************************************/
@@ -19556,7 +29972,39 @@ var runtime = __webpack_require__(/*! @babel/runtime/helpers/regeneratorRuntime 
 module.exports = runtime;
 
 /***/ }),
-/* 30 */
+
+/***/ 3:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 30:
 /*!*******************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/regeneratorRuntime.js ***!
   \*******************************************************************/
@@ -19877,7 +30325,8 @@ function _regeneratorRuntime() {
 module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 31 */
+
+/***/ 31:
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/assertThisInitialized.js ***!
   \**********************************************************************/
@@ -19893,7 +30342,8 @@ function _assertThisInitialized(self) {
 module.exports = _assertThisInitialized, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 32 */
+
+/***/ 32:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/asyncToGenerator.js ***!
   \*****************************************************************/
@@ -19933,7 +30383,8 @@ function _asyncToGenerator(fn) {
 module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 33 */
+
+/***/ 33:
 /*!*********************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/inherits.js ***!
   \*********************************************************/
@@ -19960,7 +30411,8 @@ function _inherits(subClass, superClass) {
 module.exports = _inherits, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 34 */
+
+/***/ 34:
 /*!**************************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js ***!
   \**************************************************************************/
@@ -19980,7 +30432,8 @@ function _possibleConstructorReturn(self, call) {
 module.exports = _possibleConstructorReturn, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 35 */
+
+/***/ 35:
 /*!***************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/getPrototypeOf.js ***!
   \***************************************************************/
@@ -19996,7 +30449,8 @@ function _getPrototypeOf(o) {
 module.exports = _getPrototypeOf, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 36 */
+
+/***/ 36:
 /*!****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/wrapNativeSuper.js ***!
   \****************************************************************/
@@ -20036,7 +30490,8 @@ function _wrapNativeSuper(Class) {
 module.exports = _wrapNativeSuper, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 37 */
+
+/***/ 37:
 /*!*****************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/isNativeFunction.js ***!
   \*****************************************************************/
@@ -20053,10 +30508,11 @@ function _isNativeFunction(fn) {
 module.exports = _isNativeFunction, module.exports.__esModule = true, module.exports["default"] = module.exports;
 
 /***/ }),
-/* 38 */
-/*!**********************************************************************************************************!*\
-  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery/pages.json?{"type":"origin-pages-json"} ***!
-  \**********************************************************************************************************/
+
+/***/ 38:
+/*!********************************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/pages.json?{"type":"origin-pages-json"} ***!
+  \********************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20083,7 +30539,7 @@ var _default = {
   "pages": [{
     "path": "pages/tabBar/component/component",
     "style": {
-      "navigationBarTitleText": "实时状态",
+      "navigationBarTitleText": "内置组件",
       "app-plus": {
         "bounce": "vertical",
         "titleNView": {
@@ -20099,7 +30555,7 @@ var _default = {
   }, {
     "path": "pages/tabBar/API/API",
     "style": {
-      "navigationBarTitleText": "显示与控制",
+      "navigationBarTitleText": "接口",
       "app-plus": {
         "titleNView": {
           "buttons": [{
@@ -20114,7 +30570,7 @@ var _default = {
   }, {
     "path": "pages/tabBar/extUI/extUI",
     "style": {
-      "navigationBarTitleText": "系统设置",
+      "navigationBarTitleText": "扩展组件",
       "app-plus": {
         "titleNView": {
           "buttons": [{
@@ -20966,10 +31422,11 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 39 */
-/*!*********************************************************************************************!*\
-  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery/pages.json?{"type":"stat"} ***!
-  \*********************************************************************************************/
+
+/***/ 39:
+/*!*******************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/pages.json?{"type":"stat"} ***!
+  \*******************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -20986,10 +31443,27 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 40 */
-/*!**********************************************************************************************!*\
-  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery/pages.json?{"type":"style"} ***!
-  \**********************************************************************************************/
+
+/***/ 4:
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/interopRequireDefault.js ***!
+  \**********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    "default": obj
+  };
+}
+module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 40:
+/*!********************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/pages.json?{"type":"style"} ***!
+  \********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -21003,459 +31477,1154 @@ exports.default = void 0;
 var _default = {
   "pages": {
     "pages/tabBar/component/component": {
-      "navigationBarTitleText": "实时状态"
+      "navigationBarTitleText": "内置组件",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "u-link": "/components/u-link/u-link"
+      }
     },
     "pages/tabBar/API/API": {
-      "navigationBarTitleText": "显示与控制"
+      "navigationBarTitleText": "接口",
+      "usingComponents": {
+        "set-tab-bar": "/components/api-set-tabbar"
+      },
+      "usingAutoImportComponents": {
+        "u-link": "/components/u-link/u-link"
+      }
+    },
+    "pages/tabBar/template/template": {
+      "navigationBarTitleText": "模版",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "u-link": "/components/u-link/u-link"
+      }
     },
     "pages/tabBar/extUI/extUI": {
-      "navigationBarTitleText": "系统设置"
+      "navigationBarTitleText": "扩展组件",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "u-link": "/components/u-link/u-link"
+      }
     },
     "pages/component/view/view": {
-      "navigationBarTitleText": "view"
+      "navigationBarTitleText": "view",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/scroll-view/scroll-view": {
-      "navigationBarTitleText": "scroll-view"
+      "navigationBarTitleText": "scroll-view",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/swiper/swiper": {
-      "navigationBarTitleText": "swiper"
+      "navigationBarTitleText": "swiper",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/cover-view/cover-view": {
-      "navigationBarTitleText": "cover-view"
+      "navigationBarTitleText": "cover-view",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/movable-view/movable-view": {
-      "navigationBarTitleText": "movable-view"
+      "navigationBarTitleText": "movable-view",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/text/text": {
-      "navigationBarTitleText": "text"
+      "navigationBarTitleText": "text",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/rich-text/rich-text": {
-      "navigationBarTitleText": "rich-text"
+      "navigationBarTitleText": "rich-text",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/progress/progress": {
-      "navigationBarTitleText": "progress"
+      "navigationBarTitleText": "progress",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head",
+        "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons"
+      }
     },
     "pages/component/button/button": {
-      "navigationBarTitleText": "button"
+      "navigationBarTitleText": "button",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/checkbox/checkbox": {
-      "navigationBarTitleText": "checkbox"
+      "navigationBarTitleText": "checkbox",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/form/form": {
-      "navigationBarTitleText": "form"
+      "navigationBarTitleText": "form",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/input/input": {
-      "navigationBarTitleText": "input"
+      "navigationBarTitleText": "input",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/component/label/label": {
-      "navigationBarTitleText": "label"
+      "navigationBarTitleText": "label",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/picker/picker": {
-      "navigationBarTitleText": "picker"
+      "navigationBarTitleText": "picker",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/picker-view/picker-view": {
-      "navigationBarTitleText": "picker-view"
+      "navigationBarTitleText": "picker-view",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/radio/radio": {
-      "navigationBarTitleText": "radio"
+      "navigationBarTitleText": "radio",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/slider/slider": {
-      "navigationBarTitleText": "slider"
+      "navigationBarTitleText": "slider",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/switch/switch": {
-      "navigationBarTitleText": "switch"
+      "navigationBarTitleText": "switch",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/textarea/textarea": {
-      "navigationBarTitleText": "textarea"
+      "navigationBarTitleText": "textarea",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/editor/editor": {
-      "navigationBarTitleText": "editor"
+      "navigationBarTitleText": "editor",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/component/navigator/navigator": {
-      "navigationBarTitleText": "navigator"
+      "navigationBarTitleText": "navigator",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/navigator/navigate/navigate": {
-      "navigationBarTitleText": "navigatePage"
+      "navigationBarTitleText": "navigatePage",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/navigator/redirect/redirect": {
-      "navigationBarTitleText": "redirectPage"
+      "navigationBarTitleText": "redirectPage",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/image/image": {
-      "navigationBarTitleText": "image"
+      "navigationBarTitleText": "image",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/video/video": {
-      "navigationBarTitleText": "video"
+      "navigationBarTitleText": "video",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/map/map": {
-      "navigationBarTitleText": "map"
+      "navigationBarTitleText": "map",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/canvas/canvas": {
-      "navigationBarTitleText": "canvas"
+      "navigationBarTitleText": "canvas",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/component/web-view/web-view": {
-      "navigationBarTitleText": "web-view"
+      "navigationBarTitleText": "web-view",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/API/login/login": {
-      "navigationBarTitleText": "授权登录"
+      "navigationBarTitleText": "授权登录",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/get-user-info/get-user-info": {
-      "navigationBarTitleText": "获取用户信息"
+      "navigationBarTitleText": "获取用户信息",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/request-payment/request-payment": {
-      "navigationBarTitleText": "发起支付"
+      "navigationBarTitleText": "发起支付",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/share/share": {
-      "navigationBarTitleText": "分享"
+      "navigationBarTitleText": "分享",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/set-navigation-bar-title/set-navigation-bar-title": {
-      "navigationBarTitleText": "设置界面标题"
+      "navigationBarTitleText": "设置界面标题",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/show-loading/show-loading": {
-      "navigationBarTitleText": "加载提示框"
+      "navigationBarTitleText": "加载提示框",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/navigator/navigator": {
-      "navigationBarTitleText": "页面跳转"
+      "navigationBarTitleText": "页面跳转",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/navigator/new-page/new-vue-page-1": {
-      "navigationBarTitleText": "新VUE页面1"
+      "navigationBarTitleText": "新VUE页面1",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/navigator/new-page/new-vue-page-2": {
-      "navigationBarTitleText": "新VUE页面2"
+      "navigationBarTitleText": "新VUE页面2",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/API/navigator/new-page/new-nvue-page-1": {
-      "navigationBarTitleText": "新NVUE页面1"
+      "navigationBarTitleText": "新NVUE页面1",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/API/navigator/new-page/new-nvue-page-2": {
-      "navigationBarTitleText": "新NVUE页面2"
+      "navigationBarTitleText": "新NVUE页面2",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/API/pull-down-refresh/pull-down-refresh": {
       "navigationBarTitleText": "下拉刷新",
-      "enablePullDownRefresh": true
+      "enablePullDownRefresh": true,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/animation/animation": {
-      "navigationBarTitleText": "创建动画"
+      "navigationBarTitleText": "创建动画",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/get-node-info/get-node-info": {
-      "navigationBarTitleText": "节点信息"
+      "navigationBarTitleText": "节点信息",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/intersection-observer/intersection-observer": {
-      "navigationBarTitleText": "节点布局相交状态"
+      "navigationBarTitleText": "节点布局相交状态",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/canvas/canvas": {
-      "navigationBarTitleText": "创建绘画"
+      "navigationBarTitleText": "创建绘画",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/action-sheet/action-sheet": {
-      "navigationBarTitleText": "操作菜单"
+      "navigationBarTitleText": "操作菜单",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/modal/modal": {
-      "navigationBarTitleText": "模态弹窗"
+      "navigationBarTitleText": "模态弹窗",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/toast/toast": {
-      "navigationBarTitleText": "消息提示框"
+      "navigationBarTitleText": "消息提示框",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/get-network-type/get-network-type": {
-      "navigationBarTitleText": "获取设备网络状态"
+      "navigationBarTitleText": "获取设备网络状态",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/get-system-info/get-system-info": {
-      "navigationBarTitleText": "获取设备系统信息"
+      "navigationBarTitleText": "获取设备系统信息",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/add-phone-contact/add-phone-contact": {
-      "navigationBarTitleText": "添加手机联系人"
+      "navigationBarTitleText": "添加手机联系人",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/on-accelerometer-change/on-accelerometer-change": {
-      "navigationBarTitleText": "监听加速度计数据"
+      "navigationBarTitleText": "监听加速度计数据",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/on-compass-change/on-compass-change": {
-      "navigationBarTitleText": "监听罗盘数据"
+      "navigationBarTitleText": "监听罗盘数据",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/make-phone-call/make-phone-call": {
-      "navigationBarTitleText": "打电话"
+      "navigationBarTitleText": "打电话",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/scan-code/scan-code": {
-      "navigationBarTitleText": "扫码"
+      "navigationBarTitleText": "扫码",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/clipboard/clipboard": {
-      "navigationBarTitleText": "剪贴板"
+      "navigationBarTitleText": "剪贴板",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/request/request": {
-      "navigationBarTitleText": "网络请求"
+      "navigationBarTitleText": "网络请求",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/upload-file/upload-file": {
-      "navigationBarTitleText": "上传文件"
+      "navigationBarTitleText": "上传文件",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/download-file/download-file": {
-      "navigationBarTitleText": "下载文件"
+      "navigationBarTitleText": "下载文件",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/image/image": {
-      "navigationBarTitleText": "图片"
+      "navigationBarTitleText": "图片",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/voice/voice": {
-      "navigationBarTitleText": "录音"
+      "navigationBarTitleText": "录音",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/inner-audio/inner-audio": {
-      "navigationBarTitleText": "音频"
+      "navigationBarTitleText": "音频",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/background-audio/background-audio": {
-      "navigationBarTitleText": "背景音频"
+      "navigationBarTitleText": "背景音频",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/video/video": {
-      "navigationBarTitleText": "视频"
+      "navigationBarTitleText": "视频",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/file/file": {
-      "navigationBarTitleText": "文件"
+      "navigationBarTitleText": "文件",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/map/map": {
-      "navigationBarTitleText": "map"
+      "navigationBarTitleText": "map",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/API/get-location/get-location": {
-      "navigationBarTitleText": "获取位置"
+      "navigationBarTitleText": "获取位置",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head",
+        "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup"
+      }
     },
     "pages/API/open-location/open-location": {
-      "navigationBarTitleText": "查看位置"
+      "navigationBarTitleText": "查看位置",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/choose-location/choose-location": {
-      "navigationBarTitleText": "使用地图选择位置"
+      "navigationBarTitleText": "使用地图选择位置",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/storage/storage": {
-      "navigationBarTitleText": "数据存储"
+      "navigationBarTitleText": "数据存储",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/sqlite/sqlite": {
-      "navigationBarTitleText": "SQLite"
+      "navigationBarTitleText": "SQLite",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/rewarded-video-ad/rewarded-video-ad": {
-      "navigationBarTitleText": "激励视频广告"
+      "navigationBarTitleText": "激励视频广告",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/brightness/brightness": {
-      "navigationBarTitleText": "屏幕亮度"
+      "navigationBarTitleText": "屏幕亮度",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/save-media/save-media": {
-      "navigationBarTitleText": "保存媒体到本地"
+      "navigationBarTitleText": "保存媒体到本地",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/bluetooth/bluetooth": {
-      "navigationBarTitleText": "蓝牙"
+      "navigationBarTitleText": "蓝牙",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/soter/soter": {
-      "navigationBarTitleText": "生物认证"
+      "navigationBarTitleText": "生物认证",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/ibeacon/ibeacon": {
-      "navigationBarTitleText": "iBeacon"
+      "navigationBarTitleText": "iBeacon",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/vibrate/vibrate": {
-      "navigationBarTitleText": "震动"
+      "navigationBarTitleText": "震动",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/websocket-socketTask/websocket-socketTask": {
-      "navigationBarTitleText": "websocket-socketTask"
+      "navigationBarTitleText": "websocket-socketTask",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/API/websocket-global/websocket-global": {
-      "navigationBarTitleText": "websocket-global"
+      "navigationBarTitleText": "websocket-global",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/extUI/forms/forms": {
-      "navigationBarTitleText": "Form 表单"
+      "navigationBarTitleText": "Form 表单",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-forms": "/uni_modules/uni-forms/components/uni-forms/uni-forms",
+        "uni-forms-item": "/uni_modules/uni-forms/components/uni-forms-item/uni-forms-item",
+        "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput",
+        "uni-data-checkbox": "/uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox",
+        "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker",
+        "uni-data-picker": "/uni_modules/uni-data-picker/components/uni-data-picker/uni-data-picker",
+        "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select",
+        "uni-segmented-control": "/uni_modules/uni-segmented-control/components/uni-segmented-control/uni-segmented-control"
+      }
     },
     "pages/extUI/group/group": {
-      "navigationBarTitleText": "Group 分组"
+      "navigationBarTitleText": "Group 分组",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-group": "/uni_modules/uni-group/components/uni-group/uni-group"
+      }
     },
     "pages/extUI/badge/badge": {
-      "navigationBarTitleText": "Badge 数字角标"
+      "navigationBarTitleText": "Badge 数字角标",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-badge": "/uni_modules/uni-badge/components/uni-badge/uni-badge"
+      }
     },
     "pages/extUI/breadcrumb/breadcrumb": {
-      "navigationBarTitleText": "Breadcrumb 面包屑"
+      "navigationBarTitleText": "Breadcrumb 面包屑",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-breadcrumb": "/uni_modules/uni-breadcrumb/components/uni-breadcrumb/uni-breadcrumb",
+        "uni-breadcrumb-item": "/uni_modules/uni-breadcrumb/components/uni-breadcrumb-item/uni-breadcrumb-item"
+      }
     },
     "pages/extUI/countdown/countdown": {
-      "navigationBarTitleText": "Countdown 倒计时"
+      "navigationBarTitleText": "Countdown 倒计时",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-countdown": "/uni_modules/uni-countdown/components/uni-countdown/uni-countdown"
+      }
     },
     "pages/extUI/drawer/drawer": {
-      "navigationBarTitleText": "Drawer 抽屉"
+      "navigationBarTitleText": "Drawer 抽屉",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-drawer": "/uni_modules/uni-drawer/components/uni-drawer/uni-drawer"
+      }
     },
     "pages/extUI/icons/icons": {
-      "navigationBarTitleText": "Icons 图标"
+      "navigationBarTitleText": "Icons 图标",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons"
+      }
     },
     "pages/extUI/load-more/load-more": {
-      "navigationBarTitleText": "LoadMore 加载更多"
+      "navigationBarTitleText": "LoadMore 加载更多",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-load-more": "/uni_modules/uni-load-more/components/uni-load-more/uni-load-more"
+      }
     },
     "pages/extUI/nav-bar/nav-bar": {
       "navigationBarTitleText": "NavBar 导航栏",
       "navigationStyle": "custom",
-      "enablePullDownRefresh": true
+      "enablePullDownRefresh": true,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-nav-bar": "/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar",
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons"
+      }
     },
     "pages/extUI/number-box/number-box": {
-      "navigationBarTitleText": "NumberBox 数字输入框"
+      "navigationBarTitleText": "NumberBox 数字输入框",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-number-box": "/uni_modules/uni-number-box/components/uni-number-box/uni-number-box"
+      }
     },
     "pages/extUI/popup/popup": {
-      "navigationBarTitleText": "Popup 弹出层"
+      "navigationBarTitleText": "Popup 弹出层",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup",
+        "uni-popup-message": "/uni_modules/uni-popup/components/uni-popup-message/uni-popup-message",
+        "uni-popup-dialog": "/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog",
+        "uni-popup-share": "/uni_modules/uni-popup/components/uni-popup-share/uni-popup-share"
+      }
     },
     "pages/extUI/segmented-control/segmented-control": {
-      "navigationBarTitleText": "SegmentedControl 分段器"
+      "navigationBarTitleText": "SegmentedControl 分段器",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-segmented-control": "/uni_modules/uni-segmented-control/components/uni-segmented-control/uni-segmented-control"
+      }
     },
     "pages/extUI/tag/tag": {
-      "navigationBarTitleText": "Tag 标签"
+      "navigationBarTitleText": "Tag 标签",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-tag": "/uni_modules/uni-tag/components/uni-tag/uni-tag"
+      }
     },
     "pages/extUI/list/list": {
-      "navigationBarTitleText": "List 列表"
+      "navigationBarTitleText": "List 列表",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-list": "/uni_modules/uni-list/components/uni-list/uni-list",
+        "uni-list-item": "/uni_modules/uni-list/components/uni-list-item/uni-list-item"
+      }
     },
     "pages/extUI/card/card": {
-      "navigationBarTitleText": "Card 卡片"
+      "navigationBarTitleText": "Card 卡片",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+        "uni-list": "/uni_modules/uni-list/components/uni-list/uni-list",
+        "uni-list-item": "/uni_modules/uni-list/components/uni-list-item/uni-list-item"
+      }
     },
     "pages/extUI/collapse/collapse": {
-      "navigationBarTitleText": "Collapse 折叠面板"
+      "navigationBarTitleText": "Collapse 折叠面板",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-collapse": "/uni_modules/uni-collapse/components/uni-collapse/uni-collapse",
+        "uni-collapse-item": "/uni_modules/uni-collapse/components/uni-collapse-item/uni-collapse-item",
+        "uni-list": "/uni_modules/uni-list/components/uni-list/uni-list",
+        "uni-list-item": "/uni_modules/uni-list/components/uni-list-item/uni-list-item"
+      }
     },
     "pages/extUI/pagination/pagination": {
-      "navigationBarTitleText": "Pagination 分页器"
+      "navigationBarTitleText": "Pagination 分页器",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-pagination": "/uni_modules/uni-pagination/components/uni-pagination/uni-pagination"
+      }
     },
     "pages/extUI/swiper-dot/swiper-dot": {
-      "navigationBarTitleText": "SwiperDot 轮播图指示点"
+      "navigationBarTitleText": "SwiperDot 轮播图指示点",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-swiper-dot": "/uni_modules/uni-swiper-dot/components/uni-swiper-dot/uni-swiper-dot",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section"
+      }
     },
     "pages/extUI/grid/grid": {
-      "navigationBarTitleText": "Grid 宫格"
+      "navigationBarTitleText": "Grid 宫格",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-grid": "/uni_modules/uni-grid/components/uni-grid/uni-grid",
+        "uni-grid-item": "/uni_modules/uni-grid/components/uni-grid-item/uni-grid-item",
+        "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons",
+        "uni-badge": "/uni_modules/uni-badge/components/uni-badge/uni-badge"
+      }
     },
     "pages/extUI/rate/rate": {
-      "navigationBarTitleText": "Rate 评分"
+      "navigationBarTitleText": "Rate 评分",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-rate": "/uni_modules/uni-rate/components/uni-rate/uni-rate"
+      }
     },
     "pages/extUI/steps/steps": {
-      "navigationBarTitleText": "Steps 步骤条"
+      "navigationBarTitleText": "Steps 步骤条",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-steps": "/uni_modules/uni-steps/components/uni-steps/uni-steps"
+      }
     },
     "pages/extUI/notice-bar/notice-bar": {
-      "navigationBarTitleText": "NoticeBar 通告栏"
+      "navigationBarTitleText": "NoticeBar 通告栏",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-notice-bar": "/uni_modules/uni-notice-bar/components/uni-notice-bar/uni-notice-bar"
+      }
     },
     "pages/extUI/swipe-action/swipe-action": {
-      "navigationBarTitleText": "SwipeAction 滑动操作"
+      "navigationBarTitleText": "SwipeAction 滑动操作",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-swipe-action": "/uni_modules/uni-swipe-action/components/uni-swipe-action/uni-swipe-action",
+        "uni-swipe-action-item": "/uni_modules/uni-swipe-action/components/uni-swipe-action-item/uni-swipe-action-item"
+      }
     },
     "pages/extUI/search-bar/search-bar": {
-      "navigationBarTitleText": "SearchBar 搜索栏"
+      "navigationBarTitleText": "SearchBar 搜索栏",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-search-bar": "/uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar",
+        "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons"
+      }
     },
     "pages/extUI/calendar/calendar": {
-      "navigationBarTitleText": "Calendar 日历"
+      "navigationBarTitleText": "Calendar 日历",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-calendar": "/uni_modules/uni-calendar/components/uni-calendar/uni-calendar"
+      }
     },
     "pages/extUI/indexed-list/indexed-list": {
       "navigationBarTitleText": "IndexedList 索引列表",
-      "disableScroll": true
+      "disableScroll": true,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-indexed-list": "/uni_modules/uni-indexed-list/components/uni-indexed-list/uni-indexed-list"
+      }
     },
     "pages/extUI/fab/fab": {
-      "navigationBarTitleText": "Fab 悬浮按钮"
+      "navigationBarTitleText": "Fab 悬浮按钮",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-fab": "/uni_modules/uni-fab/components/uni-fab/uni-fab"
+      }
     },
     "pages/extUI/fav/fav": {
-      "navigationBarTitleText": "Fav 收藏按钮"
+      "navigationBarTitleText": "Fav 收藏按钮",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-fav": "/uni_modules/uni-fav/components/uni-fav/uni-fav",
+        "uni-nav-bar": "/uni_modules/uni-nav-bar/components/uni-nav-bar/uni-nav-bar"
+      }
     },
     "pages/extUI/goods-nav/goods-nav": {
-      "navigationBarTitleText": "GoodsNav 商品导航"
+      "navigationBarTitleText": "GoodsNav 商品导航",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-goods-nav": "/uni_modules/uni-goods-nav/components/uni-goods-nav/uni-goods-nav"
+      }
     },
     "pages/extUI/section/section": {
-      "navigationBarTitleText": "Section 标题栏"
+      "navigationBarTitleText": "Section 标题栏",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section"
+      }
     },
     "pages/extUI/transition/transition": {
-      "navigationBarTitleText": "Transition 过渡动画"
+      "navigationBarTitleText": "Transition 过渡动画",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-transition": "/uni_modules/uni-transition/components/uni-transition/uni-transition"
+      }
     },
     "pages/extUI/title/title": {
-      "navigationBarTitleText": "Title 章节标题"
+      "navigationBarTitleText": "Title 章节标题",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-title": "/uni_modules/uni-title/components/uni-title/uni-title"
+      }
     },
     "pages/extUI/tooltip/tooltip": {
-      "navigationBarTitleText": "Tooltip 文字提示"
+      "navigationBarTitleText": "Tooltip 文字提示",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-tooltip": "/uni_modules/uni-tooltip/components/uni-tooltip/uni-tooltip"
+      }
     },
     "pages/extUI/link/link": {
-      "navigationBarTitleText": "Link 链接"
+      "navigationBarTitleText": "Link 链接",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-link": "/uni_modules/uni-link/components/uni-link/uni-link"
+      }
     },
     "pages/extUI/combox/combox": {
-      "navigationBarTitleText": "Combox 组合框"
+      "navigationBarTitleText": "Combox 组合框",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-combox": "/uni_modules/uni-combox/components/uni-combox/uni-combox"
+      }
     },
-    "pages/extUI/list/chat": {},
+    "pages/extUI/list/chat": {
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-list": "/uni_modules/uni-list/components/uni-list/uni-list",
+        "uni-list-chat": "/uni_modules/uni-list/components/uni-list-chat/uni-list-chat",
+        "uni-icons": "/uni_modules/uni-icons/components/uni-icons/uni-icons"
+      }
+    },
     "pages/extUI/table/table": {
       "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-table": "/uni_modules/uni-table/components/uni-table/uni-table",
+        "uni-tr": "/uni_modules/uni-table/components/uni-tr/uni-tr",
+        "uni-th": "/uni_modules/uni-table/components/uni-th/uni-th",
+        "uni-td": "/uni_modules/uni-table/components/uni-td/uni-td",
+        "uni-pagination": "/uni_modules/uni-pagination/components/uni-pagination/uni-pagination"
+      }
     },
     "pages/extUI/dateformat/dateformat": {
       "navigationBarTitleText": "Dateformat 日期格式化",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-dateformat": "/uni_modules/uni-dateformat/components/uni-dateformat/uni-dateformat"
+      }
     },
     "pages/extUI/data-checkbox/data-checkbox": {
       "navigationBarTitleText": "DataCheckbox 单选复选框",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-data-checkbox": "/uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox"
+      }
     },
     "pages/extUI/easyinput/easyinput": {
       "navigationBarTitleText": "Easyinput 增强输入框",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-easyinput": "/uni_modules/uni-easyinput/components/uni-easyinput/uni-easyinput"
+      }
     },
     "pages/extUI/data-picker/data-picker": {
       "navigationBarTitleText": "DataPicker 级联选择",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-data-picker": "/uni_modules/uni-data-picker/components/uni-data-picker/uni-data-picker"
+      }
     },
     "pages/extUI/data-select/data-select": {
       "navigationBarTitleText": "DataSelect 下拉框",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-data-select": "/uni_modules/uni-data-select/components/uni-data-select/uni-data-select"
+      }
     },
     "pages/extUI/datetime-picker/datetime-picker": {
       "navigationBarTitleText": "DatetimePicker 日期时间",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-datetime-picker": "/uni_modules/uni-datetime-picker/components/uni-datetime-picker/uni-datetime-picker"
+      }
     },
     "pages/extUI/row/row": {
       "navigationBarTitleText": "Layout 布局",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-row": "/uni_modules/uni-row/components/uni-row/uni-row",
+        "uni-col": "/uni_modules/uni-row/components/uni-col/uni-col"
+      }
     },
     "pages/extUI/file-picker/file-picker": {
       "navigationBarTitleText": "FilePicker 文件选择上传",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-file-picker": "/uni_modules/uni-file-picker/components/uni-file-picker/uni-file-picker"
+      }
     },
     "pages/extUI/space/space": {
       "navigationBarTitleText": "间距",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-data-checkbox": "/uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox"
+      }
     },
     "pages/extUI/font/font": {
       "navigationBarTitleText": "字体",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section"
+      }
     },
     "pages/extUI/color/color": {
       "navigationBarTitleText": "颜色",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section"
+      }
     },
     "pages/extUI/radius/radius": {
       "navigationBarTitleText": "圆角",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section",
+        "uni-data-checkbox": "/uni_modules/uni-data-checkbox/components/uni-data-checkbox/uni-data-checkbox"
+      }
     },
     "pages/extUI/button/button": {
       "navigationBarTitleText": "",
-      "enablePullDownRefresh": false
+      "enablePullDownRefresh": false,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-card": "/uni_modules/uni-card/components/uni-card/uni-card",
+        "uni-section": "/uni_modules/uni-section/components/uni-section/uni-section"
+      }
     },
     "pages/template/ucharts/ucharts": {
-      "navigationBarTitleText": "uCharts 图表"
+      "navigationBarTitleText": "uCharts 图表",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/template/nav-default/nav-default": {
-      "navigationBarTitleText": "默认导航栏"
+      "navigationBarTitleText": "默认导航栏",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/template/component-communication/component-communication": {
-      "navigationBarTitleText": "组件通讯"
+      "navigationBarTitleText": "组件通讯",
+      "usingComponents": {
+        "reciver": "/pages/template/component-communication/reciver",
+        "sender": "/pages/template/component-communication/sender",
+        "sender-bus": "/pages/template/component-communication/sender-bus"
+      },
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/template/list2detail-list/list2detail-list": {
       "navigationBarTitleText": "列表到详情示例",
-      "enablePullDownRefresh": true
+      "enablePullDownRefresh": true,
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "uni-load-more": "/uni_modules/uni-load-more/components/uni-load-more/uni-load-more"
+      }
     },
     "pages/template/list2detail-detail/list2detail-detail": {
-      "navigationBarTitleText": "详情"
+      "navigationBarTitleText": "详情",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/template/tabbar/tabbar": {
-      "navigationBarTitleText": "可拖动顶部选项卡"
+      "navigationBarTitleText": "可拖动顶部选项卡",
+      "usingComponents": {
+        "media-item": "/pages/template/tabbar/news-item"
+      },
+      "usingAutoImportComponents": {}
     },
     "pages/template/tabbar/detail/detail": {
-      "navigationBarTitleText": "详情页面"
+      "navigationBarTitleText": "详情页面",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/template/swiper-vertical/swiper-vertical": {
-      "navigationBarTitleText": "上下滑动切换视频"
+      "navigationBarTitleText": "上下滑动切换视频",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/template/swiper-list/swiper-list": {
-      "navigationBarTitleText": "swiper-list"
+      "navigationBarTitleText": "swiper-list",
+      "usingComponents": {
+        "swiper-page": "/pages/template/swiper-list/swiper-page"
+      },
+      "usingAutoImportComponents": {}
     },
     "pages/template/scheme/scheme": {
-      "navigationBarTitleText": "打开外部应用"
+      "navigationBarTitleText": "打开外部应用",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/template/vant-button/vant-button": {
-      "navigationBarTitleText": "微信自定义组件示例"
+      "navigationBarTitleText": "微信自定义组件示例",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/template/global/global": {
-      "navigationBarTitleText": "GlobalData和vuex"
+      "navigationBarTitleText": "GlobalData和vuex",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     },
     "pages/template/vuex-vue/vuex-vue": {
-      "navigationBarTitleText": "vuex-vue"
+      "navigationBarTitleText": "vuex-vue",
+      "usingComponents": {},
+      "usingAutoImportComponents": {
+        "page-head": "/components/page-head/page-head"
+      }
     },
     "pages/template/crypto-api/crypto-api": {
-      "navigationBarTitleText": "crypto"
+      "navigationBarTitleText": "crypto",
+      "usingComponents": {},
+      "usingAutoImportComponents": {}
     }
   },
   "globalStyle": {
@@ -21471,10 +32640,8 @@ var _default = {
 exports.default = _default;
 
 /***/ }),
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */
+
+/***/ 44:
 /*!**************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vuex3/dist/vuex.common.js ***!
   \**************************************************************************************/
@@ -22730,19 +33897,19 @@ module.exports = index_cjs;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../webpack/buildin/global.js */ 3)))
 
 /***/ }),
-/* 45 */
-/*!*******************************************************************************!*\
-  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery/package.json ***!
-  \*******************************************************************************/
+
+/***/ 45:
+/*!*****************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/package.json ***!
+  \*****************************************************************************************************************/
 /*! exports provided: id, name, displayName, version, description, scripts, repository, keywords, author, license, bugs, homepage, dependencies, dcloudext, uni_modules, uni-app, engines, default */
 /***/ (function(module) {
 
 module.exports = JSON.parse("{\"id\":\"hello-uniapp\",\"name\":\"hello-uniapp\",\"displayName\":\"hello-uniapp 示例工程\",\"version\":\"3.4.9\",\"description\":\"uni-app 框架示例，一套代码，同时发行到iOS、Android、H5、小程序等多个平台，请使用手机扫码快速体验 uni-app 的强大功能\",\"scripts\":{\"test\":\"echo \\\"Error: no test specified\\\" && exit 1\"},\"repository\":\"https://github.com/dcloudio/hello-uniapp.git\",\"keywords\":[\"hello-uniapp\",\"uni-app\",\"uni-ui\",\"示例工程\"],\"author\":\"\",\"license\":\"MIT\",\"bugs\":{\"url\":\"https://github.com/dcloudio/hello-uniapp/issues\"},\"homepage\":\"https://github.com/dcloudio/hello-uniapp#readme\",\"dependencies\":{},\"dcloudext\":{\"sale\":{\"regular\":{\"price\":\"0.00\"},\"sourcecode\":{\"price\":\"0.00\"}},\"contact\":{\"qq\":\"\"},\"declaration\":{\"ads\":\"无\",\"data\":\"无\",\"permissions\":\"无\"},\"npmurl\":\"\",\"type\":\"uniapp-template-project\",\"darkmode\":\"x\",\"i18n\":\"x\",\"widescreen\":\"x\"},\"uni_modules\":{\"dependencies\":[],\"encrypt\":[],\"platforms\":{\"cloud\":{\"tcb\":\"√\",\"aliyun\":\"√\",\"alipay\":\"x\"},\"client\":{\"uni-app\":{\"vue\":{\"vue2\":\"√\",\"vue3\":\"√\"},\"web\":{\"safari\":\"√\",\"chrome\":\"√\"},\"app\":{\"vue\":\"√\",\"nvue\":\"√\",\"android\":\"√\",\"ios\":\"√\",\"harmony\":\"√\"},\"mp\":{\"weixin\":\"√\",\"alipay\":\"√\",\"toutiao\":\"√\",\"baidu\":\"√\",\"kuaishou\":\"√\",\"jd\":\"√\",\"harmony\":\"√\",\"qq\":\"√\",\"lark\":\"√\"},\"quickapp\":{\"huawei\":\"-\",\"union\":\"-\"}},\"uni-app-x\":{\"web\":{\"safari\":\"-\",\"chrome\":\"-\"},\"app\":{\"android\":\"-\",\"ios\":\"-\",\"harmony\":\"-\"},\"mp\":{\"weixin\":\"-\"}}}}},\"uni-app\":{\"scripts\":{\"mp-dingtalk\":{\"title\":\"钉钉小程序\",\"env\":{\"UNI_PLATFORM\":\"mp-alipay\"},\"define\":{\"MP-DINGTALK\":true}},\"hello-uniapp-demo\":{\"title\":\"hello-uniapp 演示网站\",\"env\":{\"UNI_PLATFORM\":\"h5\"},\"define\":{\"H5-DEMO\":true}}}},\"engines\":{\"HBuilderX\":\"^3.1.0\",\"uni-app\":\"^4.03\",\"uni-app-x\":\"\"}}");
 
 /***/ }),
-/* 46 */,
-/* 47 */,
-/* 48 */
+
+/***/ 48:
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
@@ -22872,6 +34039,728 @@ function normalizeComponent (
 }
 
 
+/***/ }),
+
+/***/ 49:
+/*!*******************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/store/index.js ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+var _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ 4);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 29));
+var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 32));
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 25));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 44));
+_vue.default.use(_vuex.default);
+var store = new _vuex.default.Store({
+  state: {
+    hasLogin: false,
+    isUniverifyLogin: false,
+    loginProvider: "",
+    openid: null,
+    testvuex: false,
+    colorIndex: 0,
+    colorList: ['#FF0000', '#00FF00', '#0000FF'],
+    noMatchLeftWindow: true,
+    active: 'componentPage',
+    leftWinActive: '/pages/component/view/view',
+    activeOpen: '',
+    menu: [],
+    univerifyErrorMsg: '',
+    // vuex测试例使用
+    username: "foo",
+    sex: "男",
+    age: 10
+  },
+  mutations: {
+    login: function login(state, provider) {
+      state.hasLogin = true;
+      state.loginProvider = provider;
+    },
+    logout: function logout(state) {
+      state.hasLogin = false;
+      state.openid = null;
+    },
+    setOpenid: function setOpenid(state, openid) {
+      state.openid = openid;
+    },
+    setTestTrue: function setTestTrue(state) {
+      state.testvuex = true;
+    },
+    setTestFalse: function setTestFalse(state) {
+      state.testvuex = false;
+    },
+    setColorIndex: function setColorIndex(state, index) {
+      state.colorIndex = index;
+    },
+    setMatchLeftWindow: function setMatchLeftWindow(state, matchLeftWindow) {
+      state.noMatchLeftWindow = !matchLeftWindow;
+    },
+    setActive: function setActive(state, tabPage) {
+      state.active = tabPage;
+    },
+    setLeftWinActive: function setLeftWinActive(state, leftWinActive) {
+      state.leftWinActive = leftWinActive;
+    },
+    setActiveOpen: function setActiveOpen(state, activeOpen) {
+      state.activeOpen = activeOpen;
+    },
+    setMenu: function setMenu(state, menu) {
+      state.menu = menu;
+    },
+    setUniverifyLogin: function setUniverifyLogin(state, payload) {
+      typeof payload !== 'boolean' ? payload = !!payload : '';
+      state.isUniverifyLogin = payload;
+    },
+    setUniverifyErrorMsg: function setUniverifyErrorMsg(state) {
+      var payload = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      state.univerifyErrorMsg = payload;
+    },
+    // vuex测试例使用
+    increment: function increment(state) {
+      state.age++;
+    },
+    incrementTen: function incrementTen(state, payload) {
+      state.age += payload.amount;
+    },
+    resetAge: function resetAge(state) {
+      state.age = 10;
+    }
+  },
+  getters: {
+    currentColor: function currentColor(state) {
+      return state.colorList[state.colorIndex];
+    },
+    // vuex测试例使用
+    doubleAge: function doubleAge(state) {
+      return state.age * 2;
+    }
+  },
+  actions: {
+    // vuex测试例使用
+    incrementAsync: function incrementAsync(context, payload) {
+      context.commit('incrementTen', payload);
+    },
+    // lazy loading openid
+    getUserOpenId: function () {
+      var _getUserOpenId = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee(_ref) {
+        var commit, state;
+        return _regenerator.default.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                commit = _ref.commit, state = _ref.state;
+                _context.next = 3;
+                return new Promise(function (resolve, reject) {
+                  if (state.openid) {
+                    resolve(state.openid);
+                  } else {
+                    uni.login({
+                      success: function success(data) {
+                        commit('login');
+                        setTimeout(function () {
+                          //模拟异步请求服务器获取 openid
+                          var openid = '123456789';
+                          console.log('uni.request mock openid[' + openid + ']');
+                          commit('setOpenid', openid);
+                          resolve(openid);
+                        }, 1000);
+                      },
+                      fail: function fail(err) {
+                        console.log('uni.login 接口调用失败，将无法正常使用开放接口等服务', err);
+                        reject(err);
+                      }
+                    });
+                  }
+                });
+              case 3:
+                return _context.abrupt("return", _context.sent);
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+      function getUserOpenId(_x) {
+        return _getUserOpenId.apply(this, arguments);
+      }
+      return getUserOpenId;
+    }(),
+    getPhoneNumber: function getPhoneNumber(_ref2, univerifyInfo) {
+      var commit = _ref2.commit;
+      return new Promise(function (resolve, reject) {
+        uni.request({
+          url: 'https://97fca9f2-41f6-449f-a35e-3f135d4c3875.bspapp.com/http/univerify-login',
+          method: 'POST',
+          data: univerifyInfo,
+          success: function success(res) {
+            var data = res.data;
+            if (data.success) {
+              resolve(data.phoneNumber);
+            } else {
+              reject(res);
+            }
+          },
+          fail: function fail(err) {
+            reject(res);
+          }
+        });
+      });
+    }
+  }
+});
+var _default = store;
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 493:
+/*!*************************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/common/permission.js ***!
+  \*************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+/// null = 未请求，1 = 已允许，0 = 拒绝|受限, 2 = 系统未开启
+
+var isIOS;
+function album() {
+  var result = 0;
+  var PHPhotoLibrary = plus.ios.import("PHPhotoLibrary");
+  var authStatus = PHPhotoLibrary.authorizationStatus();
+  if (authStatus === 0) {
+    result = null;
+  } else if (authStatus == 3) {
+    result = 1;
+  } else {
+    result = 0;
+  }
+  plus.ios.deleteObject(PHPhotoLibrary);
+  return result;
+}
+function camera() {
+  var result = 0;
+  var AVCaptureDevice = plus.ios.import("AVCaptureDevice");
+  var authStatus = AVCaptureDevice.authorizationStatusForMediaType('vide');
+  if (authStatus === 0) {
+    result = null;
+  } else if (authStatus == 3) {
+    result = 1;
+  } else {
+    result = 0;
+  }
+  plus.ios.deleteObject(AVCaptureDevice);
+  return result;
+}
+function location() {
+  var result = 0;
+  var cllocationManger = plus.ios.import("CLLocationManager");
+  var enable = cllocationManger.locationServicesEnabled();
+  var status = cllocationManger.authorizationStatus();
+  if (!enable) {
+    result = 2;
+  } else if (status === 0) {
+    result = null;
+  } else if (status === 3 || status === 4) {
+    result = 1;
+  } else {
+    result = 0;
+  }
+  plus.ios.deleteObject(cllocationManger);
+  return result;
+}
+function push() {
+  var result = 0;
+  var UIApplication = plus.ios.import("UIApplication");
+  var app = UIApplication.sharedApplication();
+  var enabledTypes = 0;
+  if (app.currentUserNotificationSettings) {
+    var settings = app.currentUserNotificationSettings();
+    enabledTypes = settings.plusGetAttribute("types");
+    if (enabledTypes == 0) {
+      result = 0;
+      console.log("推送权限没有开启");
+    } else {
+      result = 1;
+      console.log("已经开启推送功能!");
+    }
+    plus.ios.deleteObject(settings);
+  } else {
+    enabledTypes = app.enabledRemoteNotificationTypes();
+    if (enabledTypes == 0) {
+      result = 3;
+      console.log("推送权限没有开启!");
+    } else {
+      result = 4;
+      console.log("已经开启推送功能!");
+    }
+  }
+  plus.ios.deleteObject(app);
+  plus.ios.deleteObject(UIApplication);
+  return result;
+}
+function contact() {
+  var result = 0;
+  var CNContactStore = plus.ios.import("CNContactStore");
+  var cnAuthStatus = CNContactStore.authorizationStatusForEntityType(0);
+  if (cnAuthStatus === 0) {
+    result = null;
+  } else if (cnAuthStatus == 3) {
+    result = 1;
+  } else {
+    result = 0;
+  }
+  plus.ios.deleteObject(CNContactStore);
+  return result;
+}
+function record() {
+  var result = null;
+  var avaudiosession = plus.ios.import("AVAudioSession");
+  var avaudio = avaudiosession.sharedInstance();
+  var status = avaudio.recordPermission();
+  console.log("permissionStatus:" + status);
+  if (status === 1970168948) {
+    result = null;
+  } else if (status === 1735552628) {
+    result = 1;
+  } else {
+    result = 0;
+  }
+  plus.ios.deleteObject(avaudiosession);
+  return result;
+}
+function calendar() {
+  var result = null;
+  var EKEventStore = plus.ios.import("EKEventStore");
+  var ekAuthStatus = EKEventStore.authorizationStatusForEntityType(0);
+  if (ekAuthStatus == 3) {
+    result = 1;
+    console.log("日历权限已经开启");
+  } else {
+    console.log("日历权限没有开启");
+  }
+  plus.ios.deleteObject(EKEventStore);
+  return result;
+}
+function memo() {
+  var result = null;
+  var EKEventStore = plus.ios.import("EKEventStore");
+  var ekAuthStatus = EKEventStore.authorizationStatusForEntityType(1);
+  if (ekAuthStatus == 3) {
+    result = 1;
+    console.log("备忘录权限已经开启");
+  } else {
+    console.log("备忘录权限没有开启");
+  }
+  plus.ios.deleteObject(EKEventStore);
+  return result;
+}
+function requestIOS(permissionID) {
+  return new Promise(function (resolve, reject) {
+    switch (permissionID) {
+      case "push":
+        resolve(push());
+        break;
+      case "location":
+        resolve(location());
+        break;
+      case "record":
+        resolve(record());
+        break;
+      case "camera":
+        resolve(camera());
+        break;
+      case "album":
+        resolve(album());
+        break;
+      case "contact":
+        resolve(contact());
+        break;
+      case "calendar":
+        resolve(calendar());
+        break;
+      case "memo":
+        resolve(memo());
+        break;
+      default:
+        resolve(0);
+        break;
+    }
+  });
+}
+function requestAndroid(permissionID) {
+  return new Promise(function (resolve, reject) {
+    plus.android.requestPermissions([permissionID], function (resultObj) {
+      var result = 0;
+      for (var i = 0; i < resultObj.granted.length; i++) {
+        var grantedPermission = resultObj.granted[i];
+        console.log('已获取的权限：' + grantedPermission);
+        result = 1;
+      }
+      for (var i = 0; i < resultObj.deniedPresent.length; i++) {
+        var deniedPresentPermission = resultObj.deniedPresent[i];
+        console.log('拒绝本次申请的权限：' + deniedPresentPermission);
+        result = 0;
+      }
+      for (var i = 0; i < resultObj.deniedAlways.length; i++) {
+        var deniedAlwaysPermission = resultObj.deniedAlways[i];
+        console.log('永久拒绝申请的权限：' + deniedAlwaysPermission);
+        result = -1;
+      }
+      resolve(result);
+    }, function (error) {
+      console.log('result error: ' + error.message);
+      resolve({
+        code: error.code,
+        message: error.message
+      });
+    });
+  });
+}
+function gotoAppPermissionSetting() {
+  if (permission.isIOS) {
+    var UIApplication = plus.ios.import("UIApplication");
+    var application2 = UIApplication.sharedApplication();
+    var NSURL2 = plus.ios.import("NSURL");
+    var setting2 = NSURL2.URLWithString("app-settings:");
+    application2.openURL(setting2);
+    plus.ios.deleteObject(setting2);
+    plus.ios.deleteObject(NSURL2);
+    plus.ios.deleteObject(application2);
+  } else {
+    var Intent = plus.android.importClass("android.content.Intent");
+    var Settings = plus.android.importClass("android.provider.Settings");
+    var Uri = plus.android.importClass("android.net.Uri");
+    var mainActivity = plus.android.runtimeMainActivity();
+    var intent = new Intent();
+    intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+    var uri = Uri.fromParts("package", mainActivity.getPackageName(), null);
+    intent.setData(uri);
+    mainActivity.startActivity(intent);
+  }
+}
+var permission = {
+  get isIOS() {
+    return typeof isIOS === 'boolean' ? isIOS : isIOS = uni.getSystemInfoSync().platform === 'ios';
+  },
+  requestIOS: requestIOS,
+  requestAndroid: requestAndroid,
+  gotoAppSetting: gotoAppPermissionSetting
+};
+var _default = permission;
+exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 2)["default"]))
+
+/***/ }),
+
+/***/ 5:
+/*!**************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/slicedToArray.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayWithHoles = __webpack_require__(/*! ./arrayWithHoles.js */ 6);
+var iterableToArrayLimit = __webpack_require__(/*! ./iterableToArrayLimit.js */ 7);
+var unsupportedIterableToArray = __webpack_require__(/*! ./unsupportedIterableToArray.js */ 8);
+var nonIterableRest = __webpack_require__(/*! ./nonIterableRest.js */ 10);
+function _slicedToArray(arr, i) {
+  return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
+}
+module.exports = _slicedToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 538:
+/*!*******************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/common/util.js ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.dateUtils = void 0;
+exports.formatLocation = formatLocation;
+exports.formatTime = formatTime;
+function formatTime(time) {
+  if (typeof time !== 'number' || time < 0) {
+    return time;
+  }
+  var hour = parseInt(time / 3600);
+  time = time % 3600;
+  var minute = parseInt(time / 60);
+  time = time % 60;
+  var second = time;
+  return [hour, minute, second].map(function (n) {
+    n = n.toString();
+    return n[1] ? n : '0' + n;
+  }).join(':');
+}
+function formatLocation(longitude, latitude) {
+  if (typeof longitude === 'string' && typeof latitude === 'string') {
+    longitude = parseFloat(longitude);
+    latitude = parseFloat(latitude);
+  }
+  longitude = longitude.toFixed(2);
+  latitude = latitude.toFixed(2);
+  return {
+    longitude: longitude.toString().split('.'),
+    latitude: latitude.toString().split('.')
+  };
+}
+var dateUtils = {
+  UNITS: {
+    '年': 31557600000,
+    '月': 2629800000,
+    '天': 86400000,
+    '小时': 3600000,
+    '分钟': 60000,
+    '秒': 1000
+  },
+  humanize: function humanize(milliseconds) {
+    var humanize = '';
+    for (var key in this.UNITS) {
+      if (milliseconds >= this.UNITS[key]) {
+        humanize = Math.floor(milliseconds / this.UNITS[key]) + key + '前';
+        break;
+      }
+    }
+    return humanize || '刚刚';
+  },
+  format: function format(dateStr) {
+    var date = this.parse(dateStr);
+    var diff = Date.now() - date.getTime();
+    if (diff < this.UNITS['天']) {
+      return this.humanize(diff);
+    }
+    var _format = function _format(number) {
+      return number < 10 ? '0' + number : number;
+    };
+    return date.getFullYear() + '/' + _format(date.getMonth() + 1) + '/' + _format(date.getDate()) + '-' + _format(date.getHours()) + ':' + _format(date.getMinutes());
+  },
+  parse: function parse(str) {
+    //将"yyyy-mm-dd HH:MM:ss"格式的字符串，转化为一个Date对象
+    var a = str.split(/[^0-9]/);
+    return new Date(a[0], a[1] - 1, a[2], a[3], a[4], a[5]);
+  }
+};
+exports.dateUtils = dateUtils;
+
+/***/ }),
+
+/***/ 6:
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayWithHoles.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+module.exports = _arrayWithHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 7:
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/iterableToArrayLimit.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = !0,
+      o = !1;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) {
+        if (Object(t) !== t) return;
+        f = !1;
+      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0) {
+        ;
+      }
+    } catch (r) {
+      o = !0, n = r;
+    } finally {
+      try {
+        if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
+      }
+    }
+    return a;
+  }
+}
+module.exports = _iterableToArrayLimit, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 8:
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/unsupportedIterableToArray.js ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var arrayLikeToArray = __webpack_require__(/*! ./arrayLikeToArray.js */ 9);
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
+}
+module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 9:
+/*!*****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/arrayLikeToArray.js ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+  return arr2;
+}
+module.exports = _arrayLikeToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+
+/***/ }),
+
+/***/ 915:
+/*!**********************************************************************************************************************!*\
+  !*** /Users/tianshu/Desktop/work/parttimework/bluetooth-battery-project/bluetooth-battery-project/common/airport.js ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var _default = {
+  "list": [{
+    "letter": "A",
+    "data": ["阿克苏机场", "阿拉山口机场", "阿勒泰机场", "阿里昆莎机场", "安庆天柱山机场", "澳门国际机场"]
+  }, {
+    "letter": "B",
+    "data": ["保山机场", "包头机场", "北海福成机场", "北京南苑机场", "北京首都国际机场"]
+  }, {
+    "letter": "C",
+    "data": ["长白山机场", "长春龙嘉国际机场", "常德桃花源机场", "昌都邦达机场", "长沙黄花国际机场", "长治王村机场", "常州奔牛机场", "成都双流国际机场", "赤峰机场"]
+  }, {
+    "letter": "D",
+    "data": ["大理机场", "大连周水子国际机场", "大庆萨尔图机场", "大同东王庄机场", "达州河市机场", "丹东浪头机场", "德宏芒市机场", "迪庆香格里拉机场", "东营机场", "敦煌机场"]
+  }, {
+    "letter": "E",
+    "data": ["鄂尔多斯机场", "恩施许家坪机场", "二连浩特赛乌苏国际机场"]
+  }, {
+    "letter": "F",
+    "data": ["阜阳西关机场", "福州长乐国际机场"]
+  }, {
+    "letter": "G",
+    "data": ["赣州黄金机场", "格尔木机场", "固原六盘山机场", "广元盘龙机场", "广州白云国际机场", "桂林两江国际机场", "贵阳龙洞堡国际机场"]
+  }, {
+    "letter": "H",
+    "data": ["哈尔滨太平国际机场", "哈密机场", "海口美兰国际机场", "海拉尔东山国际机场", "邯郸机场", "汉中机场", "杭州萧山国际机场", "合肥骆岗国际机场", "和田机场", "黑河机场", "呼和浩特白塔国际机场", "淮安涟水机场", "黄山屯溪国际机场"]
+  }, {
+    "letter": "I",
+    "data": []
+  }, {
+    "letter": "J",
+    "data": ["济南遥墙国际机场", "济宁曲阜机场", "鸡西兴凯湖机场", "佳木斯东郊机场", "嘉峪关机场", "锦州小岭子机场", "景德镇机场", "井冈山机场", "九江庐山机场", "九寨黄龙机场"]
+  }, {
+    "letter": "K",
+    "data": ["喀什机场", "克拉玛依机场", "库车龟兹机场", "库尔勒机场", "昆明巫家坝国际机场"]
+  }, {
+    "letter": "L",
+    "data": ["拉萨贡嘎机场", "兰州中川机场", "丽江三义机场", "黎平机场", "连云港白塔埠机场", "临沧机场", "临沂机场", "林芝米林机场", "柳州白莲机场", "龙岩冠豸山机场", "泸州蓝田机场", "洛阳北郊机场"]
+  }, {
+    "letter": "M",
+    "data": ["满洲里西郊机场", "绵阳南郊机场", "漠河古莲机场", "牡丹江海浪机场"]
+  }, {
+    "letter": "N",
+    "data": ["南昌昌北国际机场", "南充高坪机场", "南京禄口国际机场", "南宁吴圩机场", "南通兴东机场", "南阳姜营机场", "宁波栎社国际机场"]
+  }, {
+    "letter": "O",
+    "data": []
+  }, {
+    "letter": "P",
+    "data": ["普洱思茅机场"]
+  }, {
+    "letter": "Q",
+    "data": ["齐齐哈尔三家子机场", "秦皇岛山海关机场", "青岛流亭国际机场", "衢州机场", "泉州晋江机场"]
+  }, {
+    "letter": "R",
+    "data": ["日喀则和平机场"]
+  }, {
+    "letter": "S",
+    "data": ["三亚凤凰国际机场", "汕头外砂机场", "上海虹桥国际机场", "上海浦东国际机场", "深圳宝安国际机场", "沈阳桃仙国际机场", "石家庄正定国际机场", "苏南硕放国际机场"]
+  }, {
+    "letter": "T",
+    "data": ["塔城机场", "太原武宿国际机场", "台州路桥机场 (黄岩机场)", "唐山三女河机场", "腾冲驼峰机场", "天津滨海国际机场", "通辽机场", "铜仁凤凰机场"]
+  }, {
+    "letter": "U",
+    "data": []
+  }, {
+    "letter": "V",
+    "data": []
+  }, {
+    "letter": "W",
+    "data": ["万州五桥机场", "潍坊机场", "威海大水泊机场", "文山普者黑机场", "温州永强国际机场", "乌海机场", "武汉天河国际机场", "乌兰浩特机场", "乌鲁木齐地窝堡国际机场", "武夷山机场", "梧州长洲岛机场"]
+  }, {
+    "letter": "X",
+    "data": ["西安咸阳国际机场", "西昌青山机场", "锡林浩特机场", "西宁曹家堡机场", "西双版纳嘎洒机场", "厦门高崎国际机场", "香港国际机场", "襄阳刘集机场", "兴义机场", "徐州观音机场"]
+  }, {
+    "letter": "Y",
+    "data": ["延安二十里堡机场", "盐城机场", "延吉朝阳川机场", "烟台莱山国际机场", "宜宾菜坝机场", "宜昌三峡机场", "伊春林都机场", "伊宁机场", "义乌机场", "银川河东机场", "永州零陵机场", "榆林榆阳机场", "玉树巴塘机场", "运城张孝机场"]
+  }, {
+    "letter": "Z",
+    "data": ["湛江机场", "昭通机场", "郑州新郑国际机场", "芷江机场", "重庆江北国际机场", "中卫香山机场", "舟山朱家尖机场", "珠海三灶机场"]
+  }]
+};
+exports.default = _default;
+
 /***/ })
-]]);
+
+}]);
 //# sourceMappingURL=../../.sourcemap/mp-weixin/common/vendor.js.map
