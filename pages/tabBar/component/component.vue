@@ -1,8 +1,9 @@
 <template>
+  <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
   <view class="container" :style="{ minHeight: screenHeight + 'px' }">
     
     <!-- 电池状态卡片 -->
-    <BatteryCard :batteryPercentage="batteryData.currentBatteryLevel" />
+    <BatteryCard :batteryPercentage="batteryData.currentBatteryLevel" @language-popup-action="handleLanguagePopupAction" />
     
     <!-- 电压电流卡片 -->
     <VoltageCurrentCard :voltage="batteryData.voltage" :current="batteryData.current" />
@@ -105,6 +106,7 @@ export default {
         cellTemp4: '0.0000'
       },
       screenHeight: 0,
+      show: false,
     }
   },
   onLoad() {
@@ -123,7 +125,11 @@ export default {
           this.screenHeight = 667;
         }
       });
-    }
+    },
+    // 处理语言弹窗状态变化
+    handleLanguagePopupAction(isOpen) {
+      this.show = isOpen
+    },
   }
 }
 </script>

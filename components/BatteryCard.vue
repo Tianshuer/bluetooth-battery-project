@@ -45,6 +45,7 @@
       ref="languagePopup" 
       type="bottom" 
       :is-mask-click="false"
+      :safe-area="false"
       >
       <view class="language-popup">
         <view class="popup-header">
@@ -86,6 +87,10 @@ export default {
       default: 0
     }
   },
+  data() {
+    return {
+    }
+  },
   computed: {
     // 直接使用computed属性监听store状态变化
     currentLanguage() {
@@ -102,11 +107,23 @@ export default {
     // 打开语言选择器
     openLanguagePicker() {
       this.$refs.languagePopup.open()
+      uni.hideTabBar({
+        animation: true
+      })
+      
+      // 抛出弹窗打开事件
+      this.$emit('language-popup-action', true)
     },
     
     // 关闭语言选择器
     closeLanguagePicker() {
       this.$refs.languagePopup.close()
+      uni.showTabBar({
+        animation: true
+      })
+      
+      // 抛出弹窗关闭事件
+      this.$emit('language-popup-action', false)
     },
     
     // 选择语言
@@ -116,7 +133,7 @@ export default {
       
       // 选择后自动关闭弹窗
       this.closeLanguagePicker()
-    }
+    },
   }
 }
 </script>
@@ -335,10 +352,3 @@ export default {
   font-weight: bold;
 }
 </style>
-
-<style>
-/* 全局样式 - 确保popup在tabbar之上 */
-.uni-popup {
-  z-index: 999;
-}
-</style> 

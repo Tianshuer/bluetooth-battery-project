@@ -1,7 +1,8 @@
 <template>
+  <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
   <view class="container" :style="{ minHeight: screenHeight + 'px' }">
     <!-- 电池状态卡片 -->
-    <BatteryCard :batteryPercentage="75" />
+    <BatteryCard :batteryPercentage="75" @language-popup-action="handleLanguagePopupAction" />
     
     <!-- 公共功能组件 -->
     <CommonPanel
@@ -204,7 +205,8 @@ export default {
           buttonText: '发送',
           key: 'bluetoothRename'
         }
-      ]
+      ],
+      show: false,
     }
   },
   onLoad() {
@@ -538,7 +540,11 @@ export default {
       uni.navigateTo({
         url: '/pages/changePassword/changePassword'
       });
-    }
+    },
+    // 处理语言弹窗状态变化
+    handleLanguagePopupAction(isOpen) {
+      this.show = isOpen
+    },
   }
 }
 </script>

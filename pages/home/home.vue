@@ -16,7 +16,7 @@
 		</view>
 		
 		<!-- 半弹窗 -->
-		<uni-popup ref="popup" type="bottom" :mask-click="false">
+		<uni-popup ref="popup" type="bottom" :mask-click="false" :safe-area="false">
 			<view class="popup-content">
 				<view class="popup-header">
 					<text class="popup-title">已发现 {{deviceList.length}} 个外围设备</text>
