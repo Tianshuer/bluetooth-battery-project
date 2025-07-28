@@ -1,7 +1,8 @@
 <template>
+  <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
     <view class="container" :style="{ minHeight: screenHeight + 'px' }">
         <!-- 电池状态卡片 -->
-        <BatteryCard />
+        <BatteryCard :batteryPercentage="batteryLevel" @language-popup-action="handleLanguagePopupAction" />
         
         <!-- 显示与控制功能组件 -->
         <CommonPanel
@@ -34,6 +35,8 @@
         },
         data() {
             return {
+                show: false,
+                batteryLevel: 75,
                 screenHeight: 0,
                 // 设备状态
                 deviceStatus: {
@@ -585,7 +588,12 @@
                 clearInterval(this.dischargingTimer);
                 this.dischargingTimer = null;
               }
-            }
+            },
+
+            // 处理语言弹窗状态变化
+            handleLanguagePopupAction(isOpen) {
+              this.show = isOpen
+            },
         },
         
         // 页面销毁时清理定时器

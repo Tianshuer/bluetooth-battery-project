@@ -54,9 +54,8 @@
     <uni-popup 
       ref="languagePopup" 
       type="bottom" 
-      :mask-click="true"
+      :is-mask-click="false"
       :safe-area="false"
-      :mask-close-able="true"
       >
       <view class="language-popup">
         <view class="popup-header">
@@ -94,7 +93,10 @@ export default {
     uniPopup,
     BluetoothList
   },
-
+  data() {
+    return {
+    }
+  },
   computed: {
     ...mapGetters([
       'currentLanguage',
@@ -135,11 +137,23 @@ export default {
     // 打开语言选择器
     openLanguagePicker() {
       this.$refs.languagePopup.open()
+      uni.hideTabBar({
+        animation: true
+      })
+      
+      // 抛出弹窗打开事件
+      this.$emit('language-popup-action', true)
     },
     
     // 关闭语言选择器
     closeLanguagePicker() {
       this.$refs.languagePopup.close()
+      uni.showTabBar({
+        animation: true
+      })
+      
+      // 抛出弹窗关闭事件
+      this.$emit('language-popup-action', false)
     },
     
     // 选择语言
@@ -149,10 +163,7 @@ export default {
       
       // 选择后自动关闭弹窗
       this.closeLanguagePicker()
-      
-      // 触发全局语言切换事件
-      this.$emit('language-changed', index)
-    }
+    },
   }
 }
 </script>
@@ -391,10 +402,3 @@ export default {
   font-weight: bold;
 }
 </style>
-
-<style>
-/* 全局样式 - 确保popup在tabbar之上 */
-.uni-popup {
-  z-index: 999;
-}
-</style> 

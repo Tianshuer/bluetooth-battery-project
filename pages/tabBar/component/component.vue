@@ -1,8 +1,9 @@
 <template>
+  <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
   <view class="container" :style="{ minHeight: screenHeight + 'px' }">
     
     <!-- 电池状态卡片 -->
-    <BatteryCard />
+    <BatteryCard :batteryPercentage="batteryData.currentBatteryLevel" @language-popup-action="handleLanguagePopupAction" />
     
     <!-- 电压电流卡片 -->
     <VoltageCurrentCard :voltage="batteryData.voltage" :current="batteryData.current" />
@@ -105,7 +106,8 @@ export default {
         cellTemp3: '0.0000',
         cellTemp4: '0.0000'
       },
-      screenHeight: 0
+      screenHeight: 0,
+      show: false,
     }
   },
   computed: {
@@ -135,15 +137,10 @@ export default {
         }
       });
     },
-    
-    // 开始电池百分比模拟
-    startBatterySimulation() {
-      setInterval(() => {
-        // 模拟电池百分比在 20-95 之间变化
-        const newPercentage = Math.floor(Math.random() * 76) + 20;
-        this.setBatteryPercentage(newPercentage);
-      }, 5000); // 每5秒更新一次
-    }
+    // 处理语言弹窗状态变化
+    handleLanguagePopupAction(isOpen) {
+      this.show = isOpen
+    },
   }
 }
 </script>
