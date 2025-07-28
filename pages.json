@@ -41,11 +41,12 @@
 	},
 	"tabBar": {
 		"color": "#7A7E83",
-		"selectedColor": "#007AFF",
-		"borderStyle": "black",
-		"backgroundColor": "#FFFFFF",
+		"selectedColor": "#aac990",
+		"borderStyle": "white",
+		"backgroundColor": "#F5F5F5",
 		"height": "60px",
-		"list": [{
+		"list": [
+			{
 				"pagePath": "pages/tabBar/component/component",
 				"iconPath": "static/home-unselect-1.png",
 				"selectedIconPath": "static/home-select-1.png",
@@ -56,7 +57,8 @@
 				"iconPath": "static/battery-unselect-1.png",
 				"selectedIconPath": "static/battary-select.png",
 				"text": "显示与控制"
-			}, {
+			},
+			{
 				"pagePath": "pages/tabBar/extUI/extUI",
 				"iconPath": "static/settings-unselect-1.png",
 				"selectedIconPath": "static/settings-select-1.png",

@@ -6,6 +6,7 @@
     
     <!-- 电压电流卡片 -->
     <VoltageCurrentCard :voltage="batteryData.voltage" :current="batteryData.current" />
+
     <!-- 电池信息卡片 -->
     <InfoCard 
       :item1Value="batteryData.batteryCapacity"

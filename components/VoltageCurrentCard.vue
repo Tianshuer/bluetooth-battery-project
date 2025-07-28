@@ -4,7 +4,7 @@
 			<text class="label">总电压</text>
 			<text class="value">{{ voltage }}V</text>
 		</view>
-		<view class="divider">|</view>
+		<view class="divider"></view>
 		<view class="current-section">
 			<text class="label">电流</text>
 			<text class="value">{{ current }}A</text>
@@ -57,8 +57,9 @@
 }
 
 .divider {
-	font-size: 20rpx;
-	color: #e0e0e0;
+	width: 1rpx;
+	height: 40rpx;
+	background-color: #ffffff;
 	margin: 0 30rpx;
 }
 

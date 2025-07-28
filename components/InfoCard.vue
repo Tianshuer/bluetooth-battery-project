@@ -114,7 +114,7 @@
 }
 
 .label {
-	font-size: 20rpx;
+	font-size: 24rpx;
 	color: #333333;
 	width: 140rpx;
 	flex-shrink: 0;
@@ -130,7 +130,7 @@
 }
 
 .value {
-	font-size: 20rpx;
+	font-size: 24rpx;
 	color: #333333;
 	font-weight: normal;
 	text-align: right;
@@ -138,7 +138,7 @@
 }
 
 .unit {
-	font-size: 20rpx;
+	font-size: 24rpx;
 	color: #666666;
 	width: 40rpx;
 	text-align: center;

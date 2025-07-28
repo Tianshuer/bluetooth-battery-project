@@ -1,13 +1,15 @@
 <template>
   <view class="battery-card">
     <view class="card-header">
-      <image class="logo" src="/static/logo.png" mode="aspectFit"></image>
+      <image class="logo" src="/static/logo.png" mode="aspectFit" @click="handleLogoClick"></image>
       <view class="device-info">
         <text class="device-name">iPhone</text>
-        <text class="device-status">已连接</text>
+        <text class="device-status">N/A</text>
       </view>
       <view class="connection-status">
-        <text class="status-text">连接成功</text>
+          <text class="status-text">
+            {{ showConnectionFailed ? '连接关闭' : '连接成功' }}
+          </text>
       </view>
     </view>
     
@@ -38,6 +40,14 @@
           </view>
         </view>
       </view>
+    </view>
+    
+    <!-- 蓝牙设备列表组件 -->
+    <BluetoothList ref="bluetoothList" />
+    
+    <!-- 连接失败提示盒子 -->
+    <view v-if="showConnectionFailed" class="connection-failed-tip" @click="handleLogoClick">
+      <text class="tip-text">蓝牙断开，点击重新搜索</text>
     </view>
     
     <!-- 语言选择弹出框 -->
@@ -74,11 +84,13 @@
 <script>
 import uniPopup from '@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue'
 import globalStore from '../store/index.js'
+import BluetoothList from './BluetoothList.vue'
 
 export default {
   name: 'BatteryCard',
   components: {
-    uniPopup
+    uniPopup,
+    BluetoothList
   },
   props: {
     batteryPercentage: {
@@ -96,9 +108,17 @@ export default {
     },
     currentLanguageIndex() {
       return globalStore.getCurrentLanguageIndex()
+    },
+    showConnectionFailed() {
+      return globalStore.getShowConnectionFailed()
     }
   },
   methods: {
+    // 显示蓝牙设备列表
+    showBluetoothList() {
+      this.$refs.bluetoothList.showPopup()
+    },
+    
     // 打开语言选择器
     openLanguagePicker() {
       this.$refs.languagePopup.open()
@@ -116,7 +136,16 @@ export default {
       
       // 选择后自动关闭弹窗
       this.closeLanguagePicker()
-    }
+    },
+
+    // 处理logo点击事件
+    handleLogoClick() {
+      const isConnected = globalStore.getIsConnected()
+      if (!isConnected) {
+        // 如果未连接，显示蓝牙设备列表
+        this.showBluetoothList()
+      }
+    },
   }
 }
 </script>
@@ -160,10 +189,6 @@ export default {
   color: #999;
   display: block;
   margin-top: 12rpx;
-}
-
-.connection-status {
-  
 }
 
 .status-text {
@@ -256,6 +281,30 @@ export default {
 
 .status-dot.green {
   background-color: #34C759;
+}
+
+/* 连接失败提示样式 */
+.connection-failed-tip {
+  width: 100%;
+  position: fixed;
+  bottom: 0rpx; /* 在tabbar上方 */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20rpx 0;
+  z-index: 98;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+.tip-text {
+  display: inline-block;
+  width: 90%;
+  font-size: 28rpx;
+  color: #ffffff;
+  background-color: #FF3B30;
+  border-radius: 16rpx;
+  box-shadow: 0 4rpx 20rpx rgba(255, 59, 48, 0.3);
+  padding: 20rpx;
 }
 
 /* 语言选择弹出框样式 */

@@ -29,14 +29,14 @@
 <style lang="scss">
 	/* uni.css - 通用组件、模板样式库 */
 	@import './common/uni.css';
-	
+
 	/* 专用于微信小程序 */
 
 	/* 蓝牙电池项目全局样式 */
 	page {
 		background-color: #f5f5f5;
 	}
-	
+
 	/* 通用按钮样式 */
 	.btn-primary {
 		background-color: #007aff;

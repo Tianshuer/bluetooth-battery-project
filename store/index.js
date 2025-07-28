@@ -20,7 +20,10 @@ const globalState = Vue.observable({
       shortText: 'English',
       value: 'en'
     }
-  ]
+  ],
+  // 连接状态
+  isConnected: false,
+  showConnectionFailed: false,
 })
 
 // 状态管理对象
@@ -68,5 +71,22 @@ export default {
     if (savedLanguage !== '' && savedLanguage !== undefined) {
       globalState.currentLanguageIndex = savedLanguage
     }
+  },
+  
+  // 连接状态管理
+  getIsConnected() {
+    return globalState.isConnected
+  },
+  
+  setIsConnected(status) {
+    globalState.isConnected = status
+  },
+  
+  getShowConnectionFailed() {
+    return globalState.showConnectionFailed
+  },
+  
+  setShowConnectionFailed(status) {
+    globalState.showConnectionFailed = status
   }
 } 
