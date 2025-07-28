@@ -15,7 +15,7 @@
           @input="handleInput(item, index)"
         />
         <button 
-          class="send-btn"
+          class="send-btn uni-bg-green uni-color-black"
           @click="handleSend(item, index)"
         >
           {{ item.buttonText || '发送' }}
@@ -93,12 +93,11 @@ export default {
 }
 
 .label {
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #333333;
   width: 140rpx;
   flex-shrink: 0;
   line-height: 1.2;
-  font-weight: 500;
 }
 
 .input-section {
@@ -114,7 +113,7 @@ export default {
   background-color: #FFFFFF;
   border: 1px solid #E5E5E5;
   border-radius: 8rpx;
-  padding: 20rpx 24rpx;
+  padding: 0 24rpx;
   font-size: 26rpx;
   color: #333333;
   outline: none;
@@ -136,14 +135,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #a3ca89;
-  color: #FFFFFF;
   border-radius: 18rpx;
   padding: 0;
   font-size: 20rpx;
-  font-weight: 500;
   width: 80rpx;
-  height: 50rpx;
+  height: 60rpx;
   transition: all 0.2s ease;
 }
 

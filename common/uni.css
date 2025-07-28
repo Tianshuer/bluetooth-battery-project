@@ -18,8 +18,7 @@
 	color: #FFF;
 }
 .uni-bg-green {
-	background-color: #aac990; 
-	color: #FFF;
+	background-color: #a2cc8a;
 }
 .uni-bg-blue {
 	background-color: #0785D1; 
@@ -35,7 +34,7 @@
 .uni-color-green { color: #07C160; }
 .uni-color-blue { color: #0785D1; }
 .uni-color-gray { color: #C7C7CC; }
-
+.uni-color-black { color: #333333; }
 /* 边距 */
 .uni-margin-wrap {
 	width: 690rpx;

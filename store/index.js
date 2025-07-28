@@ -24,6 +24,8 @@ const globalState = Vue.observable({
   // 连接状态
   isConnected: false,
   showConnectionFailed: false,
+  // 密码验证状态
+  isPasswordVerified: false
 })
 
 // 状态管理对象
@@ -88,5 +90,14 @@ export default {
   
   setShowConnectionFailed(status) {
     globalState.showConnectionFailed = status
+  },
+  
+  // 密码验证状态管理
+  getIsPasswordVerified() {
+    return globalState.isPasswordVerified
+  },
+  
+  setIsPasswordVerified(status) {
+    globalState.isPasswordVerified = status
   }
 } 

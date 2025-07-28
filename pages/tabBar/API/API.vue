@@ -24,6 +24,7 @@
     import BatteryCard from '../../../components/BatteryCard.vue'
     import CommonPanel from '../../../components/CommonPanel.vue'
     import DoubleColumnData from '../../../components/DoubleColumnData.vue'
+    import globalStore from '../../../store/index.js'
     
     export default {
         components: {
@@ -206,18 +207,37 @@
               });
             },
             
-            // 控制按钮点击事件
-            handleControlClick({ button, index }) {
+            checkBeforeControl(actionCallback) {
+              // 1. 检查蓝牙连接
               if (!this.isConnected) {
                 uni.showToast({
-                  title: '请先连接设备',
+                  title: '蓝牙未准备好',
+                  icon: 'none'
+                });
+                return;
+              }
+
+              // 2. 检查密码验证
+              if (!globalStore.getIsPasswordVerified()) {
+                uni.showToast({
+                  title: '请先验证密码',
                   icon: 'none'
                 });
                 return;
               }
               
-              console.log('控制按钮点击:', button);
-              
+              // 3. 执行操作
+              actionCallback();
+            },
+            // 控制按钮点击事件
+            handleControlClick({ button, index }) {
+              this.checkBeforeControl(() => {
+                // 密码验证通过后再执行原有逻辑
+                this.doControlAction(button, index);
+              });
+            },
+            // 原有控制逻辑
+            doControlAction(button, index) {
               switch(button.action) {
                 case 'chargeOn':
                   this.handleChargeOn();

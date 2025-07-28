@@ -2,7 +2,7 @@
   <view class="common-panel">
     <!-- 验证码输入区域 - 移除发验证码按钮，只保留发送按钮 -->
     <view v-if="showVerifyCode" class="verify-section">
-      <view class="verify-container">
+      <view class="verify-container uni-bg-green uni-color-black">
         <text class="verify-label">{{ verifyCodePlaceholder }}</text>
         <input 
           v-model="verifyCode" 
@@ -11,7 +11,7 @@
           type="text"
         />
         <button 
-          class="verify-btn"
+          class="verify-btn  uni-bg-green uni-color-black"
           @click="handleSendCode"
         >
           {{ sendText }}
@@ -24,7 +24,7 @@
       <button
         v-for="(button, index) in functionButtons"
         :key="index"
-        class="function-btn"
+        class="function-btn uni-bg-green uni-color-black"
         :class="button.type || 'default'"
         @click="handleFunctionClick(button, index)"
       >
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import globalStore from '../store/index.js'
+
 export default {
   name: 'CommonPanel',
   props: {
@@ -67,6 +69,15 @@ export default {
   methods: {
     // 发送验证码
     handleSendCode() {
+      // 验证密码成功后，更新全局状态
+      if (this.verifyCode && this.verifyCode.trim()) {
+        globalStore.setIsPasswordVerified(true);
+        uni.showToast({
+          title: '密码验证成功',
+          icon: 'success',
+          duration: 1500
+        });
+      }
       this.$emit('sendCode', this.verifyCode)
     },
     
@@ -90,7 +101,6 @@ export default {
 }
 
 .verify-container {
-  background: linear-gradient(135deg, #7ED8A0 0%, #6BBF88 100%);
   border-radius: 25rpx;
   padding: 18rpx 20rpx;
   display: flex;
@@ -99,19 +109,17 @@ export default {
 }
 
 .verify-label {
-  color: #FFFFFF;
-  font-size: 28rpx;
+  font-size: 24rpx;
   white-space: nowrap;
-  font-weight: 500;
 }
 
 .verify-input {
   flex: 1;
   background-color: #FFFFFF;
   border-radius: 20rpx;
-  padding: 16rpx 20rpx;
+  padding: 10rpx 20rpx;
   border: none;
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #333333;
   outline: none;
   margin: 0 15rpx;
@@ -122,12 +130,10 @@ export default {
 }
 
 .verify-btn {
-  background-color: #FFFFFF;
-  color: #6BBF88;
   border: none;
   border-radius: 18rpx;
   padding: 16rpx 24rpx;
-  font-size: 26rpx;
+  font-size: 24rpx;
   font-weight: 500;
   min-width: 120rpx;
   height: 56rpx;
@@ -150,16 +156,14 @@ export default {
 
 .function-btn {
   width: 100%;
-  color: #FFFFFF;
   border-radius: 20rpx;
   padding: 8rpx 20rpx;
-  font-size: 28rpx;
-  font-weight: 500;
+  font-size: 24rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #9ac580;
 }
+
 .function-btn:active {
   opacity: 0.7;
   transform: scale(0.95);

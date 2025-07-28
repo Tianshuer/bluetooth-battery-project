@@ -8,7 +8,7 @@
 				<image class="brand-image" src="/static/product_icon.jpg" mode="aspectFit"></image>
 			</view>
 			<view class="text-section">
-				<text class="brand-text">Electricity Convergence</text>
+				<text class="brand-text uni-color-black">Electricity Convergence</text>
 			</view>
 		</view>
 		<view class="bottom-section">
@@ -89,7 +89,6 @@ export default {
 
 .brand-text {
 	font-size: 28rpx;
-	color: #333333;
 	letter-spacing: 2rpx;
 }
 

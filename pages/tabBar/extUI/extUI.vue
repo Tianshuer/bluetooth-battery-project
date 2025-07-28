@@ -24,6 +24,7 @@
 import BatteryCard from '../../../components/BatteryCard.vue'
 import CommonPanel from '../../../components/CommonPanel.vue'
 import FormInputList from '../../../components/FormInputList.vue'
+import globalStore from '../../../store/index.js'
 
 export default {
   components: {
@@ -243,6 +244,13 @@ export default {
     
     // 功能按钮点击
     handleFunctionClick({ button, index }) {
+      if (!globalStore.getIsPasswordVerified()) {
+        uni.showToast({
+          title: '请先验证密码',
+          icon: 'none'
+        });
+        return;
+      }
       console.log('功能按钮点击:', button);
       uni.showToast({
         title: `点击了${button.text}`,
@@ -287,8 +295,15 @@ export default {
         value: value,
         index: index
       });
-      
-      if (!value.trim()) {
+      if (!globalStore.getIsPasswordVerified()) {
+        uni.showToast({
+          title: '请先验证密码',
+          icon: 'none'
+        });
+        return;
+      }
+
+      if (!value.trim()) { 
         uni.showToast({
           title: `请输入${item.label}`,
           icon: 'none'
