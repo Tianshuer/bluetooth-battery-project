@@ -117,7 +117,6 @@ export default {
   },
   onLoad() {
     this.getSystemInfo();
-    this.startBatterySimulation();
   },
   methods: {
     ...mapActions([

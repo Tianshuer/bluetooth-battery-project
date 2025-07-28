@@ -220,7 +220,6 @@ export default {
         }
       ]
     },
-    show: false
   },
   onLoad() {
     this.getSystemInfo();
@@ -386,7 +385,8 @@ export default {
       }
       
       uni.showLoading({
-        title: this.t('setting_series_count')
+        title: this.t('setting_series_count'),
+        mask: true
       });
       
       setTimeout(() => {
@@ -435,7 +435,8 @@ export default {
     // 处理均衡相关设置
     handleBalanceSettings(item, value) {
       uni.showLoading({
-        title: this.t('setting_balance', item.label)
+        title: this.t('setting_balance', item.label),
+        mask: true
       });
       
       setTimeout(() => {
@@ -492,7 +493,8 @@ export default {
       }
       
       uni.showLoading({
-        title: this.t('changing_bluetooth_name')
+        title: this.t('changing_bluetooth_name'),
+        mask: true
       });
       
       setTimeout(() => {
@@ -535,7 +537,8 @@ export default {
     // 一键铁链
     handleIronChain() {
       uni.showLoading({
-        title: this.t('connecting')
+        title: this.t('connecting'),
+        mask: true
       });
       
       setTimeout(() => {
@@ -550,7 +553,8 @@ export default {
     // 一键钛链
     handleTitaniumChain() {
       uni.showLoading({
-        title: this.t('connecting')
+        title: this.t('connecting'),
+        mask: true
       });
       
       setTimeout(() => {

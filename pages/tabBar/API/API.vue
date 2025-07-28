@@ -185,7 +185,8 @@
             // 连接设备
             connectDevice() {
               uni.showLoading({
-                title: '正在连接设备...'
+                title: '正在连接设备...',
+                mask: true
               });
               
               setTimeout(() => {
@@ -355,7 +356,8 @@
               }
               
               uni.showLoading({
-                title: '正在开启充电...'
+                title: '正在开启充电...',
+                mask: true
               });
               
               setTimeout(() => {
@@ -382,7 +384,8 @@
               }
               
               uni.showLoading({
-                title: '正在关闭充电...'
+                title: '正在关闭充电...',
+                mask: true
               });
               
               setTimeout(() => {
@@ -415,7 +418,8 @@
               }
               
               uni.showLoading({
-                title: '正在开启放电...'
+                title: '正在开启放电...',
+                mask: true
               });
               
               setTimeout(() => {
@@ -442,7 +446,8 @@
               }
               
               uni.showLoading({
-                title: '正在关闭放电...'
+                title: '正在关闭放电...',
+                mask: true
               });
               
               setTimeout(() => {
@@ -480,7 +485,8 @@
             // 开始均衡
             startBalancing() {
               uni.showLoading({
-                title: '正在启动均衡...'
+                title: '正在启动均衡...',
+                mask: true
               });
               
               setTimeout(() => {
@@ -531,7 +537,8 @@
             // 执行重启
             restartDevice() {
               uni.showLoading({
-                title: '正在重启设备...'
+                title: '正在重启设备...',
+                mask: true
               });
               
               // 断开连接并重置状态
