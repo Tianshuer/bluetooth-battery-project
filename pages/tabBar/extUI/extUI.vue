@@ -350,7 +350,8 @@ export default {
       }
       
       uni.showLoading({
-        title: '正在设置串数...'
+        title: '正在设置串数...',
+        mask: true
       });
       
       setTimeout(() => {
@@ -399,7 +400,8 @@ export default {
     // 处理均衡相关设置
     handleBalanceSettings(item, value) {
       uni.showLoading({
-        title: `正在设置${item.label}...`
+        title: `正在设置${item.label}...`,
+        mask: true
       });
       
       setTimeout(() => {
@@ -456,7 +458,8 @@ export default {
       }
       
       uni.showLoading({
-        title: '正在修改蓝牙名称...'
+        title: '正在修改蓝牙名称...',
+        mask: true
       });
       
       setTimeout(() => {
@@ -499,7 +502,8 @@ export default {
     // 一键铁链
     handleIronChain() {
       uni.showLoading({
-        title: '正在连接...'
+        title: '正在连接...',
+        mask: true
       });
       
       setTimeout(() => {
@@ -514,7 +518,8 @@ export default {
     // 一键钛链
     handleTitaniumChain() {
       uni.showLoading({
-        title: '正在连接...'
+        title: '正在连接...',
+        mask: true
       });
       
       setTimeout(() => {
