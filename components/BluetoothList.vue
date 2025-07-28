@@ -1,6 +1,6 @@
 <template>
 	<!-- 蓝牙设备列表半弹窗 -->
-	<uni-popup ref="popup" type="bottom" :mask-click="true" :safe-area="false" :mask-close-able="true">
+	<uni-popup ref="popup" type="bottom" :is-mask-click="false" :safe-area="false">
 		<view class="popup-content">
 			<view class="popup-header">
 				<view class="popup-title-wrapper">
@@ -65,14 +65,21 @@
 
 			// 显示弹窗
 			showPopup() {
+				uni.hideTabBar({
+					animation: true
+				})
 				// 每次显示弹窗时都重新开始扫描
 				this.deviceList = [];
 				this.isScanning = false;
 				this.$refs.popup.open();
 				this.startScan();
+
 			},
 			// 隐藏弹窗
 			hidePopup() {
+				uni.showTabBar({
+					animation: true
+				})
 				this.$refs.popup.close();
 			},
 			// 开始扫描
