@@ -4,7 +4,7 @@
 		<view class="popup-content">
 			<view class="popup-header">
 				<view class="popup-title-wrapper">
-					<text class="popup-title">已发现 {{deviceList.length}} 个外围设备</text>
+					<text class="popup-title">{{ t('found_peripherals', deviceList.length) }}</text>
 				</view>
 				<text class="popup-close" @click="hidePopup">×</text>
 			</view>
@@ -21,7 +21,7 @@
 							<view class="bluetooth-icon"></view>
 						</view>
 						<view class="device-info">
-							<text class="device-name">{{device.name || '未知设备'}}</text>
+							<text class="device-name">{{device.name || t('unknown_device')}}</text>
 							<text class="device-uuid">{{device.deviceId}}</text>
 						</view>
 					</view>
@@ -29,8 +29,8 @@
 				
 				<!-- 底部按钮 -->
 				<view class="popup-actions">
-					<button class="action-btn stop-btn" @click="stopScan">结束扫描</button>
-					<button class="action-btn start-btn" @click="startScan">开始扫描</button>
+					<button class="action-btn stop-btn" @click="stopScan">{{ t('stop_scan') }}</button>
+					<button class="action-btn start-btn" @click="startScan">{{ t('start_scan') }}</button>
 				</view>
 			</view>
 		</view>
@@ -39,7 +39,7 @@
 
 <script>
 	import uniPopup from '@/uni_modules/uni-popup/components/uni-popup/uni-popup.vue'
-	import globalStore from '../store/index.js'
+	import { mapGetters, mapActions } from 'vuex'
 	
 	export default {
 		name: 'BluetoothList',
@@ -49,10 +49,20 @@
 		data() {
 			return {
 				deviceList: [],
-				isScanning: false,
+				isScanning: false
 			}
 		},
+		computed: {
+			...mapGetters([
+				't'
+			])
+		},
 		methods: {
+			...mapActions([
+				'setConnectionStatus',
+				'setShowConnectionFailed'
+			]),
+
 			// 显示弹窗
 			showPopup() {
 				// 每次显示弹窗时都重新开始扫描
@@ -74,7 +84,7 @@
 				
 				// 显示loading toast
 				uni.showToast({
-					title: 'loading',
+					title: this.t('scanning_devices'),
 					icon: 'loading',
 					duration: 2000
 				});
@@ -86,7 +96,7 @@
 			stopScan() {
 				this.isScanning = false;
 				uni.showToast({
-					title: '结束扫描',
+					title: this.t('stop_scan'),
 					icon: 'none',
 				});
 			},
@@ -149,7 +159,7 @@
 			// 选择设备
 			selectDevice(device) {
 				uni.showToast({
-					title: 'loading',
+					title: this.t('connecting'),
 					icon: 'loading',
 					duration: 2000
 				});
@@ -160,8 +170,8 @@
 					const isConnected = Math.random() > 0.3; // 70%成功率
 					
 					if (isConnected) {
-						globalStore.setIsConnected(true);
-						globalStore.setShowConnectionFailed(false);
+						this.setConnectionStatus(false);
+						this.setShowConnectionFailed(true);
 						
 						// 延迟跳转页面
 						setTimeout(() => {
@@ -172,10 +182,9 @@
 						
 						this.hidePopup();
 					} else {
-						globalStore.setIsConnected(false);
-						globalStore.setShowConnectionFailed(true);
+						this.setConnectionStatus(false);
 						uni.showToast({
-							title: 'Failed to connect to device',
+							title: this.t('connection_failed'),
 							icon: 'none',
 							duration: 2000
 						});

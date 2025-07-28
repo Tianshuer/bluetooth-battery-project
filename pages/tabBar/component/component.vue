@@ -2,7 +2,7 @@
   <view class="container" :style="{ minHeight: screenHeight + 'px' }">
     
     <!-- 电池状态卡片 -->
-    <BatteryCard :batteryPercentage="batteryData.currentBatteryLevel" />
+    <BatteryCard />
     
     <!-- 电压电流卡片 -->
     <VoltageCurrentCard :voltage="batteryData.voltage" :current="batteryData.current" />
@@ -10,62 +10,62 @@
     <!-- 电池信息卡片 -->
     <InfoCard 
       :item1Value="batteryData.batteryCapacity"
-      :item1Label="'电池容量'"
+      :item1Label="t('battery_capacity')"
       :item1Unit="'AH'"
       :item2Value="batteryData.remainingPower"
-      :item2Label="'剩余电量'"
+      :item2Label="t('remaining_power')"
       :item2Unit="'%'"
       :item3Value="batteryData.power"
-      :item3Label="'功率'"
+      :item3Label="t('power')"
       :item3Unit="'W'"
       :item4Value="batteryData.cycleCapacity"
-      :item4Label="'循环容量'"
+      :item4Label="t('cycle_capacity')"
       :item4Unit="'AH'"
     />
     <!-- 电压信息卡片 -->
     <InfoCard 
       :item1Value="batteryData.cellVoltageDiff"
-      :item1Label="'电芯压差'"
+      :item1Label="t('voltage_diff')"
       :item1Unit="'V'"
       :item2Value="batteryData.averageVoltage"
-      :item2Label="'平均电压'"
+      :item2Label="t('average_voltage')"
       :item2Unit="'V'"
       :item3Value="batteryData.maxVoltage"
-      :item3Label="'最高电压'"
+      :item3Label="t('max_voltage')"
       :item3Unit="'V'"
       :item4Value="batteryData.minVoltage"
-      :item4Label="'最低电压'"
+      :item4Label="t('min_voltage')"
       :item4Unit="'V'"
     />
 
     <!-- 芯片温度信息卡片 -->
     <InfoCard 
       :item1Value="batteryData.chip1Temp"
-      :item1Label="'芯片1温度'"
+      :item1Label="t('chip1_temp')"
       :item1Unit="'°C'"
       :item2Value="batteryData.chip2Temp"
-      :item2Label="'芯片2温度'"
+      :item2Label="t('chip2_temp')"
       :item2Unit="'°C'"
       :item3Value="batteryData.mosTemp"
-      :item3Label="'MOS管温度'"
+      :item3Label="t('mos_temp')"
       :item3Unit="'°C'"
       :item4Value="batteryData.balanceTemp"
-      :item4Label="'均衡温度'"
+      :item4Label="t('balance_temp')"
       :item4Unit="'°C'"
     />
     <!-- 电芯温度信息卡片 -->
     <InfoCard 
       :item1Value="batteryData.cellTemp1"
-      :item1Label="'电芯温度1'"
+      :item1Label="t('cell_temp1')"
       :item1Unit="'°C'"
       :item2Value="batteryData.cellTemp2"
-      :item2Label="'电芯温度2'"
+      :item2Label="t('cell_temp2')"
       :item2Unit="'°C'"
       :item3Value="batteryData.cellTemp3"
-      :item3Label="'电芯温度3'"
+      :item3Label="t('cell_temp3')"
       :item3Unit="'°C'"
       :item4Value="batteryData.cellTemp4"
-      :item4Label="'电芯温度4'"
+      :item4Label="t('cell_temp4')"
       :item4Unit="'°C'"
     />
   </view>
@@ -75,6 +75,7 @@
 import BatteryCard from '../../../components/BatteryCard.vue'
 import VoltageCurrentCard from '../../../components/VoltageCurrentCard.vue'
 import InfoCard from '../../../components/InfoCard.vue'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
@@ -85,7 +86,6 @@ export default {
   data() {
     return {
       batteryData: {
-        currentBatteryLevel: 85,
         voltage: 12.5,
         current: 2.3,
         batteryCapacity: '0.0000',
@@ -105,13 +105,23 @@ export default {
         cellTemp3: '0.0000',
         cellTemp4: '0.0000'
       },
-      screenHeight: 0,
+      screenHeight: 0
     }
+  },
+  computed: {
+    ...mapGetters([
+      't'
+    ])
   },
   onLoad() {
     this.getSystemInfo();
+    this.startBatterySimulation();
   },
   methods: {
+    ...mapActions([
+      'setBatteryPercentage'
+    ]),
+    
     // 获取系统信息
     getSystemInfo() {
       uni.getSystemInfo({
@@ -124,6 +134,15 @@ export default {
           this.screenHeight = 667;
         }
       });
+    },
+    
+    // 开始电池百分比模拟
+    startBatterySimulation() {
+      setInterval(() => {
+        // 模拟电池百分比在 20-95 之间变化
+        const newPercentage = Math.floor(Math.random() * 76) + 20;
+        this.setBatteryPercentage(newPercentage);
+      }, 5000); // 每5秒更新一次
     }
   }
 }

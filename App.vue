@@ -1,27 +1,45 @@
 <script>
 	import { version } from './package.json'
-	import globalStore from './store/index.js'
+	import { getTabBarConfig } from './common/tabBarConfig.js'
 
 	export default {
 		onLaunch: function() {
-			console.log('蓝牙电池监控应用启动');
-			console.log(`应用版本: v${version}`);
-			
-			// 初始化全局状态管理
-			globalStore.init();
-			
-			// 初始化全局数据
-			this.globalData = {
-				bluetoothDevices: [],
-				currentDevice: null,
-				batteryHistory: {}
-			};
+			console.log('App Launch')
+			// 初始化语言设置
+			this.$store.dispatch('initLanguage')
+			// 设置初始 tabbar
+			this.updateTabBar()
 		},
 		onShow: function() {
 			console.log('App Show')
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		methods: {
+			// 更新 tabbar 文本
+			updateTabBar() {
+				try {
+					const t = this.$store.getters.t
+					const tabBarConfig = getTabBarConfig(t)
+					
+					// 设置 tabbar 文本
+					tabBarConfig.list.forEach((item, index) => {
+						uni.setTabBarItem({
+							index: index,
+							text: item.text
+						})
+					})
+				} catch (error) {
+					console.error('更新 tabbar 失败:', error)
+				}
+			}
+		},
+		watch: {
+			// 监听语言变化
+			'$store.state.languageChangeTrigger': function() {
+				this.updateTabBar()
+			}
 		}
 	}
 </script>

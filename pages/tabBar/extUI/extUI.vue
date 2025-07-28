@@ -1,7 +1,7 @@
 <template>
   <view class="container" :style="{ minHeight: screenHeight + 'px' }">
     <!-- 电池状态卡片 -->
-    <BatteryCard :batteryPercentage="75" />
+    <BatteryCard />
     
     <!-- 公共功能组件 -->
     <CommonPanel
@@ -24,7 +24,7 @@
 import BatteryCard from '../../../components/BatteryCard.vue'
 import CommonPanel from '../../../components/CommonPanel.vue'
 import FormInputList from '../../../components/FormInputList.vue'
-import globalStore from '../../../store/index.js'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
@@ -35,174 +35,186 @@ export default {
   data() {
     return {
       screenHeight: 0,
-      functionButtonsConfig: [
-        { text: '电池归零', type: 'default', action: 'batteryReset' },
-        { text: '一键铁链', type: 'info', action: 'IronChain' },
-        { text: '一键钛链', type: 'info', action: 'titaniumChain' },
-        { text: '一键三元', type: 'warning', action: 'ternary' },
-        { text: '修改密码', type: 'danger', action: 'changePassword' }
-      ],
-      // 表单输入项配置 - 完整的22项数据
-      formInputItems: [
+    }
+  },
+  computed: {
+    ...mapGetters([
+      't',
+      'languageOptions',
+      'currentLanguageIndex'
+    ]),
+    // 功能按钮配置 - 响应语言变化
+    functionButtonsConfig() {
+      return [
+        { text: this.t('battery_reset'), type: 'default', action: 'batteryReset' },
+        { text: this.t('one_key_iron'), type: 'info', action: 'IronChain' },
+        { text: this.t('one_key_titanium'), type: 'info', action: 'titaniumChain' },
+        { text: this.t('one_key_sanyuan'), type: 'warning', action: 'ternary' },
+        { text: this.t('change_password'), type: 'danger', action: 'changePassword' }
+      ]
+    },
+    // 表单输入项配置 - 响应语言变化
+    formInputItems() {
+      return [
         {
-          label: '串数设置',
-          placeholder: '请输入',
+          label: this.t('series_number_setting'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'stringCount'
         },
         {
-          label: '过压保护',
-          placeholder: '请输入',
+          label: this.t('over_voltage_protection'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'overvoltageProtection'
         },
         {
-          label: '过压恢复',
-          placeholder: '请输入',
+          label: this.t('over_voltage_recovery'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'overvoltageRecovery'
         },
         {
-          label: '欠压保护',
-          placeholder: '请输入',
+          label: this.t('under_voltage_protection'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'undervoltageProtection'
         },
         {
-          label: '欠压恢复',
-          placeholder: '请输入',
+          label: this.t('under_voltage_recovery'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'undervoltageRecovery'
         },
         {
-          label: '探头高温',
-          placeholder: '请输入',
+          label: this.t('probe_high_temp'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'probeHighTemp'
         },
         {
-          label: '探头恢复',
-          placeholder: '请输入',
+          label: this.t('probe_recovery_temp'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'probeRecovery'
         },
         {
-          label: 'MOS高温',
-          placeholder: '请输入',
+          label: this.t('mos_high_temp'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'mosHighTemp'
         },
         {
-          label: 'MOS恢复',
-          placeholder: '请输入',
+          label: this.t('mos_recovery_temp'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'mosRecovery'
         },
         {
-          label: '均衡压差',
-          placeholder: '请输入',
+          label: this.t('balance_voltage_diff'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'balancePressureDiff'
         },
         {
-          label: '均衡温度',
-          placeholder: '请输入',
+          label: this.t('balance_temperature'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'balanceTemperature'
         },
         {
-          label: '均衡频率',
-          placeholder: '请输入',
+          label: this.t('balance_frequency'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'balanceFrequency'
         },
         {
-          label: '电池容量',
-          placeholder: '请输入',
+          label: this.t('battery_capacity'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'batteryCapacity'
         },
         {
-          label: '压差均衡',
-          placeholder: '请输入',
+          label: this.t('voltage_diff_balance'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'pressureDiffBalance'
         },
         {
-          label: '均衡启动',
-          placeholder: '请输入',
+          label: this.t('balance_start'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'balanceStart'
         },
         {
-          label: '当前电流',
-          placeholder: '请输入',
+          label: this.t('current_current'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'currentFlow'
         },
         {
-          label: '故蹿廷时',
-          placeholder: '请输入',
+          label: this.t('fault_delay_time'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'faultDelayTime'
         },
         {
-          label: '过流保护',
-          placeholder: '请输入',
+          label: this.t('overcurrent_protection'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'overcurrentProtection'
         },
         {
-          label: '充电过流',
-          placeholder: '请输入',
+          label: this.t('charging_overcurrent'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'chargingOvercurrent'
         },
         {
-          label: '压差保护',
-          placeholder: '请输入',
+          label: this.t('voltage_diff_protection'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'pressureDiffProtection'
         },
         {
-          label: '电流消抖',
-          placeholder: '请输入',
+          label: this.t('current_debounce'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'currentDebounce'
         },
         {
-          label: '短踏廷时',
-          placeholder: '请输入',
+          label: this.t('short_step_delay'),
+          placeholder: this.t('input_value'),
           type: 'number',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'shortStepDelayTime'
         },
         {
-          label: '蓝牙改名',
-          placeholder: '请输入',
+          label: this.t('bluetooth_rename'),
+          placeholder: this.t('input_value'),
           type: 'text',
-          buttonText: '发送',
+          buttonText: this.t('send'),
           key: 'bluetoothRename'
         }
       ]
@@ -212,6 +224,15 @@ export default {
     this.getSystemInfo();
   },
   methods: {
+    ...mapActions([
+      'setPasswordVerified'
+    ]),
+
+    // 获取密码验证状态
+    getIsPasswordVerified() {
+      return this.$store.state.isPasswordVerified
+    },
+
     // 获取系统信息
     getSystemInfo() {
       uni.getSystemInfo({
@@ -231,29 +252,29 @@ export default {
       console.log('发送验证码:', code);
       if (!code) {
         uni.showToast({
-          title: '请输入验证码',
+          title: this.t('please_input_verify_code'),
           icon: 'none'
         });
         return;
       }
       uni.showToast({
-        title: '验证码发送成功',
+        title: this.t('verify_code_sent_success'),
         icon: 'success'
       });
     },
     
     // 功能按钮点击
     handleFunctionClick({ button, index }) {
-      if (!globalStore.getIsPasswordVerified()) {
+      if (!this.getIsPasswordVerified()) {
         uni.showToast({
-          title: '请先验证密码',
+          title: this.t('please_verify_password'),
           icon: 'none'
         });
         return;
       }
       console.log('功能按钮点击:', button);
       uni.showToast({
-        title: `点击了${button.text}`,
+        title: this.t('clicked_button', button.text),
         icon: 'none'
       });
       
@@ -295,9 +316,9 @@ export default {
         value: value,
         index: index
       });
-      if (!globalStore.getIsPasswordVerified()) {
+      if (!this.getIsPasswordVerified()) {
         uni.showToast({
-          title: '请先验证密码',
+          title: this.t('please_verify_password'),
           icon: 'none'
         });
         return;
@@ -305,7 +326,7 @@ export default {
 
       if (!value.trim()) { 
         uni.showToast({
-          title: `请输入${item.label}`,
+          title: this.t('please_input_value', item.label),
           icon: 'none'
         });
         return;
@@ -356,20 +377,20 @@ export default {
       const stringCount = parseInt(value);
       if (stringCount < 1 || stringCount > 32) {
         uni.showToast({
-          title: '串数范围应在1-32之间',
+          title: this.t('series_count_range_error'),
           icon: 'none'
         });
         return;
       }
       
       uni.showLoading({
-        title: '正在设置串数...'
+        title: this.t('setting_series_count')
       });
       
       setTimeout(() => {
         uni.hideLoading();
         uni.showToast({
-          title: `串数设置为${stringCount}成功`,
+          title: this.t('series_count_set_success', stringCount),
           icon: 'success'
         });
       }, 1500);
@@ -380,14 +401,14 @@ export default {
       const voltage = parseFloat(value);
       if (voltage < 0 || voltage > 5) {
         uni.showToast({
-          title: '电压值应在0-5V之间',
+          title: this.t('voltage_range_error'),
           icon: 'none'
         });
         return;
       }
       
       uni.showToast({
-        title: `${item.label}设置成功`,
+        title: this.t('setting_success', item.label),
         icon: 'success'
       });
     },
@@ -397,14 +418,14 @@ export default {
       const temperature = parseInt(value);
       if (temperature < -40 || temperature > 85) {
         uni.showToast({
-          title: '温度值应在-40°C到85°C之间',
+          title: this.t('temperature_range_error'),
           icon: 'none'
         });
         return;
       }
       
       uni.showToast({
-        title: `${item.label}设置成功`,
+        title: this.t('setting_success', item.label),
         icon: 'success'
       });
     },
@@ -412,13 +433,13 @@ export default {
     // 处理均衡相关设置
     handleBalanceSettings(item, value) {
       uni.showLoading({
-        title: `正在设置${item.label}...`
+        title: this.t('setting_balance', item.label)
       });
       
       setTimeout(() => {
         uni.hideLoading();
         uni.showToast({
-          title: `${item.label}设置成功`,
+          title: this.t('setting_success', item.label),
           icon: 'success'
         });
       }, 1000);
@@ -429,14 +450,14 @@ export default {
       const capacity = parseInt(value);
       if (capacity < 1 || capacity > 100000) {
         uni.showToast({
-          title: '电池容量范围应在1-100000mAh之间',
+          title: this.t('battery_capacity_range_error'),
           icon: 'none'
         });
         return;
       }
       
       uni.showToast({
-        title: `电池容量设置为${capacity}mAh`,
+        title: this.t('battery_capacity_set_success', capacity),
         icon: 'success'
       });
     },
@@ -446,14 +467,14 @@ export default {
       const current = parseFloat(value);
       if (current < 0 || current > 200) {
         uni.showToast({
-          title: '电流值应在0-200A之间',
+          title: this.t('current_range_error'),
           icon: 'none'
         });
         return;
       }
       
       uni.showToast({
-        title: `${item.label}设置成功`,
+        title: this.t('setting_success', item.label),
         icon: 'success'
       });
     },
@@ -462,20 +483,20 @@ export default {
     handleBluetoothRename(value) {
       if (value.length < 3 || value.length > 20) {
         uni.showToast({
-          title: '蓝牙名称长度应在3-20字符之间',
+          title: this.t('bluetooth_name_length_error'),
           icon: 'none'
         });
         return;
       }
       
       uni.showLoading({
-        title: '正在修改蓝牙名称...'
+        title: this.t('changing_bluetooth_name')
       });
       
       setTimeout(() => {
         uni.hideLoading();
         uni.showToast({
-          title: `蓝牙名称已改为"${value}"`,
+          title: this.t('bluetooth_name_changed', value),
           icon: 'success'
         });
       }, 2000);
@@ -484,7 +505,7 @@ export default {
     // 处理通用设置
     handleGeneralSettings(item, value) {
       uni.showToast({
-        title: `${item.label}设置成功`,
+        title: this.t('setting_success', item.label),
         icon: 'success'
       });
     },
@@ -499,8 +520,8 @@ export default {
     // 电池归零
     handleBatteryReset() {
       uni.showModal({
-        title: '提示',
-        content: '确定要执行电池归零操作吗？',
+        title: this.t('tip'),
+        content: this.t('confirm_battery_reset'),
         success: (res) => {
           if (res.confirm) {
             console.log('执行电池归零');
@@ -512,13 +533,13 @@ export default {
     // 一键铁链
     handleIronChain() {
       uni.showLoading({
-        title: '正在连接...'
+        title: this.t('connecting')
       });
       
       setTimeout(() => {
         uni.hideLoading();
         uni.showToast({
-          title: '铁链连接成功',
+          title: this.t('iron_chain_connected'),
           icon: 'success'
         });
       }, 2000);
@@ -527,13 +548,13 @@ export default {
     // 一键钛链
     handleTitaniumChain() {
       uni.showLoading({
-        title: '正在连接...'
+        title: this.t('connecting')
       });
       
       setTimeout(() => {
         uni.hideLoading();
         uni.showToast({
-          title: '钛链连接成功',
+          title: this.t('titanium_chain_connected'),
           icon: 'success'
         });
       }, 2000);
@@ -543,7 +564,7 @@ export default {
     handleTernary() {
       console.log('执行一键三元');
       uni.showToast({
-        title: '三元操作完成',
+        title: this.t('ternary_operation_done'),
         icon: 'success'
       });
     },

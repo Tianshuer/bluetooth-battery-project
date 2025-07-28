@@ -27,6 +27,7 @@
     }
   },
   "dependencies": {
-    "@dcloudio/uni-ui": "^1.5.10"
+    "@dcloudio/uni-ui": "^1.5.10",
+    "vuex": "^3.6.2"
   }
 }

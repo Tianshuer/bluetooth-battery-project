@@ -1,28 +1,24 @@
 <template>
   <view class="common-panel">
-    <!-- 验证码输入区域 - 移除发验证码按钮，只保留发送按钮 -->
-    <view v-if="showVerifyCode" class="verify-section">
+    <!-- 验证码区域 -->
+    <view class="verify-section" v-if="showVerifyCode">
       <view class="verify-container uni-bg-green uni-color-black">
-        <text class="verify-label">{{ verifyCodePlaceholder }}</text>
+        <text class="verify-label">{{ t('password_verification') }}</text>
         <input 
-          v-model="verifyCode" 
+          v-model="verifyCode"
+          :placeholder="t('input_value')"
           class="verify-input"
-          maxlength="6"
-          type="text"
         />
-        <button 
-          class="verify-btn  uni-bg-green uni-color-black"
-          @click="handleSendCode"
-        >
-          {{ sendText }}
+        <button class="verify-btn uni-bg-green uni-color-black" @click="handleSendCode">
+          {{ t('send') }}
         </button>
       </view>
     </view>
-
+    
     <!-- 功能按钮网格 -->
-    <view v-if="functionButtons.length > 0" class="function-grid">
-      <button
-        v-for="(button, index) in functionButtons"
+    <view class="function-grid" v-if="functionButtons.length > 0">
+      <button 
+        v-for="(button, index) in functionButtons" 
         :key="index"
         class="function-btn uni-bg-green uni-color-black"
         :class="button.type || 'default'"
@@ -35,45 +31,44 @@
 </template>
 
 <script>
-import globalStore from '../store/index.js'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'CommonPanel',
   props: {
-    // 是否显示验证码输入区域
+    // 是否显示验证码区域
     showVerifyCode: {
       type: Boolean,
       default: true
     },
-    // 验证码输入框占位符
-    verifyCodePlaceholder: {
-      type: String,
-      default: '密码验证'
-    },
-    // 发送按钮文字
-    sendText: {
-      type: String,
-      default: '发送'
-    },
-    // 功能按钮数组
+    // 功能按钮配置
     functionButtons: {
       type: Array,
       default: () => []
-    },
+    }
   },
   data() {
     return {
       verifyCode: ''
     }
   },
+  computed: {
+    ...mapGetters([
+      't'
+    ])
+  },
   methods: {
+    ...mapActions([
+      'setPasswordVerified'
+    ]),
+
     // 发送验证码
     handleSendCode() {
       // 验证密码成功后，更新全局状态
       if (this.verifyCode && this.verifyCode.trim()) {
-        globalStore.setIsPasswordVerified(true);
+        this.setPasswordVerified(true);
         uni.showToast({
-          title: '密码验证成功',
+          title: this.t('password_success'),
           icon: 'success',
           duration: 1500
         });

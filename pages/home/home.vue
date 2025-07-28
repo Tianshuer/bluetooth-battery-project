@@ -12,7 +12,7 @@
 			</view>
 		</view>
 		<view class="bottom-section">
-			<button class="enter-btn" @click="showPopup">进入</button>
+			<button class="enter-btn" @click="showPopup">{{ t('enter_button') }}</button>
 		</view>
 
 		<!-- 蓝牙设备列表组件 -->
@@ -23,6 +23,7 @@
 
 <script>
 import BluetoothList from '../../components/BluetoothList.vue';
+import { mapGetters } from 'vuex';
 	
 export default {
 	components: {
@@ -35,6 +36,11 @@ export default {
 			isScanning: false
 		}
 	},
+	computed: {
+		...mapGetters([
+			't'
+		])
+	},
 	onLoad() {
 		// 获取屏幕高度
 		const systemInfo = uni.getSystemInfoSync();
@@ -43,7 +49,6 @@ export default {
 	methods: {
 		// 显示蓝牙设备列表
 		showPopup() {
-			console.log('Home showPopup 被调用');
 			this.$refs.bluetoothList.showPopup();
 		}
 	}

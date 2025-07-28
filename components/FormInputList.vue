@@ -5,7 +5,9 @@
       :key="index"
       class="input-item"
     >
-      <view class="label">{{ item.label }}</view>
+      <view class="label-section">
+        <text class="label">{{ item.label }}</text>
+      </view>
       <view class="input-section">
         <input 
           v-model="item.value"
@@ -26,6 +28,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'FormInputList',
   props: {
@@ -39,6 +43,11 @@ export default {
     return {
       inputItems: []
     }
+  },
+  computed: {
+    ...mapGetters([
+      't'
+    ])
   },
   watch: {
     items: {
@@ -76,28 +85,34 @@ export default {
 </script>
 
 <style scoped>
-.form-input-list {
-}
-
 .input-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: 16rpx 20rpx;
   background-color: #fff;
   margin-bottom: 20rpx;
   border-radius: 25rpx;
+  gap: 40rpx;
 }
 
 .input-item:last-child {
   margin-bottom: 0;
 }
 
+.label-section {
+  width: 180rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 8rpx;
+}
+
 .label {
   font-size: 24rpx;
   color: #333333;
-  width: 140rpx;
-  flex-shrink: 0;
-  line-height: 1.2;
+  word-break: break-all;
+  line-height: 1.4;
+  display: block;
 }
 
 .input-section {
@@ -105,7 +120,7 @@ export default {
   display: flex;
   align-items: center;
   gap: 15rpx;
-  margin-left: 30rpx;
+  min-width: 0;
 }
 
 .input-field {
@@ -120,6 +135,7 @@ export default {
   transition: border-color 0.2s ease;
   height: 60rpx;
   box-sizing: border-box;
+  min-width: 0;
 }
 
 .input-field:focus {
@@ -141,6 +157,7 @@ export default {
   width: 80rpx;
   height: 60rpx;
   transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
 .send-btn:active {

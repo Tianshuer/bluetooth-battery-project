@@ -3,13 +3,13 @@
     <view class="card-header">
       <image class="logo" src="/static/logo.png" mode="aspectFit" @click="handleLogoClick"></image>
       <view class="device-info">
-        <text class="device-name">iPhone</text>
+        <text class="device-name">IPhone</text>
         <text class="device-status">N/A</text>
       </view>
       <view class="connection-status">
-          <text class="status-text">
-            {{ showConnectionFailed ? '连接关闭' : '连接成功' }}
-          </text>
+        <text class="status-text">
+          {{ showConnectionFailed ? t('connection_closed') : t('connection_success') }}
+        </text>
       </view>
     </view>
     
@@ -21,22 +21,22 @@
         <view class="battery-header">
           <text class="battery-percentage">{{ batteryPercentage }}%</text>
           <view class="language-selector" @click="openLanguagePicker">
-            <image class="country-flag" :src="currentLanguage.iconUrl" mode="aspectFit"></image>
-            <view class="language-text">{{ currentLanguage.shortText }}</view>
+            <image class="country-flag" :src="languageOptions[currentLanguageIndex].iconUrl" mode="aspectFit"></image>
+            <view class="language-text">{{ t('language') }}</view>
           </view>
         </view>
         <view class="status-indicators">
           <view class="status-item">
             <view class="status-dot red"></view>
-            <text class="status-text">放电MOS</text>
+            <text class="status-text">{{ t('discharge_mos') }}</text>
           </view>
           <view class="status-item">
             <view class="status-dot red"></view>
-            <text class="status-text">充电MOS</text>
+            <text class="status-text">{{ t('charge_mos') }}</text>
           </view>
           <view class="status-item">
             <view class="status-dot red"></view>
-            <text class="status-text">均衡</text>
+            <text class="status-text">{{ t('balancing') }}</text>
           </view>
         </view>
       </view>
@@ -47,18 +47,20 @@
     
     <!-- 连接失败提示盒子 -->
     <view v-if="showConnectionFailed" class="connection-failed-tip" @click="handleLogoClick">
-      <text class="tip-text">蓝牙断开，点击重新搜索</text>
+      <text class="tip-text">{{ t('ble_disconnected_retry') }}</text>
     </view>
     
     <!-- 语言选择弹出框 -->
     <uni-popup 
       ref="languagePopup" 
       type="bottom" 
-      :is-mask-click="false"
+      :mask-click="true"
+      :safe-area="false"
+      :mask-close-able="true"
       >
       <view class="language-popup">
         <view class="popup-header">
-          <text class="popup-title">选择语言</text>
+          <text class="popup-title">{{ t('language') }}</text>
           <view class="close-btn" @click="closeLanguagePicker">
             <text class="close-text">✕</text>
           </view>
@@ -83,7 +85,7 @@
 
 <script>
 import uniPopup from '@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue'
-import globalStore from '../store/index.js'
+import { mapGetters, mapActions } from 'vuex'
 import BluetoothList from './BluetoothList.vue'
 
 export default {
@@ -92,28 +94,39 @@ export default {
     uniPopup,
     BluetoothList
   },
-  props: {
-    batteryPercentage: {
-      type: Number,
-      default: 0
-    }
-  },
+
   computed: {
-    // 直接使用computed属性监听store状态变化
-    currentLanguage() {
-      return globalStore.getCurrentLanguage()
-    },
-    languageOptions() {
-      return globalStore.getLanguageOptions()
-    },
-    currentLanguageIndex() {
-      return globalStore.getCurrentLanguageIndex()
-    },
-    showConnectionFailed() {
-      return globalStore.getShowConnectionFailed()
-    }
+    ...mapGetters([
+      'currentLanguage',
+      'languageOptions', 
+      'currentLanguageIndex',
+      'showConnectionFailed',
+      'isConnected',
+      't',
+      'batteryPercentage'
+    ])
   },
   methods: {
+    ...mapActions([
+      'switchLanguage',
+      'setConnectionStatus',
+      'setShowConnectionFailed'
+    ]),
+
+    // 处理logo点击事件
+    handleLogoClick() {
+      if (!this.isConnected) {
+        // 如果未连接，显示蓝牙设备列表
+        this.showBluetoothList()
+      } else {
+        uni.showToast({
+          title: this.t('connection_success'),
+          icon: 'success',
+          duration: 1500
+        })
+      }
+    },
+
     // 显示蓝牙设备列表
     showBluetoothList() {
       this.$refs.bluetoothList.showPopup()
@@ -131,21 +144,15 @@ export default {
     
     // 选择语言
     selectLanguage(index) {
-      // 使用全局状态管理
-      globalStore.setLanguage(index)
+      const language = this.languageOptions[index].value
+      this.switchLanguage(language)
       
       // 选择后自动关闭弹窗
       this.closeLanguagePicker()
-    },
-
-    // 处理logo点击事件
-    handleLogoClick() {
-      const isConnected = globalStore.getIsConnected()
-      if (!isConnected) {
-        // 如果未连接，显示蓝牙设备列表
-        this.showBluetoothList()
-      }
-    },
+      
+      // 触发全局语言切换事件
+      this.$emit('language-changed', index)
+    }
   }
 }
 </script>

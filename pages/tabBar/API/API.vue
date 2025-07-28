@@ -1,12 +1,12 @@
 <template>
     <view class="container" :style="{ minHeight: screenHeight + 'px' }">
         <!-- 电池状态卡片 -->
-        <BatteryCard :batteryPercentage="batteryLevel" />
+        <BatteryCard />
         
         <!-- 显示与控制功能组件 -->
         <CommonPanel
           :showVerifyCode="false"
-          :functionButtons="controlButtonsConfig"
+          :functionButtons="controlButtons"
           @functionClick="handleControlClick"
         />
         
@@ -24,7 +24,7 @@
     import BatteryCard from '../../../components/BatteryCard.vue'
     import CommonPanel from '../../../components/CommonPanel.vue'
     import DoubleColumnData from '../../../components/DoubleColumnData.vue'
-    import globalStore from '../../../store/index.js'
+    import { mapGetters, mapActions } from 'vuex'
     
     export default {
         components: {
@@ -34,42 +34,7 @@
         },
         data() {
             return {
-                batteryLevel: 75,
                 screenHeight: 0,
-                isConnected: false, // 设备连接状态
-                // 显示与控制功能按钮配置
-                controlButtonsConfig: [
-                  {
-                    text: '充电开启',
-                    type: 'default',
-                    action: 'chargeOn'
-                  },
-                  {
-                    text: '放电开启',
-                    type: 'info',
-                    action: 'dischargeOn'
-                  },
-                  {
-                    text: '一键均衡',
-                    type: 'warning',
-                    action: 'autoBalance'
-                  },
-                  {
-                    text: '充电关闭',
-                    type: 'default',
-                    action: 'chargeOff'
-                  },
-                  {
-                    text: '放电关闭',
-                    type: 'info',
-                    action: 'dischargeOff'
-                  },
-                  {
-                    text: '重启设备',
-                    type: 'danger',
-                    action: 'restartDevice'
-                  }
-                ],
                 // 设备状态
                 deviceStatus: {
                   charging: false,
@@ -83,36 +48,135 @@
                   decimals: 4,
                   padding: true
                 },
-                // 电压空态配置
-                voltageEmptyConfig: {
-                  title: '设备未连接',
-                  description: '请检查设备连接状态\n或点击下方按钮刷新数据',
-                  showButton: true,
-                  buttonText: '连接设备',
-                  icon: '🔋'
-                }
+                // 电压空态配置 - 将在 computed 中定义
             };
         },
-        onLoad() {
-            this.getSystemInfo();
-            // 模拟设备连接延迟
-            setTimeout(() => {
-              this.connectDevice();
-            }, 1000);
+        computed: {
+            ...mapGetters([
+                't',
+                'isConnected',
+                'isPasswordVerified'
+            ]),
+            // 控制按钮配置 - 响应语言变化
+            controlButtons() {
+              return [
+                {
+                  text: this.t('start_charging'),
+                  action: 'chargeOn',
+                  color: '#34C759'
+                },
+                {
+                  text: this.t('stop_charging'),
+                  action: 'chargeOff',
+                  color: '#FF3B30'
+                },
+                {
+                  text: this.t('start_discharging'),
+                  action: 'dischargeOn',
+                  color: '#FF9500'
+                },
+                {
+                  text: this.t('stop_discharging'),
+                  action: 'dischargeOff',
+                  color: '#FF3B30'
+                },
+                {
+                  text: this.t('one_key_balance'),
+                  action: 'autoBalance',
+                  color: '#007AFF'
+                },
+                {
+                  text: this.t('restart_device'),
+                  action: 'restartDevice',
+                  color: '#AF52DE'
+                }
+              ]
+            },
+            // 添加语言变化触发器监听
+            languageChangeTrigger() {
+              return this.$store.state.languageChangeTrigger
+            },
+            // 电压空态配置 - 响应语言变化
+            voltageEmptyConfig() {
+              return {
+                title: this.t('device_not_connected'),
+                description: this.t('check_device_connection'),
+                showButton: true,
+                buttonText: this.t('connect_device'),
+                icon: '🔋'
+              }
+            }
         },
+        onLoad() {
+            this.getScreenHeight();
+            // 页面加载时自动连接设备
+            this.autoConnectDevice();
+        },
+        onShow() {
+            // 每次显示页面时自动连接设备
+            this.autoConnectDevice();
+        },
+        mounted() {
+            // 监听语言变化事件
+            uni.$on('languageChanged', this.handleLanguageChange)
+        },
+        
+        beforeDestroy() {
+            // 移除事件监听
+            uni.$off('languageChanged', this.handleLanguageChange)
+        },
+        
         methods: {
-            // 获取系统信息
-            getSystemInfo() {
-                uni.getSystemInfo({
-                    success: (res) => {
-                        this.screenHeight = res.windowHeight;
-                    },
-                    fail: (err) => {
-                        console.error('获取系统信息失败:', err);
-                        // 设置默认高度
-                        this.screenHeight = 667;
-                    }
+            ...mapActions([
+                'setConnectionStatus',
+                'setShowConnectionFailed',
+                'setPasswordVerified'
+            ]),
+            
+            // 处理语言变化
+            handleLanguageChange(data) {
+                console.log('API 语言变化:', data)
+                // 强制更新组件
+                this.$forceUpdate()
+            },
+
+            // 国际化文本获取
+            $t(key, ...args) {
+              return this.t(key, ...args)
+            },
+
+            // 获取屏幕高度
+            getScreenHeight() {
+              const systemInfo = uni.getSystemInfoSync();
+              this.screenHeight = systemInfo.windowHeight;
+            },
+            
+            // 自动连接设备
+            autoConnectDevice() {
+              // 如果已经连接，直接初始化数据
+              if (this.isConnected) {
+                this.initializeData();
+                return;
+              }
+              
+              // 显示连接提示
+              uni.showLoading({
+                title: this.t('connecting'),
+                mask: true
+              });
+              
+              // 模拟连接过程
+              setTimeout(() => {
+                // 使用 Vuex action 设置连接状态
+                this.setConnectionStatus(true);
+                this.initializeData();
+                uni.hideLoading();
+                uni.showToast({
+                  title: this.t('connection_success'),
+                  icon: 'success',
+                  duration: 1500
                 });
+              }, 2000);
             },
             
             // 连接设备
@@ -122,11 +186,11 @@
               });
               
               setTimeout(() => {
-                this.isConnected = true;
+                this.setConnectionStatus(true);
                 this.initializeData();
                 uni.hideLoading();
                 uni.showToast({
-                  title: '设备连接成功',
+                  title: this.t('connection_success'),
                   icon: 'success'
                 });
               }, 3000);
@@ -134,7 +198,7 @@
             
             // 断开设备连接
             disconnectDevice() {
-              this.isConnected = false;
+              this.setConnectionStatus(false);
               this.batteryVoltageData = [];
               
               // 清理定时器
@@ -147,6 +211,15 @@
             // 初始化数据
             initializeData() {
               if (!this.isConnected) return;
+              
+              // 确保 deviceStatus 已初始化
+              if (!this.deviceStatus) {
+                this.deviceStatus = {
+                  charging: false,
+                  discharging: false,
+                  balancing: false
+                };
+              }
               
               // 初始化电压数据
               this.batteryVoltageData = Array.from({ length: 34 }, (_, index) => ({
@@ -164,7 +237,7 @@
               
               // 电压数据每3秒更新一次
               this.voltageTimer = setInterval(() => {
-                if (this.isConnected && (this.deviceStatus.charging || this.deviceStatus.discharging)) {
+                if (this.isConnected && this.deviceStatus && (this.deviceStatus.charging || this.deviceStatus.discharging)) {
                   this.updateVoltageData();
                 }
               }, 3000);
@@ -187,11 +260,11 @@
               this.batteryVoltageData = this.batteryVoltageData.map(item => {
                 let newValue = parseFloat(item.value);
                 
-                if (this.deviceStatus.charging) {
+                if (this.deviceStatus && this.deviceStatus.charging) {
                   // 充电时电压缓慢上升
                   newValue += (Math.random() - 0.3) * 0.01;
                   newValue = Math.min(4.2, newValue);
-                } else if (this.deviceStatus.discharging) {
+                } else if (this.deviceStatus && this.deviceStatus.discharging) {
                   // 放电时电压缓慢下降
                   newValue += (Math.random() - 0.7) * 0.01;
                   newValue = Math.max(3.0, newValue);
@@ -211,16 +284,16 @@
               // 1. 检查蓝牙连接
               if (!this.isConnected) {
                 uni.showToast({
-                  title: '蓝牙未准备好',
+                  title: this.$t('ble_not_ready'),
                   icon: 'none'
                 });
                 return;
               }
-
+              
               // 2. 检查密码验证
-              if (!globalStore.getIsPasswordVerified()) {
+              if (!this.isPasswordVerified) {
                 uni.showToast({
-                  title: '请先验证密码',
+                  title: this.t('please_verify_password'),
                   icon: 'none'
                 });
                 return;
