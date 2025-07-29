@@ -59,8 +59,7 @@
 		},
 		methods: {
 			...mapActions([
-				'setConnectionStatus',
-				'setShowConnectionFailed'
+				'setConnectionStatus'
 			]),
 
 			// 显示弹窗
@@ -177,8 +176,8 @@
 					const isConnected = Math.random() > 0.3; // 70%成功率
 					
 					if (isConnected) {
-						this.setConnectionStatus(false);
-						this.setShowConnectionFailed(true);
+						
+						this.setConnectionStatus(true);
 						
 						// 延迟跳转页面
 						setTimeout(() => {

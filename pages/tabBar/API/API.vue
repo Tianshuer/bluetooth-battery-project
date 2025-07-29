@@ -132,7 +132,6 @@
         methods: {
             ...mapActions([
                 'setConnectionStatus',
-                'setShowConnectionFailed',
                 'setPasswordVerified'
             ]),
             

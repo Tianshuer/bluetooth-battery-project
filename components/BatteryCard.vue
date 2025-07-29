@@ -8,7 +8,7 @@
       </view>
       <view class="connection-status">
         <text class="status-text">
-          {{ showConnectionFailed ? t('connection_closed') : t('connection_success') }}
+          {{ isConnected ? t('connection_success') : t('connection_closed') }}
         </text>
       </view>
     </view>
@@ -46,7 +46,7 @@
     <BluetoothList ref="bluetoothList" />
     
     <!-- 连接失败提示盒子 -->
-    <view v-if="showConnectionFailed" class="connection-failed-tip" @click="handleLogoClick">
+    <view v-if="!isConnected" class="connection-failed-tip" @click="handleLogoClick">
       <text class="tip-text">{{ t('ble_disconnected_retry') }}</text>
     </view>
     
@@ -102,7 +102,6 @@ export default {
       'currentLanguage',
       'languageOptions', 
       'currentLanguageIndex',
-      'showConnectionFailed',
       'isConnected',
       't',
       'batteryPercentage'
@@ -111,8 +110,7 @@ export default {
   methods: {
     ...mapActions([
       'switchLanguage',
-      'setConnectionStatus',
-      'setShowConnectionFailed'
+      'setConnectionStatus'
     ]),
 
     // 处理logo点击事件
@@ -120,12 +118,6 @@ export default {
       if (!this.isConnected) {
         // 如果未连接，显示蓝牙设备列表
         this.showBluetoothList()
-      } else {
-        uni.showToast({
-          title: this.t('connection_success'),
-          icon: 'success',
-          duration: 1500
-        })
       }
     },
 

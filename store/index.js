@@ -28,8 +28,7 @@ export default new Vuex.Store({
       }
     ],
     // 连接状态
-    isConnected: false,
-    showConnectionFailed: false,
+    isConnected: true,
     // 密码验证状态
     isPasswordVerified: false,
     // 语言变化触发器
@@ -52,11 +51,6 @@ export default new Vuex.Store({
     // 设置连接状态
     SET_CONNECTION_STATUS(state, status) {
       state.isConnected = status
-    },
-    
-    // 设置连接失败显示状态
-    SET_SHOW_CONNECTION_FAILED(state, status) {
-      state.showConnectionFailed = status
     },
     
     // 设置密码验证状态
@@ -84,11 +78,6 @@ export default new Vuex.Store({
     // 设置连接状态
     setConnectionStatus({ commit }, status) {
       commit('SET_CONNECTION_STATUS', status)
-    },
-    
-    // 设置连接失败显示状态
-    setShowConnectionFailed({ commit }, status) {
-      commit('SET_SHOW_CONNECTION_FAILED', status)
     },
     
     // 设置密码验证状态
@@ -178,7 +167,6 @@ export default new Vuex.Store({
     
     // 连接状态
     isConnected: state => state.isConnected,
-    showConnectionFailed: state => state.showConnectionFailed,
     isPasswordVerified: state => state.isPasswordVerified,
     
     // 电池百分比
