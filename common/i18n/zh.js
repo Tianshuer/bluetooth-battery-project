@@ -1,7 +1,7 @@
 // 中文语言包 - 电池管理系统
 export default {
   // ==================== 基础界面 ====================
-  "language": "中文",
+  "language": "语言",
   "device_name": "设备名称",
   "version": "版本",
   "connection_success": "连接成功",
