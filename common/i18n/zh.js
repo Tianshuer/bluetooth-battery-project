@@ -4,13 +4,15 @@ export default {
   "language": "语言",
   "device_name": "设备名称",
   "version": "版本",
-  "connection_success": "连接成功",
-  "connection_closed": "连接关闭",
-  "connection_failed": "连接失败",
   "enter_button": "进入",
   "realtime_status": "实时状态",
   "display_control": "显示与控制",
   "system_settings": "系统设置",
+  
+  // ==================== 连接状态 ====================
+  "connection_success": "连接成功",
+  "connection_closed": "连接关闭",
+  "failed_to_connect_to_device": "连接设备失败",
   "ble_disconnected_retry": "蓝牙断开，点击重新搜索",
   "ble_not_ready": "蓝牙未准备好",
   "please_connect_device": "请先连接设备",
@@ -18,7 +20,7 @@ export default {
   "check_device_connection": "请检查设备连接状态\n或点击下方按钮刷新数据",
   "connect_device": "连接设备",
   
-  // ==================== 电池信息 ====================
+  // ==================== 电池参数 ====================
   "total_voltage": "总电压",
   "current": "电流",
   "battery_capacity": "电池容量",
@@ -32,7 +34,7 @@ export default {
   "cell_voltage": "电芯电压",
   "battery_temperature": "电池温度",
   
-  // ==================== 温度信息 ====================
+  // ==================== 温度参数 ====================
   "chip1_temp": "芯片1温度",
   "chip2_temp": "芯片2温度",
   "mos_temp": "MOS管温度",
@@ -41,11 +43,20 @@ export default {
   "cell_temp2": "电芯温度2",
   "cell_temp3": "电芯温度3",
   "cell_temp4": "电芯温度4",
+  
+  // ==================== 单位 ====================
   "temperature_unit": "°C",
   "voltage_unit": "V",
   "current_unit": "A",
   "power_unit": "W",
   "capacity_unit": "Ah",
+  "percent": "%",
+  "millivolt": "mV",
+  "milliampere": "mA",
+  "milliwatt": "mW",
+  "celsius": "°C",
+  "fahrenheit": "°F",
+  "kelvin": "K",
   
   // ==================== 蓝牙设备 ====================
   "found_peripherals": "已发现 %d 个外围设备",
@@ -53,6 +64,7 @@ export default {
   "start_scan": "开始扫描",
   "unknown_device": "未知设备",
   "scanning_devices": "正在扫描设备...",
+  "loading": "加载中...",
   "connecting": "正在连接",
   "bluetooth_scanning": "蓝牙扫描中...",
   "bluetooth_connected": "蓝牙已连接",
@@ -81,12 +93,21 @@ export default {
   "stop_discharging_sent": "放电关闭已发送",
   "one_key_balance_sent": "一键均衡已发送",
   "restart_success": "重启成功",
-  "ok": "确定",
   "reset_current": "电流归零",
   "one_key_feli": "一键铁锂",
   "one_key_sanyuan": "一键三元",
+  
+  // ==================== 操作反馈 ====================
+  "ok": "确定",
   "operation_success": "操作成功",
   "operation_failed": "操作失败",
+  "sent": "已发送",
+  "restarted": "已重启",
+  "operation_completed": "操作完成",
+  "operation_cancelled": "操作已取消",
+  "data_saved": "数据已保存",
+  "data_loaded": "数据已加载",
+  "clicked_button": "点击了按钮: %@",
   
   // ==================== 系统设置 ====================
   "series_number_setting": "串数设置",
@@ -103,13 +124,13 @@ export default {
   "balance_frequency": "均衡频率",
   "voltage_diff_balance": "压差均衡",
   "balance_start": "均衡启动",
-  "current_current": "当前电流",
-  "fault_delay_time": "故障延时时间",
-  "overcurrent_protection": "过流保护",
-  "charging_overcurrent": "充电过流",
+  "current_limit": "当前电流",
+  "fault_delay": "故障延时",
+  "over_current_protection": "过流保护",
+  "charging_over_current": "充电过流",
   "voltage_diff_protection": "压差保护",
-  "current_debounce": "电流消抖",
-  "short_step_delay": "短路延时",
+  "current_limit_debounce": "电流消抖",
+  "short_circuit_delay": "短路延时",
   "bluetooth_rename": "蓝牙改名",
   "change_password": "修改密码",
   "battery_reset": "电池重置",
@@ -125,7 +146,6 @@ export default {
   "rename_device": "蓝牙改名",
   "modify_password": "修改密码",
   "please_enter_content": "请输入内容",
-  "loading": "加载中...",
   "saving": "保存中...",
   "updating": "更新中...",
   
@@ -142,15 +162,8 @@ export default {
   "verify_code_sent_success": "验证码发送成功",
   
   // ==================== 状态反馈 ====================
-  "sent": "已发送",
-  "restarted": "已重启",
   "device_renamed": "设备名称已更改为: %@",
   "device_status": "设备状态: %@",
-  "operation_completed": "操作完成",
-  "operation_cancelled": "操作已取消",
-  "data_saved": "数据已保存",
-  "data_loaded": "数据已加载",
-  "clicked_button": "点击了按钮: %@",
   "series_count_range_error": "串数范围错误，请输入1-16之间的数字",
   "setting_series_count": "设置串数",
   "series_count_set_success": "串数设置成功: %@",
@@ -160,7 +173,6 @@ export default {
   "single_overvoltage": "单体过压",
   "manual_close": "手动关闭",
   "string_drop": "掉串",
-  "overcurrent_protection": "过流保护",
   "delay_recovery": "延时恢复",
   "normal": "正常",
   "single_undervoltage": "单体欠压",
@@ -197,14 +209,5 @@ export default {
   "now": "现在",
   "today": "今天",
   "yesterday": "昨天",
-  "tomorrow": "明天",
-  
-  // ==================== 数值单位 ====================
-  "percent": "%",
-  "millivolt": "mV",
-  "milliampere": "mA",
-  "milliwatt": "mW",
-  "celsius": "°C",
-  "fahrenheit": "°F",
-  "kelvin": "K"
+  "tomorrow": "明天"
 } 

@@ -163,28 +163,28 @@ export default {
           key: 'balanceStart'
         },
         {
-          label: this.t('current_current'),
+          label: this.t('current_limit'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
           key: 'currentFlow'
         },
         {
-          label: this.t('fault_delay_time'),
+          label: this.t('fault_delay'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
           key: 'faultDelayTime'
         },
         {
-          label: this.t('overcurrent_protection'),
+          label: this.t('over_current_protection'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
           key: 'overcurrentProtection'
         },
         {
-          label: this.t('charging_overcurrent'),
+          label: this.t('charging_over_current'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
@@ -198,14 +198,14 @@ export default {
           key: 'pressureDiffProtection'
         },
         {
-          label: this.t('current_debounce'),
+          label: this.t('current_limit_debounce'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
           key: 'currentDebounce'
         },
         {
-          label: this.t('short_step_delay'),
+          label: this.t('short_circuit_delay'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),

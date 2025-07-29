@@ -90,7 +90,7 @@
 				
 				// 显示loading toast
 				uni.showToast({
-					title: this.t('scanning_devices'),
+					title: this.t('loading'),
 					icon: 'loading',
 					duration: 2000
 				});
@@ -190,7 +190,7 @@
 					} else {
 						this.setConnectionStatus(false);
 						uni.showToast({
-							title: this.t('connection_failed'),
+							title: this.t('failed_to_connect_to_device'),
 							icon: 'none',
 							duration: 2000
 						});
