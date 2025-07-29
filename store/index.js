@@ -34,7 +34,9 @@ export default new Vuex.Store({
     // 语言变化触发器
     languageChangeTrigger: 0,
     // 电池百分比
-    batteryPercentage: 85
+    batteryPercentage: 85,
+    // 状态栏高度
+    statusBarHeight: 0
   },
   
   mutations: {
@@ -66,6 +68,11 @@ export default new Vuex.Store({
     // 设置电池百分比
     SET_BATTERY_PERCENTAGE(state, percentage) {
       state.batteryPercentage = percentage
+    },
+    
+    // 设置状态栏高度
+    SET_STATUS_BAR_HEIGHT(state, height) {
+      state.statusBarHeight = height
     }
   },
   
@@ -98,6 +105,24 @@ export default new Vuex.Store({
     // 设置电池百分比
     setBatteryPercentage({ commit }, percentage) {
       commit('SET_BATTERY_PERCENTAGE', percentage)
+    },
+    
+    // 设置状态栏高度
+    setStatusBarHeight({ commit }, height) {
+      commit('SET_STATUS_BAR_HEIGHT', height)
+    },
+    
+    // 初始化状态栏高度
+    initStatusBarHeight({ commit }) {
+      try {
+        const systemInfo = uni.getSystemInfoSync()
+        const statusBarHeight = systemInfo.statusBarHeight || 0
+
+        const menuButtonHeight = uni.getMenuButtonBoundingClientRect().height || 0
+        commit('SET_STATUS_BAR_HEIGHT', statusBarHeight + menuButtonHeight)
+      } catch (error) {
+        console.error('Vuex 状态栏高度初始化失败:', error)
+      }
     }
   },
   
@@ -170,6 +195,9 @@ export default new Vuex.Store({
     isPasswordVerified: state => state.isPasswordVerified,
     
     // 电池百分比
-    batteryPercentage: state => state.batteryPercentage
+    batteryPercentage: state => state.batteryPercentage,
+    
+    // 状态栏高度
+    statusBarHeight: state => state.statusBarHeight
   }
 }) 

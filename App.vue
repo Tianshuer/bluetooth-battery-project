@@ -7,6 +7,8 @@
 			console.log('App Launch')
 			// 初始化语言设置
 			this.$store.dispatch('initLanguage')
+			// 初始化状态栏高度
+			this.$store.dispatch('initStatusBarHeight')
 			// 设置初始 tabbar
 			this.updateTabBar()
 		},
@@ -53,6 +55,21 @@
 	/* 蓝牙电池项目全局样式 */
 	page {
 		background-color: #f5f5f5;
+	}
+	
+	/* 状态栏高度变量 */
+	:root {
+		--status-bar-height: 0px;
+	}
+	
+	/* 状态栏边距类 */
+	.status-bar-margin {
+		margin-top: var(--status-bar-height);
+	}
+	
+	/* 状态栏高度类 */
+	.status-bar-height {
+		height: var(--status-bar-height);
 	}
 
 	/* 通用按钮样式 */

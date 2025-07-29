@@ -1,6 +1,9 @@
 <template>
   <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
-  <view class="container" :style="{ minHeight: screenHeight + 'px' }">
+  <view class="container" :style="{ 
+    minHeight: screenHeight + 'px',
+    marginTop: statusBarHeight + 'px'
+  }">
     
     <!-- 电池状态卡片 -->
     <BatteryCard :batteryPercentage="batteryData.currentBatteryLevel" @language-popup-action="handleLanguagePopupAction" />
@@ -112,7 +115,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      't'
+      't',
+      'statusBarHeight'
     ])
   },
   onLoad() {

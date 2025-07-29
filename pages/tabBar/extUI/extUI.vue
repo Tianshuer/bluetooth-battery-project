@@ -1,6 +1,9 @@
 <template>
   <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
-  <view class="container" :style="{ minHeight: screenHeight + 'px' }">
+  <view class="container" :style="{ 
+    minHeight: screenHeight + 'px',
+    marginTop: statusBarHeight + 'px'
+  }">
     <!-- 电池状态卡片 -->
     <BatteryCard :batteryPercentage="75" @language-popup-action="handleLanguagePopupAction" />
     
@@ -42,7 +45,8 @@ export default {
     ...mapGetters([
       't',
       'languageOptions',
-      'currentLanguageIndex'
+      'currentLanguageIndex',
+      'statusBarHeight'
     ]),
     // 功能按钮配置 - 响应语言变化
     functionButtonsConfig() {
