@@ -147,3 +147,7 @@
 .status-disconnected {
 	color: #ff4d4f;
 }
+
+button::after {
+  border: none;
+}

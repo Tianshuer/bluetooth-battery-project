@@ -87,7 +87,7 @@ export default {
 <style scoped>
 .input-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   padding: 16rpx 20rpx;
   background-color: #fff;
   margin-bottom: 20rpx;
