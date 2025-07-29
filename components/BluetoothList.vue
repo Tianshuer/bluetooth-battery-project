@@ -18,7 +18,9 @@
 						@click="selectDevice(device)"
 					>
 						<view class="device-icon">
-							<view class="bluetooth-icon"></view>
+							<view class="bluetooth-icon">
+								<text class="iconfont icon-lanya"></text>
+							</view>
 						</view>
 						<view class="device-info">
 							<text class="device-name">{{device.name || t('unknown_device')}}</text>
@@ -286,38 +288,16 @@
 }
 
 .bluetooth-icon {
-	width: 40rpx;
-	height: 40rpx;
-	background: #007AFF;
 	position: relative;
-	border-radius: 4rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.bluetooth-icon::before {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 0;
-	height: 0;
-	border-left: 8rpx solid transparent;
-	border-right: 8rpx solid transparent;
-	border-bottom: 12rpx solid #ffffff;
-}
-
-.bluetooth-icon::after {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 0;
-	height: 0;
-	border-left: 6rpx solid transparent;
-	border-right: 6rpx solid transparent;
-	border-top: 10rpx solid #ffffff;
-	margin-top: 2rpx;
+.bluetooth-icon .iconfont {
+	color: #007AFF;
+	font-size: 48rpx;
+	font-weight: 600;
 }
 
 .device-info {

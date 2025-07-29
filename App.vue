@@ -1,6 +1,6 @@
 <script>
 	import { version } from './package.json'
-	import { getTabBarConfig } from './common/tabBarConfig.js'
+	import { getTabBarConfig } from './utils/tabBarConfig.js'
 
 	export default {
 		onLaunch: function() {
@@ -49,6 +49,7 @@
 <style lang="scss">
 	/* uni.css - 通用组件、模板样式库 */
 	@import './common/uni.css';
+	@import './static/css/iconfont.css';
 
 	/* 专用于微信小程序 */
 
