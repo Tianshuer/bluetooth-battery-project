@@ -105,14 +105,14 @@ export default {
 }
 
 .enter-btn {
-	width: 400rpx;
-	height: 80rpx;
-	line-height: 80rpx;
+	width: 420rpx;
+	height: 100rpx;
+	line-height: 100rpx;
 	background: #acc890;
 	color: #ffffff;
 	border: none;
 	border-radius: 40rpx;
-	font-size: 24rpx;
+	font-size: 28rpx;
 	transition: all 0.3s ease;
 }
 
