@@ -48,20 +48,20 @@
 		"list": [
 			{
 				"pagePath": "pages/tabBar/component/component",
-				"iconPath": "static/home-unselect-1.png",
-				"selectedIconPath": "static/home-select-1.png",
+				"iconPath": "static/images/home-unselect-1.png",
+				"selectedIconPath": "static/images/home-select-1.png",
 				"text": "实时状态"
 			},
 			{
 				"pagePath": "pages/tabBar/API/API",
-				"iconPath": "static/battery-unselect-1.png",
-				"selectedIconPath": "static/battary-select.png",
+				"iconPath": "static/images/battery-unselect-1.png",
+				"selectedIconPath": "static/images/battary-select.png",
 				"text": "显示与控制"
 			},
 			{
 				"pagePath": "pages/tabBar/extUI/extUI",
-				"iconPath": "static/settings-unselect-1.png",
-				"selectedIconPath": "static/settings-select-1.png",
+				"iconPath": "static/images/settings-unselect-1.png",
+				"selectedIconPath": "static/images/settings-select-1.png",
 				"text": "系统设置"
 			}
 		]

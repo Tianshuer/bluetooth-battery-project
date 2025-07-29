@@ -14,14 +14,14 @@ export default new Vuex.Store({
     languageOptions: [
       {
         icon: '🇨🇳',
-        iconUrl: '/static/china.png',
+        iconUrl: '/static/images/china.png',
         text: '🇨🇳 中文',
         shortText: '中文',
         value: 'zh'
       },
       {
         icon: '🇺🇸', 
-        iconUrl: '/static/united-states-of-america.png',
+        iconUrl: '/static/images/united-states-of-america.png',
         text: '🇺🇸 English',
         shortText: 'English',
         value: 'en'

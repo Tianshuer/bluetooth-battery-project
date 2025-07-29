@@ -1,7 +1,7 @@
 <template>
   <view class="battery-card">
     <view class="card-header">
-      <image class="logo" src="/static/logo.png" mode="aspectFit" @click="handleLogoClick"></image>
+      <image class="logo" src="/static/images/logo.png" mode="aspectFit" @click="handleLogoClick"></image>
       <view class="device-info">
         <text class="device-name">IPhone</text>
         <text class="device-status">N/A</text>
@@ -15,7 +15,7 @@
     
     <view class="battery-info">
       <view class="battery-icon-wrapper">
-        <image class="battery-icon" src="/static/battery-icon.png" mode="aspectFit"></image>
+        <image class="battery-icon" src="/static/images/battery-icon.png" mode="aspectFit"></image>
       </view>
       <view class="battery-content">
         <view class="battery-header">
