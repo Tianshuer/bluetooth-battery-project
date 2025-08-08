@@ -5,7 +5,7 @@
 				<image class="logo" src="/static/images/thunder-illustration.png" mode="aspectFit"></image>
 			</view>
 			<view class="brand-section">
-				<image class="brand-image" src="/static/images/product_icon.jpg" mode="aspectFit"></image>
+				<image class="brand-image" src="/static/images/mlbms_product_icon.png" mode="aspectFit"></image>
 			</view>
 			<view class="text-section">
 				<text class="brand-text uni-color-black">Electricity Convergence</text>
@@ -104,8 +104,8 @@ export default {
 
 
 .brand-image {
-	width: 400rpx;
-	height: 80rpx;
+	width: 640rpx;
+	height: 320rpx;
 }
 
 .text-section {

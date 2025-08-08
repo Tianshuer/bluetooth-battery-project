@@ -1,7 +1,7 @@
 <template>
   <view class="battery-card">
     <view class="card-header">
-      <image class="logo" src="/static/images/logo.png" mode="aspectFit" @click="handleLogoClick"></image>
+      <image class="logo" src="/static/images/BLEIcon.png" mode="aspectFit" @click="handleLogoClick"></image>
       <view class="device-info">
         <text class="device-name">{{ deviceName || batteryDevice.name || t('device_name_unknown') }}</text>
         <text class="device-status">{{ versionName || t('version_unknown') }}</text>
