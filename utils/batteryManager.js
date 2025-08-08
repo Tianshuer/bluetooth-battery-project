@@ -632,6 +632,14 @@ class BLEManager {
     console.log(`通知 ${this._listeners.length} 个监听器状态变化`);
     console.log('通知时间:', new Date().toLocaleTimeString());
 
+    // 发送全局事件通知连接状态变化
+    uni.$emit('bleConnectionStatusChanged', {
+      isConnected: this._isConnected,
+      deviceId: this._deviceId,
+      deviceName: this._deviceName,
+      versionName: this._versionName
+    });
+
     this._listeners.forEach((listener, index) => {
       try {
         // 传递当前状态数据给监听器

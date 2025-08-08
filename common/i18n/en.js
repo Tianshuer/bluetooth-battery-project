@@ -3,7 +3,9 @@ export default {
   // ==================== Basic Interface ====================
   "language": "Language",
   "device_name": "Device Name",
+  "device_name_unknown": "Unknown Device",
   "version": "Version",
+  "version_unknown": "Version Unknown",
   "enter_button": "Enter",
   "realtime_status": "Realtime Status",
   "display_control": "Display&Control",

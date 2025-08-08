@@ -3,8 +3,8 @@
     <view class="card-header">
       <image class="logo" src="/static/images/logo.png" mode="aspectFit" @click="handleLogoClick"></image>
       <view class="device-info">
-        <text class="device-name">{{ batteryDevice.name }}</text>
-        <text class="device-status">{{ bluetoothDataManager.versionName }}</text>
+        <text class="device-name">{{ deviceName || batteryDevice.name || t('device_name_unknown') }}</text>
+        <text class="device-status">{{ versionName || t('version_unknown') }}</text>
       </view>
       <view class="connection-status">
         <text class="status-text">
@@ -86,7 +86,6 @@
 import uniPopup from '@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue'
 import { mapGetters, mapActions } from 'vuex'
 import BluetoothList from './BluetoothList.vue'
-import { bluetoothDataManager } from '../utils/bluetoothDataManager'
 
 export default {
   name: 'BatteryCard',
@@ -105,13 +104,16 @@ export default {
       'isConnected',
       't',
       'batteryPercentage',
-      'batteryDevice'
+      'batteryDevice',
+      'versionName',
+      'deviceName'
     ])
   },
   methods: {
     ...mapActions([
       'switchLanguage',
-      'setConnectionStatus'
+      'setConnectionStatus',
+      'updateConnectionStatus'
     ]),
 
     // 处理logo点击事件

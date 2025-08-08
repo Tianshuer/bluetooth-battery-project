@@ -3,7 +3,9 @@ export default {
   // ==================== 基础界面 ====================
   "language": "语言",
   "device_name": "设备名称",
+  "device_name_unknown": "未知设备",
   "version": "版本",
+  "version_unknown": "版本未知",
   "enter_button": "进入",
   "realtime_status": "实时状态",
   "display_control": "显示与控制",

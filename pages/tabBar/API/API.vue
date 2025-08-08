@@ -117,13 +117,9 @@
         },
         onLoad() {
             this.getScreenHeight();
-            // 页面加载时自动连接设备
-            this.autoConnectDevice();
             this.setupBatteryDataListener();
         },
         onShow() {
-            // 每次显示页面时自动连接设备
-            this.autoConnectDevice();
             this.setupBatteryDataListener();
         },
         onHide() {
@@ -166,34 +162,6 @@
             getScreenHeight() {
               const windowInfo = uni.getWindowInfo()
 		          this.screenHeight = windowInfo.windowHeight;
-            },
-            
-            // 自动连接设备
-            autoConnectDevice() {
-              // 如果已经连接，直接初始化数据
-              if (this.isConnected) {
-                this.initializeData();
-                return;
-              }
-              
-              // 显示连接提示
-              uni.showLoading({
-                title: this.t('connecting'),
-                mask: true
-              });
-              
-              // 模拟连接过程
-              setTimeout(() => {
-                // 使用 Vuex action 设置连接状态
-                this.setConnectionStatus(true);
-                this.initializeData();
-                uni.hideLoading();
-                uni.showToast({
-                  title: this.t('connection_success'),
-                  icon: 'success',
-                  duration: 1500
-                });
-              }, 2000);
             },
             
             // 连接设备

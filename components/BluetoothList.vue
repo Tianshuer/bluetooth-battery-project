@@ -82,6 +82,7 @@ export default {
 			'updateBluetoothData',
 			'setBluetoothDevice',
 			'resetBluetoothData',
+			'updateConnectionStatus',
 		]),
 	
 		// 显示弹窗
@@ -143,6 +144,14 @@ export default {
 		addBleManagerListener() {
 			// 移除之前的监听器（如果存在）
 			this.removeBleManagerListener();
+			
+			// 监听全局连接状态事件
+			this.connectionStatusListener = (connectionData) => {
+				console.log('BluetoothList收到连接状态更新:', connectionData);
+				this.updateConnectionStatus(connectionData);
+			};
+			uni.$on('bleConnectionStatusChanged', this.connectionStatusListener);
+			
 			// 添加新的监听器
 			this.bleManagerListener = (stateData) => {
 				console.log('BluetoothList收到BLEManager状态更新:', stateData);
@@ -155,6 +164,14 @@ export default {
 				if (stateData.discoveredPeripherals && Array.isArray(stateData.discoveredPeripherals)) {
 					this.deviceList = stateData.discoveredPeripherals;
 				}
+				
+				// 更新Vuex store中的连接状态和版本号
+				this.updateConnectionStatus({
+					isConnected: stateData.isConnected,
+					deviceId: stateData.deviceId,
+					deviceName: stateData.deviceName,
+					versionName: stateData.versionName
+				});
 				
 				// 发送batteryData到全局事件
 				if (stateData.batteryData) {
@@ -180,6 +197,12 @@ export default {
 			if (this.bleManagerListener) {
 				bleManager.removeListener(this.bleManagerListener);
 				this.bleManagerListener = null;
+			}
+			
+			// 移除全局连接状态监听器
+			if (this.connectionStatusListener) {
+				uni.$off('bleConnectionStatusChanged', this.connectionStatusListener);
+				this.connectionStatusListener = null;
 			}
 		},
 		
@@ -208,7 +231,8 @@ export default {
 			uni.showToast({
 				title: this.t('connecting'),
 				icon: 'loading',
-				duration: 2000
+				duration: 2000,
+				mask: true,
 			});
 			
 			// 停止扫描

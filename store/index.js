@@ -260,11 +260,13 @@ export default new Vuex.Store({
     UPDATE_CONNECTION_STATUS(state, {
       isConnected,
       deviceId,
-      deviceName
+      deviceName,
+      versionName
     }) {
       state.bleManager.isConnected = isConnected;
       if (deviceId) state.bleManager.deviceId = deviceId;
       if (deviceName) state.bleManager.deviceName = deviceName;
+      if (versionName) state.bleManager.versionName = versionName;
     },
 
     // 更新扫描状态
@@ -440,12 +442,14 @@ export default new Vuex.Store({
     }, {
       isConnected,
       deviceId,
-      deviceName
+      deviceName,
+      versionName
     }) {
       commit('UPDATE_CONNECTION_STATUS', {
         isConnected,
         deviceId,
-        deviceName
+        deviceName,
+        versionName
       });
     },
 
