@@ -28,24 +28,6 @@
         <view class="data-item empty" v-else></view>
       </view>
     </view>
-    
-    <!-- 空态显示 -->
-    <view v-else class="empty-state">
-      <view class="empty-icon">
-        <text class="icon-text">📊</text>
-      </view>
-      <view class="empty-text">
-        <text class="empty-title">{{ emptyConfig.title }}</text>
-        <text class="empty-description">{{ emptyConfig.description }}</text>
-      </view>
-      <button 
-        v-if="emptyConfig.showButton" 
-        class="empty-button"
-        @click="handleEmptyAction"
-      >
-        {{ emptyConfig.buttonText }}
-      </button>
-    </view>
   </view>
 </template>
 
@@ -120,22 +102,15 @@ export default {
         return num.toString()
       }
     },
-    
-    // 空态按钮点击事件
-    handleEmptyAction() {
-      this.$emit('emptyAction')
-    }
   }
 }
 </script>
 
 <style scoped>
 .double-column-data {
-  background-color: #FFFFFF;
-  border-radius: 20rpx;
+  background-color: #f5f5f5;
   padding: 30rpx;
   margin-bottom: 20rpx;
-  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
 }
 
 .data-header {
@@ -151,6 +126,7 @@ export default {
 }
 
 .data-content {
+  /* height: 100%; */
   
 }
 
@@ -247,23 +223,5 @@ export default {
   font-size: 26rpx;
   color: #999999;
   line-height: 1.5;
-}
-
-.empty-button {
-  background: linear-gradient(135deg, #7ED8A0 0%, #6BBF88 100%);
-  color: #FFFFFF;
-  border: none;
-  border-radius: 25rpx;
-  padding: 20rpx 40rpx;
-  font-size: 28rpx;
-  font-weight: 500;
-  min-width: 200rpx;
-  box-shadow: 0 4rpx 15rpx rgba(126, 216, 160, 0.3);
-  transition: all 0.3s ease;
-}
-
-.empty-button:active {
-  transform: translateY(2rpx);
-  box-shadow: 0 2rpx 10rpx rgba(126, 216, 160, 0.3);
 }
 </style> 

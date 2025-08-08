@@ -19,7 +19,6 @@
           :dataItems="isConnected ? batteryVoltageData : []"
           :valueFormat="voltageFormat"
           :emptyConfig="voltageEmptyConfig"
-          @emptyAction="handleRefreshVoltageData"
         />
     </view>
 </template>
@@ -263,14 +262,6 @@
               
             },
             
-            // 刷新电压数据
-            handleRefreshVoltageData() {
-              if (this.isConnected) {
-                this.loadVoltageData();
-              } else {
-                this.connectDevice();
-              }
-            },
             
             // 更新电压数据
             updateVoltageData() {

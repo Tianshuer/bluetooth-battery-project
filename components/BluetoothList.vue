@@ -238,9 +238,7 @@ export default {
 				console.log('设备连接成功，准备跳转页面');
 				
 				// 延迟跳转页面
-				console.log('准备跳转到页面: /pages/tabBar/component/component');
 				setTimeout(() => {
-					console.log('开始执行页面跳转...');
 					uni.switchTab({
 						url: '/pages/tabBar/component/component',
 						success: () => {
@@ -260,7 +258,7 @@ export default {
 							});
 						}
 					});
-				}, 1500);
+				}, 200);
 				
 				// 先隐藏弹窗，再跳转页面
 				this.hidePopup();
