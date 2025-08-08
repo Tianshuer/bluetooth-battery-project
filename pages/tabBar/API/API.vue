@@ -29,6 +29,7 @@
     import CommonPanel from '../../../components/CommonPanel.vue'
     import DoubleColumnData from '../../../components/DoubleColumnData.vue'
     import { mapGetters, mapActions } from 'vuex'
+    import bleManager from '../../../utils/batteryManager.js'
     
     export default {
         components: {
@@ -618,39 +619,54 @@
             
             // 设置电池数据监听器
             setupBatteryDataListener() {
+              console.log('API页面设置电池数据监听器');
+              
               // 移除之前的监听器
               this.removeBatteryDataListener();
               
-              // 添加新的监听器
-              this.batteryDataListener = (batteryData) => {
-                console.log('API页面收到电池数据更新:', batteryData);
-                this.localBatteryData = batteryData;
+              // 直接监听BLEManager
+              this.bleManagerListener = (stateData) => {
+                console.log('API页面收到BLEManager状态更新:', stateData);
+                console.log('更新时间:', new Date().toLocaleTimeString());
                 
-                // 更新电池串电压数据
-                if (batteryData.voltages && Array.isArray(batteryData.voltages)) {
-                  this.batteryVoltageData = batteryData.voltages.map((voltage, index) => ({
-                    label: `${index + 1}`,
-                    value: voltage || 0
-                  }));
+                if (stateData.batteryData) {
+                  console.log('API页面收到电池数据更新:', stateData.batteryData);
+                  this.localBatteryData = stateData.batteryData;
+                  
+                  // 更新电池串电压数据
+                  if (stateData.batteryData.voltages && Array.isArray(stateData.batteryData.voltages)) {
+                    this.batteryVoltageData = stateData.batteryData.voltages.map((voltage, index) => ({
+                      label: `${index + 1}`,
+                      value: voltage || 0
+                    }));
+                  }
+                  
+                  // 更新设备状态
+                  this.deviceStatus = {
+                    charging: stateData.batteryData.chargingStatus || false,
+                    discharging: stateData.batteryData.dischargingStatus || false,
+                    balancing: stateData.batteryData.balancingStatus || false
+                  };
                 }
-                
-                // 更新设备状态
-                this.deviceStatus = {
-                  charging: batteryData.chargingStatus || false,
-                  discharging: batteryData.dischargingStatus || false,
-                  balancing: batteryData.balancingStatus || false
-                };
               };
               
-              // 监听全局事件
-              uni.$on('batteryDataChanged', this.batteryDataListener);
+              // 注册BLEManager监听器
+              bleManager.addListener(this.bleManagerListener);
+              console.log('API页面已注册BLEManager监听器');
+              
+              // 立即获取当前数据
+              const currentData = bleManager.batteryData;
+              if (currentData) {
+                console.log('API页面获取到当前电池数据:', currentData);
+                this.localBatteryData = currentData;
+              }
             },
             
             // 移除电池数据监听器
             removeBatteryDataListener() {
-              if (this.batteryDataListener) {
-                uni.$off('batteryDataChanged', this.batteryDataListener);
-                this.batteryDataListener = null;
+              if (this.bleManagerListener) {
+                bleManager.removeListener(this.bleManagerListener);
+                this.bleManagerListener = null;
               }
             },
         },

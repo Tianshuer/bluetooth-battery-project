@@ -145,6 +145,9 @@ export default {
 			this.removeBleManagerListener();
 			// 添加新的监听器
 			this.bleManagerListener = (stateData) => {
+				console.log('BluetoothList收到BLEManager状态更新:', stateData);
+				console.log('更新时间:', new Date().toLocaleTimeString());
+				
 				// 更新扫描状态
 				this.isScanning = stateData.isScanning;
 				
@@ -155,6 +158,8 @@ export default {
 				
 				// 发送batteryData到全局事件
 				if (stateData.batteryData) {
+					console.log('发送batteryData到全局事件:', stateData.batteryData);
+					console.log('发送时间:', new Date().toLocaleTimeString());
 					uni.$emit('batteryDataChanged', stateData.batteryData);
 				}
 			};

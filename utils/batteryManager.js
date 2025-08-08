@@ -625,10 +625,12 @@ class BLEManager {
    */
   _notifyListeners() {
     if (!this._listeners || this._listeners.length === 0) {
+      console.log('没有监听器，跳过通知');
       return;
     }
     
     console.log(`通知 ${this._listeners.length} 个监听器状态变化`);
+    console.log('通知时间:', new Date().toLocaleTimeString());
 
     this._listeners.forEach((listener, index) => {
       try {
@@ -2531,6 +2533,8 @@ class BLEManager {
 
   _updateBatteryDataOnMain(key, value) {
     this._updateBatteryData(key, value);
+    console.log('_batteryData', this._batteryData);
+
     // this._batteryData.update();
     this._notifyListeners();
   }
@@ -2658,23 +2662,23 @@ class BLEManager {
             // JavaScript charCodeAt给出ASCII值
             balanceBytes[i] = value.charCodeAt(i);
           }
-
+          
           // 更新均衡状态数组
           for (let i = 0; i < balanceBytes.length; i++) {
             if (i < this._batteryData.balanceStatus.length) {
               this._batteryData.balanceStatus[i] = balanceBytes[i];
             }
           }
-
+          
           // 调试输出
           const balancingStrings = this._batteryData.getBalancingStrings(); // 使用BatteryData自己的getter
           console.log("均衡中的电池串:", balancingStrings);
-
+          
           const hexString = balanceBytes
-            .map(b => b.toString(16).padStart(2, '0'))
-            .join(' ');
+          .map(b => b.toString(16).padStart(2, '0'))
+          .join(' ');
           console.log("均衡状态字节 (hex):", hexString);
-
+          
           const binaryString = balanceBytes.map(b => {
             let binStr = '';
             for (let bit = 7; bit >= 0; bit--) {

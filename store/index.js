@@ -558,7 +558,7 @@ export default new Vuex.Store({
     // 状态栏高度
     statusBarHeight: state => state.statusBarHeight,
     // 蓝牙设备信息
-    // batteryDevice: state => state.batteryDevice,
+    batteryDevice: state => state.batteryDevice,
     bleManagerState: state => state.bleManager,
     isConnected: state => state.bleManager.isConnected,
     isScanning: state => state.bleManager.isScanning,
