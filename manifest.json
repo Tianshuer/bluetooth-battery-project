@@ -6,7 +6,7 @@
     "versionCode" : "100",
     "transformPx" : false,
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wx1d142f77f2d140ac",
         "setting" : {
             "urlCheck" : false,
             "es6" : true,
@@ -17,11 +17,18 @@
         "permission" : {
             "scope.userLocation" : {
                 "desc" : "获取您的地理位置，用于蓝牙设备扫描"
+            },
+            "scope.bluetooth" : {
+                "desc" : "蓝牙设备扫描"
             }
         },
         "uniStatistics" : {
             "enable" : false
-        }
+        },
+        "requiredPrivateInfos" : [
+            "getLocation",
+            "chooseLocation"
+        ]
     },
     "vueVersion" : "2"
 }

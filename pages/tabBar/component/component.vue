@@ -1,77 +1,79 @@
 <template>
-  <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
-  <view class="container" :style="{ 
-    minHeight: screenHeight + 'px',
-    marginTop: statusBarHeight + 'px'
-  }">
+  <view>
+    <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
+    <view class="container" :style="{
+      minHeight: screenHeight + 'px',
+      marginTop: statusBarHeight + 'px'
+    }">
     
     <!-- 电池状态卡片 -->
-    <BatteryCard :batteryPercentage="batteryData.currentBatteryLevel" @language-popup-action="handleLanguagePopupAction" />
+    <BatteryCard @language-popup-action="handleLanguagePopupAction" />
     
     <!-- 电压电流卡片 -->
-    <VoltageCurrentCard :voltage="batteryData.voltage" :current="batteryData.current" />
+    <VoltageCurrentCard :voltage="safeBatteryData.totalVoltage" :current="safeBatteryData.current" />
 
     <!-- 电池信息卡片 -->
     <InfoCard 
-      :item1Value="batteryData.batteryCapacity"
+      :item1Value="safeBatteryData.totalCapacity"
       :item1Label="t('battery_capacity')"
       :item1Unit="'AH'"
-      :item2Value="batteryData.remainingPower"
+      :item2Value="safeBatteryData.ratio"
       :item2Label="t('remaining_power')"
       :item2Unit="'%'"
-      :item3Value="batteryData.power"
+      :item3Value="safeBatteryData.power"
       :item3Label="t('power')"
       :item3Unit="'W'"
-      :item4Value="batteryData.cycleCapacity"
+      :item4Value="safeBatteryData.cycleCapacity"
       :item4Label="t('cycle_capacity')"
       :item4Unit="'AH'"
     />
     <!-- 电压信息卡片 -->
     <InfoCard 
-      :item1Value="batteryData.cellVoltageDiff"
+      :item1Value="safeBatteryData.voltageDiff"
       :item1Label="t('voltage_diff')"
       :item1Unit="'V'"
-      :item2Value="batteryData.averageVoltage"
+      :item2Value="safeBatteryData.averageVoltage"
       :item2Label="t('average_voltage')"
       :item2Unit="'V'"
-      :item3Value="batteryData.maxVoltage"
+      :item3Value="safeBatteryData.maxVoltage"
       :item3Label="t('max_voltage')"
       :item3Unit="'V'"
-      :item4Value="batteryData.minVoltage"
+      :item4Value="safeBatteryData.minVoltage"
       :item4Label="t('min_voltage')"
       :item4Unit="'V'"
     />
 
     <!-- 芯片温度信息卡片 -->
     <InfoCard 
-      :item1Value="batteryData.chip1Temp"
+      :item1Value="safeBatteryData.chip1Temperature"
       :item1Label="t('chip1_temp')"
       :item1Unit="'°C'"
-      :item2Value="batteryData.chip2Temp"
+      :item2Value="safeBatteryData.chip2Temperature"
       :item2Label="t('chip2_temp')"
       :item2Unit="'°C'"
-      :item3Value="batteryData.mosTemp"
+      :item3Value="safeBatteryData.mosTemperature"
       :item3Label="t('mos_temp')"
       :item3Unit="'°C'"
-      :item4Value="batteryData.balanceTemp"
+      :item4Value="safeBatteryData.balanceTemperature"
       :item4Label="t('balance_temp')"
       :item4Unit="'°C'"
     />
     <!-- 电芯温度信息卡片 -->
     <InfoCard 
-      :item1Value="batteryData.cellTemp1"
+      :item1Value="safeBatteryData.temperatures[0]"
       :item1Label="t('cell_temp1')"
       :item1Unit="'°C'"
-      :item2Value="batteryData.cellTemp2"
+      :item2Value="safeBatteryData.temperatures[1]"
       :item2Label="t('cell_temp2')"
       :item2Unit="'°C'"
-      :item3Value="batteryData.cellTemp3"
+      :item3Value="safeBatteryData.temperatures[2]"
       :item3Label="t('cell_temp3')"
       :item3Unit="'°C'"
-      :item4Value="batteryData.cellTemp4"
+      :item4Value="safeBatteryData.temperatures[3]"
       :item4Label="t('cell_temp4')"
       :item4Unit="'°C'"
     />
+    </view>
   </view>
 </template>
 
@@ -89,26 +91,6 @@ export default {
   },
   data() {
     return {
-      batteryData: {
-        voltage: 12.5,
-        current: 2.3,
-        batteryCapacity: '0.0000',
-        remainingPower: '0.0000',
-        power: '0.0000',
-        cycleCapacity: '0.0000',
-        cellVoltageDiff: '0.0000',
-        averageVoltage: '0.0000',
-        maxVoltage: '0.0000',
-        minVoltage: '0.0000',
-        chip1Temp: '0.0000',
-        chip2Temp: '0.0000',
-        mosTemp: '0.0000',
-        balanceTemp: '0.0000',
-        cellTemp1: '0.0000',
-        cellTemp2: '0.0000',
-        cellTemp3: '0.0000',
-        cellTemp4: '0.0000'
-      },
       screenHeight: 0,
       show: false,
     }
@@ -116,8 +98,38 @@ export default {
   computed: {
     ...mapGetters([
       't',
-      'statusBarHeight'
-    ])
+      'statusBarHeight',
+      'batteryData'
+    ]),
+    
+    // 确保数据有默认值，避免页面报错
+    safeBatteryData() {
+      console.log('safeBatteryData', this.batteryData);
+      return {
+        totalVoltage: this.batteryData.totalVoltage || '0.00',
+        voltageDiff: this.batteryData.voltageDiff || '0.0000',
+        minVoltage: this.batteryData.minVoltage || '0.0000',
+        maxVoltage: this.batteryData.maxVoltage || '0.0000',
+        averageVoltage: this.batteryData.averageVoltage || '0.0000',
+
+        current: this.batteryData.current || '0.00',
+        power: this.batteryData.power || '0.00',
+        ratio: this.batteryData.ratio || '0.00',
+
+        capacity: this.batteryData.capacity || '0.00',
+        totalCapacity: this.batteryData.totalCapacity || '0.0000',
+
+        mosTemperature: this.batteryData.mosTemperature || '0.0',
+        balanceTemperature: this.batteryData.balanceTemperature || '0.0',
+        chip1Temperature: this.batteryData.chip1Temperature || '0.0',
+        chip2Temperature: this.batteryData.chip2Temperature || '0.0',
+
+        cycleCapacity: this.batteryData.cycleCapacity || '0.0000',
+
+        temperatures: this.batteryData.temperatures || [],
+        currentBatteryLevel: this.batteryData.currentBatteryLevel || 0
+      };
+    }
   },
   onLoad() {
     this.getSystemInfo();

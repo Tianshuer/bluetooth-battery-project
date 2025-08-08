@@ -153,8 +153,8 @@
 
             // 获取屏幕高度
             getScreenHeight() {
-              const systemInfo = uni.getSystemInfoSync();
-              this.screenHeight = systemInfo.windowHeight;
+              const windowInfo = uni.getWindowInfo()
+		          this.screenHeight = windowInfo.windowHeight;
             },
             
             // 自动连接设备

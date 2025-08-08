@@ -59,6 +59,7 @@ export default {
   "kelvin": "K",
   
   // ==================== Bluetooth Devices ====================
+  "no_devices_found": "No Bluetooth devices found",
   "found_peripherals": "Found %d peripheral devices",
   "stop_scan": "Stop Scan",
   "start_scan": "Start Scan",
@@ -117,6 +118,7 @@ export default {
   "under_voltage_recovery": "Undervoltage Recovery",
   "probe_high_temp": "Probe High Temperature",
   "probe_recovery_temp": "Probe Recovery Temperature",
+  "string_drop": "String Drop",
   "mos_high_temp": "MOS High Temperature",
   "mos_recovery_temp": "MOS Recovery Temperature",
   "balance_voltage_diff": "Balance Release Voltage",
@@ -200,6 +202,7 @@ export default {
   "invalid_input": "Invalid Input",
   "system_error": "System Error",
   "unknown_error": "Unknown Error",
+  "no_services_found": "No services found",
   
   // ==================== Time Related ====================
   "seconds": "seconds",

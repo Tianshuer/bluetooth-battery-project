@@ -3,8 +3,8 @@
     <view class="card-header">
       <image class="logo" src="/static/images/logo.png" mode="aspectFit" @click="handleLogoClick"></image>
       <view class="device-info">
-        <text class="device-name">IPhone</text>
-        <text class="device-status">N/A</text>
+        <text class="device-name">{{ batteryDevice.name }}</text>
+        <text class="device-status">{{ bluetoothDataManager.versionName }}</text>
       </view>
       <view class="connection-status">
         <text class="status-text">
@@ -86,6 +86,7 @@
 import uniPopup from '@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue'
 import { mapGetters, mapActions } from 'vuex'
 import BluetoothList from './BluetoothList.vue'
+import { bluetoothDataManager } from '../utils/bluetoothDataManager'
 
 export default {
   name: 'BatteryCard',
@@ -94,8 +95,7 @@ export default {
     BluetoothList
   },
   data() {
-    return {
-    }
+    return {}
   },
   computed: {
     ...mapGetters([
@@ -104,7 +104,8 @@ export default {
       'currentLanguageIndex',
       'isConnected',
       't',
-      'batteryPercentage'
+      'batteryPercentage',
+      'batteryDevice'
     ])
   },
   methods: {
@@ -115,10 +116,7 @@ export default {
 
     // 处理logo点击事件
     handleLogoClick() {
-      if (!this.isConnected) {
-        // 如果未连接，显示蓝牙设备列表
-        this.showBluetoothList()
-      }
+      this.showBluetoothList()
     },
 
     // 显示蓝牙设备列表

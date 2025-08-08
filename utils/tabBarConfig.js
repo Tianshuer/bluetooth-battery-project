@@ -27,7 +27,6 @@ export const getTabBarConfig = (t) => {
       }
     ]
   }
-  
-  console.log('TabBar 配置:', config.list.map(item => item.text))
+
   return config
 } 

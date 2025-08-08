@@ -59,6 +59,7 @@ export default {
   "kelvin": "K",
   
   // ==================== 蓝牙设备 ====================
+  "no_devices_found": "未发现蓝牙设备",
   "found_peripherals": "已发现 %d 个外围设备",
   "stop_scan": "结束扫描",
   "start_scan": "开始扫描",
@@ -116,6 +117,7 @@ export default {
   "under_voltage_protection": "欠压保护",
   "under_voltage_recovery": "欠压恢复",
   "probe_high_temp": "探头高温",
+  "string_drop": "掉串",
   "probe_recovery_temp": "探头恢复",
   "mos_high_temp": "MOS高温",
   "mos_recovery_temp": "MOS恢复",
@@ -200,6 +202,7 @@ export default {
   "invalid_input": "输入无效",
   "system_error": "系统错误",
   "unknown_error": "未知错误",
+  "no_services_found": "没有找到可用的服务",
   
   // ==================== 时间相关 ====================
   "seconds": "秒",
