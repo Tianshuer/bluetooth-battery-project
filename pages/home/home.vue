@@ -24,8 +24,8 @@
 <script>
 import BluetoothList from '../../components/BluetoothList.vue';
 import { mapGetters } from 'vuex';
-import { handleBluetoothError } from '../../utils/handleBluetoothError';
-	
+// import bleManager from '../../utils/batteryManager';
+
 export default {
 	components: {
 		BluetoothList,
@@ -47,61 +47,30 @@ export default {
 		const windowInfo = uni.getWindowInfo()
 		this.screenHeight = windowInfo.windowHeight;
 		// 初始化蓝牙适配器
-		await this.initBluetoothAdapter();
+		// this.initBLEManager();
 	},
 	methods: {
 		// 显示蓝牙设备列表
 		showPopup() {
 			this.$refs.bluetoothList.showPopup();
 		},
-		
-		// 初始化蓝牙适配器
-		async initBluetoothAdapter() {
-			return new Promise((resolve, reject) => {
-				// 先检查蓝牙适配器状态
-				uni.getBluetoothAdapterState({
-					success: (res) => {
-						const { available } = res.adapterState;
-						console.log('蓝牙适配器状态:', res);
-						if (available) {
-							console.log('蓝牙适配器可用');
-							resolve(res);
-						} else {
-							// 蓝牙适配器不可用，尝试打开
-							console.log('蓝牙适配器不可用，尝试打开');
-							this.openBluetoothAdapter(resolve, reject);
-						}
-					},
-					fail: (err) => {
-						console.log('获取蓝牙适配器状态失败，尝试打开:', err);
-						this.openBluetoothAdapter(resolve, reject);
-					}
-				});
-			});
-		},
-		// 打开蓝牙适配器
-		openBluetoothAdapter(resolve, reject) {
-			uni.openBluetoothAdapter({
-				success: (res) => {
-					console.log('蓝牙适配器初始化成功:', res);
-					this.bluetoothAdapter = res;
-					resolve(res);
-				},
-				fail: (err) => {
-					console.error('蓝牙适配器初始化失败:', err);
-					if (err.errMsg && err.errMsg.includes('already opened')) {
-						// 蓝牙适配器已经打开，直接返回成功
-						console.log('蓝牙适配器已经打开');
-						resolve({ available: true });
-					} else {
-						handleBluetoothError(err);
-						reject(err);
-					}
-				}
-			});
-		},
-			
-		
+		// initBLEManager() {
+		// 	try {
+		// 		console.log(123);
+				
+		// 		// 初始化蓝牙管理器
+		// 		this.bleManager = bleManager;
+				
+		// 		// 添加状态监听器
+		// 		this.bleManager.addListener();
+				
+		// 		// 设置语言
+		// 		this.bleManager.setLocale('zh');
+		// 		console.log('蓝牙管理器初始化成功');
+		// 	} catch (error) {
+		// 		console.error('蓝牙管理器初始化失败:', error);
+		// 	}
+		// },
 	}
 }
 </script>

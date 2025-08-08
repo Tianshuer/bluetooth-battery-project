@@ -142,6 +142,7 @@ export default {
   // ==================== 通用操作 ====================
   "send": "发送",
   "password_verification": "密码验证",
+  "pwdVerifiedTip": "密码已验证",
   "tip": "提示",
   "read_parameters": "读取参数",
   "input_value": "请输入",
@@ -150,6 +151,8 @@ export default {
   "please_enter_content": "请输入内容",
   "saving": "保存中...",
   "updating": "更新中...",
+  "updated": "已更新",
+  "device_not_connected_rename": "设备未连接，无法重命名",
   
   // ==================== 密码相关 ====================
   "password_error": "密码错误",
@@ -161,6 +164,7 @@ export default {
   "password_length_error": "密码长度不正确",
   "password_mismatch": "密码不匹配",
   "please_input_verify_code": "请输入验证码",
+  "passwordModifiedSuccess": "密码修改成功",
   "verify_code_sent_success": "验证码发送成功",
   
   // ==================== 状态反馈 ====================

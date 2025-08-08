@@ -39,6 +39,7 @@ export default {
   data() {
     return {
       screenHeight: 0,
+      localBatteryData: null, // 本地电池数据
     }
   },
   computed: {
@@ -227,6 +228,19 @@ export default {
   },
   onLoad() {
     this.getSystemInfo();
+    this.setupBatteryDataListener();
+  },
+  onShow() {
+    // 页面显示时重新设置监听器
+    this.setupBatteryDataListener();
+  },
+  onHide() {
+    // 页面隐藏时移除监听器
+    this.removeBatteryDataListener();
+  },
+  onUnload() {
+    // 页面卸载时移除监听器
+    this.removeBatteryDataListener();
   },
   methods: {
     ...mapActions([
@@ -588,6 +602,29 @@ export default {
     // 处理语言弹窗状态变化
     handleLanguagePopupAction(isOpen) {
       this.show = isOpen
+    },
+    
+    // 设置电池数据监听器
+    setupBatteryDataListener() {
+      // 移除之前的监听器
+      this.removeBatteryDataListener();
+      
+      // 添加新的监听器
+      this.batteryDataListener = (batteryData) => {
+        console.log('extUI页面收到电池数据更新:', batteryData);
+        this.localBatteryData = batteryData;
+      };
+      
+      // 监听全局事件
+      uni.$on('batteryDataChanged', this.batteryDataListener);
+    },
+    
+    // 移除电池数据监听器
+    removeBatteryDataListener() {
+      if (this.batteryDataListener) {
+        uni.$off('batteryDataChanged', this.batteryDataListener);
+        this.batteryDataListener = null;
+      }
     },
   }
 }

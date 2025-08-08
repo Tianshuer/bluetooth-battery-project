@@ -11,8 +11,7 @@ export default new Vuex.Store({
     // 语言设置
     language: 'zh', // 默认中文
     messages: zh, // 默认中文消息
-    languageOptions: [
-      {
+    languageOptions: [{
         icon: '🇨🇳',
         iconUrl: '/static/images/china.png',
         text: '🇨🇳 中文',
@@ -20,7 +19,7 @@ export default new Vuex.Store({
         value: 'zh'
       },
       {
-        icon: '🇺🇸', 
+        icon: '🇺🇸',
         iconUrl: '/static/images/united-states-of-america.png',
         text: '🇺🇸 English',
         shortText: 'English',
@@ -67,7 +66,7 @@ export default new Vuex.Store({
       balanceStatus: [],
 
       // 数组数据
-      voltages: [],        // 确保初始化为空数组
+      voltages: [], // 确保初始化为空数组
       temperatures: [],
 
       // 其他属性
@@ -75,7 +74,7 @@ export default new Vuex.Store({
       dataQuality: 'normal',
 
       cycleCapacity: '0.0000',
-      
+
       batteryCapacity: '0.0000',
       remainingPower: '0.00',
       power: '0.00',
@@ -95,49 +94,93 @@ export default new Vuex.Store({
       name: null,
       serviceId: null,
       characteristicId: null
-    }
+    },
+    // 获取蓝牙管理器状态
+    bleManager: {
+      // 连接状态
+      isConnected: false,
+      isScanning: false,
+      isConnectionEnabled: false,
+
+      // 设备信息
+      deviceId: '',
+      deviceName: '',
+      versionName: '',
+
+      // 密码验证
+      passwordVerified: false,
+      lastError: null,
+
+      // 发现的设备列表
+      discoveredPeripherals: [],
+
+      // 电池数据
+      batteryData: {
+        level: 0,
+        voltage: 0,
+        current: 0,
+        temperature: 0,
+        isCharging: false,
+        totalStrings: 0,
+        balanceStatus: [],
+        voltages: [],
+        gzys: 0,
+        chargingStatus: false,
+        dischargingStatus: false,
+        balancingStatus: false
+      },
+
+      // 参数值
+      parameterValues: {},
+
+      // 语言设置
+      locale: 'zh'
+    },
   },
-  
+
   mutations: {
     // 设置语言
     SET_LANGUAGE(state, language) {
       state.language = language
       state.messages = language === 'en' ? en : zh
       state.languageChangeTrigger = Date.now()
-      
+
       // 保存到本地存储
       uni.setStorageSync('currentLanguage', language)
     },
-    
+
     // 设置连接状态
     SET_CONNECTION_STATUS(state, status) {
       state.isConnected = status
     },
-    
+
     // 设置密码验证状态
     SET_PASSWORD_VERIFIED(state, status) {
       state.isPasswordVerified = status
     },
-    
+
     // 触发语言变化
     TRIGGER_LANGUAGE_CHANGE(state) {
       state.languageChangeTrigger = Date.now()
     },
-    
+
     // 设置电池百分比
     SET_BATTERY_PERCENTAGE(state, percentage) {
       state.batteryPercentage = percentage
     },
-    
+
     // 设置状态栏高度
     SET_STATUS_BAR_HEIGHT(state, height) {
       state.statusBarHeight = height
     },
-    
+
     // 更新蓝牙设备数据
     UPDATE_BLUETOOTH_DATA(state, data) {
       if (data) {
-        state.batteryData = { ...state.batteryData, ...data };
+        state.batteryData = {
+          ...state.batteryData,
+          ...data
+        };
         // 计算电池百分比
         // const maxVoltage = 4.2;
         // const minVoltage = 3.0;
@@ -145,16 +188,19 @@ export default new Vuex.Store({
         let percentage = ((currentVoltage - state.batteryData.minVoltage) / (state.batteryData.maxVoltage - state.batteryData.minVoltage)) * 100;
         percentage = Math.min(Math.max(percentage, 0), 100);
         console.log('percentage', percentage);
-        
+
         state.batteryPercentage = Number(percentage.toFixed(2));
       }
     },
-    
+
     // 设置蓝牙设备信息
     SET_BLUETOOTH_DEVICE(state, device) {
-      state.batteryDevice = { ...state.batteryDevice, ...device };
+      state.batteryDevice = {
+        ...state.batteryDevice,
+        ...device
+      };
     },
-    
+
     // 重置蓝牙数据
     RESET_BLUETOOTH_DATA(state) {
       state.batteryData = {
@@ -179,27 +225,129 @@ export default new Vuex.Store({
         currentBatteryLevel: 0,
       };
       state.batteryPercentage = 0;
+    },
+
+
+    // 更新蓝牙管理器状态
+    UPDATE_BLE_MANAGER_STATE(state, data) {
+      if (data.isConnected !== undefined) state.bleManager.isConnected = data.isConnected;
+      if (data.isScanning !== undefined) state.bleManager.isScanning = data.isScanning;
+      if (data.isConnectionEnabled !== undefined) state.bleManager.isConnectionEnabled = data.isConnectionEnabled;
+      if (data.deviceId !== undefined) state.bleManager.deviceId = data.deviceId;
+      if (data.deviceName !== undefined) state.bleManager.deviceName = data.deviceName;
+      if (data.versionName !== undefined) state.bleManager.versionName = data.versionName;
+      if (data.passwordVerified !== undefined) state.bleManager.passwordVerified = data.passwordVerified;
+      if (data.lastError !== undefined) state.bleManager.lastError = data.lastError;
+      if (data.discoveredPeripherals !== undefined) state.bleManager.discoveredPeripherals = data.discoveredPeripherals;
+      if (data.batteryData !== undefined) state.bleManager.batteryData = data.batteryData;
+      if (data.parameterValues !== undefined) state.bleManager.parameterValues = data.parameterValues;
+      if (data.locale !== undefined) state.bleManager.locale = data.locale;
+    },
+
+    UPDATE_DISCOVERED_PERIPHERALS(state, peripherals) {
+      state.bleManager.discoveredPeripherals = peripherals;
+    },
+
+    // 更新电池数据
+    UPDATE_BATTERY_DATA(state, batteryData) {
+      state.bleManager.batteryData = {
+        ...state.bleManager.batteryData,
+        ...batteryData
+      };
+    },
+
+    // 更新连接状态
+    UPDATE_CONNECTION_STATUS(state, {
+      isConnected,
+      deviceId,
+      deviceName
+    }) {
+      state.bleManager.isConnected = isConnected;
+      if (deviceId) state.bleManager.deviceId = deviceId;
+      if (deviceName) state.bleManager.deviceName = deviceName;
+    },
+
+    // 更新扫描状态
+    UPDATE_SCANNING_STATUS(state, isScanning) {
+      state.bleManager.isScanning = isScanning;
+    },
+
+    // 更新密码验证状态
+    UPDATE_PASSWORD_VERIFIED(state, passwordVerified) {
+      state.bleManager.passwordVerified = passwordVerified;
+    },
+
+    // 更新错误信息
+    UPDATE_LAST_ERROR(state, lastError) {
+      state.bleManager.lastError = lastError;
+    },
+
+    // 更新参数值
+    UPDATE_PARAMETER_VALUES(state, parameterValues) {
+      state.bleManager.parameterValues = {
+        ...state.bleManager.parameterValues,
+        ...parameterValues
+      };
+    },
+
+    // 重置BLEManager状态
+    RESET_BLE_MANAGER_STATE(state) {
+      state.bleManager = {
+        isConnected: false,
+        isScanning: false,
+        isConnectionEnabled: false,
+        deviceId: '',
+        deviceName: '',
+        versionName: '',
+        passwordVerified: false,
+        lastError: null,
+        discoveredPeripherals: [],
+        batteryData: {
+          level: 0,
+          voltage: 0,
+          current: 0,
+          temperature: 0,
+          isCharging: false,
+          totalStrings: 0,
+          balanceStatus: [],
+          voltages: [],
+          gzys: 0,
+          chargingStatus: false,
+          dischargingStatus: false,
+          balancingStatus: false
+        },
+        parameterValues: {},
+        locale: 'zh'
+      };
     }
   },
-  
+
   actions: {
     // 切换语言
-    switchLanguage({ commit }, language) {
+    switchLanguage({
+      commit
+    }, language) {
       commit('SET_LANGUAGE', language)
     },
-    
+
     // 设置连接状态
-    setConnectionStatus({ commit }, status) {
+    setConnectionStatus({
+      commit
+    }, status) {
       commit('SET_CONNECTION_STATUS', status)
     },
-    
+
     // 设置密码验证状态
-    setPasswordVerified({ commit }, status) {
+    setPasswordVerified({
+      commit
+    }, status) {
       commit('SET_PASSWORD_VERIFIED', status)
     },
-    
+
     // 初始化语言设置
-    initLanguage({ commit }) {
+    initLanguage({
+      commit
+    }) {
       const savedLanguage = uni.getStorageSync('currentLanguage')
       if (savedLanguage && (savedLanguage === 'zh' || savedLanguage === 'en')) {
         commit('SET_LANGUAGE', savedLanguage)
@@ -207,19 +355,25 @@ export default new Vuex.Store({
         commit('SET_LANGUAGE', 'zh')
       }
     },
-    
+
     // 设置电池百分比
-    setBatteryPercentage({ commit }, percentage) {
+    setBatteryPercentage({
+      commit
+    }, percentage) {
       commit('SET_BATTERY_PERCENTAGE', percentage)
     },
-    
+
     // 设置状态栏高度
-    setStatusBarHeight({ commit }, height) {
+    setStatusBarHeight({
+      commit
+    }, height) {
       commit('SET_STATUS_BAR_HEIGHT', height)
     },
-    
+
     // 初始化状态栏高度
-    initStatusBarHeight({ commit }) {
+    initStatusBarHeight({
+      commit
+    }) {
       try {
         const windowInfo = uni.getWindowInfo()
         const statusBarHeight = windowInfo.statusBarHeight || 0
@@ -230,45 +384,129 @@ export default new Vuex.Store({
         console.error('Vuex 状态栏高度初始化失败:', error)
       }
     },
-    
+
     // 更新蓝牙设备数据
-    updateBluetoothData({ commit }, data) {
+    updateBluetoothData({
+      commit
+    }, data) {
       commit('UPDATE_BLUETOOTH_DATA', data)
     },
-    
+
     // 设置蓝牙设备信息
-    setBluetoothDevice({ commit }, device) {
+    setBluetoothDevice({
+      commit
+    }, device) {
       commit('SET_BLUETOOTH_DEVICE', device)
     },
-    
+
     // 重置蓝牙数据
-    resetBluetoothData({ commit }) {
+    resetBluetoothData({
+      commit
+    }) {
       commit('RESET_BLUETOOTH_DATA')
+    },
+    // 更新蓝牙管理器状态
+    // updateBleManagerState({ commit }, data) {
+    //   commit('UPDATE_BLE_MANAGER_STATE', data);
+    // }
+
+    // ------------
+    // 更新BLEManager状态
+    updateBleManagerState({
+      commit
+    }, data) {
+      console.log(787878773637);
+      
+      commit('UPDATE_BLE_MANAGER_STATE', data);
+    },
+
+    // 更新发现的设备列表
+    updateDiscoveredPeripherals({
+      commit
+    }, peripherals) {
+      commit('UPDATE_DISCOVERED_PERIPHERALS', peripherals);
+    },
+
+    // 更新电池数据
+    updateBatteryData({
+      commit
+    }, batteryData) {
+      commit('UPDATE_BATTERY_DATA', batteryData);
+    },
+
+    // 更新连接状态
+    updateConnectionStatus({
+      commit
+    }, {
+      isConnected,
+      deviceId,
+      deviceName
+    }) {
+      commit('UPDATE_CONNECTION_STATUS', {
+        isConnected,
+        deviceId,
+        deviceName
+      });
+    },
+
+    // 更新扫描状态
+    updateScanningStatus({
+      commit
+    }, isScanning) {
+      commit('UPDATE_SCANNING_STATUS', isScanning);
+    },
+
+    // 更新密码验证状态
+    updatePasswordVerified({
+      commit
+    }, passwordVerified) {
+      commit('UPDATE_PASSWORD_VERIFIED', passwordVerified);
+    },
+
+    // 更新错误信息
+    updateLastError({
+      commit
+    }, lastError) {
+      commit('UPDATE_LAST_ERROR', lastError);
+    },
+
+    // 更新参数值
+    updateParameterValues({
+      commit
+    }, parameterValues) {
+      commit('UPDATE_PARAMETER_VALUES', parameterValues);
+    },
+
+    // 重置BLEManager状态
+    resetBleManagerState({
+      commit
+    }) {
+      commit('RESET_BLE_MANAGER_STATE');
     }
   },
-  
+
   getters: {
     // 获取当前语言
     currentLanguage: state => state.language,
-    
+
     // 获取语言选项
     languageOptions: state => state.languageOptions,
-    
+
     // 获取当前语言索引
     currentLanguageIndex: state => {
       return state.languageOptions.findIndex(option => option.value === state.language)
     },
-    
+
     // 翻译函数
     t: state => (key, ...args) => {
       const messages = state.messages
       let text = messages[key]
-      
+
       if (!text) {
         console.warn(`Translation key not found: ${key}`)
         return key
       }
-      
+
       // 处理参数替换
       if (args.length > 0) {
         args.forEach((arg, index) => {
@@ -276,55 +514,63 @@ export default new Vuex.Store({
           text = text.replace(`%@`, arg)
         })
       }
-      
+
       return text
     },
-    
+
     // 格式化方法
     formatVoltage: state => (voltage) => {
       const messages = state.messages
       return `${Number(voltage).toFixed(2)}${messages.voltage_unit || 'V'}`
     },
-    
+
     formatCurrent: state => (current) => {
       const messages = state.messages
       return `${Number(current).toFixed(2)}${messages.current_unit || 'A'}`
     },
-    
+
     formatPower: state => (power) => {
       const messages = state.messages
       return `${Number(power).toFixed(2)}${messages.power_unit || 'W'}`
     },
-    
+
     formatTemperature: state => (temp) => {
       const messages = state.messages
       return `${Number(temp).toFixed(2)}${messages.temperature_unit || '°C'}`
     },
-    
+
     formatCapacity: state => (capacity) => {
       const messages = state.messages
       return `${Number(capacity).toFixed(2)}${messages.capacity_unit || 'AH'}`
     },
-    
+
     formatPercent: state => (value) => {
       const messages = state.messages
       return `${Number(value).toFixed(2)}${messages.percent || '%'}`
     },
-    
+
     // 连接状态
-    isConnected: state => state.isConnected,
     isPasswordVerified: state => state.isPasswordVerified,
-    
+
     // 电池百分比
     batteryPercentage: state => state.batteryPercentage,
-    
+
     // 状态栏高度
     statusBarHeight: state => state.statusBarHeight,
-    
-    // 蓝牙设备数据
-    batteryData: state => state.batteryData,
-    
     // 蓝牙设备信息
-    batteryDevice: state => state.batteryDevice
+    // batteryDevice: state => state.batteryDevice,
+    bleManagerState: state => state.bleManager,
+    isConnected: state => state.bleManager.isConnected,
+    isScanning: state => state.bleManager.isScanning,
+    isConnectionEnabled: state => state.bleManager.isConnectionEnabled,
+    deviceId: state => state.bleManager.deviceId,
+    deviceName: state => state.bleManager.deviceName,
+    versionName: state => state.bleManager.versionName,
+    passwordVerified: state => state.bleManager.passwordVerified,
+    lastError: state => state.bleManager.lastError,
+    discoveredPeripherals: state => state.bleManager.discoveredPeripherals,
+    batteryData: state => state.bleManager.batteryData,
+    parameterValues: state => state.bleManager.parameterValues,
+    bleManagerLocale: state => state.bleManager.locale
   }
-}) 
+})

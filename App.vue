@@ -1,6 +1,7 @@
 <script>
 	import { version } from './package.json'
 	import { getTabBarConfig } from './utils/tabBarConfig.js'
+	import bleManager from './utils/batteryManager'
 
 	export default {
 		onLaunch: function() {
@@ -11,6 +12,7 @@
 			this.$store.dispatch('initStatusBarHeight')
 			// 设置初始 tabbar
 			this.updateTabBar()
+			bleManager._notifyListeners();
 		},
 		onShow: function() {
 			console.log('App Show')

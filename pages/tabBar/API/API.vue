@@ -41,6 +41,7 @@
                 show: false,
                 batteryLevel: 75,
                 screenHeight: 0,
+                localBatteryData: null, // 本地电池数据
                 // 设备状态
                 deviceStatus: {
                   charging: false,
@@ -118,10 +119,20 @@
             this.getScreenHeight();
             // 页面加载时自动连接设备
             this.autoConnectDevice();
+            this.setupBatteryDataListener();
         },
         onShow() {
             // 每次显示页面时自动连接设备
             this.autoConnectDevice();
+            this.setupBatteryDataListener();
+        },
+        onHide() {
+            // 页面隐藏时移除监听器
+            this.removeBatteryDataListener();
+        },
+        onUnload() {
+            // 页面卸载时移除监听器
+            this.removeBatteryDataListener();
         },
         mounted() {
             // 监听语言变化事件
@@ -603,6 +614,44 @@
             // 处理语言弹窗状态变化
             handleLanguagePopupAction(isOpen) {
               this.show = isOpen
+            },
+            
+            // 设置电池数据监听器
+            setupBatteryDataListener() {
+              // 移除之前的监听器
+              this.removeBatteryDataListener();
+              
+              // 添加新的监听器
+              this.batteryDataListener = (batteryData) => {
+                console.log('API页面收到电池数据更新:', batteryData);
+                this.localBatteryData = batteryData;
+                
+                // 更新电池串电压数据
+                if (batteryData.voltages && Array.isArray(batteryData.voltages)) {
+                  this.batteryVoltageData = batteryData.voltages.map((voltage, index) => ({
+                    label: `${index + 1}`,
+                    value: voltage || 0
+                  }));
+                }
+                
+                // 更新设备状态
+                this.deviceStatus = {
+                  charging: batteryData.chargingStatus || false,
+                  discharging: batteryData.dischargingStatus || false,
+                  balancing: batteryData.balancingStatus || false
+                };
+              };
+              
+              // 监听全局事件
+              uni.$on('batteryDataChanged', this.batteryDataListener);
+            },
+            
+            // 移除电池数据监听器
+            removeBatteryDataListener() {
+              if (this.batteryDataListener) {
+                uni.$off('batteryDataChanged', this.batteryDataListener);
+                this.batteryDataListener = null;
+              }
             },
         },
         

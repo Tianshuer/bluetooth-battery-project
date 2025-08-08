@@ -142,6 +142,7 @@ export default {
   // ==================== General Operations ====================
   "send": "Send",
   "password_verification": "Password Verification",
+  "pwdVerifiedTip": "Password verified",
   "tip": "Tip",
   "read_parameters": "Read Parameters",
   "input_value": "Input Value",
@@ -150,6 +151,8 @@ export default {
   "please_enter_content": "Please enter content",
   "saving": "Saving...",
   "updating": "Updating...",
+  "updated": "Updated",
+  "device_not_connected_rename": "Device not connected, cannot rename",
   
   // ==================== Password Related ====================
   "password_error": "Password error",
@@ -161,6 +164,7 @@ export default {
   "password_length_error": "Password length incorrect",
   "password_mismatch": "Password mismatch",
   "please_input_verify_code": "Please input verification code",
+  "passwordModifiedSuccess": "Password modified successfully",
   "verify_code_sent_success": "Verification code sent successfully",
   
   // ==================== Status Feedback ====================

@@ -47,9 +47,9 @@
 <script>
 import uniPopup from '@/uni_modules/uni-popup/components/uni-popup/uni-popup.vue'
 import { mapGetters, mapActions } from 'vuex'
-import { handleBluetoothError } from '../utils/handleBluetoothError'
+// import { handleBluetoothError } from '../utils/handleBluetoothError'
 import bluetoothDataManager from '../utils/bluetoothDataManager'
-
+import bleManager from '../utils/batteryManager';
 export default {
 	name: 'BluetoothList',
 	components: {
@@ -65,23 +65,25 @@ export default {
 			deviceUpdateTimer: null,
 			notifyEnabledMap: new Map(), // 记录notify启用状态
 			retryCountMap: new Map(), // 记录重试次数
-			maxRetryCount: 3 // 最大重试次数
+			maxRetryCount: 3, // 最大重试次数
+			showDebugInfo: false // 控制调试信息显示
 		}
 	},
 	computed: {
 		...mapGetters([
 			't',
 			'isConnected',
-		])
+			'discoveredPeripherals',
+		]),
 	},
 	methods: {
 		...mapActions([
 			'setConnectionStatus',
 			'updateBluetoothData',
 			'setBluetoothDevice',
-			'resetBluetoothData'
+			'resetBluetoothData',
 		]),
-
+	
 		// 显示弹窗
 		showPopup() {
 			uni.hideTabBar({
@@ -105,6 +107,9 @@ export default {
 			// 先停止扫描
 			this.stopScan();
 			
+			// 移除BLEManager监听器
+			this.removeBleManagerListener();
+			
 			// 显示tabbar
 			uni.showTabBar({
 				animation: true
@@ -119,79 +124,62 @@ export default {
 			if (this.isScanning) return;
 			// 先停止之前的扫描
 			this.stopScan();
-			
 			// 清空设备列表
 			this.deviceList = [];
 			this.isScanning = true;
+			
+			// 添加BLEManager状态监听器
+			this.addBleManagerListener();
 			
 			uni.showToast({
 				title: this.t('loading'),
 				icon: 'loading',
 				duration: 3000,
 			});
-			try {
-				// 开始搜索蓝牙设备
-				this.startBluetoothDevicesDiscovery();
-				
-				uni.onBluetoothDeviceFound(this.handleBluetoothDeviceFound);
-				
-				this.deviceUpdateTimer = setTimeout(() => {
-					if (this.isScanning && this.deviceList.length === 0) {
-						// 3秒内没有发现设备，隐藏toast
-						uni.hideToast();
-					}
-				}, 3000);
-				// 设置扫描超时（30秒后自动停止）
-				this.scanTimer = setTimeout(() => {
-					if (this.isScanning) {
-						this.stopScan();
-					}
-				}, 3000);
-				
-			} catch (error) {
-				this.isScanning = false;
-				console.error('开始扫描失败:', error);
-			}
+			await bleManager.startScanning();
 		},
 		
-		// 开始搜索蓝牙设备
-		startBluetoothDevicesDiscovery() {
-			uni.startBluetoothDevicesDiscovery({
-				success: () => {},
-				fail: (err) => {
-					handleBluetoothError(err);
-					this.isScanning = false;
+		// 添加BLEManager状态监听器
+		addBleManagerListener() {
+			// 移除之前的监听器（如果存在）
+			this.removeBleManagerListener();
+			// 添加新的监听器
+			this.bleManagerListener = (stateData) => {
+				// 更新扫描状态
+				this.isScanning = stateData.isScanning;
+				
+				// 更新设备列表
+				if (stateData.discoveredPeripherals && Array.isArray(stateData.discoveredPeripherals)) {
+					this.deviceList = stateData.discoveredPeripherals;
 				}
-			});
+				
+				// 发送batteryData到全局事件
+				if (stateData.batteryData) {
+					uni.$emit('batteryDataChanged', stateData.batteryData);
+				}
+			};
 			
+			// 注册监听器
+			bleManager.addListener(this.bleManagerListener);
+			console.log('BLEManager监听器已注册');
+			
+			// 立即获取当前状态
+			this.bleManagerListener({
+				isScanning: bleManager.isScanning,
+				discoveredPeripherals: bleManager.discoveredPeripherals
+			});
 		},
 		
-		// 监听蓝牙设备发现事件
-		handleBluetoothDeviceFound(res) {
-			if (res.devices && res.devices.length > 0) {
-				res.devices.forEach(device => {
-					const existingDevice = this.deviceList.find(item => item.deviceId === device.deviceId);
-					if (!existingDevice && device.name !== '未知设备') {
-						this.deviceList.push({
-							name: device.name || '未知设备',
-							deviceId: device.deviceId,
-							advertisData: device.advertisData,
-							advertisServiceUUIDs: device.advertisServiceUUIDs,
-							localName: device.localName,
-							serviceData: device.serviceData
-						});
-						// 发现设备后，清除3秒检查定时器（因为已经有设备了）
-						if (this.deviceUpdateTimer) {
-							clearTimeout(this.deviceUpdateTimer);
-							this.deviceUpdateTimer = null;
-						}
-					}
-				});
+		// 移除BLEManager状态监听器
+		removeBleManagerListener() {
+			if (this.bleManagerListener) {
+				bleManager.removeListener(this.bleManagerListener);
+				this.bleManagerListener = null;
 			}
 		},
 		
 		// 停止扫描
-		stopScan() {
+		async stopScan() {
 			if (!this.isScanning) return;
 			this.isScanning = false;
 			
@@ -202,7 +190,7 @@ export default {
 			}
 			
 			// 停止搜索蓝牙设备
-			uni.stopBluetoothDevicesDiscovery();
+			await bleManager.stopScanning();
 			
 			uni.showToast({
 				title: this.t('stop_scan'),
@@ -211,7 +199,7 @@ export default {
 		},
 		
 		// 选择设备
-		selectDevice(device) {
+		async selectDevice(device) {
 			uni.showToast({
 				title: this.t('connecting'),
 				icon: 'loading',
@@ -222,17 +210,16 @@ export default {
 			this.stopScan();
 			
 			// 连接蓝牙设备
-			this.connectToDevice(device);
+			await this.connectToDevice(device);
 		},
 		
 		// 连接到设备
 		async connectToDevice(device) {
 			console.log('device: ', device);
-			// console.log('advertisData: ', ab2hex(device.advertisData));
 			
 			try {
-				// 使用蓝牙数据管理器连接设备
-				await bluetoothDataManager.connectDevice(device.deviceId);
+				// 使用BLEManager连接设备
+				await bleManager.connect(device);
 				
 				// 设置设备信息到store
 				this.setBluetoothDevice({
@@ -240,76 +227,40 @@ export default {
 					name: device.name
 				});
 				
-				// 获取设备的服务
-				const services = await bluetoothDataManager.getDeviceServices(device.deviceId);
-				console.log('services: ', services);
-
-				let foundAny = false;
+				// 设置连接状态
+				this.setConnectionStatus(true);
 				
-				if (services && services.length > 0) {
-					for (const service of services) {
-						// 获取第一个服务的特征值
-						const characteristics = await bluetoothDataManager.getDeviceCharacteristics(
-							device.deviceId, 
-							service.uuid
-						);
-						console.log('characteristics: ', characteristics);
-						
-						if (characteristics && characteristics.length > 0) {
-							for(const char of characteristics) {
-								if (char.properties.notify || char.properties.indicate) {
-									await this.enableNotify(device.deviceId, service.uuid, char.uuid);
-									bluetoothDataManager.onCharacteristicValueChange((data) => {
-										if (data) {
-										console.log('收到蓝牙数据:', data);
-										this.updateBluetoothData(data);
-										}
-									});
-									bluetoothDataManager.setDeviceInfo(
-										device.deviceId,
-										service.uuid,
-										char.uuid
-									);
-									this.setBluetoothDevice({
-										serviceId: service.uuid,
-										characteristicId: char.uuid
-									});
-									this.setConnectionStatus(true);
-									foundAny = true;
-									// 不 break/return/continue，继续遍历
-								}
-								if (char.properties.read) {
-									bluetoothDataManager.setDeviceInfo(
-										device.deviceId,
-										service.uuid,
-										char.uuid
-									);
-									this.setBluetoothDevice({
-										serviceId: service.uuid,
-										characteristicId: char.uuid
-									});
-									this.startDataReading(device.deviceId, service.uuid, char.uuid);
-									this.setConnectionStatus(true);
-									foundAny = true;
-									// 不 break/return/continue，继续遍历
-								}
-							}
-						}
-					};
-				}
-				if (!foundAny) {
-					throw new Error('没有找到支持notify/indicate或read的特征值');
-				}
+				console.log('设备连接成功，准备跳转页面');
+				
 				// 延迟跳转页面
+				console.log('准备跳转到页面: /pages/tabBar/component/component');
 				setTimeout(() => {
+					console.log('开始执行页面跳转...');
 					uni.switchTab({
-						url: '/pages/tabBar/component/component'
+						url: '/pages/tabBar/component/component',
+						success: () => {
+							console.log('页面跳转成功');
+						},
+						fail: (err) => {
+							console.error('页面跳转失败:', err);
+							// 尝试使用navigateTo作为备用方案
+							uni.navigateTo({
+								url: '/pages/tabBar/component/component',
+								success: () => {
+									console.log('使用navigateTo跳转成功');
+								},
+								fail: (navErr) => {
+									console.error('navigateTo也失败:', navErr);
+								}
+							});
+						}
 					});
 				}, 1500);
+				
+				// 先隐藏弹窗，再跳转页面
 				this.hidePopup();
 			} catch (error) {
 				console.error('连接设备失败:', error);
-				handleBluetoothError(error);
 				
 				this.setConnectionStatus(false);
 				uni.showToast({
@@ -322,120 +273,24 @@ export default {
 				this.$emit('connection-failed');
 			}
 		},
-
-		// 开始定期读取数据
-		startDataReading(deviceId, serviceId, characteristicId) {
-			console.log(deviceId, serviceId, characteristicId);
-			
-			// 立即读取一次
-			this.readBLECharacteristicValue(deviceId, serviceId, characteristicId)
-				.catch(error => {
-					console.warn('首次读取失败，将在定时器中继续尝试', error);
-				});
-			
-			// 设置定期读取定时器（每2秒读取一次）
-			this.dataReadingTimer = setInterval(() => {
-				if (this.isConnected) {
-					this.readBLECharacteristicValue(deviceId, serviceId, characteristicId)
-						.catch(error => {
-							console.warn('首次读取失败，将在定时器中继续尝试', error);
-						});
-				} else {
-					this.stopDataReading();
-				}
-			}, 2000);
-		},
-		 // 停止数据读取
-		 stopDataReading() {
-			if (this.dataReadingTimer) {
-				clearInterval(this.dataReadingTimer);
-				this.dataReadingTimer = null;
-				console.log('停止数据读取定时器');
-			}
-		},
 		 // 清理notify状态
 		clearNotifyStatus() {
 			this.notifyEnabledMap.clear();
 			this.retryCountMap.clear();
-			console.log('清理notify状态');
 		},
-		// 启用通知
-		async enableNotify(deviceId, serviceId, characteristicId) {
-			const key = `${deviceId}_${serviceId}_${characteristicId}`;
-			if (this.notifyEnabledMap.has(key)) {
-				console.log('notify已启用，跳过重复启用');
-				return Promise.resolve();
-			}
-			return new Promise((resolve, reject) => {
-				uni.notifyBLECharacteristicValueChange({
-					deviceId,
-					serviceId,
-					characteristicId,
-					state: true,
-					success: (res) => {
-						console.log('启用通知成功:', res);
-						resolve(res);
-					},
-					fail: (err) => {
-						console.error('启用通知失败:', err);
-						// 记录notify启用失败
-						this.notifyEnabledMap.set(key, false);
-						reject(err);
-					}
-				});
-			});
-		},
-		
-		// 读取特征值
-		async readBLECharacteristicValue(deviceId, serviceId, characteristicId) {
-			const key = `${deviceId}_${serviceId}_${characteristicId}`;
-			try {
-				await this.enableNotify(deviceId, serviceId, characteristicId);
-				console.log('~~~~~~~~~~~开始读取数据~~~~~~~~~~~');
-				return new Promise((resolve, reject) => {
-					uni.readBLECharacteristicValue({
-						deviceId,
-						serviceId,
-						characteristicId,
-						success: (res) => {
-							console.log('读取设备特征值成功:', res);
-							this.retryCountMap.delete(key);
-            				resolve(res);
-						},
-						fail: (err) => {
-							console.error('读取设备特征值失败:', err);
-							// 如果是读取失败，尝试启用通知后再读取
-							if (err.errCode === 10007) {
-								const retryCount = this.retryCountMap.get(key) || 0;
-								if (retryCount < this.maxRetryCount) {
-									console.log(`第${retryCount + 1}次重试读取特征值...`);
-                					this.retryCountMap.set(key, retryCount + 1);
-									console.log('尝试启用通知后重新读取');
-									setTimeout(() => {
-										this.readBLECharacteristicValue(deviceId, serviceId, characteristicId).then(resolve).catch(reject);
-									}, 1000);
-								} else {
-									console.error('达到最大重试次数，停止重试');
-									this.retryCountMap.delete(key);
-									reject(new Error('读取特征值失败，已达到最大重试次数'));
-								}
-							} else {
-								reject(err);
-							}
-						}
-					});
-				});
-			} catch (error) {
-				console.error('读取设备特征值失败:', error);
-				throw error;
-			}
-		}
 	},
-	
+	onShow() {
+		// 页面显示时重新获取状态
+		this.updateBleManagerState();
+	},
 	// 组件销毁时清理资源
 	beforeDestroy() {
+		// 组件销毁时清理监听器
 		console.log('组件销毁，清理蓝牙资源');
 		this.stopScan();
+		
+		// 移除BLEManager监听器
+		this.removeBleManagerListener();
 		
 		// 清理数据读取定时器
 		if (this.dataReadingTimer) {
@@ -444,21 +299,6 @@ export default {
 		}
 		
 		this.clearNotifyStatus();
-		// 清理蓝牙数据管理器
-		// bluetoothDataManager.destroy();
-		
-		// 重置蓝牙数据
-		// this.resetBluetoothData();
-		
-		// 关闭蓝牙适配器
-		// uni.closeBluetoothAdapter({
-		// 	success: (res) => {
-		// 		console.log('蓝牙适配器关闭成功:', res);
-		// 	},
-		// 	fail: (err) => {
-		// 		console.log('蓝牙适配器关闭失败:', err);
-		// 	}
-		// });
 	}
 }
 </script>

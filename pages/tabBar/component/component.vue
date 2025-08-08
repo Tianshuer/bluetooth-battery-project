@@ -93,6 +93,7 @@ export default {
     return {
       screenHeight: 0,
       show: false,
+      localBatteryData: null, // 本地电池数据
     }
   },
   computed: {
@@ -104,35 +105,53 @@ export default {
     
     // 确保数据有默认值，避免页面报错
     safeBatteryData() {
-      console.log('safeBatteryData', this.batteryData);
+      // 优先使用本地数据，如果没有则使用store数据
+      const data = this.localBatteryData || this.batteryData;
+      console.log('safeBatteryData', data);
       return {
-        totalVoltage: this.batteryData.totalVoltage || '0.00',
-        voltageDiff: this.batteryData.voltageDiff || '0.0000',
-        minVoltage: this.batteryData.minVoltage || '0.0000',
-        maxVoltage: this.batteryData.maxVoltage || '0.0000',
-        averageVoltage: this.batteryData.averageVoltage || '0.0000',
+        totalVoltage: data.totalVoltage || '0.00',
+        voltageDiff: data.voltageDiff || '0.0000',
+        minVoltage: data.minVoltage || '0.0000',
+        maxVoltage: data.maxVoltage || '0.0000',
+        averageVoltage: data.averageVoltage || '0.0000',
 
-        current: this.batteryData.current || '0.00',
-        power: this.batteryData.power || '0.00',
-        ratio: this.batteryData.ratio || '0.00',
+        current: data.current || '0.00',
+        power: data.power || '0.00',
+        ratio: data.ratio || '0.00',
 
-        capacity: this.batteryData.capacity || '0.00',
-        totalCapacity: this.batteryData.totalCapacity || '0.0000',
+        capacity: data.capacity || '0.00',
+        totalCapacity: data.totalCapacity || '0.0000',
 
-        mosTemperature: this.batteryData.mosTemperature || '0.0',
-        balanceTemperature: this.batteryData.balanceTemperature || '0.0',
-        chip1Temperature: this.batteryData.chip1Temperature || '0.0',
-        chip2Temperature: this.batteryData.chip2Temperature || '0.0',
+        mosTemperature: data.mosTemperature || '0.0',
+        balanceTemperature: data.balanceTemperature || '0.0',
+        chip1Temperature: data.chip1Temperature || '0.0',
+        chip2Temperature: data.chip2Temperature || '0.0',
 
-        cycleCapacity: this.batteryData.cycleCapacity || '0.0000',
+        cycleCapacity: data.cycleCapacity || '0.0000',
 
-        temperatures: this.batteryData.temperatures || [],
-        currentBatteryLevel: this.batteryData.currentBatteryLevel || 0
+        temperatures: data.temperatures || [],
+        currentBatteryLevel: data.currentBatteryLevel || 0
       };
     }
   },
   onLoad() {
     this.getSystemInfo();
+    this.setupBatteryDataListener();
+  },
+  
+  onShow() {
+    // 页面显示时重新设置监听器
+    this.setupBatteryDataListener();
+  },
+  
+  onHide() {
+    // 页面隐藏时移除监听器
+    this.removeBatteryDataListener();
+  },
+  
+  onUnload() {
+    // 页面卸载时移除监听器
+    this.removeBatteryDataListener();
   },
   methods: {
     ...mapActions([
@@ -155,6 +174,35 @@ export default {
     // 处理语言弹窗状态变化
     handleLanguagePopupAction(isOpen) {
       this.show = isOpen
+    },
+    
+    // 设置电池数据监听器
+    setupBatteryDataListener() {
+      // 移除之前的监听器
+      this.removeBatteryDataListener();
+      
+      // 添加新的监听器
+      this.batteryDataListener = (batteryData) => {
+        console.log('component页面收到电池数据更新:', batteryData);
+        this.localBatteryData = batteryData;
+      };
+      
+      // 监听全局事件
+      uni.$on('batteryDataChanged', this.batteryDataListener);
+      
+      // 立即获取当前数据
+      const currentData = this.batteryData;
+      if (currentData) {
+        this.localBatteryData = currentData;
+      }
+    },
+    
+    // 移除电池数据监听器
+    removeBatteryDataListener() {
+      if (this.batteryDataListener) {
+        uni.$off('batteryDataChanged', this.batteryDataListener);
+        this.batteryDataListener = null;
+      }
     },
   }
 }
