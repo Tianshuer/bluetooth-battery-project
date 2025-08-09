@@ -625,7 +625,6 @@ class BLEManager {
    */
   _notifyListeners() {
     if (!this._listeners || this._listeners.length === 0) {
-      console.log('没有监听器，跳过通知');
       return;
     }
     
@@ -748,7 +747,7 @@ class BLEManager {
       success: (res) => {
         console.log('蓝牙适配器状态:', res);    
         // 如果蓝牙可用，再设置监听器
-        if (res.available) {
+        if (res.available || res.adapterState.available) {
           this._setupStateListener();
         } else {
           console.log('蓝牙适配器不可用，尝试打开');
@@ -779,7 +778,7 @@ class BLEManager {
         return;
       }
 
-      const state = res.available ? 'on' : 'off';
+      const state = (res.available  || res.adapterState.available) ? 'on' : 'off';
       const discovering = res.discovering || false;
       const connected = res.connected || false;
 
@@ -976,7 +975,7 @@ class BLEManager {
         success: (res) => {
           console.log('蓝牙适配器状态:', res);
           
-          if (res.available) {
+          if (res.available || res.adapterState.available) {
             console.log('蓝牙适配器已可用');
             resolve(res);
           } else {
@@ -2910,7 +2909,7 @@ class BLEManager {
    * @param {Object} error - 错误对象
    * @private
    */
-  _handleBluetoothError(error) {
+  _handleBluetoothInitError(error) {
     console.error('蓝牙错误:', error);
 
     // 根据错误码处理不同情况
@@ -2926,7 +2925,6 @@ class BLEManager {
 
     this._notifyListeners();
   }
-
 }
 
 export default new BLEManager();

@@ -78,6 +78,41 @@ export default {
         }
         return fakeData;
       },
+    },
+    // 是否连接状态
+    isConnected: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      // 存储最后一次获取到的真实数据
+      lastValidData: [],
+      // 标记是否曾经获取过真实数据
+      hasEverReceivedData: false
+    }
+  },
+  watch: {
+    // 监听 dataItems 的变化
+    dataItems: {
+      handler(newData) {
+        // 当有真实数据时，保存为最后一次有效数据
+        if (newData && newData.length > 0) {
+          this.lastValidData = [...newData]; // 深拷贝保存数据
+          this.hasEverReceivedData = true;
+          console.log('保存最后一次有效数据:', this.lastValidData);
+        }
+      },
+      deep: true,
+      immediate: true
+    },
+    // 监听连接状态变化
+    isConnected(newStatus, oldStatus) {
+      console.log('连接状态变化:', oldStatus, '->', newStatus);
+      if (!newStatus && oldStatus && this.hasEverReceivedData) {
+        console.log('设备断开连接，但保持最后一次数据:', this.lastValidData);
+      }
     }
   },
   computed: {
@@ -86,18 +121,36 @@ export default {
       return this.dataItems && this.dataItems.length > 0
     },
     
+    // 获取要显示的数据
+    displayData() {
+      // 如果当前有数据，直接返回当前数据
+      if (this.hasData) {
+        return this.dataItems;
+      }
+      
+      // 如果没有当前数据，但曾经获取过数据且不是首次连接，返回最后一次有效数据
+      if (this.hasEverReceivedData && this.lastValidData.length > 0) {
+        console.log('使用最后一次有效数据:', this.lastValidData);
+        return this.lastValidData;
+      }
+      
+      // 如果从未获取过数据，返回默认数据
+      console.log('使用默认数据');
+      return this.defaultDataItems;
+    },
+    
     // 将一维数组转换为双列数据行
     dataRows() {
-      const data = this.hasData ? this.dataItems : this.defaultDataItems;
-        const rows = []
-        for (let i = 0; i < data.length; i += 2) {
-          const row = {
-            left: data[i] || null,
-            right: data[i + 1] || null
-          }
-          rows.push(row)
+      const data = this.displayData;
+      const rows = []
+      for (let i = 0; i < data.length; i += 2) {
+        const row = {
+          left: data[i] || null,
+          right: data[i + 1] || null
         }
-        return rows;
+        rows.push(row)
+      }
+      return rows;
     },
   },
   methods: {
@@ -118,6 +171,19 @@ export default {
         return num.toString()
       }
     },
+    
+    // 清除最后一次数据（可选方法，用于手动重置）
+    clearLastValidData() {
+      this.lastValidData = [];
+      this.hasEverReceivedData = false;
+      console.log('已清除最后一次有效数据');
+    },
+    
+    // 强制使用默认数据（可选方法）
+    forceUseDefaultData() {
+      this.clearLastValidData();
+      this.$forceUpdate(); // 强制重新渲染
+    }
   }
 }
 </script>

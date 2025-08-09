@@ -129,8 +129,8 @@ export default {
 			this.deviceList = [];
 			this.isScanning = true;
 			
-			// // 添加BLEManager状态监听器
-			// this.addBleManagerListener();
+			// 添加BLEManager状态监听器
+			this.addBleManagerListener();
 			
 			uni.showToast({
 				title: this.t('loading'),
@@ -235,9 +235,6 @@ export default {
 				duration: 2000,
 				mask: true,
 			});
-			
-			// 停止扫描
-			this.stopScan();
 			
 			// 连接蓝牙设备
 			await this.connectToDevice(device);
