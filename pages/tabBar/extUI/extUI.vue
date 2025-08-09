@@ -1,27 +1,28 @@
 <template>
-  <view class="container" :style="{ 
-    minHeight: screenHeight + 'px',
-    marginTop: statusBarHeight + 'px'
-  }">
-    <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
-    <!-- 电池状态卡片 -->
-    <BatteryCard :batteryPercentage="75" @language-popup-action="handleLanguagePopupAction" />
-    
-    <!-- 公共功能组件 -->
-    <CommonPanel
-      :showVerifyCode="true"
-      :functionButtons="functionButtonsConfig"
-      @sendCode="handleSendCode"
-      @functionClick="handleFunctionClick"
-    />
-    
-    <!-- 表单输入列表组件 -->
-    <FormInputList
-      :items="formInputItems"
-      @input="handleFormInput"
-      @send="handleFormSend"
-    />
-  </view>
+  <page-meta :page-style="'overflow:'+(show?'hidden':'visible')">
+    <view class="container" :style="{ 
+      minHeight: screenHeight + 'px',
+      marginTop: statusBarHeight + 'px'
+    }">
+      <!-- 电池状态卡片 -->
+      <BatteryCard :batteryPercentage="75" @language-popup-action="handleLanguagePopupAction" />
+      
+      <!-- 公共功能组件 -->
+      <CommonPanel
+        :showVerifyCode="true"
+        :functionButtons="functionButtonsConfig"
+        @sendCode="handleSendCode"
+        @functionClick="handleFunctionClick"
+      />
+      
+      <!-- 表单输入列表组件 -->
+      <FormInputList
+        :items="formInputItems"
+        @input="handleFormInput"
+        @send="handleFormSend"
+      />
+    </view>
+  </page-meta>
 </template>
 
 <script>

@@ -1,80 +1,81 @@
 <template>
-  <view>
-    <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
+  <page-meta :page-style="'overflow:'+(show?'hidden':'visible')">
     <view class="container" :style="{
-      minHeight: screenHeight + 'px',
-      marginTop: statusBarHeight + 'px'
-    }">
-    
-    <!-- 电池状态卡片 -->
-    <BatteryCard @language-popup-action="handleLanguagePopupAction" />
-    
-    <!-- 电压电流卡片 -->
-    <VoltageCurrentCard :voltage="safeBatteryData.totalVoltage" :current="safeBatteryData.current" />
+        minHeight: screenHeight + 'px',
+        marginTop: statusBarHeight + 'px'
+      }">
+      
 
-    <!-- 电池信息卡片 -->
-    <InfoCard 
-      :item1Value="safeBatteryData.totalCapacity"
-      :item1Label="t('battery_capacity') || '电池容量'"
-      :item1Unit="'AH'"
-      :item2Value="safeBatteryData.ratio"
-      :item2Label="t('remaining_power') || '剩余电量'"
-      :item2Unit="'%'"
-      :item3Value="safeBatteryData.power"
-      :item3Label="t('power') || '功率'"
-      :item3Unit="'W'"
-      :item4Value="safeBatteryData.cycleCapacity"
-      :item4Label="t('cycle_capacity') || '循环容量'"
-      :item4Unit="'AH'"
-    />
-    <!-- 电压信息卡片 -->
-    <InfoCard 
-      :item1Value="safeBatteryData.voltageDiff"
-      :item1Label="t('voltage_diff') || '电芯压差'"
-      :item1Unit="'V'"
-      :item2Value="safeBatteryData.averageVoltage"
-      :item2Label="t('average_voltage') || '平均电压'"
-      :item2Unit="'V'"
-      :item3Value="safeBatteryData.maxVoltage"
-      :item3Label="t('max_voltage') || '最高电压'"
-      :item3Unit="'V'"
-      :item4Value="safeBatteryData.minVoltage"
-      :item4Label="t('min_voltage') || '最低电压'"
-      :item4Unit="'V'"
-    />
+      
+      <!-- 电池状态卡片 -->
+      <BatteryCard @language-popup-action="handleLanguagePopupAction" />
+      
+      <!-- 电压电流卡片 -->
+      <VoltageCurrentCard :voltage="safeBatteryData.totalVoltage" :current="safeBatteryData.current" />
 
-    <!-- 芯片温度信息卡片 -->
-    <InfoCard 
-      :item1Value="safeBatteryData.chip1Temperature"
-      :item1Label="t('chip1_temp') || '芯片1温度'"
-      :item1Unit="'°C'"
-      :item2Value="safeBatteryData.chip2Temperature"
-      :item2Label="t('chip2_temp') || '芯片2温度'"
-      :item2Unit="'°C'"
-      :item3Value="safeBatteryData.mosTemperature"
-      :item3Label="t('mos_temp') || 'MOS管温度'"
-      :item3Unit="'°C'"
-      :item4Value="safeBatteryData.balanceTemperature"
-      :item4Label="t('balance_temp') || '均衡温度'"
-      :item4Unit="'°C'"
-    />
-    <!-- 电芯温度信息卡片 -->
-    <InfoCard 
-      :item1Value="safeBatteryData.temperatures[0]"
-      :item1Label="t('cell_temp1') || '电芯温度1'"
-      :item1Unit="'°C'"
-      :item2Value="safeBatteryData.temperatures[1]"
-      :item2Label="t('cell_temp2') || '电芯温度2'"
-      :item2Unit="'°C'"
-      :item3Value="safeBatteryData.temperatures[2]"
-      :item3Label="t('cell_temp3') || '电芯温度3'"
-      :item3Unit="'°C'"
-      :item4Value="safeBatteryData.temperatures[3]"
-      :item4Label="t('cell_temp4') || '电芯温度4'"
-      :item4Unit="'°C'"
-    />
+      <!-- 电池信息卡片 -->
+      <InfoCard 
+        :item1Value="safeBatteryData.totalCapacity"
+        :item1Label="t('battery_capacity') || '电池容量'"
+        :item1Unit="'AH'"
+        :item2Value="safeBatteryData.ratio"
+        :item2Label="t('remaining_power') || '剩余电量'"
+        :item2Unit="'%'"
+        :item3Value="safeBatteryData.power"
+        :item3Label="t('power') || '功率'"
+        :item3Unit="'W'"
+        :item4Value="safeBatteryData.cycleCapacity"
+        :item4Label="t('cycle_capacity') || '循环容量'"
+        :item4Unit="'AH'"
+      />
+      <!-- 电压信息卡片 -->
+      <InfoCard 
+        :item1Value="safeBatteryData.voltageDiff"
+        :item1Label="t('voltage_diff') || '电芯压差'"
+        :item1Unit="'V'"
+        :item2Value="safeBatteryData.averageVoltage"
+        :item2Label="t('average_voltage') || '平均电压'"
+        :item2Unit="'V'"
+        :item3Value="safeBatteryData.maxVoltage"
+        :item3Label="t('max_voltage') || '最高电压'"
+        :item3Unit="'V'"
+        :item4Value="safeBatteryData.minVoltage"
+        :item4Label="t('min_voltage') || '最低电压'"
+        :item4Unit="'V'"
+      />
+
+      <!-- 芯片温度信息卡片 -->
+      <InfoCard 
+        :item1Value="safeBatteryData.chip1Temperature"
+        :item1Label="t('chip1_temp') || '芯片1温度'"
+        :item1Unit="'°C'"
+        :item2Value="safeBatteryData.chip2Temperature"
+        :item2Label="t('chip2_temp') || '芯片2温度'"
+        :item2Unit="'°C'"
+        :item3Value="safeBatteryData.mosTemperature"
+        :item3Label="t('mos_temp') || 'MOS管温度'"
+        :item3Unit="'°C'"
+        :item4Value="safeBatteryData.balanceTemperature"
+        :item4Label="t('balance_temp') || '均衡温度'"
+        :item4Unit="'°C'"
+      />
+      <!-- 电芯温度信息卡片 -->
+      <InfoCard 
+        :item1Value="safeBatteryData.temperatures[0]"
+        :item1Label="t('cell_temp1') || '电芯温度1'"
+        :item1Unit="'°C'"
+        :item2Value="safeBatteryData.temperatures[1]"
+        :item2Label="t('cell_temp2') || '电芯温度2'"
+        :item2Unit="'°C'"
+        :item3Value="safeBatteryData.temperatures[2]"
+        :item3Label="t('cell_temp3') || '电芯温度3'"
+        :item3Unit="'°C'"
+        :item4Value="safeBatteryData.temperatures[3]"
+        :item4Label="t('cell_temp4') || '电芯温度4'"
+        :item4Unit="'°C'"
+      />
     </view>
-  </view>
+  </page-meta>
 </template>
 
 <script>

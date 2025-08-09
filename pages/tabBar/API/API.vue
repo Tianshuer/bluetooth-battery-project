@@ -1,26 +1,27 @@
 <template>
-  <view class="container" :style="{ 
-    minHeight: screenHeight + 'px',
-    marginTop: statusBarHeight + 'px'
-  }">
-    <page-meta :page-style="'overflow:'+(show?'hidden':'visible')"></page-meta>
-        <!-- 电池状态卡片 -->
-        <BatteryCard :batteryPercentage="batteryLevel" @language-popup-action="handleLanguagePopupAction" />
-        
-        <!-- 显示与控制功能组件 -->
-        <CommonPanel
-          :showVerifyCode="false"
-          :functionButtons="controlButtons"
-          @functionClick="handleControlClick"
-        />
-        
-        <!-- 双列数据显示组件 - 电池串电压 -->
-        <DoubleColumnData
-          :dataItems="isConnected ? batteryVoltageData : []"
-          :valueFormat="voltageFormat"
-          :emptyConfig="voltageEmptyConfig"
-        />
+  <page-meta :page-style="'overflow:'+(show?'hidden':'visible')">
+    <view class="container" :style="{ 
+      minHeight: screenHeight + 'px',
+      marginTop: statusBarHeight + 'px'
+    }">
+      <!-- 电池状态卡片 -->
+      <BatteryCard :batteryPercentage="batteryLevel" @language-popup-action="handleLanguagePopupAction" />
+      
+      <!-- 显示与控制功能组件 -->
+      <CommonPanel
+        :showVerifyCode="false"
+        :functionButtons="controlButtons"
+        @functionClick="handleControlClick"
+      />
+      
+      <!-- 双列数据显示组件 - 电池串电压 -->
+      <DoubleColumnData
+        :dataItems="isConnected ? batteryVoltageData : []"
+        :valueFormat="voltageFormat"
+        :emptyConfig="voltageEmptyConfig"
+      />
     </view>
+  </page-meta>
 </template>
 
 <script>
