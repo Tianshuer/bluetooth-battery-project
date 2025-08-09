@@ -506,19 +506,24 @@ export default new Vuex.Store({
       const messages = state.messages
       let text = messages[key]
 
-      if (!text) {
-        console.warn(`Translation key not found: ${key}`)
-        return key
+      if (!text || typeof text !== 'string') {
+        console.warn(`Translation key not found or invalid: ${key}`, { key, text, messages })
+        return String(key) // 确保返回字符串
       }
 
       // 处理参数替换
       if (args.length > 0) {
         args.forEach((arg, index) => {
-          text = text.replace(`%d`, arg)
-          text = text.replace(`%@`, arg)
+          // 确保 text 仍然是字符串，并且 arg 被转换为字符串
+          try {
+            text = text.replace(`%d`, String(arg))
+            text = text.replace(`%@`, String(arg))
+          } catch (error) {
+            console.error('Error in translation parameter replacement:', error, { text, arg, key })
+            // 如果替换失败，至少返回原始文本
+          }
         })
       }
-
       return text
     },
 
