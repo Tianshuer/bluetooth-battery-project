@@ -381,41 +381,41 @@ class BLEManager {
       minVoltage: 0.0,
       highestString: 0,
       lowestString: 0,
-      
+
       // 温度信息
       mosTemperature: 0.0,
       balanceTemperature: 0.0,
       chip1Temperature: 0.0,
       chip2Temperature: 0.0,
       temperatures: [], // 温度数组
-      
+
       // 状态信息
       chargingStatus: false,
       dischargingStatus: false,
       balancingStatus: false,
-      
+
       // 电池串信息
       totalStrings: 0,
       voltages: [], // 电压数组
       balanceStatus: [], // 均衡状态数组
-      
+
       // 故障延时
       gzys: 0,
-      
+
       // 更新方法
-      update: function() {
+      update: function () {
         // 可以在这里添加数据更新逻辑
         console.log('电池数据已更新');
       },
-      
+
       // 获取均衡中的电池串
-      getBalancingStrings: function() {
+      getBalancingStrings: function () {
         const balancingStrings = [];
         for (let i = 0; i < this.totalStrings; i++) {
           const byteIndex = Math.floor(i / 6);
           const bitPosition = i % 6;
           const bitIndex = 1 << bitPosition;
-          
+
           if (byteIndex < this.balanceStatus.length) {
             if ((this.balanceStatus[byteIndex] & bitIndex) !== 0) {
               balancingStrings.push(i + 1);
@@ -494,6 +494,9 @@ class BLEManager {
     return this._isConnected;
   }
 
+  get isScanning() {
+    return this._isScanning;
+  }
   get batteryData() {
     return this._batteryData;
   }
@@ -615,7 +618,7 @@ class BLEManager {
   getListenerCount() {
     return this._listeners ? this._listeners.length : 0;
   }
-  
+
   get listeners() {
     return this._listeners;
   }
@@ -627,9 +630,9 @@ class BLEManager {
     if (!this._listeners || this._listeners.length === 0) {
       return;
     }
-    
+
     console.log(`通知 ${this._listeners.length} 个监听器状态变化`);
-    console.log('通知时间:', new Date().toLocaleTimeString());
+    console.log('isScanning:', this.isScanning);
 
     // 发送全局事件通知连接状态变化
     uni.$emit('bleConnectionStatusChanged', {
@@ -689,10 +692,7 @@ class BLEManager {
    */
   _initializeBluetoothStateListener() {
     console.log('正在初始化蓝牙状态监听器...');
-
-    // 监听蓝牙设备发现事件
-    this._setupScanResultsListener();
-
+    console.log(111, this._discoveredPeripherals);
     // 监听蓝牙适配器状态变化
     this._setupAdapterStateListener();
 
@@ -703,36 +703,129 @@ class BLEManager {
    * 设置扫描结果监听器
    * @private
    */
-  _setupScanResultsListener() {
+  async _setupScanResultsListener() {
+    console.log('_setupScanResultsListener', this._discoveredPeripherals);
     // 监听设备发现事件
-    uni.onBluetoothDeviceFound((res) => {
-      // 处理发现的设备
-      if (res.devices && Array.isArray(res.devices)) {
-        for (const device of res.devices) {
-          // 只添加有名称的设备（类似Flutter的isNotEmpty检查）
-          if (device.name && device.name.trim().length > 0) {
-            const existingDeviceIndex = this._discoveredPeripherals.findIndex(
-              existing => existing.deviceId === device.deviceId
-            );
+    // uni.onBluetoothDeviceFound((res) => {
+    //   // 处理发现的设备
+    //   if (res.devices && Array.isArray(res.devices)) {
+    //     for (const device of res.devices) {
+    //       // 只添加有名称的设备（类似Flutter的isNotEmpty检查）
+    //       if (device.name && device.name.trim().length > 0) {
+    //         const existingDeviceIndex = this._discoveredPeripherals.findIndex(
+    //           existing => existing.deviceId === device.deviceId
+    //         );
 
-            if (existingDeviceIndex === -1) {
-              this._discoveredPeripherals.push({
-                deviceId: device.deviceId,
-                name: device.name,
-                RSSI: device.RSSI || 0,
-                advertisData: device.advertisData || {},
-                advertisServiceUUIDs: device.advertisServiceUUIDs || [],
-                localName: device.localName || '',
-                serviceData: device.serviceData || {}
-              });
-            }
-            
+    //         if (existingDeviceIndex === -1) {
+    //           this._discoveredPeripherals.push({
+    //             deviceId: device.deviceId,
+    //             name: device.name,
+    //             RSSI: device.RSSI || 0,
+    //             advertisData: device.advertisData || {},
+    //             advertisServiceUUIDs: device.advertisServiceUUIDs || [],
+    //             localName: device.localName || '',
+    //             serviceData: device.serviceData || {}
+    //           });
+    //         }
+    //         console.log('发现设备:', device);
+
+    //       }
+    //     }
+    //   }
+    //   this._isScanning = false;
+    //   // 通知监听器
+    //   this._notifyListeners();
+    // });
+    try {
+      await this._getAlreadyDiscoveredDevices();
+    } catch (error) {
+      console.log('获取已发现设备失败，可能是首次扫描:', error);
+    }
+
+    // 2. 设置监听器监听新发现的设备
+    uni.onBluetoothDeviceFound((res) => {
+      console.log('监听到新设备发现:', res);
+      this._handleDeviceFound(res);
+    });
+  }
+
+  async _getAlreadyDiscoveredDevices() {
+    return new Promise((resolve, reject) => {
+      uni.getBluetoothDevices({
+        success: (res) => {
+          console.log('获取已发现的设备成功:', res);
+          if (res.devices && Array.isArray(res.devices)) {
+            // 处理已发现的设备
+            this._handleDeviceFound({
+              devices: res.devices
+            });
           }
+          resolve(res);
+        },
+        fail: (error) => {
+          console.log('获取已发现的设备失败:', error);
+          // 不算作错误，可能是还没有发现任何设备
+          resolve({
+            devices: []
+          });
+        }
+      });
+    });
+  }
+
+  _handleDeviceFound(res) {
+    if (!res.devices || !Array.isArray(res.devices)) {
+      return;
+    }
+
+    let hasNewDevice = false;
+    let newDeviceCount = 0;
+
+    for (const device of res.devices) {
+      // 只添加有名称的设备（类似Flutter的isNotEmpty检查）
+      if (device.name && device.name.trim().length > 0) {
+        const existingDeviceIndex = this._discoveredPeripherals.findIndex(
+          existing => existing.deviceId === device.deviceId
+        );
+
+        if (existingDeviceIndex === -1) {
+          // 新设备
+          this._discoveredPeripherals.push({
+            deviceId: device.deviceId,
+            name: device.name,
+            RSSI: device.RSSI || 0,
+            advertisData: device.advertisData || {},
+            advertisServiceUUIDs: device.advertisServiceUUIDs || [],
+            localName: device.localName || '',
+            serviceData: device.serviceData || {}
+          });
+
+          hasNewDevice = true;
+          newDeviceCount++;
+          console.log('发现新设备:', device.name, device.deviceId);
+        } else {
+          // 更新现有设备的信息（如RSSI）
+          const existingDevice = this._discoveredPeripherals[existingDeviceIndex];
+          existingDevice.RSSI = device.RSSI || 0;
+          existingDevice.advertisData = device.advertisData || {};
+          existingDevice.advertisServiceUUIDs = device.advertisServiceUUIDs || [];
+          existingDevice.localName = device.localName || '';
+          existingDevice.serviceData = device.serviceData || {};
         }
       }
-      // 通知监听器
-      this._notifyListeners();
-    });
+    }
+
+    if (hasNewDevice) {
+      console.log(`发现 ${newDeviceCount} 个新设备，当前总设备数: ${this._discoveredPeripherals.length}`);
+
+      // 重置无设备发现定时器（如果实现了智能停止机制）
+      if (typeof this._resetNoDeviceFoundTimer === 'function') {
+        this._resetNoDeviceFoundTimer();
+      }
+    }
+
+    // 通知监听器（无论是否有新设备，都通知以更新UI）
+    this._notifyListeners();
   }
 
   /**
@@ -745,7 +838,7 @@ class BLEManager {
     // 先检查蓝牙适配器是否可用
     uni.getBluetoothAdapterState({
       success: (res) => {
-        console.log('蓝牙适配器状态:', res);    
+        console.log('蓝牙适配器状态:', res);
         // 如果蓝牙可用，再设置监听器
         if (res.available || res.adapterState.available) {
           this._setupStateListener();
@@ -778,7 +871,7 @@ class BLEManager {
         return;
       }
 
-      const state = (res.available  || res.adapterState.available) ? 'on' : 'off';
+      const state = (res.available || res.adapterState.available) ? 'on' : 'off';
       const discovering = res.discovering || false;
       const connected = res.connected || false;
 
@@ -789,7 +882,7 @@ class BLEManager {
         'on': () => this._handleBluetoothOn(),
         'off': () => this._handleBluetoothOff(),
         'unauthorized': () => {
-                    console.log("蓝牙未授权");
+          console.log("蓝牙未授权");
           this._lastError = "请在设置中开启蓝牙权限";
           this._notifyListeners();
         },
@@ -936,56 +1029,30 @@ class BLEManager {
    * @param {number} timeout - 扫描超时时间（毫秒）
    */
   async _startBluetoothScan(timeout = 10000) {
-    console.log('开始蓝牙扫描流程');
+    console.log('蓝牙扫描启动成功');
 
     // 1. 首先确保蓝牙适配器已初始化
     await this._ensureBluetoothAdapterInitialized();
 
-    // 2. 开始扫描设备
+    // 2. 开始搜寻附近的蓝牙外围设
     await this._startBluetoothDevicesDiscovery();
 
-    // 3. 设置扫描超时
-    this._setScanTimeout(timeout);
-    console.log('蓝牙扫描启动成功');
-    // await new Promise((resolve, reject) => {
-    //   uni.startBluetoothDevicesDiscovery({
-    //     services: [], // 可以指定特定服务UUID
-    //     allowDuplicatesKey: false,
-    //     interval: 0,
-    //     success: (res) => {
-    //       console.log('扫描启动成功:', res);
-    //       resolve(res);
-    //     },
-    //     fail: (err) => {
-    //       console.error('扫描启动失败:', err);
-    //       this._isScanning = false;
-    //       this._lastError = `扫描启动失败: ${err.errMsg || err.message}`;
-    //       this._notifyListeners();
-    //       reject(new Error(`扫描启动失败: ${err.errMsg || err.message}`));
-    //     }
-    //   });
-    // });
+    // 3. 开始发现设备
+    await this._setupScanResultsListener();
   }
   async _ensureBluetoothAdapterInitialized() {
     return new Promise((resolve, reject) => {
-      console.log('检查蓝牙适配器状态...');
-      
       // 先检查蓝牙适配器状态
       uni.getBluetoothAdapterState({
         success: (res) => {
-          console.log('蓝牙适配器状态:', res);
-          
           if (res.available || res.adapterState.available) {
-            console.log('蓝牙适配器已可用');
             resolve(res);
           } else {
-            console.log('蓝牙适配器不可用，尝试打开');
             this._openBluetoothAdapter(resolve, reject);
           }
         },
         fail: (err) => {
           console.error('获取蓝牙适配器状态失败:', err);
-          console.log('尝试直接打开蓝牙适配器');
           this._openBluetoothAdapter(resolve, reject);
         }
       });
@@ -993,25 +1060,27 @@ class BLEManager {
   }
 
   async _startBluetoothDevicesDiscovery() {
-    console.log('开始搜索蓝牙设备...', this._discoveredPeripherals);
+
     return new Promise((resolve, reject) => {
-        uni.startBluetoothDevicesDiscovery({
-          services: [], // 可以指定特定服务UUID
-          allowDuplicatesKey: false,
-          interval: 0,
-          success: (res) => {
-            console.log('蓝牙设备搜索启动成功:', res);
-            this._isScanning = true;
-            this._notifyListeners();
-            resolve(res);
-          },
-          fail: (err) => {
+      uni.startBluetoothDevicesDiscovery({
+        interval: 0,
+        success: (res) => {
+          this._isScanning = true;
+          this._notifyListeners();
+          resolve(res);
+        },
+        fail: (err) => {
+          if (err.errMsg && err.errMsg.includes('already discovering')) {
             console.error('蓝牙设备搜索启动失败:', err);
+            this._setupScanResultsListener();
+            resolve(err);
+          } else {
             this._isScanning = false;
             reject(new Error(`设备搜索失败: ${err.errMsg || err.message}`));
           }
-        });
+        }
       });
+    });
   }
   /**
    * 设置扫描超时
@@ -1033,13 +1102,14 @@ class BLEManager {
   /**
    * 停止扫描蓝牙设备
    */
-  async stopScanning() {
+  stopScanning() {
     try {
       // 如果没有在扫描，直接返回
       if (!this._isScanning) {
         console.log('未在扫描中，跳过停止操作');
         return;
       }
+      this._isScanning = false;
 
       console.log('停止设备扫描...');
 
@@ -1050,22 +1120,17 @@ class BLEManager {
       }
 
       // 停止扫描
-      await new Promise((resolve, reject) => {
-        uni.stopBluetoothDevicesDiscovery({
-          success: (res) => {
-            console.log('扫描停止成功:', res);
-            resolve(res);
-          },
-          fail: (err) => {
-            console.error('扫描停止失败:', err);
-            // 即使停止失败，也要重置状态
-            resolve(err);
-          }
-        });
+      uni.stopBluetoothDevicesDiscovery({
+        success: (res) => {
+          console.log('扫描停止成功:', res);
+        },
+        fail: (err) => {
+          console.error('扫描停止失败:', err);
+          // 即使停止失败，也要重置状态
+        }
       });
 
       // 更新扫描状态
-      this._isScanning = false;
       console.log('设备扫描已停止');
 
       // 通知监听器
@@ -1114,7 +1179,7 @@ class BLEManager {
    * @returns {Promise<boolean>} 连接是否成功
    */
   async connect(peripheral) {
-    console.log('connect', peripheral);
+    console.log('connect: ', peripheral);
     try {
       // 停止扫描
       // await this.stopScanning();
@@ -1127,7 +1192,7 @@ class BLEManager {
       console.log(`成功连接到设备: ${peripheral.name || peripheral.deviceId}`);
 
       // 设置连接状态监听
-      this.bleSubscription = this._setupConnectionStateListener();
+      this._setupConnectionStateListener();
 
       // 发现服务和特征值
       await this._discoverServicesAndCharacteristics(peripheral);
@@ -1166,7 +1231,7 @@ class BLEManager {
    */
   async _establishBLEConnection(peripheral) {
     console.log('establishBLEConnection', peripheral);
-    
+
     // 建立BLE连接
     return await new Promise((resolve, reject) => {
       uni.createBLEConnection({
@@ -2669,23 +2734,23 @@ class BLEManager {
             // JavaScript charCodeAt给出ASCII值
             balanceBytes[i] = value.charCodeAt(i);
           }
-          
+
           // 更新均衡状态数组
           for (let i = 0; i < balanceBytes.length; i++) {
             if (i < this._batteryData.balanceStatus.length) {
               this._batteryData.balanceStatus[i] = balanceBytes[i];
             }
           }
-          
+
           // 调试输出
           const balancingStrings = this._batteryData.getBalancingStrings(); // 使用BatteryData自己的getter
           console.log("均衡中的电池串:", balancingStrings);
-          
+
           const hexString = balanceBytes
-          .map(b => b.toString(16).padStart(2, '0'))
-          .join(' ');
+            .map(b => b.toString(16).padStart(2, '0'))
+            .join(' ');
           console.log("均衡状态字节 (hex):", hexString);
-          
+
           const binaryString = balanceBytes.map(b => {
             let binStr = '';
             for (let bit = 7; bit >= 0; bit--) {

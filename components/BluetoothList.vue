@@ -36,8 +36,8 @@
 				
 				<!-- 底部按钮 -->
 				<view class="popup-actions">
-					<button class="action-btn stop-btn" @click="stopScan">{{ t('stop_scan') }}</button>
-					<button class="action-btn start-btn" @click="startScan">{{ t('start_scan') }}</button>
+					<button class="action-btn stop-btn" @click="stopScan()">{{ t('stop_scan') }}</button>
+					<button class="action-btn start-btn" @click="startScan()">{{ t('start_scan') }}</button>
 				</view>
 			</view>
 		</view>
@@ -106,7 +106,7 @@ export default {
 		// 隐藏弹窗
 		hidePopup() {
 			// 先停止扫描
-			this.stopScan();
+			this.stopScan(false);
 			
 			// 移除BLEManager监听器
 			this.removeBleManagerListener();
@@ -124,10 +124,10 @@ export default {
 		async startScan() {
 			if (this.isScanning) return;
 			// 先停止之前的扫描
-			this.stopScan();
+			this.stopScan(false);
 			// 清空设备列表
 			this.deviceList = [];
-			this.isScanning = true;
+			// this.isScanning = true;
 			
 			// 添加BLEManager状态监听器
 			this.addBleManagerListener();
@@ -139,6 +139,7 @@ export default {
 				mask: true,
 			});
 			await bleManager.startScanning();
+			await bleManager.stopScanning();
 		},
 		
 		// 添加BLEManager状态监听器
@@ -159,7 +160,7 @@ export default {
 				console.log('更新时间:', new Date().toLocaleTimeString());
 				
 				// 更新扫描状态
-				this.isScanning = stateData.isScanning;
+				// this.isScanning = stateData.isScanning;
 				
 				// 更新设备列表
 				if (stateData.discoveredPeripherals && Array.isArray(stateData.discoveredPeripherals)) {
@@ -208,10 +209,9 @@ export default {
 		},
 		
 		// 停止扫描
-		async stopScan() {
-			if (!this.isScanning) return;
+		async stopScan(isShowToast = true) {
 			this.isScanning = false;
-			
+
 			// 清除扫描定时器
 			if (this.scanTimer) {
 				clearTimeout(this.scanTimer);
@@ -220,11 +220,13 @@ export default {
 			
 			// 停止搜索蓝牙设备
 			await bleManager.stopScanning();
-			
-			uni.showToast({
-				title: this.t('stop_scan'),
-				icon: 'none',
-			});
+						
+			if (isShowToast) {
+				uni.showToast({
+					title: this.t('stop_scan'),
+					icon: 'none',
+				});
+			}
 		},
 		
 		// 选择设备
@@ -313,7 +315,7 @@ export default {
 	beforeDestroy() {
 		// 组件销毁时清理监听器
 		console.log('组件销毁，清理蓝牙资源');
-		this.stopScan();
+		this.stopScan(false);
 		
 		// 移除BLEManager监听器
 		this.removeBleManagerListener();
