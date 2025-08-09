@@ -34,7 +34,7 @@ export default {
 		return {
 			screenHeight: 0,
 			deviceList: [],
-			isScanning: false
+			isScanning: false,
 		}
 	},
 	computed: {
@@ -104,8 +104,8 @@ export default {
 
 
 .brand-image {
-	width: 640rpx;
-	height: 320rpx;
+	width: 800rpx;
+	height: 220rpx;
 }
 
 .text-section {
@@ -132,8 +132,9 @@ export default {
 	color: #ffffff;
 	border: none;
 	border-radius: 40rpx;
-	font-size: 28rpx;
+	font-size: 32rpx;
 	transition: all 0.3s ease;
+	font-weight: 500;
 }
 
 .enter-btn:active {

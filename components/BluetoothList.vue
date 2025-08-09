@@ -36,8 +36,8 @@
 				
 				<!-- 底部按钮 -->
 				<view class="popup-actions">
-					<button class="action-btn stop-btn" @click="stopScan" :disabled="!isScanning">{{ t('stop_scan') }}</button>
-					<button class="action-btn start-btn" @click="startScan" :disabled="isScanning">{{ t('start_scan') }}</button>
+					<button class="action-btn stop-btn" @click="stopScan">{{ t('stop_scan') }}</button>
+					<button class="action-btn start-btn" @click="startScan">{{ t('start_scan') }}</button>
 				</view>
 			</view>
 		</view>
@@ -66,7 +66,7 @@ export default {
 			notifyEnabledMap: new Map(), // 记录notify启用状态
 			retryCountMap: new Map(), // 记录重试次数
 			maxRetryCount: 3, // 最大重试次数
-			showDebugInfo: false // 控制调试信息显示
+			showDebugInfo: false, // 控制调试信息显示
 		}
 	},
 	computed: {
@@ -129,13 +129,14 @@ export default {
 			this.deviceList = [];
 			this.isScanning = true;
 			
-			// 添加BLEManager状态监听器
-			this.addBleManagerListener();
+			// // 添加BLEManager状态监听器
+			// this.addBleManagerListener();
 			
 			uni.showToast({
 				title: this.t('loading'),
 				icon: 'loading',
 				duration: 3000,
+				mask: true,
 			});
 			await bleManager.startScanning();
 		},
@@ -293,7 +294,8 @@ export default {
 				uni.showToast({
 					title: this.t('failed_to_connect_to_device'),
 					icon: 'none',
-					duration: 2000
+					duration: 2000,
+					mask: true,
 				});
 				
 				// 触发连接失败事件
@@ -432,13 +434,14 @@ export default {
 }
 
 .device-name {
-	font-size: 28rpx;
+	font-size: 32rpx;
 	color: #333333;
 	margin-bottom: 8rpx;
+	font-weight: 500;
 }
 
 .device-uuid {
-	font-size: 24rpx;
+	font-size: 28rpx;
 	color: #666666;
 	margin-bottom: 4rpx;
 }
@@ -453,7 +456,7 @@ export default {
 }
 
 .empty-text {
-	font-size: 28rpx;
+	font-size: 32rpx;
 	color: #666666;
 	text-align: center;
 }
@@ -472,7 +475,8 @@ export default {
 	line-height: 78rpx;
 	border: none;
 	border-radius: 16rpx;
-	font-size: 24rpx;
+	font-size: 28rpx;
+	font-weight: 500;
 	transition: all 0.3s ease;
 }
 
@@ -481,31 +485,22 @@ export default {
 	color: #ffffff;
 }
 
-.stop-btn:disabled {
-	background: #cccccc;
-	color: #666666;
-}
-
 .start-btn {
 	background: #acc890;
 	color: #ffffff;
 }
 
-.start-btn:disabled {
-	background: #cccccc;
-	color: #999999;
-}
-
 /* 确保弹窗覆盖tabbar */
-:deep(.uni-popup) {
-	z-index: 9999 !important;
+/* 使用 /deep/ 语法 */
+.uni-popup {
+    z-index: 9999 !important;
 }
 
-:deep(.uni-popup__mask) {
-	z-index: 9998 !important;
+.uni-popup__mask {
+    z-index: 9998 !important;
 }
 
-:deep(.uni-popup__wrapper) {
-	z-index: 9999 !important;
+.uni-popup__wrapper {
+    z-index: 9999 !important;
 }
 </style> 
