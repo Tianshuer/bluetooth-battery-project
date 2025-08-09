@@ -2,7 +2,8 @@
   <page-meta :page-style="'overflow:'+(show?'hidden':'visible')">
     <view class="container" :style="{
         minHeight: screenHeight + 'px',
-        marginTop: statusBarHeight + 'px'
+        marginTop: statusBarHeight + 'px',
+        paddingBottom: !isConnected ? '120rpx' : '20rpx'
       }">
       
 
@@ -102,7 +103,8 @@ export default {
     ...mapGetters([
       't',
       'statusBarHeight',
-      'batteryData'
+      'batteryData',
+      'isConnected',
     ]),
     
     // 确保数据有默认值，避免页面报错

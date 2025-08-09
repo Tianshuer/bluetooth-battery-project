@@ -2,7 +2,8 @@
   <page-meta :page-style="'overflow:'+(show?'hidden':'visible')">
     <view class="container" :style="{ 
       minHeight: screenHeight + 'px',
-      marginTop: statusBarHeight + 'px'
+      marginTop: statusBarHeight + 'px',
+      paddingBottom: !isConnected ? '120rpx' : '20rpx',
     }">
       <!-- 电池状态卡片 -->
       <BatteryCard :batteryPercentage="75" @language-popup-action="handleLanguagePopupAction" />
@@ -49,7 +50,8 @@ export default {
       't',
       'languageOptions',
       'currentLanguageIndex',
-      'statusBarHeight'
+      'statusBarHeight',
+      'isConnected',
     ]),
     // 功能按钮配置 - 响应语言变化
     functionButtonsConfig() {
