@@ -4,8 +4,8 @@
       <text class="header-title">{{ title }}</text>
     </view>
     
-    <!-- 有数据时显示数据内容 -->
-    <view v-if="hasData" class="data-content">
+    <!-- 显示数据内容（有数据或无数据时都显示，无数据时显示0.0000） -->
+    <view class="data-content">
       <view 
         v-for="(row, index) in dataRows" 
         :key="index"
@@ -62,7 +62,22 @@ export default {
         showButton: true,
         buttonText: '刷新数据',
         icon: '📊'
-      })
+      }),
+    },
+    // 默认数据项配置（当没有数据时显示的默认项）
+    defaultDataItems: {
+      type: Array,
+      default: () => {
+        let fakeData = []
+        for (let i = 0; i < 20; i++) {
+          fakeData.push({
+            label: i + 1,
+            value: '0.0000',
+            unit: 'V',
+          })
+        }
+        return fakeData;
+      },
     }
   },
   computed: {
@@ -73,16 +88,17 @@ export default {
     
     // 将一维数组转换为双列数据行
     dataRows() {
-      const rows = []
-      for (let i = 0; i < this.dataItems.length; i += 2) {
-        const row = {
-          left: this.dataItems[i] || null,
-          right: this.dataItems[i + 1] || null
+      const data = this.hasData ? this.dataItems : this.defaultDataItems;
+        const rows = []
+        for (let i = 0; i < data.length; i += 2) {
+          const row = {
+            left: data[i] || null,
+            right: data[i + 1] || null
+          }
+          rows.push(row)
         }
-        rows.push(row)
-      }
-      return rows
-    }
+        return rows;
+    },
   },
   methods: {
     // 格式化数值显示
@@ -123,11 +139,6 @@ export default {
   font-size: 32rpx;
   font-weight: 600;
   color: #333333;
-}
-
-.data-content {
-  /* height: 100%; */
-  
 }
 
 .data-row {
