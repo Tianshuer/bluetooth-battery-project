@@ -470,6 +470,9 @@ class BLEManager {
 
     // 初始化蓝牙状态监听器
     this._initializeBluetoothStateListener();
+    
+    // 初始化时同步一次状态到Vuex
+    this._syncStateToVuex();
   }
   // MARK: - 常量定义
   static get SERVICE_UUID() {
@@ -507,6 +510,10 @@ class BLEManager {
 
   get parameterValues() {
     return new Map(this._parameterValues); // 返回副本
+  }
+
+  get passwordVerified() {
+    return this._passwordVerified;
   }
 
   get versionName() {
@@ -632,40 +639,160 @@ class BLEManager {
     }
 
     console.log(`通知 ${this._listeners.length} 个监听器状态变化`);
-    console.log('isScanning:', this.isScanning);
+    console.log('_passwordVerified:', this._passwordVerified);
 
-    // 发送全局事件通知连接状态变化
-    uni.$emit('bleConnectionStatusChanged', {
+    // 传递当前状态数据给监听器
+    const stateData = {
+      locale: this._locale,
       isConnected: this._isConnected,
+      isScanning: this._isScanning,
+      batteryData: this._batteryData,
+      discoveredPeripherals: this._discoveredPeripherals,
+      parameterValues: this._parameterValues,
+      versionName: this._versionName,
       deviceId: this._deviceId,
       deviceName: this._deviceName,
-      versionName: this._versionName
-    });
+      passwordVerified: this._passwordVerified,
+      lastError: this._lastError,
+      isConnectionEnabled: this._isConnectionEnabled
+    };
 
     this._listeners.forEach((listener, index) => {
       try {
-        // 传递当前状态数据给监听器
-        const stateData = {
-          locale: this._locale,
-          isConnected: this._isConnected,
-          isScanning: this._isScanning,
-          batteryData: this._batteryData,
-          discoveredPeripherals: this._discoveredPeripherals,
-          parameterValues: this._parameterValues,
-          versionName: this._versionName,
-          deviceId: this._deviceId,
-          deviceName: this._deviceName,
-          passwordVerified: this._passwordVerified,
-          lastError: this._lastError,
-          isConnectionEnabled: this._isConnectionEnabled
-        };
-
         console.log(`执行监听器 ${index + 1}:`, stateData);
         listener(stateData);
       } catch (error) {
         console.error(`监听器 ${index + 1} 执行出错:`, error);
       }
     });
+
+    // 同步状态到Vuex
+    this._syncStateToVuex();
+    
+    // 触发全局连接状态变化事件
+    if (typeof uni !== 'undefined' && uni.$emit) {
+      try {
+        const globalEventData = {
+          isConnected: this._isConnected,
+          deviceId: this._deviceId,
+          deviceName: this._deviceName,
+          isScanning: this._isScanning,
+          lastError: this._lastError,
+          timestamp: Date.now()
+        };
+        
+        console.log('触发全局连接状态变化事件:', globalEventData);
+        uni.$emit('bleConnectionStatusChanged', globalEventData);
+      } catch (error) {
+        console.error('触发全局事件失败:', error);
+      }
+    }
+  }
+
+  /**
+   * 同步状态到Vuex store
+   * @private
+   */
+  _syncStateToVuex() {
+    try {
+      // 检查是否在uni-app环境中且有store可用
+      if (typeof uni !== 'undefined' && uni.getStorageSync) {
+        // 获取当前页面实例
+        const pages = getCurrentPages();
+        if (pages && pages.length > 0) {
+          const currentPage = pages[pages.length - 1];
+          if (currentPage && currentPage.$vm && currentPage.$vm.$store) {
+            const store = currentPage.$vm.$store;
+            
+            // 同步蓝牙管理器状态
+            store.dispatch('updateBleManagerState', {
+              isConnected: this._isConnected,
+              isScanning: this._isScanning,
+              isConnectionEnabled: this._isConnectionEnabled,
+              deviceId: this._deviceId,
+              deviceName: this._deviceName,
+              versionName: this._versionName,
+              passwordVerified: this._passwordVerified,
+              lastError: this._lastError,
+              discoveredPeripherals: this._discoveredPeripherals,
+              batteryData: this._batteryData,
+              parameterValues: Object.fromEntries(this._parameterValues),
+              locale: this._locale
+            });
+
+            // 同步电池数据到主状态
+            store.dispatch('updateBluetoothData', {
+              totalVoltage: this._batteryData.totalVoltage.toFixed(2),
+              voltageDiff: this._batteryData.voltageDiff.toFixed(4),
+              lowestString: this._batteryData.lowestString,
+              highestString: this._batteryData.highestString,
+              minVoltage: this._batteryData.minVoltage.toFixed(4),
+              maxVoltage: this._batteryData.maxVoltage.toFixed(4),
+              averageVoltage: this._batteryData.averageVoltage.toFixed(4),
+              current: this._batteryData.current.toFixed(2),
+              power: this._batteryData.power.toFixed(2),
+              ratio: this._batteryData.ratio.toFixed(2),
+              capacity: this._batteryData.capacity.toFixed(4),
+              totalCapacity: this._batteryData.totalCapacity.toFixed(4),
+              mosTemperature: this._batteryData.mosTemperature.toFixed(1),
+              balanceTemperature: this._batteryData.balanceTemperature.toFixed(1),
+              chip1Temperature: this._batteryData.chip1Temperature.toFixed(1),
+              chip2Temperature: this._batteryData.chip2Temperature.toFixed(1),
+              balanceStatus: [...this._batteryData.balanceStatus],
+              voltages: [...this._batteryData.voltages],
+              temperatures: [...this._batteryData.temperatures],
+              stringDrop: this._batteryData.stringDrop || 0,
+              dataQuality: 'normal',
+              cycleCapacity: this._batteryData.cycleCapacity.toFixed(4),
+              batteryCapacity: this._batteryData.totalCapacity.toFixed(4),
+              remainingPower: this._batteryData.power.toFixed(2),
+              chip1Temp: this._batteryData.chip1Temperature.toFixed(1),
+              chip2Temp: this._batteryData.chip2Temperature.toFixed(1),
+              mosTemp: this._batteryData.mosTemperature.toFixed(1),
+              balanceTemp: this._batteryData.balanceTemperature.toFixed(1),
+              cellTemp1: this._batteryData.temperatures[0] ? this._batteryData.temperatures[0].toFixed(1) : '0.0',
+              cellTemp2: this._batteryData.temperatures[1] ? this._batteryData.temperatures[1].toFixed(1) : '0.0',
+              cellTemp3: this._batteryData.temperatures[2] ? this._batteryData.temperatures[2].toFixed(1) : '0.0',
+              cellTemp4: this._batteryData.temperatures[3] ? this._batteryData.temperatures[3].toFixed(1) : '0.0',
+              currentBatteryLevel: this._calculateBatteryLevel()
+            });
+
+            // 同步连接状态
+            store.dispatch('setConnectionStatus', this._isConnected);
+            store.dispatch('setPasswordVerified', this._passwordVerified);
+
+            console.log('状态已同步到Vuex store');
+          }
+        }
+      }
+    } catch (error) {
+      console.error('同步状态到Vuex失败:', error);
+    }
+  }
+
+  /**
+   * 计算电池电量百分比
+   * @private
+   * @returns {number} 电池电量百分比 (0-100)
+   */
+  _calculateBatteryLevel() {
+    try {
+      const currentVoltage = this._batteryData.totalVoltage || 0;
+      const minVoltage = this._batteryData.minVoltage || 3.0;
+      const maxVoltage = this._batteryData.maxVoltage || 4.2;
+      
+      if (maxVoltage <= minVoltage) {
+        return 0;
+      }
+      
+      let percentage = ((currentVoltage - minVoltage) / (maxVoltage - minVoltage)) * 100;
+      percentage = Math.min(Math.max(percentage, 0), 100);
+      
+      return Number(percentage.toFixed(2));
+    } catch (error) {
+      console.error('计算电池电量失败:', error);
+      return 0;
+    }
   }
 
   // /**
@@ -1237,10 +1364,15 @@ class BLEManager {
       uni.createBLEConnection({
         deviceId: peripheral.deviceId,
         success: (res) => {
+          this._isConnected = true;
           console.log('BLE连接成功:', res);
+          this._notifyListeners();
           resolve(res);
         },
         fail: (err) => {
+          this._isConnected = false;
+          this._notifyListeners();
+          this.disconnect();
           console.error('BLE连接失败:', err);
           reject(new Error(`连接失败: ${err.errMsg}`));
         }
@@ -1260,10 +1392,13 @@ class BLEManager {
       if (!res.connected) {
         // 设备断开连接
         console.log('设备断开连接');
+        this._isConnected = false;
         this._handleDeviceDisconnection();
       } else {
         // 设备连接
         console.log('设备已连接');
+        this._isConnected = true;
+        this._notifyListeners();
       }
     });
   }
@@ -1280,7 +1415,7 @@ class BLEManager {
     this._passwordVerified = false;
 
     // 停止密码定时器
-    this.stopPasswordTimer();
+    this._stopPasswordTimer();
 
     // 释放蓝牙写入器
     if (this._bluetoothWriter) {
@@ -1288,7 +1423,7 @@ class BLEManager {
     }
 
     // 停止故障延时定时器
-    this.stopGzysTimer();
+    this.stopGZYSTimer();
 
     // 清空设备信息
     this._peripheral = null;
@@ -1790,7 +1925,6 @@ class BLEManager {
       this._notifyListeners();
     } catch (error) {
       console.error('处理缓冲区数据出错:', error);
-      this.clearBuffer(); // 出错时清空缓冲区
     }
   }
 
@@ -2024,7 +2158,9 @@ class BLEManager {
    * @private
    */
   async disconnect() {
-    if (this._isConnected && this._peripheral) {
+    console.log('disconnect 断开连接', this._isConnected, 333, this._peripheral);
+    
+    if (!this._isConnected && this._peripheral) {
       console.log('断开设备连接...');
       try {
         // 停止密码验证定时器
@@ -2060,7 +2196,8 @@ class BLEManager {
 
       } catch (error) {
         console.error("断开连接失败:", error);
-
+        console.log('this._peripheral', this._peripheral);
+        
         // 即使出错也要重置状态
         this._isConnected = false;
         this._isConnectionEnabled = false;
@@ -2139,9 +2276,6 @@ class BLEManager {
     this._peripheral = null;
     this._deviceId = "";
     this._deviceName = "";
-
-    // 清空接收缓冲区
-    this.clearBuffer();
 
     // 停止处理定时器
     this._stopProcessingTimer();
@@ -2262,11 +2396,7 @@ class BLEManager {
   _showToast(message) {
     try {
       // uni-app的Toast API
-      uni.showToast({
-        title: message,
-        icon: 'none',
-        duration: 2000
-      });
+      this._showToast(message);
     } catch (error) {
       console.log("Toast显示失败:", error);
       // 备用提示方法
@@ -2279,15 +2409,30 @@ class BLEManager {
    * 验证密码
    * @param {string} password - 密码
    */
-  verifyPassword(password) {
-    if (this._passwordVerified) {
-      this._showToast(this.t("pwdVerifiedTip"));
-      return;
-    }
+  async verifyPassword(password) {
+    try {
+      // 如果已经验证过密码，直接返回
+      if (this._passwordVerified) {
+        this._showToast(this.t("password_verified"));
+        return true;
+      }
 
-    this.lastVerifyPassword = password;
-    const command = Command.PASSWORD_PREFIX + password + Command.PASSWORD_SUFFIX;
-    this.sendCommand(command); // 现在使用BluetoothWriter
+      // 保存密码用于后续验证
+      this.lastVerifyPassword = password;
+
+      // 构建密码验证命令
+      const command = Command.PASSWORD_PREFIX + password + Command.PASSWORD_SUFFIX;
+      
+      // 发送密码验证命令并等待结果
+      const success = await this.sendCommand(command);
+      if (!success) {
+        return false;
+      }
+    } catch (error) {
+      console.error('密码验证过程中发生错误:', error);
+      this._showToast(this.t("password_error"));
+      return false;
+    }
   }
 
   /**
@@ -2411,13 +2556,6 @@ class BLEManager {
       });
     }
   }
-  setSanyuanBattery() {
-    if (this.guardPasswordVerified()) {
-      this._sendControlCommand(CommandType.BATTERY_TYPE, {
-        batteryTypeValue: "okCo"
-      });
-    }
-  }
   setFeLiBattery() {
     if (this.guardPasswordVerified()) {
       this._sendControlCommand(CommandType.BATTERY_TYPE, {
@@ -2429,6 +2567,13 @@ class BLEManager {
     if (this.guardPasswordVerified()) {
       this._sendControlCommand(CommandType.BATTERY_TYPE, {
         batteryTypeValue: "okTi"
+      });
+    }
+  }
+  setSanyuanBattery() {
+    if (this.guardPasswordVerified()) {
+      this._sendControlCommand(CommandType.BATTERY_TYPE, {
+        batteryTypeValue: "okCo"
       });
     }
   }
@@ -2525,32 +2670,47 @@ class BLEManager {
    * @param {string} command - 命令字符串
    */
   async sendCommand(command) {
-    if (this._bluetoothWriter._writeCharacteristic === null || this._peripheral === null) {
-      console.log("设备未连接，无法发送命令");
-      this._showToast(this.t("ble_not_ready"));
-      return;
-    }
-
-    const data = this._stringToUint8Array(command);
-    if (data.length === 0) {
-      console.log("命令转换失败:", command);
-      return;
-    }
-
-    console.log("发送命令:", command);
-
-    // 使用BluetoothWriter发送命令
-    let success = await this._bluetoothWriter.writeData({
-      data: data,
-      priority: WritePriority.NORMAL
-    });
-    if (success) {
-      if (!command.startsWith("re")) {
-        this._showToast(this.t("command_sent_successfully"));
+    try {
+      console.log('准备发送命令:', command);
+      // 检查设备连接状态
+      if (this._bluetoothWriter._writeCharacteristic === null || this._peripheral === null) {
+        console.log("设备未连接，无法发送命令");
+        this._showToast(this.t("ble_not_ready"));
+        return;
       }
-    } else {
+
+      // 转换命令为数据格式
+      const data = this._stringToUint8Array(command);
+      if (data.length === 0) {
+        return;
+      }
+
+      console.log("发送命令:", command, "数据长度:", data.length);
+
+      // 使用BluetoothWriter发送命令
+      const success = await this._bluetoothWriter.writeData({
+        data: data,
+        priority: WritePriority.NORMAL,
+      });
+
+      if (success) {
+        console.log(`命令 '${command}' 发送成功`);
+        
+        // 对于非刷新命令，显示成功提示
+        if (!command.startsWith("re")) {
+          this._showToast(this.t("sent"));
+        }
+        
+        return true;
+      } else {
+        console.log(`发送命令 '${command}' 失败: 写入操作失败`);
+        this._showToast(this.t("command_send_failed"));
+        return false;
+      }
+    } catch (error) {
+      console.error(`发送命令 '${command}' 时发生错误:`, error);
       this._showToast(this.t("command_send_failed"));
-      console.log(`发送命令 '${command}' 失败: 写入操作失败`);
+      return false;
     }
   }
 
@@ -2575,19 +2735,36 @@ class BLEManager {
 
   _handlePasswordResponse(response) {
     console.log("收到密码响应:", response);
+    console.log('当前密码验证状态:', this._passwordVerified, '响应类型:', response);
+    // 这里逻辑需要优化
+    this.verifyPassword(this.lastVerifyPassword);
     if (response === PasswordResponse.SUCCESS) {
       if (!this._passwordVerified) {
+        // 密码验证成功
         this._lastError = null;
         this._passwordVerified = true;
-        this._startPasswordTimer();
         this.verifiedPassword = this.lastVerifyPassword;
+
+        // 启动密码验证定时器（4分钟后自动失效）
+        this._startPasswordTimer();
+
+        // 显示成功提示
         this._showToast(this.t("password_success"));
       }
     } else if (response === PasswordResponse.FAILURE) {
+      // 密码验证失败
       this._passwordVerified = false;
       this._lastError = this.t("password_error");
+      this.verifiedPassword = null;
+      // 显示失败提示
       this._showToast(this.t("password_error"));
+      
+      console.log('密码验证失败');
+    } else {
+      console.log('未知的密码响应类型:', response);
     }
+    
+    // 通知所有监听器状态变化
     this._notifyListeners();
   }
 
@@ -2601,6 +2778,14 @@ class BLEManager {
 
   _stopPasswordTime() {
     this.cancelPasswordTimer();
+  }
+
+  cancelPasswordTimer() {
+    if (this._passwordTimer) {
+      console.log('取消密码验证定时器');
+      clearTimeout(this._passwordTimer);
+      this._passwordTimer = null;
+    }
   }
 
   _updateBatteryDataOnMain(key, value) {
@@ -2949,17 +3134,20 @@ class BLEManager {
   guardPasswordVerified() {
     if (!this._passwordVerified) {
       this._showToast(this.t("please_verify_password"));
+      console.log('密码未验证，请先验证密码');
+      return false;
     }
-    return this._passwordVerified;
+    console.log('密码已验证，允许执行操作');
+    return true;
   }
 
   startGzysTimer() {
-    this.stopGzysTimer();
+    this.stopGZYSTimer();
     this.gzysTimer = setInterval(() => {
       console.log(`延迟定时器: ${this._batteryData.gzys}`);
 
       if (this._batteryData.gzys <= 0) {
-        this.stopGzysTimer();
+        this.stopGZYSTimer();
         return;
       } else {
         this._batteryData.gzys = this._batteryData.gzys - 1;

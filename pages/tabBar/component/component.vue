@@ -1,10 +1,10 @@
 <template>
   <page-meta :page-style="'overflow:'+(show?'hidden':'visible')">
     <view class="container" :style="{
-        minHeight: screenHeight + 'px',
-        marginTop: statusBarHeight + 'px',
-        paddingBottom: !isConnected ? '120rpx' : '20rpx'
-      }">
+      minHeight: screenHeight + 'px',
+      marginTop: statusBarHeight + 'px',
+      paddingBottom: !isConnected ? '120rpx' : '20rpx'
+    }">
       <!-- 电池状态卡片 -->
       <BatteryCard @language-popup-action="handleLanguagePopupAction" />
       
@@ -164,9 +164,6 @@ export default {
             };
           }
           // 如果连接但没有数据，保持当前数据（可能是默认值）
-        } else {
-          // 设备断开时，保持最后一次获取的数据，不做任何改变
-          // this.currentBatteryData 保持不变
         }
       },
       immediate: true

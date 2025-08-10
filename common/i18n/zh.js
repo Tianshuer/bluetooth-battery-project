@@ -3,8 +3,6 @@ export default {
   // ==================== 基础界面 ====================
   "language": "语言",
   "device_name": "设备名称",
-  "device_name_unknown": "未知设备",
-  "version": "版本",
   "version_unknown": "版本未知",
   "enter_button": "进入",
   "realtime_status": "实时状态",
@@ -105,6 +103,7 @@ export default {
   "operation_success": "操作成功",
   "operation_failed": "操作失败",
   "sent": "已发送",
+  "command_send_failed": "命令发送失败",
   "restarted": "已重启",
   "operation_completed": "操作完成",
   "operation_cancelled": "操作已取消",
@@ -144,7 +143,7 @@ export default {
   // ==================== 通用操作 ====================
   "send": "发送",
   "password_verification": "密码验证",
-  "pwdVerifiedTip": "密码已验证",
+  "password_verified": "密码已验证",
   "tip": "提示",
   "read_parameters": "读取参数",
   "input_value": "请输入",
@@ -167,7 +166,6 @@ export default {
   "password_mismatch": "密码不匹配",
   "please_input_verify_code": "请输入验证码",
   "passwordModifiedSuccess": "密码修改成功",
-  "verify_code_sent_success": "验证码发送成功",
   
   // ==================== 状态反馈 ====================
   "device_renamed": "设备名称已更改为: %@",

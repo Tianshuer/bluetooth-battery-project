@@ -64,15 +64,6 @@ export default {
 
     // 发送验证码
     handleSendCode() {
-      // 验证密码成功后，更新全局状态
-      if (this.verifyCode && this.verifyCode.trim()) {
-        this.setPasswordVerified(true);
-        uni.showToast({
-          title: this.t('password_success'),
-          icon: 'success',
-          duration: 1500
-        });
-      }
       this.$emit('sendCode', this.verifyCode)
     },
     

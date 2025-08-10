@@ -3,7 +3,7 @@
     <view class="card-header">
       <image class="logo" src="/static/images/BLEIcon.png" mode="aspectFit" @click="handleLogoClick"></image>
       <view class="device-info">
-        <text class="device-name">{{ deviceName || batteryDevice.name || t('device_name_unknown') }}</text>
+        <text class="device-name">{{ deviceName || batteryDevice.name || t('unknown_device') }}</text>
         <text class="device-status">{{ versionName || t('version_unknown') }}</text>
       </view>
       <view class="connection-status">
@@ -119,7 +119,6 @@ export default {
     // 处理logo点击事件
     handleLogoClick() {
       this.$refs.bluetoothList.showPopup();
-      this.showBluetoothList()
     },
 
     // 打开语言选择器

@@ -11,14 +11,14 @@
       <!-- 公共功能组件 -->
       <CommonPanel
         :showVerifyCode="true"
-        :functionButtons="functionButtonsConfig"
+        :functionButtons="functionButtonsConfig ? functionButtonsConfig : []"
         @sendCode="handleSendCode"
         @functionClick="handleFunctionClick"
       />
       
       <!-- 表单输入列表组件 -->
       <FormInputList
-        :items="formInputItems"
+        :items="formInputItems ? formInputItems : []"
         @input="handleFormInput"
         @send="handleFormSend"
       />
@@ -30,7 +30,7 @@
 import BatteryCard from '../../../components/BatteryCard.vue'
 import CommonPanel from '../../../components/CommonPanel.vue'
 import FormInputList from '../../../components/FormInputList.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import bleManager from '../../../utils/batteryManager.js'
 
 export default {
@@ -42,17 +42,14 @@ export default {
   data() {
     return {
       screenHeight: 0,
-      localBatteryData: null, // 本地电池数据
     }
   },
   computed: {
     ...mapGetters([
       't',
-      'languageOptions',
-      'currentLanguageIndex',
       'statusBarHeight',
       'isConnected',
-      'passwordVerified'
+      'passwordVerified',
     ]),
     // 功能按钮配置 - 响应语言变化
     functionButtonsConfig() {
@@ -233,28 +230,14 @@ export default {
   },
   onLoad() {
     this.getSystemInfo();
-    this.setupBatteryDataListener();
-  },
-  onShow() {
-    // 页面显示时重新设置监听器
-    this.setupBatteryDataListener();
-  },
-  onHide() {
-    // 页面隐藏时移除监听器
-    this.removeBatteryDataListener();
-  },
-  onUnload() {
-    // 页面卸载时移除监听器
-    this.removeBatteryDataListener();
   },
   methods: {
-    ...mapActions([
-      'setPasswordVerified'
-    ]),
     // 获取系统信息
     getSystemInfo() {
       uni.getSystemInfo({
         success: (res) => {
+          console.log('res', res);
+          
           this.screenHeight = res.windowHeight;
         },
         fail: (err) => {
@@ -266,32 +249,19 @@ export default {
     },
     
     // 发送验证码
-    handleSendCode(code) {
-      console.log('before: ', this.passwordVerified);
-      try {
-      bleManager.verifyPassword(code);
-        console.log('bleManager.verifyPassword 调用完成');
-      } catch (error) {
-        console.error('bleManager.verifyPassword 调用出错:', error);
-      }
-      console.log('after: ', this.passwordVerified);
+    async handleSendCode(code) {
+
+      const res = await bleManager.verifyPassword(code);
+      console.log('发送验证码res', res);
       
-      console.log('发送验证码:', code);
-      if (this.passwordVerified) {
-        uni.showToast({
-          title: this.t('verify_code_sent_success'),
-          icon: 'success'
-        });
-      } else {
-        // 添加失败的提示
-        console.log('密码验证失败');
-      }
+      // } catch (error) {
+      //   console.error('bleManager.verifyPassword 调用出错:', error);
+      // }
     },
     
     // 功能按钮点击
     handleFunctionClick({ button, index }) {
-      console.log('handleFunctionClick', this.passwordVerified);
-      
+
       if (!this.passwordVerified) {
         uni.showToast({
           title: this.t('please_verify_password'),
@@ -547,108 +517,46 @@ export default {
       }
     },
     
-    // 电池归零
+    // 电流重置
     handleBatteryReset() {
-      uni.showModal({
-        title: this.t('tip'),
-        content: this.t('confirm_battery_reset'),
-        success: (res) => {
-          if (res.confirm) {
-            console.log('执行电池归零');
-          }
-        }
-      });
+      console.log('handleBatteryReset', this.passwordVerified);
+      bleManager.resetCurrent();
     },
     
-    // 一键铁链
+    // 一键铁锂
     handleIronChain() {
-      uni.showLoading({
-        title: this.t('connecting'),
-        mask: true
-      });
-      
-      setTimeout(() => {
-        uni.hideLoading();
-        uni.showToast({
-          title: this.t('iron_chain_connected'),
-          icon: 'success'
-        });
-      }, 2000);
+      bleManager.setFeLiBattery();
     },
     
-    // 一键钛链
+    // 一键钛锂
     handleTitaniumChain() {
-      uni.showLoading({
-        title: this.t('connecting'),
-        mask: true
-      });
-      
-      setTimeout(() => {
-        uni.hideLoading();
-        uni.showToast({
-          title: this.t('titanium_chain_connected'),
-          icon: 'success'
-        });
-      }, 2000);
+      bleManager.setTiLiBattery();
     },
     
     // 一键三元
     handleTernary() {
-      console.log('执行一键三元');
-      uni.showToast({
-        title: this.t('ternary_operation_done'),
-        icon: 'success'
-      });
+      bleManager.setSanyuanBattery();
     },
     
     // 修改密码
     handleChangePassword() {
-      uni.navigateTo({
-        url: '/pages/changePassword/changePassword'
-      });
+      console.log(123456789);
+      // 修改密码最后做
+      // if (bleManager.guardPasswordVerified()) {
+      //   uni.showToast({
+      //     title: this.t('please_verify_password'),
+      //     icon: 'none'
+      //   });
+      //   if (changePassword)
+      //   return;
+      // }
+      // uni.navigateTo({
+      //   url: '/pages/changePassword/changePassword'
+      // });
     },
     // 处理语言弹窗状态变化
     handleLanguagePopupAction(isOpen) {
       this.show = isOpen
-    },
-    
-    // 设置电池数据监听器
-    setupBatteryDataListener() {
-      console.log('extUI页面设置电池数据监听器');
-      
-      // 移除之前的监听器
-      this.removeBatteryDataListener();
-      
-      // 直接监听BLEManager
-      this.bleManagerListener = (stateData) => {
-        console.log('extUI页面收到BLEManager状态更新:', stateData);
-        console.log('stateData.passwordVerified:', stateData.passwordVerified);
-        
-        if (stateData.batteryData) {
-          console.log('extUI页面收到电池数据更新:', stateData.batteryData);
-          this.localBatteryData = stateData.batteryData;
-        }
-        this.setPasswordVerified(stateData.passwordVerified);
-      };
-      
-      // 注册BLEManager监听器
-      bleManager.addListener(this.bleManagerListener);
-      console.log('extUI页面已注册BLEManager监听器');
-      
-      // 立即获取当前数据
-      const currentData = bleManager.batteryData;
-      if (currentData) {
-        console.log('extUI页面获取到当前电池数据:', currentData);
-        this.localBatteryData = currentData;
-      }
-    },
-    
-    // 移除电池数据监听器
-    removeBatteryDataListener() {
-      if (this.bleManagerListener) {
-        bleManager.removeListener(this.bleManagerListener);
-        this.bleManagerListener = null;
-      }
     },
   }
 }

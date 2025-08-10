@@ -3,8 +3,6 @@ export default {
   // ==================== Basic Interface ====================
   "language": "Language",
   "device_name": "Device Name",
-  "device_name_unknown": "Unknown Device",
-  "version": "Version",
   "version_unknown": "Version Unknown",
   "enter_button": "Enter",
   "realtime_status": "Realtime Status",
@@ -105,6 +103,7 @@ export default {
   "operation_success": "Operation successful",
   "operation_failed": "Operation failed",
   "sent": "Sent",
+  "command_send_failed": "Command send failed",
   "restarted": "Restarted",
   "operation_completed": "Operation completed",
   "operation_cancelled": "Operation cancelled",
@@ -144,7 +143,7 @@ export default {
   // ==================== General Operations ====================
   "send": "Send",
   "password_verification": "Password Verification",
-  "pwdVerifiedTip": "Password verified",
+  "password_verified": "Password verified",
   "tip": "Tip",
   "read_parameters": "Read Parameters",
   "input_value": "Input Value",
@@ -167,7 +166,6 @@ export default {
   "password_mismatch": "Password mismatch",
   "please_input_verify_code": "Please input verification code",
   "passwordModifiedSuccess": "Password modified successfully",
-  "verify_code_sent_success": "Verification code sent successfully",
   
   // ==================== Status Feedback ====================
   "device_renamed": "Device name changed to: %@",
