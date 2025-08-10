@@ -5,9 +5,6 @@
         marginTop: statusBarHeight + 'px',
         paddingBottom: !isConnected ? '120rpx' : '20rpx'
       }">
-      
-
-      
       <!-- 电池状态卡片 -->
       <BatteryCard @language-popup-action="handleLanguagePopupAction" />
       
@@ -113,10 +110,6 @@ export default {
       const data = this.localBatteryData || this.batteryData;
       console.log('safeBatteryData - 原始数据:', data);
       
-      // 测试翻译函数
-      console.log('翻译测试 - battery_capacity:', this.t('battery_capacity'));
-      console.log('翻译测试 - remaining_power:', this.t('remaining_power'));
-      
       // 确保data是对象
       if (!data || typeof data !== 'object') {
         console.log('safeBatteryData - 数据无效，使用默认值');
@@ -206,6 +199,7 @@ export default {
     
     // 设置电池数据监听器
     setupBatteryDataListener() {
+      
       console.log('component页面设置电池数据监听器');
       console.log('BLEManager实例:', bleManager);
       
@@ -214,12 +208,20 @@ export default {
       
       // 直接监听BLEManager
       this.bleManagerListener = (stateData) => {
-        console.log('component页面收到BLEManager状态更新:', stateData);
-        console.log('更新时间:', new Date().toLocaleTimeString());
-        
-        if (stateData.batteryData) {
-          console.log('component页面收到电池数据更新:', stateData.batteryData);
-          this.localBatteryData = stateData.batteryData;
+        console.log('component的isConnected：', this.isConnected);
+
+        if (stateData.isConnected) {
+          console.log('component页面收到BLEManager状态更新:', stateData);
+          console.log('更新时间:', new Date().toLocaleTimeString());
+          
+          if (stateData.batteryData) {
+            console.log('component页面收到电池数据更新:', stateData.batteryData);
+            this.localBatteryData = stateData.batteryData;
+          }
+        } else {
+          console.log('1. 停止获取蓝牙设备的数据');
+          console.log('1. 断开蓝牙设备的连接');
+          
         }
       };
       

@@ -139,7 +139,10 @@ export default {
 				mask: true,
 			});
 			await bleManager.startScanning();
-			await bleManager.stopScanning();
+
+			setTimeout(async () => {
+				await bleManager.stopScanning();
+			}, 10000);
 		},
 		
 		// 添加BLEManager状态监听器

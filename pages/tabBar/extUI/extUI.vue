@@ -52,6 +52,7 @@ export default {
       'currentLanguageIndex',
       'statusBarHeight',
       'isConnected',
+      'passwordVerified'
     ]),
     // 功能按钮配置 - 响应语言变化
     functionButtonsConfig() {
@@ -250,12 +251,6 @@ export default {
     ...mapActions([
       'setPasswordVerified'
     ]),
-
-    // 获取密码验证状态
-    getIsPasswordVerified() {
-      return this.$store.state.isPasswordVerified
-    },
-
     // 获取系统信息
     getSystemInfo() {
       uni.getSystemInfo({
@@ -272,23 +267,32 @@ export default {
     
     // 发送验证码
     handleSendCode(code) {
-      console.log('发送验证码:', code);
-      if (!code) {
-        uni.showToast({
-          title: this.t('please_input_verify_code'),
-          icon: 'none'
-        });
-        return;
+      console.log('before: ', this.passwordVerified);
+      try {
+      bleManager.verifyPassword(code);
+        console.log('bleManager.verifyPassword 调用完成');
+      } catch (error) {
+        console.error('bleManager.verifyPassword 调用出错:', error);
       }
-      uni.showToast({
-        title: this.t('verify_code_sent_success'),
-        icon: 'success'
-      });
+      console.log('after: ', this.passwordVerified);
+      
+      console.log('发送验证码:', code);
+      if (this.passwordVerified) {
+        uni.showToast({
+          title: this.t('verify_code_sent_success'),
+          icon: 'success'
+        });
+      } else {
+        // 添加失败的提示
+        console.log('密码验证失败');
+      }
     },
     
     // 功能按钮点击
     handleFunctionClick({ button, index }) {
-      if (!this.getIsPasswordVerified()) {
+      console.log('handleFunctionClick', this.passwordVerified);
+      
+      if (!this.passwordVerified) {
         uni.showToast({
           title: this.t('please_verify_password'),
           icon: 'none'
@@ -339,7 +343,7 @@ export default {
         value: value,
         index: index
       });
-      if (!this.getIsPasswordVerified()) {
+      if (!this.passwordVerified) {
         uni.showToast({
           title: this.t('please_verify_password'),
           icon: 'none'
@@ -618,12 +622,13 @@ export default {
       // 直接监听BLEManager
       this.bleManagerListener = (stateData) => {
         console.log('extUI页面收到BLEManager状态更新:', stateData);
-        console.log('更新时间:', new Date().toLocaleTimeString());
+        console.log('stateData.passwordVerified:', stateData.passwordVerified);
         
         if (stateData.batteryData) {
           console.log('extUI页面收到电池数据更新:', stateData.batteryData);
           this.localBatteryData = stateData.batteryData;
         }
+        this.setPasswordVerified(stateData.passwordVerified);
       };
       
       // 注册BLEManager监听器
