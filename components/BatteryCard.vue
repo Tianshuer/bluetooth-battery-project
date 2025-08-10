@@ -118,14 +118,10 @@ export default {
 
     // 处理logo点击事件
     handleLogoClick() {
+      this.$refs.bluetoothList.showPopup();
       this.showBluetoothList()
     },
 
-    // 显示蓝牙设备列表
-    showBluetoothList() {
-      this.$refs.bluetoothList.showPopup()
-    },
-    
     // 打开语言选择器
     openLanguagePicker() {
       this.$refs.languagePopup.open()

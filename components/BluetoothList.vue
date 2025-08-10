@@ -47,8 +47,6 @@
 <script>
 import uniPopup from '@/uni_modules/uni-popup/components/uni-popup/uni-popup.vue'
 import { mapGetters, mapActions } from 'vuex'
-// import { handleBluetoothError } from '../utils/handleBluetoothError'
-import bluetoothDataManager from '../utils/bluetoothDataManager'
 import bleManager from '../utils/batteryManager';
 export default {
 	name: 'BluetoothList',
@@ -59,30 +57,50 @@ export default {
 		return {
 			localDiscoveredPeripherals: [],
 			localIsScanning: false,
-			bluetoothAdapter: null,
-			scanTimer: null,
-			dataReadingTimer: null,
-			deviceUpdateTimer: null,
-			notifyEnabledMap: new Map(), // 记录notify启用状态
-			retryCountMap: new Map(), // 记录重试次数
-			maxRetryCount: 3, // 最大重试次数
-			showDebugInfo: false, // 控制调试信息显示
+			localIsConnected: false,
 		}
 	},
 	computed: {
 		...mapGetters([
 			't',
-			'isConnected',
 			'discoveredPeripherals',
+			'isScanning',
+			'isConnected',
 		]),
+	},
+	watch: {
+		// 监听 store 中的 discoveredPeripherals 变化
+		discoveredPeripherals: {
+			handler(newDevices) {
+				console.log('Store中的设备列表已更新:', newDevices);
+				// 实时同步到本地状态
+				this.localDiscoveredPeripherals = [...newDevices];
+			},
+			immediate: true, // 立即执行一次
+			deep: true // 深度监听数组变化
+		},
+		// 监听 store 中的 isScanning 变化
+		isScanning: {
+			handler(newScanningState) {
+				console.log('Store中的扫描状态已更新:', newScanningState);
+				// 实时同步到本地状态
+				this.localIsScanning = newScanningState;
+			},
+			immediate: true // 立即执行一次
+		},
+		isConnected: {
+			handler(newConnectedState) {
+				console.log('Store中的连接状态已更新:', newConnectedState);
+				// 实时同步到本地状态
+				this.localIsConnected = newConnectedState;
+			},
+			immediate: true // 立即执行一次
+		},
 	},
 	methods: {
 		...mapActions([
 			'setConnectionStatus',
-			'updateBluetoothData',
 			'setBluetoothDevice',
-			'resetBluetoothData',
-			'updateConnectionStatus',
 		]),
 	
 		// 显示弹窗
@@ -90,9 +108,6 @@ export default {
 			uni.hideTabBar({
 				animation: true
 			})
-			// 重置状态
-			this.localDiscoveredPeripherals = [];
-			this.localIsScanning = false;
 			
 			// 打开弹窗
 			this.$refs.popup.open();
@@ -107,10 +122,7 @@ export default {
 		hidePopup() {
 			// 先停止扫描
 			this.stopScan(false);
-			
-			// 移除BLEManager监听器
-			this.removeBleManagerListener();
-			
+
 			// 显示tabbar
 			uni.showTabBar({
 				animation: true
@@ -123,100 +135,32 @@ export default {
 		// 开始扫描
 		async startScan() {
 			if (this.localIsScanning) return;
-			// 先停止之前的扫描
+			
+			// 停止之前的扫描
 			this.stopScan(false);
-			// 清空设备列表
-			this.localDiscoveredPeripherals = [];
-			// this.isScanning = true;
 			
-			// 添加BLEManager状态监听器
-			this.addBleManagerListener();
-			
+			// 显示加载提示
 			uni.showToast({
 				title: this.t('loading'),
 				icon: 'loading',
 				duration: 3000,
 				mask: true,
 			});
+			
+			// 开始扫描
 			await bleManager.startScanning();
-
+			
+			// 10秒后自动停止扫描
 			setTimeout(async () => {
 				await bleManager.stopScanning();
 			}, 10000);
 		},
-		
-		// 添加BLEManager状态监听器
-		addBleManagerListener() {
-			// 移除之前的监听器（如果存在）
-			this.removeBleManagerListener();
-			
-			// 添加新的监听器
-			this.bleManagerListener = (stateData) => {
-				console.log('BluetoothList收到BLEManager状态更新:', stateData);		
-				
-				// 处理连接状态变化
-				if (stateData.isConnected !== undefined || 
-					stateData.deviceId !== undefined || 
-					stateData.deviceName !== undefined) {
-					this.updateConnectionStatus({
-						isConnected: stateData.isConnected,
-						deviceId: stateData.deviceId,
-						deviceName: stateData.deviceName,
-						versionName: stateData.versionName
-					});
-				}
-				
-				// 处理扫描状态变化
-				if (stateData.isScanning !== undefined) {
-					this.localIsScanning = stateData.isScanning;
-				}
-				
-				// 处理发现的设备列表
-				if (stateData.discoveredPeripherals !== undefined) {
-					this.localDiscoveredPeripherals = stateData.discoveredPeripherals;
-				}
-
-				// 发送batteryData到全局事件
-				if (stateData.batteryData) {
-					console.log('发送batteryData到全局事件:', stateData.batteryData);
-					console.log('发送时间:', new Date().toLocaleTimeString());
-					uni.$emit('batteryDataChanged', stateData.batteryData);
-				}
-			};
-			
-			// 注册监听器
-			bleManager.addListener(this.bleManagerListener);
-			console.log('BLEManager监听器已注册');
-			
-			// 先初始化本地状态，使用更安全的默认值处理
-			this.localIsScanning = bleManager.isScanning ?? false;
-			this.localDiscoveredPeripherals = bleManager.discoveredPeripherals ?? [];
-		},
-		
-		// 移除BLEManager状态监听器
-		removeBleManagerListener() {
-			if (this.bleManagerListener) {
-				bleManager.removeListener(this.bleManagerListener);
-				this.bleManagerListener = null;
-			}
-			
-			// 注意：不再需要移除全局连接状态监听器，因为已经不再使用
-			console.log('BLEManager监听器已移除');
-		},
+	
 		
 		// 停止扫描
 		async stopScan(isShowToast = true) {
-			this.localIsScanning = false;
-
-			// 清除扫描定时器
-			if (this.scanTimer) {
-				clearTimeout(this.scanTimer);
-				this.scanTimer = null;
-			}
-			
-			// 停止搜索蓝牙设备
 			await bleManager.stopScanning();
-						
+			
 			if (isShowToast) {
 				uni.showToast({
 					title: this.t('stop_scan'),
@@ -227,29 +171,21 @@ export default {
 		
 		// 选择设备
 		async selectDevice(device) {
-
-			console.log('selectDevice', device);
 			uni.showToast({
 				title: this.t('connecting'),
 				icon: 'loading',
 				duration: 2000,
 				mask: true,
 			});
-			
-			// 连接蓝牙设备
 			await this.connectToDevice(device);
 		},
 		
 		// 连接到设备
 		async connectToDevice(device) {
-			console.log('device: ', device);
-			
 			try {
-				// 使用BLEManager连接设备
 				await bleManager.connect(device);
-				console.log('bleManager.isConnected: ', bleManager.isConnected);
 				
-				if (!bleManager.isConnected) {
+				if (!this.localIsConnected) {
 					uni.showToast({
 						title: this.t('failed_to_connect_to_device'),
 						icon: 'none',
@@ -258,47 +194,21 @@ export default {
 					});
 					this.setConnectionStatus(false);
 					await bleManager.disconnect();
-					return;
 				}
 				
-				// 设置设备信息到store
+				// 设置设备信息和连接状态
 				this.setBluetoothDevice({
 					deviceId: device.deviceId,
 					name: device.name
 				});
-				
-				// 设置连接状态
 				this.setConnectionStatus(true);
 				
-				console.log('设备连接成功，准备跳转页面');
+				// 根据当前页面位置决定是否跳转
+				this.handlePageNavigation();
 				
-				// 延迟跳转页面
-				setTimeout(() => {
-					uni.switchTab({
-						url: '/pages/tabBar/component/component',
-						success: () => {
-							console.log('页面跳转成功');
-						},
-						fail: (err) => {
-							console.error('页面跳转失败:', err);
-							// 尝试使用navigateTo作为备用方案
-							uni.navigateTo({
-								url: '/pages/tabBar/component/component',
-								success: () => {
-									console.log('使用navigateTo跳转成功');
-								},
-								fail: (navErr) => {
-									console.error('navigateTo也失败:', navErr);
-								}
-							});
-						}
-					});
-				}, 200);
-				// 先隐藏弹窗，再跳转页面
 				this.hidePopup();
 			} catch (error) {
 				console.error('连接设备失败:', error);
-				
 				this.setConnectionStatus(false);
 				uni.showToast({
 					title: this.t('failed_to_connect_to_device'),
@@ -306,37 +216,53 @@ export default {
 					duration: 2000,
 					mask: true,
 				});
-				
-				// 触发连接失败事件
 				await bleManager.disconnect();
 			}
 		},
-		 // 清理notify状态
-		clearNotifyStatus() {
-			this.notifyEnabledMap.clear();
-			this.retryCountMap.clear();
+		
+		// 处理页面导航逻辑
+		handlePageNavigation() {
+			// 获取当前页面路径
+			const pages = getCurrentPages();
+			const currentPage = pages[pages.length - 1];
+			const currentRoute = currentPage.route;
+
+			this.hidePopup();
+			
+			// 如果当前在home页面，则跳转到component页面
+			if (currentRoute === 'pages/home/home') {
+				setTimeout(() => {
+					uni.switchTab({
+						url: '/pages/tabBar/component/component',
+						fail: () => {
+							// 备用跳转方案
+							uni.navigateTo({
+								url: '/pages/tabBar/component/component'
+							});
+						}
+					});
+				}, 200);
+
+			}
 		},
+		
+		// 手动同步 store 数据到本地状态
+		syncStoreData() {
+			this.localIsScanning = this.isScanning;
+			this.localDiscoveredPeripherals = [...this.discoveredPeripherals];
+			this.localIsConnected = this.isConnected;
+		},
+
 	},
-	onShow() {
-		// 页面显示时重新获取状态
-		this.updateBleManagerState();
+	
+	// 组件挂载时同步 store 数据
+	mounted() {
+		this.syncStoreData();
 	},
+
 	// 组件销毁时清理资源
 	beforeDestroy() {
-		// 组件销毁时清理监听器
-		console.log('组件销毁，清理蓝牙资源');
 		this.stopScan(false);
-		
-		// 移除BLEManager监听器
-		this.removeBleManagerListener();
-		
-		// 清理数据读取定时器
-		if (this.dataReadingTimer) {
-			clearInterval(this.dataReadingTimer);
-			this.dataReadingTimer = null;
-		}
-		
-		this.clearNotifyStatus();
 	}
 }
 </script>
@@ -499,17 +425,5 @@ export default {
 	color: #ffffff;
 }
 
-/* 确保弹窗覆盖tabbar */
-/* 使用 /deep/ 语法 */
-.uni-popup {
-    z-index: 9999 !important;
-}
 
-.uni-popup__mask {
-    z-index: 9998 !important;
-}
-
-.uni-popup__wrapper {
-    z-index: 9999 !important;
-}
 </style> 
