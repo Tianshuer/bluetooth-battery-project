@@ -80,8 +80,7 @@
 import BatteryCard from '../../../components/BatteryCard.vue'
 import VoltageCurrentCard from '../../../components/VoltageCurrentCard.vue'
 import InfoCard from '../../../components/InfoCard.vue'
-import { mapGetters, mapActions } from 'vuex'
-import bleManager from '../../../utils/batteryManager.js'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -93,7 +92,7 @@ export default {
     return {
       screenHeight: 0,
       show: false,
-      localBatteryData: null, // 本地电池数据
+      currentBatteryData: null, // 当前使用的电池数据
     }
   },
   computed: {
@@ -104,145 +103,114 @@ export default {
       'isConnected',
     ]),
     
-    // 确保数据有默认值，避免页面报错
     safeBatteryData() {
-      // 优先使用本地数据，如果没有则使用store数据
-      const data = this.localBatteryData || this.batteryData;
-      console.log('safeBatteryData - 原始数据:', data);
-      
-      // 确保data是对象
-      if (!data || typeof data !== 'object') {
-        console.log('safeBatteryData - 数据无效，使用默认值');
-        return {
-          totalVoltage: '0.00',
-          voltageDiff: '0.0000',
-          minVoltage: '0.0000',
-          maxVoltage: '0.0000',
-          averageVoltage: '0.0000',
-          current: '0.00',
-          power: '0.00',
-          ratio: '0.00',
-          capacity: '0.00',
-          totalCapacity: '0.0000',
-          mosTemperature: '0.0',
-          balanceTemperature: '0.0',
-          chip1Temperature: '0.0',
-          chip2Temperature: '0.0',
-          cycleCapacity: '0.0000',
-          temperatures: [],
-          currentBatteryLevel: 0
-        };
-      }
-      
-      return {
-        totalVoltage: data.totalVoltage || '0.00',
-        voltageDiff: data.voltageDiff || '0.0000',
-        minVoltage: data.minVoltage || '0.0000',
-        maxVoltage: data.maxVoltage || '0.0000',
-        averageVoltage: data.averageVoltage || '0.0000',
-        current: data.current || '0.00',
-        power: data.power || '0.00',
-        ratio: data.ratio || '0.00',
-        capacity: data.capacity || '0.00',
-        totalCapacity: data.totalCapacity || '0.0000',
-        mosTemperature: data.mosTemperature || '0.0',
-        balanceTemperature: data.balanceTemperature || '0.0',
-        chip1Temperature: data.chip1Temperature || '0.0',
-        chip2Temperature: data.chip2Temperature || '0.0',
-        cycleCapacity: data.cycleCapacity || '0.0000',
-        temperatures: data.temperatures || [],
-        currentBatteryLevel: data.currentBatteryLevel || 0
-      };
+      // 直接返回当前使用的电池数据
+      return this.currentBatteryData || this.getDefaultBatteryData();
+    }
+  },
+  watch: {
+    // 监听store中的batteryData变化
+    batteryData: {
+      handler(newData) {
+        if (this.isConnected && newData) {
+          // 设备连接且有新数据时，更新当前数据
+          this.currentBatteryData = {
+            totalVoltage: newData.totalVoltage || '0.00',
+            voltageDiff: newData.voltageDiff || '0.0000',
+            minVoltage: newData.minVoltage || '0.0000',
+            maxVoltage: newData.maxVoltage || '0.0000',
+            averageVoltage: newData.averageVoltage || '0.0000',
+            current: newData.current || '0.00',
+            power: newData.power || '0.00',
+            ratio: newData.ratio || '0.00',
+            totalCapacity: newData.totalCapacity || '0.0000',
+            mosTemperature: newData.mosTemperature || '0.0',
+            balanceTemperature: newData.balanceTemperature || '0.0',
+            chip1Temperature: newData.chip1Temperature || '0.0',
+            chip2Temperature: newData.chip2Temperature || '0.0',
+            cycleCapacity: newData.cycleCapacity || '0.0000',
+            temperatures: newData.temperatures || [],
+            currentBatteryLevel: newData.currentBatteryLevel || 0
+          };
+        }
+      },
+      immediate: true,
+      deep: true
+    },
+    
+    // 监听连接状态变化
+    isConnected: {
+      handler(newStatus) {
+        if (newStatus) {
+          // 设备连接时，如果有store数据则使用，否则保持当前数据
+          if (this.batteryData) {
+            this.currentBatteryData = {
+              totalVoltage: this.batteryData.totalVoltage || '0.00',
+              voltageDiff: this.batteryData.voltageDiff || '0.0000',
+              minVoltage: this.batteryData.minVoltage || '0.0000',
+              maxVoltage: this.batteryData.maxVoltage || '0.0000',
+              averageVoltage: this.batteryData.averageVoltage || '0.0000',
+              current: this.batteryData.current || '0.00',
+              power: this.batteryData.power || '0.00',
+              ratio: this.batteryData.ratio || '0.00',
+              totalCapacity: this.batteryData.totalCapacity || '0.0000',
+              mosTemperature: this.batteryData.mosTemperature || '0.0',
+              balanceTemperature: this.batteryData.balanceTemperature || '0.0',
+              chip1Temperature: this.batteryData.chip1Temperature || '0.0',
+              chip2Temperature: this.batteryData.chip2Temperature || '0.0',
+              cycleCapacity: this.batteryData.cycleCapacity || '0.0000',
+              temperatures: this.batteryData.temperatures || [],
+              currentBatteryLevel: this.batteryData.currentBatteryLevel || 0
+            };
+          }
+          // 如果连接但没有数据，保持当前数据（可能是默认值）
+        } else {
+          // 设备断开时，保持最后一次获取的数据，不做任何改变
+          // this.currentBatteryData 保持不变
+        }
+      },
+      immediate: true
     }
   },
   onLoad() {
     this.getSystemInfo();
-    this.setupBatteryDataListener();
   },
   
-  onShow() {
-    // 页面显示时重新设置监听器
-    this.setupBatteryDataListener();
-  },
-  
-  onHide() {
-    // 页面隐藏时移除监听器
-    this.removeBatteryDataListener();
-  },
-  
-  onUnload() {
-    // 页面卸载时移除监听器
-    this.removeBatteryDataListener();
-  },
   methods: {
-    ...mapActions([
-      'setBatteryPercentage'
-    ]),
+    getDefaultBatteryData() {
+      return {
+        totalVoltage: '0.00',
+        voltageDiff: '0.0000',
+        minVoltage: '0.0000',
+        maxVoltage: '0.0000',
+        averageVoltage: '0.0000',
+        current: '0.00',
+        power: '0.00',
+        ratio: '0.00',
+        totalCapacity: '0.0000',
+        mosTemperature: '0.0',
+        balanceTemperature: '0.0',
+        chip1Temperature: '0.0',
+        chip2Temperature: '0.0',
+        cycleCapacity: '0.0000',
+        temperatures: [],
+        currentBatteryLevel: 0
+      };
+    },
     
-    // 获取系统信息
     getSystemInfo() {
       uni.getSystemInfo({
         success: (res) => {
           this.screenHeight = res.windowHeight;
         },
-        fail: (err) => {
-          console.error('获取系统信息失败:', err);
-          // 设置默认高度
+        fail: () => {
           this.screenHeight = 667;
         }
       });
     },
-    // 处理语言弹窗状态变化
+    
     handleLanguagePopupAction(isOpen) {
       this.show = isOpen
-    },
-    
-    // 设置电池数据监听器
-    setupBatteryDataListener() {
-      
-      console.log('component页面设置电池数据监听器');
-      console.log('BLEManager实例:', bleManager);
-      
-      // 移除之前的监听器
-      this.removeBatteryDataListener();
-      
-      // 直接监听BLEManager
-      this.bleManagerListener = (stateData) => {
-        console.log('component的isConnected：', this.isConnected);
-
-        if (stateData.isConnected) {
-          console.log('component页面收到BLEManager状态更新:', stateData);
-          console.log('更新时间:', new Date().toLocaleTimeString());
-          
-          if (stateData.batteryData) {
-            console.log('component页面收到电池数据更新:', stateData.batteryData);
-            this.localBatteryData = stateData.batteryData;
-          }
-        } else {
-          console.log('1. 停止获取蓝牙设备的数据');
-          console.log('1. 断开蓝牙设备的连接');
-          
-        }
-      };
-      
-      // 注册BLEManager监听器
-      bleManager.addListener(this.bleManagerListener);
-      console.log('component页面已注册BLEManager监听器');
-      
-      // 立即获取当前数据
-      const currentData = bleManager.batteryData;
-      if (currentData) {
-        console.log('component页面获取到当前电池数据:', currentData);
-        this.localBatteryData = currentData;
-      }
-    },
-    
-    // 移除电池数据监听器
-    removeBatteryDataListener() {
-      if (this.bleManagerListener) {
-        bleManager.removeListener(this.bleManagerListener);
-        this.bleManagerListener = null;
-      }
     },
   }
 }
