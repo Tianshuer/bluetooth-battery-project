@@ -4,7 +4,7 @@
 		<view class="popup-content">
 			<view class="popup-header">
 				<view class="popup-title-wrapper">
-					<text class="popup-title">{{ t('found_peripherals', deviceList.length) }}</text>
+					<text class="popup-title">{{ t('found_peripherals', localDiscoveredPeripherals.length) }}</text>
 				</view>
 				<text class="popup-close" @click="hidePopup">×</text>
 			</view>
@@ -13,7 +13,7 @@
 				<scroll-view class="device-list" scroll-y="true">
 					<view 
 						class="device-item" 
-						v-for="(device, index) in deviceList" 
+						v-for="(device, index) in localDiscoveredPeripherals" 
 						:key="index"
 						@click="selectDevice(device)"
 					>
@@ -29,7 +29,7 @@
 					</view>
 					
 					<!-- 空状态 -->
-					<view v-if="deviceList.length === 0 && !isScanning" class="empty-state">
+					<view v-if="localDiscoveredPeripherals.length === 0 && !localIsScanning" class="empty-state">
 						<text class="empty-text">{{ t('no_devices_found') }}</text>
 					</view>
 				</scroll-view>
@@ -57,8 +57,8 @@ export default {
 	},
 	data() {
 		return {
-			deviceList: [],
-			isScanning: false,
+			localDiscoveredPeripherals: [],
+			localIsScanning: false,
 			bluetoothAdapter: null,
 			scanTimer: null,
 			dataReadingTimer: null,
@@ -91,8 +91,8 @@ export default {
 				animation: true
 			})
 			// 重置状态
-			this.deviceList = [];
-			this.isScanning = false;
+			this.localDiscoveredPeripherals = [];
+			this.localIsScanning = false;
 			
 			// 打开弹窗
 			this.$refs.popup.open();
@@ -122,11 +122,11 @@ export default {
 		
 		// 开始扫描
 		async startScan() {
-			if (this.isScanning) return;
+			if (this.localIsScanning) return;
 			// 先停止之前的扫描
 			this.stopScan(false);
 			// 清空设备列表
-			this.deviceList = [];
+			this.localDiscoveredPeripherals = [];
 			// this.isScanning = true;
 			
 			// 添加BLEManager状态监听器
@@ -150,34 +150,32 @@ export default {
 			// 移除之前的监听器（如果存在）
 			this.removeBleManagerListener();
 			
-			// 监听全局连接状态事件
-			this.connectionStatusListener = (connectionData) => {
-				console.log('BluetoothList收到连接状态更新:', connectionData);
-				this.updateConnectionStatus(connectionData);
-			};
-			uni.$on('bleConnectionStatusChanged', this.connectionStatusListener);
-			
 			// 添加新的监听器
 			this.bleManagerListener = (stateData) => {
-				console.log('BluetoothList收到BLEManager状态更新:', stateData);
-				console.log('更新时间:', new Date().toLocaleTimeString());
+				console.log('BluetoothList收到BLEManager状态更新:', stateData);		
 				
-				// 更新扫描状态
-				// this.isScanning = stateData.isScanning;
-				
-				// 更新设备列表
-				if (stateData.discoveredPeripherals && Array.isArray(stateData.discoveredPeripherals)) {
-					this.deviceList = stateData.discoveredPeripherals;
+				// 处理连接状态变化
+				if (stateData.isConnected !== undefined || 
+					stateData.deviceId !== undefined || 
+					stateData.deviceName !== undefined) {
+					this.updateConnectionStatus({
+						isConnected: stateData.isConnected,
+						deviceId: stateData.deviceId,
+						deviceName: stateData.deviceName,
+						versionName: stateData.versionName
+					});
 				}
 				
-				// 更新Vuex store中的连接状态和版本号
-				this.updateConnectionStatus({
-					isConnected: stateData.isConnected,
-					deviceId: stateData.deviceId,
-					deviceName: stateData.deviceName,
-					versionName: stateData.versionName
-				});
+				// 处理扫描状态变化
+				if (stateData.isScanning !== undefined) {
+					this.localIsScanning = stateData.isScanning;
+				}
 				
+				// 处理发现的设备列表
+				if (stateData.discoveredPeripherals !== undefined) {
+					this.localDiscoveredPeripherals = stateData.discoveredPeripherals;
+				}
+
 				// 发送batteryData到全局事件
 				if (stateData.batteryData) {
 					console.log('发送batteryData到全局事件:', stateData.batteryData);
@@ -190,11 +188,9 @@ export default {
 			bleManager.addListener(this.bleManagerListener);
 			console.log('BLEManager监听器已注册');
 			
-			// 立即获取当前状态
-			this.bleManagerListener({
-				isScanning: bleManager.isScanning,
-				discoveredPeripherals: bleManager.discoveredPeripherals
-			});
+			// 先初始化本地状态，使用更安全的默认值处理
+			this.localIsScanning = bleManager.isScanning ?? false;
+			this.localDiscoveredPeripherals = bleManager.discoveredPeripherals ?? [];
 		},
 		
 		// 移除BLEManager状态监听器
@@ -204,16 +200,13 @@ export default {
 				this.bleManagerListener = null;
 			}
 			
-			// 移除全局连接状态监听器
-			if (this.connectionStatusListener) {
-				uni.$off('bleConnectionStatusChanged', this.connectionStatusListener);
-				this.connectionStatusListener = null;
-			}
+			// 注意：不再需要移除全局连接状态监听器，因为已经不再使用
+			console.log('BLEManager监听器已移除');
 		},
 		
 		// 停止扫描
 		async stopScan(isShowToast = true) {
-			this.isScanning = false;
+			this.localIsScanning = false;
 
 			// 清除扫描定时器
 			if (this.scanTimer) {
@@ -234,6 +227,8 @@ export default {
 		
 		// 选择设备
 		async selectDevice(device) {
+
+			console.log('selectDevice', device);
 			uni.showToast({
 				title: this.t('connecting'),
 				icon: 'loading',
@@ -252,6 +247,19 @@ export default {
 			try {
 				// 使用BLEManager连接设备
 				await bleManager.connect(device);
+				console.log('bleManager.isConnected: ', bleManager.isConnected);
+				
+				if (!bleManager.isConnected) {
+					uni.showToast({
+						title: this.t('failed_to_connect_to_device'),
+						icon: 'none',
+						duration: 2000,
+						mask: true,
+					});
+					this.setConnectionStatus(false);
+					await bleManager.disconnect();
+					return;
+				}
 				
 				// 设置设备信息到store
 				this.setBluetoothDevice({
@@ -286,7 +294,6 @@ export default {
 						}
 					});
 				}, 200);
-				
 				// 先隐藏弹窗，再跳转页面
 				this.hidePopup();
 			} catch (error) {
@@ -301,7 +308,7 @@ export default {
 				});
 				
 				// 触发连接失败事件
-				this.$emit('connection-failed');
+				await bleManager.disconnect();
 			}
 		},
 		 // 清理notify状态

@@ -24,7 +24,6 @@
 <script>
 import BluetoothList from '../../components/BluetoothList.vue';
 import { mapGetters } from 'vuex';
-// import bleManager from '../../utils/batteryManager';
 
 export default {
 	components: {
@@ -46,31 +45,12 @@ export default {
 		// 获取屏幕高度
 		const windowInfo = uni.getWindowInfo()
 		this.screenHeight = windowInfo.windowHeight;
-		// 初始化蓝牙适配器
-		// this.initBLEManager();
 	},
 	methods: {
 		// 显示蓝牙设备列表
 		showPopup() {
 			this.$refs.bluetoothList.showPopup();
 		},
-		// initBLEManager() {
-		// 	try {
-		// 		console.log(123);
-				
-		// 		// 初始化蓝牙管理器
-		// 		this.bleManager = bleManager;
-				
-		// 		// 添加状态监听器
-		// 		this.bleManager.addListener();
-				
-		// 		// 设置语言
-		// 		this.bleManager.setLocale('zh');
-		// 		console.log('蓝牙管理器初始化成功');
-		// 	} catch (error) {
-		// 		console.error('蓝牙管理器初始化失败:', error);
-		// 	}
-		// },
 	}
 }
 </script>
