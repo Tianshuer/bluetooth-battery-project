@@ -25,10 +25,11 @@
 </template>
 
 <script>
-    import BatteryCard from '../../../components/BatteryCard.vue'
-    import CommonPanel from '../../../components/CommonPanel.vue'
-    import DoubleColumnData from '../../../components/DoubleColumnData.vue'
-    import { mapGetters } from 'vuex'
+    import BatteryCard from '../../../components/BatteryCard.vue';
+    import CommonPanel from '../../../components/CommonPanel.vue';
+    import DoubleColumnData from '../../../components/DoubleColumnData.vue';
+    import { mapGetters } from 'vuex';
+    import bleManager from '../../../utils/batteryManager.js';
     
     export default {
         components: {
@@ -246,253 +247,38 @@
             
             // 充电开启
             handleChargeOn() {
-              if (this.deviceStatus.charging) {
-                uni.showToast({
-                  title: '充电已经开启',
-                  icon: 'none'
-                });
-                return;
-              }
-              
-              if (this.deviceStatus.discharging) {
-                uni.showToast({
-                  title: '请先关闭放电',
-                  icon: 'none'
-                });
-                return;
-              }
-              
-              uni.showLoading({
-                title: '正在开启充电...',
-                mask: true
-              });
-              
-              setTimeout(() => {
-                this.deviceStatus.charging = true;
-                uni.hideLoading();
-                uni.showToast({
-                  title: '充电已开启',
-                  icon: 'success'
-                });
-                
-                // 模拟电池电量增加
-                this.startChargingSimulation();
-              }, 1500);
+              bleManager.openCharge();
             },
             
             // 充电关闭
             handleChargeOff() {
-              if (!this.deviceStatus.charging) {
-                uni.showToast({
-                  title: '充电未开启',
-                  icon: 'none'
-                });
-                return;
-              }
-              
-              uni.showLoading({
-                title: '正在关闭充电...',
-                mask: true
-              });
-              
-              setTimeout(() => {
-                this.deviceStatus.charging = false;
-                this.stopChargingSimulation();
-                uni.hideLoading();
-                uni.showToast({
-                  title: '充电已关闭',
-                  icon: 'success'
-                });
-              }, 1000);
+              bleManager.closeCharge();
             },
             
             // 放电开启
             handleDischargeOn() {
-              if (this.deviceStatus.discharging) {
-                uni.showToast({
-                  title: '放电已经开启',
-                  icon: 'none'
-                });
-                return;
-              }
-              
-              if (this.deviceStatus.charging) {
-                uni.showToast({
-                  title: '请先关闭充电',
-                  icon: 'none'
-                });
-                return;
-              }
-              
-              uni.showLoading({
-                title: '正在开启放电...',
-                mask: true
-              });
-              
-              setTimeout(() => {
-                this.deviceStatus.discharging = true;
-                uni.hideLoading();
-                uni.showToast({
-                  title: '放电已开启',
-                  icon: 'success'
-                });
-                
-                // 模拟电池电量减少
-                this.startDischargingSimulation();
-              }, 1500);
+              bleManager.openDischarge();
             },
             
             // 放电关闭
             handleDischargeOff() {
-              if (!this.deviceStatus.discharging) {
-                uni.showToast({
-                  title: '放电未开启',
-                  icon: 'none'
-                });
-                return;
-              }
-              
-              uni.showLoading({
-                title: '正在关闭放电...',
-                mask: true
-              });
-              
-              setTimeout(() => {
-                this.deviceStatus.discharging = false;
-                this.stopDischargingSimulation();
-                uni.hideLoading();
-                uni.showToast({
-                  title: '放电已关闭',
-                  icon: 'success'
-                });
-              }, 1000);
+              bleManager.closeDischarge();
             },
             
             // 一键均衡
             handleAutoBalance() {
-              if (this.deviceStatus.balancing) {
-                uni.showToast({
-                  title: '均衡正在进行中',
-                  icon: 'none'
-                });
-                return;
-              }
-              
-              uni.showModal({
-                title: '确认操作',
-                content: '确定要开始一键均衡吗？此过程可能需要较长时间。',
-                success: (res) => {
-                  if (res.confirm) {
-                    this.startBalancing();
-                  }
-                }
-              });
+              bleManager.startOneKeyBalance();
             },
-            
-            // 开始均衡
-            startBalancing() {
-              uni.showLoading({
-                title: '正在启动均衡...',
-                mask: true
-              });
-              
-              setTimeout(() => {
-                this.deviceStatus.balancing = true;
-                uni.hideLoading();
-                uni.showToast({
-                  title: '均衡已启动',
-                  icon: 'success'
-                });
-                
-                // 模拟均衡过程
-                setTimeout(() => {
-                  this.deviceStatus.balancing = false;
-                  uni.showToast({
-                    title: '均衡完成',
-                    icon: 'success'
-                  });
-                }, 10000); // 10秒后完成均衡
-              }, 2000);
-            },
-            
+
             // 重启设备
             handleRestartDevice() {
-              uni.showModal({
-                title: '确认重启',
-                content: '确定要重启设备吗？重启过程中会暂时断开连接。',
-                confirmColor: '#FF3B30',
-                success: (res) => {
-                  if (res.confirm) {
-                    this.restartDevice();
-                  }
-                }
-              });
-            },
-            
-            // 执行重启
-            restartDevice() {
-              uni.showLoading({
-                title: '正在重启设备...',
-                mask: true
-              });
-              
-              // 断开连接并重置状态
-              this.disconnectDevice();
-              this.deviceStatus = {
-                charging: false,
-                discharging: false,
-                balancing: false
-              };
-              
-              setTimeout(() => {
-                uni.hideLoading();
-                uni.showToast({
-                  title: '设备重启完成',
-                  icon: 'success'
-                });
-                
-                // 重新连接设备
-                setTimeout(() => {
-                  this.connectDevice();
-                }, 1000);
-              }, 3000);
-            },
-            
-            // 充电模拟
-            startChargingSimulation() {
-              this.chargingTimer = setInterval(() => {
-                if (this.deviceStatus.charging) {
-                  // 这里可以根据实际需求进行充电模拟
-                  console.log('充电模拟中...');
-                }
-              }, 2000);
-            },
-            
-            // 停止充电模拟
-            stopChargingSimulation() {
-              if (this.chargingTimer) {
-                clearInterval(this.chargingTimer);
-                this.chargingTimer = null;
-              }
-            },
-            
-            // 放电模拟
-            startDischargingSimulation() {
-              console.log('放电模拟');
-            },
-            
-            // 停止放电模拟
-            stopDischargingSimulation() {
-              if (this.dischargingTimer) {
-                clearInterval(this.dischargingTimer);
-                this.dischargingTimer = null;
-              }
+              bleManager.restartDevice();
             },
 
             // 处理语言弹窗状态变化
             handleLanguagePopupAction(isOpen) {
-              this.show = isOpen
-      }
+              this.show = isOpen;
+            },
     },
   }
 </script>

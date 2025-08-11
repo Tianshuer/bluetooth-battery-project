@@ -492,7 +492,6 @@ export default {
     
     // 电流重置
     handleBatteryReset() {
-      console.log('handleBatteryReset', this.passwordVerified);
       bleManager.resetCurrent();
     },
     

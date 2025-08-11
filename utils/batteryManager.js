@@ -936,7 +936,7 @@ class BLEManager {
 
           hasNewDevice = true;
           newDeviceCount++;
-          console.log('发现新设备:', device.name, device.deviceId);
+          // console.log('发现新设备:', device.name, device.deviceId);
         } else {
           // 更新现有设备的信息（如RSSI）
           const existingDevice = this._discoveredPeripherals[existingDeviceIndex];
@@ -2515,7 +2515,7 @@ class BLEManager {
     specialCommandValue,
     batteryTypeValue
   }) {
-    console.log('_sendControlCommand: ', batteryTypeValue);
+    console.log('_sendControlCommand: ', specialCommandValue);
     switch (type) {
       case CommandType.NORMAL_VALUE:
         if (prefix !== null && normalValue !== null) {
@@ -2557,6 +2557,7 @@ class BLEManager {
       normalValue: temp
     });
   }
+  // 电流重置
   resetCurrent() {
     if (this.guardPasswordVerified()) {
       this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
@@ -2564,6 +2565,7 @@ class BLEManager {
       });
     }
   }
+  // 一键铁锂
   setFeLiBattery() {
     if (this.guardPasswordVerified()) {
       this._sendControlCommand(CommandType.BATTERY_TYPE, {
@@ -2571,6 +2573,7 @@ class BLEManager {
       });
     }
   }
+  // 一键钛锂
   setTiLiBattery() {
     if (this.guardPasswordVerified()) {
       this._sendControlCommand(CommandType.BATTERY_TYPE, {
@@ -2578,6 +2581,7 @@ class BLEManager {
       });
     }
   }
+  // 一键三元
   setSanyuanBattery() {
     if (this.guardPasswordVerified()) {
       this._sendControlCommand(CommandType.BATTERY_TYPE, {
@@ -2585,24 +2589,28 @@ class BLEManager {
       });
     }
   }
+  // 过压保护
   setOverVoltageProtection(value) {
     this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "gybh",
       normalValue: value
     });
   }
+  // 过压恢复
   setOverVoltageRecovery(value) {
     this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "gyhf",
       normalValue: value
     });
   }
+  // 欠压保护
   setUnderVoltageProtection(value) {
     this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "qybh",
       normalValue: value
     });
   }
+  // 探头高温
   setProbeHighTemperature(value) {
     this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "usgw",
@@ -2633,6 +2641,31 @@ class BLEManager {
       integerValue: value
     });
   }
+  // 充电开启
+  openCharge() {
+    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+      specialCommandValue: "cdopen"
+    });
+  }
+  // 充电关闭
+  closeCharge() {
+    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+      specialCommandValue: "cdclose"
+    });
+  }
+  // 放电开启
+  openDischarge() {
+    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+      specialCommandValue: "fdopen"
+    });
+  }
+  // 放电关闭
+  closeDischarge() {
+    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+      specialCommandValue: "fdclose"
+    });
+  }
+  // 一键均衡
   startOneKeyBalance() {
     if (this.guardPasswordVerified()) {
       this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
@@ -2640,26 +2673,7 @@ class BLEManager {
       });
     }
   }
-  closeDischarge() {
-    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
-      specialCommandValue: "fdclose"
-    });
-  }
-  openDischarge() {
-    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
-      specialCommandValue: "fdopen"
-    });
-  }
-  closeCharge() {
-    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
-      specialCommandValue: "cdclose"
-    });
-  }
-  openCharge() {
-    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
-      specialCommandValue: "cdopen"
-    });
-  }
+  // 重启设备
   restartDevice() {
     if (this.guardPasswordVerified()) {
       this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
