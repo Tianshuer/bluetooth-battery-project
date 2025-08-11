@@ -147,11 +147,11 @@
             this.getScreenHeight();
         },
         methods: {
-            // 获取屏幕高度
-            getScreenHeight() {
-              const windowInfo = uni.getWindowInfo()
-		          this.screenHeight = windowInfo.windowHeight;
-            },
+          // 获取屏幕高度
+          getScreenHeight() {
+            const windowInfo = uni.getWindowInfo()
+		        this.screenHeight = windowInfo.windowHeight || 667;
+          },
             
             getDefaultBatteryVoltageData() {
               let fakeData = []

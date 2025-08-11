@@ -170,7 +170,7 @@ export default {
     }
   },
   onLoad() {
-    this.getSystemInfo();
+    this.getScreenHeight();
   },
   
   methods: {
@@ -195,15 +195,9 @@ export default {
       };
     },
     
-    getSystemInfo() {
-      uni.getSystemInfo({
-        success: (res) => {
-          this.screenHeight = res.windowHeight;
-        },
-        fail: () => {
-          this.screenHeight = 667;
-        }
-      });
+    getScreenHeight() {
+      const windowInfo = uni.getWindowInfo()
+		  this.screenHeight = windowInfo.windowHeight || 667;
     },
     
     handleLanguagePopupAction(isOpen) {

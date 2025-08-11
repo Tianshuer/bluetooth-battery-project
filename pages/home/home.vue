@@ -44,7 +44,7 @@ export default {
 	async onLoad() {
 		// 获取屏幕高度
 		const windowInfo = uni.getWindowInfo()
-		this.screenHeight = windowInfo.windowHeight;
+		this.screenHeight = windowInfo.windowHeight || 667;
 	},
 	methods: {
 		// 显示蓝牙设备列表

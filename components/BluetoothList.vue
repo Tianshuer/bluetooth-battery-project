@@ -82,7 +82,6 @@ export default {
 		// 监听 store 中的 isScanning 变化
 		isScanning: {
 			handler(newScanningState) {
-				console.log('Store中的扫描状态已更新:', newScanningState);
 				// 实时同步到本地状态
 				this.localIsScanning = newScanningState;
 			},

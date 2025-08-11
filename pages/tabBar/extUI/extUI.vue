@@ -229,23 +229,13 @@ export default {
     },
   },
   onLoad() {
-    this.getSystemInfo();
+    this.getScreenHeight();
   },
   methods: {
     // 获取系统信息
-    getSystemInfo() {
-      uni.getSystemInfo({
-        success: (res) => {
-          console.log('res', res);
-          
-          this.screenHeight = res.windowHeight;
-        },
-        fail: (err) => {
-          console.error('获取系统信息失败:', err);
-          // 设置默认高度
-          this.screenHeight = 667;
-        }
-      });
+    getScreenHeight() {
+      const windowInfo = uni.getWindowInfo()
+		  this.screenHeight = windowInfo.windowHeight || 667;
     },
     
     // 发送验证码
