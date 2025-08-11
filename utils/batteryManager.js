@@ -840,37 +840,6 @@ class BLEManager {
    */
   async _setupScanResultsListener() {
     console.log('_setupScanResultsListener', this._discoveredPeripherals);
-    // 监听设备发现事件
-    // uni.onBluetoothDeviceFound((res) => {
-    //   // 处理发现的设备
-    //   if (res.devices && Array.isArray(res.devices)) {
-    //     for (const device of res.devices) {
-    //       // 只添加有名称的设备（类似Flutter的isNotEmpty检查）
-    //       if (device.name && device.name.trim().length > 0) {
-    //         const existingDeviceIndex = this._discoveredPeripherals.findIndex(
-    //           existing => existing.deviceId === device.deviceId
-    //         );
-
-    //         if (existingDeviceIndex === -1) {
-    //           this._discoveredPeripherals.push({
-    //             deviceId: device.deviceId,
-    //             name: device.name,
-    //             RSSI: device.RSSI || 0,
-    //             advertisData: device.advertisData || {},
-    //             advertisServiceUUIDs: device.advertisServiceUUIDs || [],
-    //             localName: device.localName || '',
-    //             serviceData: device.serviceData || {}
-    //           });
-    //         }
-    //         console.log('发现设备:', device);
-
-    //       }
-    //     }
-    //   }
-    //   this._isScanning = false;
-    //   // 通知监听器
-    //   this._notifyListeners();
-    // });
     try {
       await this._getAlreadyDiscoveredDevices();
     } catch (error) {
@@ -912,53 +881,39 @@ class BLEManager {
       return;
     }
 
-    let hasNewDevice = false;
-    let newDeviceCount = 0;
-
     for (const device of res.devices) {
-      // 只添加有名称的设备（类似Flutter的isNotEmpty检查）
-      if (device.name && device.name.trim().length > 0) {
-        const existingDeviceIndex = this._discoveredPeripherals.findIndex(
-          existing => existing.deviceId === device.deviceId
-        );
+      const name = (device.name || device.localName || '').toString().trim();
+      if (!name) continue; // 仍然只展示有名称的设备
 
-        if (existingDeviceIndex === -1) {
-          // 新设备
-          this._discoveredPeripherals.push({
-            deviceId: device.deviceId,
-            name: device.name,
-            RSSI: device.RSSI || 0,
-            advertisData: device.advertisData || {},
-            advertisServiceUUIDs: device.advertisServiceUUIDs || [],
-            localName: device.localName || '',
-            serviceData: device.serviceData || {}
-          });
-
-          hasNewDevice = true;
-          newDeviceCount++;
-          // console.log('发现新设备:', device.name, device.deviceId);
+      const idx = this._discoveredPeripherals.findIndex(d => d.deviceId === device.deviceId);
+      if (idx === -1) {
+        const isUnknownDevice = name.includes('未知') || name.toLowerCase().includes('unknown');
+        const deviceData = {
+          deviceId: device.deviceId,
+          name,
+          RSSI: device.RSSI || 0,
+          advertisData: device.advertisData || {},
+          advertisServiceUUIDs: device.advertisServiceUUIDs || [],
+          localName: device.localName || '',
+          serviceData: device.serviceData || {}
+        };
+        
+        if (isUnknownDevice) {
+          this._discoveredPeripherals.push(deviceData);
         } else {
-          // 更新现有设备的信息（如RSSI）
-          const existingDevice = this._discoveredPeripherals[existingDeviceIndex];
-          existingDevice.RSSI = device.RSSI || 0;
-          existingDevice.advertisData = device.advertisData || {};
-          existingDevice.advertisServiceUUIDs = device.advertisServiceUUIDs || [];
-          existingDevice.localName = device.localName || '';
-          existingDevice.serviceData = device.serviceData || {};
+          this._discoveredPeripherals.unshift(deviceData);
         }
+      } else {
+        const d = this._discoveredPeripherals[idx];
+        d.name = name || d.name;
+        d.RSSI = device.RSSI || d.RSSI || 0;
+        d.advertisData = device.advertisData || d.advertisData || {};
+        d.advertisServiceUUIDs = device.advertisServiceUUIDs || d.advertisServiceUUIDs || [];
+        d.localName = device.localName || d.localName || '';
+        d.serviceData = device.serviceData || d.serviceData || {};
       }
     }
 
-    if (hasNewDevice) {
-      console.log(`发现 ${newDeviceCount} 个新设备，当前总设备数: ${this._discoveredPeripherals.length}`);
-
-      // 重置无设备发现定时器（如果实现了智能停止机制）
-      if (typeof this._resetNoDeviceFoundTimer === 'function') {
-        this._resetNoDeviceFoundTimer();
-      }
-    }
-
-    // 通知监听器（无论是否有新设备，都通知以更新UI）
     this._notifyListeners();
   }
 
@@ -1136,20 +1091,15 @@ class BLEManager {
         console.log('设备已连接，跳过扫描');
         return;
       }
+      // 不区分首次与否：每次扫描前清空结果并强制重启扫描
       if (this._isScanning) {
-        console.log('正在扫描中，跳过重复扫描');
-        return;
+        await this.stopScanning();
       }
-      this._isScanning = true;
 
       this._discoveredPeripherals.length = 0;
-
-      // 通知监听器状态变化
       this._notifyListeners();
 
       await this._startBluetoothScan();
-
-      // 设置扫描超时（10秒后自动停止）
       this._setScanTimeout(10000);
     } catch (error) {
       console.error('开始扫描蓝牙设备失败:', error);
@@ -1239,10 +1189,7 @@ class BLEManager {
   stopScanning() {
     try {
       // 如果没有在扫描，直接返回
-      if (!this._isScanning) {
-        console.log('未在扫描中，跳过停止操作');
-        return;
-      }
+      if (!this._isScanning) return;
       this._isScanning = false;
 
       console.log('停止设备扫描...');
@@ -1264,10 +1211,8 @@ class BLEManager {
         }
       });
 
-      // 更新扫描状态
+      // 更新扫描状态并通知
       console.log('设备扫描已停止');
-
-      // 通知监听器
       this._notifyListeners();
 
     } catch (error) {
