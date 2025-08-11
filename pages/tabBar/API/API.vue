@@ -11,15 +11,14 @@
       <!-- 显示与控制功能组件 -->
       <CommonPanel
         :showVerifyCode="false"
-        :functionButtons="controlButtons"
+        :functionButtons="controlButtons || []"
         @functionClick="handleControlClick"
       />
       
       <!-- 双列数据显示组件 - 电池串电压 -->
       <DoubleColumnData
-        :dataItems="safeBatteryVoltageData"
+        :dataItems="safeBatteryVoltageData || []"
         :valueFormat="voltageFormat"
-        :emptyConfig="voltageEmptyConfig"
       />
     </view>
   </page-meta>
@@ -102,16 +101,6 @@
                 }
               ];
             },
-            // 电压空态配置 - 响应语言变化
-            voltageEmptyConfig() {
-              return {
-                title: this.t('device_not_connected'),
-                description: this.t('check_device_connection'),
-                showButton: true,
-                buttonText: this.t('connect_device'),
-                icon: '🔋'
-              }
-            }
         },
         watch: {
           batteryLevel: {
@@ -132,7 +121,7 @@
                 };
                 if (newData.voltages) {
                   this.currentBatteryVoltageData = newData.voltages.map((voltage, index) => ({
-                    label: `${index + 1}`,
+                    label: index + 1,
                     value: voltage || 0,
                     unit: 'V'
                   }));

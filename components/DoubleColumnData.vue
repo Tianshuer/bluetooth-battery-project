@@ -53,17 +53,6 @@ export default {
         padding: true // 是否补零
       })
     },
-    // 空态配置
-    emptyConfig: {
-      type: Object,
-      default: () => ({
-        title: '暂无数据',
-        description: '设备未连接或数据加载中',
-        showButton: true,
-        buttonText: '刷新数据',
-        icon: '📊'
-      }),
-    },
     // 是否连接状态
     isConnected: {
       type: Boolean,
@@ -210,43 +199,6 @@ export default {
   width: 20%;
 }
 
-/* 空态样式 */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80rpx 40rpx;
-  text-align: center;
-}
 
-.empty-icon {
-  margin-bottom: 30rpx;
-}
 
-.icon-text {
-  font-size: 100rpx;
-  line-height: 1;
-  opacity: 0.3;
-}
-
-.empty-text {
-  margin-bottom: 40rpx;
-}
-
-.empty-title {
-  display: block;
-  font-size: 32rpx;
-  color: #333333;
-  font-weight: 500;
-  margin-bottom: 16rpx;
-  line-height: 1.4;
-}
-
-.empty-description {
-  display: block;
-  font-size: 26rpx;
-  color: #999999;
-  line-height: 1.5;
-}
 </style> 

@@ -14,62 +14,62 @@
       <!-- 电池信息卡片 -->
       <InfoCard 
         :item1Value="safeBatteryData.totalCapacity"
-        :item1Label="t('battery_capacity') || '电池容量'"
+        :item1Label="labelBatteryCapacity || ''"
         :item1Unit="'AH'"
         :item2Value="safeBatteryData.ratio"
-        :item2Label="t('remaining_power') || '剩余电量'"
+        :item2Label="labelRemainingPower || ''"
         :item2Unit="'%'"
         :item3Value="safeBatteryData.power"
-        :item3Label="t('power') || '功率'"
+        :item3Label="labelPower || ''"
         :item3Unit="'W'"
         :item4Value="safeBatteryData.cycleCapacity"
-        :item4Label="t('cycle_capacity') || '循环容量'"
+        :item4Label="labelCycleCapacity || ''"
         :item4Unit="'AH'"
       />
       <!-- 电压信息卡片 -->
       <InfoCard 
         :item1Value="safeBatteryData.voltageDiff"
-        :item1Label="t('voltage_diff') || '电芯压差'"
+        :item1Label="labelVoltageDiff || ''"
         :item1Unit="'V'"
         :item2Value="safeBatteryData.averageVoltage"
-        :item2Label="t('average_voltage') || '平均电压'"
+        :item2Label="labelAverageVoltage || ''"
         :item2Unit="'V'"
         :item3Value="safeBatteryData.maxVoltage"
-        :item3Label="t('max_voltage') || '最高电压'"
+        :item3Label="labelMaxVoltage || ''"
         :item3Unit="'V'"
         :item4Value="safeBatteryData.minVoltage"
-        :item4Label="t('min_voltage') || '最低电压'"
+        :item4Label="labelMinVoltage || ''"
         :item4Unit="'V'"
       />
 
       <!-- 芯片温度信息卡片 -->
       <InfoCard 
         :item1Value="safeBatteryData.chip1Temperature"
-        :item1Label="t('chip1_temp') || '芯片1温度'"
+        :item1Label="labelChip1Temp || ''"
         :item1Unit="'°C'"
         :item2Value="safeBatteryData.chip2Temperature"
-        :item2Label="t('chip2_temp') || '芯片2温度'"
+        :item2Label="labelChip2Temp || ''"
         :item2Unit="'°C'"
         :item3Value="safeBatteryData.mosTemperature"
-        :item3Label="t('mos_temp') || 'MOS管温度'"
+        :item3Label="labelMosTemp || ''"
         :item3Unit="'°C'"
         :item4Value="safeBatteryData.balanceTemperature"
-        :item4Label="t('balance_temp') || '均衡温度'"
+        :item4Label="labelBalanceTemp || ''"
         :item4Unit="'°C'"
       />
       <!-- 电芯温度信息卡片 -->
       <InfoCard 
         :item1Value="safeBatteryData.temperatures[0]"
-        :item1Label="t('cell_temp1') || '电芯温度1'"
+        :item1Label="labelCellTemp1 || ''"
         :item1Unit="'°C'"
         :item2Value="safeBatteryData.temperatures[1]"
-        :item2Label="t('cell_temp2') || '电芯温度2'"
+        :item2Label="labelCellTemp2 || ''"
         :item2Unit="'°C'"
         :item3Value="safeBatteryData.temperatures[2]"
-        :item3Label="t('cell_temp3') || '电芯温度3'"
+        :item3Label="labelCellTemp3 || ''"
         :item3Unit="'°C'"
         :item4Value="safeBatteryData.temperatures[3]"
-        :item4Label="t('cell_temp4') || '电芯温度4'"
+        :item4Label="labelCellTemp4 || ''"
         :item4Unit="'°C'"
       />
     </view>
@@ -106,7 +106,56 @@ export default {
     safeBatteryData() {
       // 直接返回当前使用的电池数据
       return this.currentBatteryData || this.getDefaultBatteryData();
-    }
+    },
+    labelBatteryCapacity() {
+      return this.safeT('battery_capacity', '电池容量');
+    },
+    labelRemainingPower() {
+      return this.safeT('remaining_power', '剩余电量');
+    },
+    labelPower() {
+      return this.safeT('power', '功率');
+    },
+    labelCycleCapacity() {
+      return this.safeT('cycle_capacity', '循环容量');
+    },
+    labelVoltageDiff() {
+      return this.safeT('voltage_diff', '电芯压差');
+    },
+    labelAverageVoltage() {
+      return this.safeT('average_voltage', '平均电压');
+    },
+    labelMaxVoltage() {
+      return this.safeT('max_voltage', '最高电压');
+    },
+    labelMinVoltage() {
+      return this.safeT('min_voltage', '最低电压');
+    },
+    labelChip1Temp() {
+      return this.safeT('chip1_temp', '芯片1温度');
+    },
+    labelChip2Temp() {
+      return this.safeT('chip2_temp', '芯片2温度');
+    },
+    labelMosTemp() {
+      return this.safeT('mos_temp', 'MOS管温度');
+    },
+    labelBalanceTemp() {
+      return this.safeT('balance_temp', '均衡温度');
+    },
+    labelCellTemp1() {
+      return this.safeT('cell_temp1', '电芯温度1');
+    },
+    labelCellTemp2() {
+      return this.safeT('cell_temp2', '电芯温度2');
+    },
+    labelCellTemp3() {
+      return this.safeT('cell_temp3', '电芯温度3');
+    },
+    labelCellTemp4() {
+      return this.safeT('cell_temp4', '电芯温度4');
+    },
+    
   },
   watch: {
     // 监听store中的batteryData变化
@@ -174,6 +223,14 @@ export default {
   },
   
   methods: {
+    safeT(key, fallback = '') {
+      try {
+        const res = typeof this.t === 'function' ? this.t(key) : null;
+        return typeof res === 'string' && res.length ? res : fallback;
+      } catch {
+        return fallback;
+      }
+    },
     getDefaultBatteryData() {
       return {
         totalVoltage: '0.00',
