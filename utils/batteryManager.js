@@ -91,6 +91,7 @@ class BluetoothWriter {
         this._enqueueWrite(
           characteristicToUse,
           this._heartbeatData,
+          null,
           WritePriority.HIGH
         );
       }
@@ -132,10 +133,9 @@ class BluetoothWriter {
     // 将任务加入队列
     this._enqueueWrite(
       this._writeCharacteristic,
-      data, {
-        task,
-        priority
-      },
+      data,
+      task,
+      priority,
     );
 
     // 等待任务完成并返回结果
@@ -158,10 +158,12 @@ class BluetoothWriter {
    * @param {WriteTask} options.task - 可选的写入任务
    * @param {string} options.priority - 优先级，默认为normal
    */
-  _enqueueWrite(characteristic, data, {
+  _enqueueWrite(
+    characteristic,
+    data,
     task = null,
-    priority = WritePriority.NORMAL
-  }) {
+    priority = WritePriority.NORMAL,
+  ) {
     if (!task) {
       task = new WriteTask(characteristic, data);
     }
@@ -213,7 +215,7 @@ class BluetoothWriter {
 
         // 根据您的协议使用超时和withoutResponse。
         // 对于一般命令，withoutResponse: false 对于成功确认更安全。
-        await this._writeBLECharacteristicValue(task.data, withoutResponse = true);
+        await this._writeBLECharacteristicValue(task.data);
         success = true;
         console.log(`写入成功: ${this._arrayBufferToHex(task.data)}`);
       } catch (error) {
@@ -242,11 +244,25 @@ class BluetoothWriter {
     return new Promise((resolve, reject) => {
       const characteristic = this._writeCharacteristic;
 
+      let writeData;
+      if (data instanceof ArrayBuffer) {
+        writeData = data;
+      } else if (data instanceof Uint8Array) {
+        writeData = data.buffer;
+      } else if (data.buffer instanceof ArrayBuffer) {
+        writeData = data.buffer;
+      } else if (Array.isArray(data)) {
+        writeData = new Uint8Array(data).buffer;
+      } else {
+        throw new Error(`不支持的数据类型: ${typeof data}`);
+      }
+
       uni.writeBLECharacteristicValue({
         deviceId: characteristic.deviceId,
         serviceId: characteristic.serviceId,
         characteristicId: characteristic.characteristicId,
-        value: data.buffer,
+        value: writeData,
+        writeType: 'writeNoResponse',
         success: (res) => {
           console.log('BLE写入成功:', res);
           resolve(res);
@@ -446,6 +462,7 @@ class BLEManager {
 
     // 密码相关状态
     this._passwordVerified = false;
+    this._firstPasswordVerified = false;
     this._lastError = null;
     this._passwordTimer = null;
     this.verifiedPassword = null; // 最近一次验证通过的密码
@@ -638,9 +655,6 @@ class BLEManager {
       return;
     }
 
-    console.log(`通知 ${this._listeners.length} 个监听器状态变化`);
-    console.log('_passwordVerified:', this._passwordVerified);
-
     // 传递当前状态数据给监听器
     const stateData = {
       locale: this._locale,
@@ -659,7 +673,6 @@ class BLEManager {
 
     this._listeners.forEach((listener, index) => {
       try {
-        console.log(`执行监听器 ${index + 1}:`, stateData);
         listener(stateData);
       } catch (error) {
         console.error(`监听器 ${index + 1} 执行出错:`, error);
@@ -680,8 +693,6 @@ class BLEManager {
           lastError: this._lastError,
           timestamp: Date.now()
         };
-        
-        console.log('触发全局连接状态变化事件:', globalEventData);
         uni.$emit('bleConnectionStatusChanged', globalEventData);
       } catch (error) {
         console.error('触发全局事件失败:', error);
@@ -760,8 +771,6 @@ class BLEManager {
             // 同步连接状态
             store.dispatch('setConnectionStatus', this._isConnected);
             store.dispatch('setPasswordVerified', this._passwordVerified);
-
-            console.log('状态已同步到Vuex store');
           }
         }
       }
@@ -819,7 +828,6 @@ class BLEManager {
    */
   _initializeBluetoothStateListener() {
     console.log('正在初始化蓝牙状态监听器...');
-    console.log(111, this._discoveredPeripherals);
     // 监听蓝牙适配器状态变化
     this._setupAdapterStateListener();
 
@@ -871,7 +879,6 @@ class BLEManager {
 
     // 2. 设置监听器监听新发现的设备
     uni.onBluetoothDeviceFound((res) => {
-      console.log('监听到新设备发现:', res);
       this._handleDeviceFound(res);
     });
   }
@@ -1486,25 +1493,24 @@ class BLEManager {
             // 处理通知特征值
             if (characteristic.uuid === this.constructor.NOTIFY_CHARACTERISTIC_UUID) {
               console.log(`发现通知特征值: ${characteristic.uuid}`);
-
               this._notifyCharacteristic = {
                 deviceId: peripheral.deviceId,
                 serviceId: service.uuid,
                 characteristicId: characteristic.uuid,
-                properties: characteristic.properties
+                properties: characteristic.properties,
               };
-
-              notifyCharacteristicFound = true;
-
-              // 启用通知
-              await this._enableNotifyCharacteristic();
+              if (this._notifyCharacteristic) {
+                await this._enableNotifyCharacteristic();
+                // 启用通知
+                notifyCharacteristicFound = true;
+              }
             } else if (characteristic.uuid === this.constructor.WRITE_CHARACTERISTIC_UUID) {
               console.log(`发现写入特征值: ${characteristic.uuid}`);
               this._writeCharacteristic = {
                 deviceId: peripheral.deviceId,
                 serviceId: service.uuid,
                 characteristicId: characteristic.uuid,
-                properties: characteristic.properties
+                properties: characteristic.properties,
               };
               writeCharacteristicFound = true;
 
@@ -1522,6 +1528,7 @@ class BLEManager {
           }
         }
       }
+
       // 检查是否找到目标服务
       if (!serviceFound) {
         throw new Error(`未找到目标服务: ${this.constructor.SERVICE_UUID}`);
@@ -2395,8 +2402,11 @@ class BLEManager {
    */
   _showToast(message) {
     try {
-      // uni-app的Toast API
-      this._showToast(message);
+      uni.showToast({
+        title: message,
+        icon: 'none',
+        duration: 1500,
+      })
     } catch (error) {
       console.log("Toast显示失败:", error);
       // 备用提示方法
@@ -2409,10 +2419,10 @@ class BLEManager {
    * 验证密码
    * @param {string} password - 密码
    */
-  async verifyPassword(password) {
+  verifyPassword(password) {
     try {
       // 如果已经验证过密码，直接返回
-      if (this._passwordVerified) {
+      if (this._firstPasswordVerified && this._passwordVerified) { 
         this._showToast(this.t("password_verified"));
         return true;
       }
@@ -2424,10 +2434,7 @@ class BLEManager {
       const command = Command.PASSWORD_PREFIX + password + Command.PASSWORD_SUFFIX;
       
       // 发送密码验证命令并等待结果
-      const success = await this.sendCommand(command);
-      if (!success) {
-        return false;
-      }
+      this.sendCommand(command);
     } catch (error) {
       console.error('密码验证过程中发生错误:', error);
       this._showToast(this.t("password_error"));
@@ -2508,6 +2515,7 @@ class BLEManager {
     specialCommandValue,
     batteryTypeValue
   }) {
+    console.log('_sendControlCommand: ', batteryTypeValue);
     switch (type) {
       case CommandType.NORMAL_VALUE:
         if (prefix !== null && normalValue !== null) {
@@ -2674,7 +2682,7 @@ class BLEManager {
       console.log('准备发送命令:', command);
       // 检查设备连接状态
       if (this._bluetoothWriter._writeCharacteristic === null || this._peripheral === null) {
-        console.log("设备未连接，无法发送命令");
+        console.log("设备未连接，无法发送命令", this.t("ble_not_ready"));
         this._showToast(this.t("ble_not_ready"));
         return;
       }
@@ -2700,17 +2708,13 @@ class BLEManager {
         if (!command.startsWith("re")) {
           this._showToast(this.t("sent"));
         }
-        
-        return true;
       } else {
         console.log(`发送命令 '${command}' 失败: 写入操作失败`);
         this._showToast(this.t("command_send_failed"));
-        return false;
       }
     } catch (error) {
       console.error(`发送命令 '${command}' 时发生错误:`, error);
       this._showToast(this.t("command_send_failed"));
-      return false;
     }
   }
 
@@ -2734,34 +2738,35 @@ class BLEManager {
   }
 
   _handlePasswordResponse(response) {
-    console.log("收到密码响应:", response);
-    console.log('当前密码验证状态:', this._passwordVerified, '响应类型:', response);
-    // 这里逻辑需要优化
-    this.verifyPassword(this.lastVerifyPassword);
-    if (response === PasswordResponse.SUCCESS) {
-      if (!this._passwordVerified) {
-        // 密码验证成功
-        this._lastError = null;
-        this._passwordVerified = true;
-        this.verifiedPassword = this.lastVerifyPassword;
+    if (this._firstPasswordVerified) {
+      if (response === PasswordResponse.SUCCESS) {
+        if (!this._passwordVerified) {
+          // 密码验证成功
+          this._lastError = null;
+          this._passwordVerified = true;
+          this.verifiedPassword = this.lastVerifyPassword;
 
-        // 启动密码验证定时器（4分钟后自动失效）
-        this._startPasswordTimer();
-
-        // 显示成功提示
-        this._showToast(this.t("password_success"));
+          // 启动密码验证定时器（4分钟后自动失效）
+          this._startPasswordTimer();
+  
+          // 显示成功提示
+          // this._showToast(`打印密码是否验证 ${this._passwordVerified}, 2 ${this._firstPasswordVerified}`);
+          this._showToast(this.t("password_success"));
+        }
+      } else if (response === PasswordResponse.FAILURE) {
+        // 密码验证失败
+        this._passwordVerified = false;
+        this._lastError = this.t("password_error");
+        this.verifiedPassword = null;
+        // 显示失败提示
+        this._showToast(this.t("password_error"));
+      } else {
+        console.log('未知的密码响应类型:', response);
       }
-    } else if (response === PasswordResponse.FAILURE) {
-      // 密码验证失败
-      this._passwordVerified = false;
-      this._lastError = this.t("password_error");
-      this.verifiedPassword = null;
-      // 显示失败提示
-      this._showToast(this.t("password_error"));
-      
-      console.log('密码验证失败');
     } else {
-      console.log('未知的密码响应类型:', response);
+      // 这里逻辑需要优化
+      this.verifyPassword(this.lastVerifyPassword);
+      this._firstPasswordVerified = true;
     }
     
     // 通知所有监听器状态变化

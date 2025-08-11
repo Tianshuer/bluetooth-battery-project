@@ -187,8 +187,6 @@ export default new Vuex.Store({
         const currentVoltage = parseFloat(state.batteryData.totalVoltage) || 0;
         let percentage = ((currentVoltage - state.batteryData.minVoltage) / (state.batteryData.maxVoltage - state.batteryData.minVoltage)) * 100;
         percentage = Math.min(Math.max(percentage, 0), 100);
-        console.log('percentage', percentage);
-
         state.batteryPercentage = Number(percentage.toFixed(2));
       }
     },
@@ -417,8 +415,6 @@ export default new Vuex.Store({
     updateBleManagerState({
       commit
     }, data) {
-      console.log(787878773637);
-      
       commit('UPDATE_BLE_MANAGER_STATE', data);
     },
 

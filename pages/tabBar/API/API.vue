@@ -64,7 +64,8 @@
                 'batteryData'
             ]),
             safeBatteryVoltageData() {
-              return this.currentBatteryVoltageData || this.getDefaultBatteryVoltageData();
+              const data = this.currentBatteryVoltageData.length > 0 ? this.currentBatteryVoltageData : this.getDefaultBatteryVoltageData();
+              return Array.isArray(data) ? data : [];
             },
             // 控制按钮配置 - 响应语言变化
             controlButtons() {
@@ -99,7 +100,7 @@
                   action: 'restartDevice',
                   color: '#AF52DE'
                 }
-              ]
+              ];
             },
             // 电压空态配置 - 响应语言变化
             voltageEmptyConfig() {

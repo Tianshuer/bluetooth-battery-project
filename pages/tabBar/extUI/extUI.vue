@@ -249,14 +249,8 @@ export default {
     },
     
     // 发送验证码
-    async handleSendCode(code) {
-
-      const res = await bleManager.verifyPassword(code);
-      console.log('发送验证码res', res);
-      
-      // } catch (error) {
-      //   console.error('bleManager.verifyPassword 调用出错:', error);
-      // }
+    handleSendCode(code) {
+      bleManager.verifyPassword(code);
     },
     
     // 功能按钮点击
@@ -270,10 +264,6 @@ export default {
         return;
       }
       console.log('功能按钮点击:', button);
-      uni.showToast({
-        title: this.t('clicked_button', button.text),
-        icon: 'none'
-      });
       
       // 根据action执行对应的操作
       switch(button.action) {
@@ -508,13 +498,6 @@ export default {
         title: this.t('setting_success', item.label),
         icon: 'success'
       });
-    },
-    
-    // 底部按钮点击
-    handleBottomClick({ button, index }) {
-      if (button.action === 'changePassword') {
-        this.handleChangePassword();
-      }
     },
     
     // 电流重置
