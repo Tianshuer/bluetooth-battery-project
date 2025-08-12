@@ -7,6 +7,10 @@
         <text class="device-status">{{ versionName || t('version_unknown') }}</text>
       </view>
       <view class="connection-status">
+        <switch class="connection-switch"
+          :checked="localIsConnected"
+          @change="handleConnectionToggle"
+        />
         <text class="status-text">
           {{ isConnected ? t('connection_success') : t('connection_closed') }}
         </text>
@@ -86,6 +90,7 @@
 import uniPopup from '@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue'
 import { mapGetters, mapActions } from 'vuex'
 import BluetoothList from './BluetoothList.vue'
+import bleManager from '../utils/batteryManager';
 
 export default {
   name: 'BatteryCard',
@@ -94,7 +99,10 @@ export default {
     BluetoothList
   },
   data() {
-    return {}
+    return {
+      switchKey: 0,
+      localIsConnected: false,
+    }
   },
   computed: {
     ...mapGetters([
@@ -106,8 +114,17 @@ export default {
       'batteryPercentage',
       'batteryDevice',
       'versionName',
-      'deviceName'
-    ])
+      'deviceName',
+    ]),
+  },
+  watch: {
+    // 监听连接状态变化，确保 switch 组件状态同步
+    isConnected: {
+      handler(newConnectedState) {
+        this.localIsConnected = newConnectedState;
+      },
+      immediate: true,
+    },
   },
   methods: {
     ...mapActions([
@@ -151,7 +168,44 @@ export default {
       // 选择后自动关闭弹窗
       this.closeLanguagePicker()
     },
-  }
+
+    // 处理连接状态切换
+    async handleConnectionToggle(e) {
+      const newValue = e.detail.value;
+      console.log('isConnected', this.isConnected);
+      console.log('localIsConnected', this.localIsConnected);
+      try {
+        if (!e.detail.value && this.localIsConnected) {
+          console.log('想要关闭蓝牙', this.isConnected);
+          // 检查是否有可用的设备
+          if (!this.batteryDevice || !this.batteryDevice.deviceId) {
+            uni.showToast({
+              title: this.t('no_device_available'),
+              icon: 'none',
+              duration: 2000,
+              mask: true,
+            });
+          }
+          await bleManager.disconnect();
+          console.log(this.localIsConnected, 111);
+        } else {
+          console.log('想要打开蓝牙', this.isConnected);
+        }
+      } catch(error) {
+        console.error('error: ', error);
+        // await bleManager.disconnect();
+        if (!this.isConnected) {
+          uni.showToast({
+            title: this.t('connection_closed'),
+            icon: 'none',
+            duration: 2000,
+            mask: true,
+          });
+        }
+        console.log(this.isConnected);
+      }
+    },
+  },
 }
 </script>
 
@@ -199,6 +253,21 @@ export default {
 .status-text {
   font-size: 22rpx;
   line-height: 1;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.connection-switch {
+  transform: scale(0.8);
+  margin-right: 10rpx;
+  /* 自定义 switch 样式 */
+  --switch-background-color: #e5e5e5;
+  --switch-checked-color: #007aff;
+  --switch-border-color: #d1d1d1;
 }
 
 .battery-info {
