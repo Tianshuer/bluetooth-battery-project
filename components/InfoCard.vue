@@ -123,7 +123,7 @@ export default {
 }
 
 .label {
-  font-size: 24rpx;
+  font-size: 28rpx;;
   color: #333333;
   flex: 1;
   line-height: 1.2;
@@ -142,7 +142,7 @@ export default {
 }
 
 .value {
-  font-size: 24rpx;
+  font-size: 28rpx;;
   color: #333333;
   font-weight: normal;
   text-align: right;
@@ -151,7 +151,7 @@ export default {
 }
 
 .unit {
-  font-size: 24rpx;
+  font-size: 28rpx;;
   color: #666666;
   width: 40rpx;
   text-align: center;

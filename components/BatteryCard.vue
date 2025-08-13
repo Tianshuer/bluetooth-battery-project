@@ -4,7 +4,7 @@
       <image class="logo" src="/static/images/BLEIcon.png" mode="aspectFit" @click="handleLogoClick"></image>
       <view class="device-info">
         <text class="device-name">{{ deviceName || batteryDevice.name || t('unknown_device') }}</text>
-        <text class="device-status">{{ versionName || t('version_unknown') }}</text>
+        <text class="device-version">{{ versionName || t('version_unknown') }}</text>
       </view>
       <view class="connection-status">
         <switch class="connection-switch"
@@ -229,21 +229,21 @@ export default {
 }
 
 .device-name {
-  font-size: 24rpx;
+  font-size: 28rpx;;
   font-weight: bold;
   color: #333;
   display: block;
 }
 
-.device-status {
-  font-size: 24rpx;
+.device-version {
+  font-size: 24rpx;;
   color: #999;
   display: block;
   margin-top: 12rpx;
 }
 
 .status-text {
-  font-size: 22rpx;
+  font-size: 24rpx;
   line-height: 1;
 }
 

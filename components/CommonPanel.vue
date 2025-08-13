@@ -95,7 +95,7 @@ export default {
 }
 
 .verify-label {
-  font-size: 24rpx;
+  font-size: 28rpx;
   white-space: nowrap;
 }
 
@@ -105,7 +105,7 @@ export default {
   border-radius: 20rpx;
   padding: 10rpx 20rpx;
   border: none;
-  font-size: 24rpx;
+  font-size: 26rpx;
   color: #333333;
   outline: none;
   margin: 0 15rpx;
@@ -116,14 +116,10 @@ export default {
 }
 
 .verify-btn {
-  border: none;
+  display: inline-block;
   border-radius: 18rpx;
-  padding: 16rpx 24rpx;
-  font-size: 24rpx;
-  font-weight: 500;
-  min-width: 120rpx;
-  height: 56rpx;
-  line-height: 1;
+  padding: 4rpx 24rpx;
+  font-size: 28rpx;
   box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
 }
@@ -144,7 +140,7 @@ export default {
   width: 100%;
   border-radius: 20rpx;
   padding: 8rpx 20rpx;
-  font-size: 24rpx;
+  font-size: 28rpx;
   display: flex;
   align-items: center;
   justify-content: center;

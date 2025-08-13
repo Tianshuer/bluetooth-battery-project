@@ -175,7 +175,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24rpx;
+  font-size: 28rpx;;
   color: #666666;
   width: 20%;
 }
@@ -184,7 +184,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  font-size: 24rpx;
+  font-size: 28rpx;;
   color: #333333;
   font-weight: 600;
   width: 60%;
@@ -194,7 +194,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  font-size: 24rpx;
+  font-size: 28rpx;;
   color: #999999;
   width: 20%;
 }

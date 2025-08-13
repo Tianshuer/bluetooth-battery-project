@@ -285,11 +285,11 @@
 
 <style scoped>
     .container {
-        display: flex;
-        flex-direction: column;
-        gap: 26rpx;
-        background-color: #f8f8f8;
-        padding: 20rpx;
-        box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 26rpx;
+      background-color: #f5f5f5;
+      padding: 20rpx;
+      box-sizing: border-box;
     }
 </style> 

@@ -8,8 +8,8 @@
       <view class="label-section">
         <text class="label">{{ item.label }}</text>
       </view>
-      <view class="value-text">
-        <text>{{ item.params }}</text>
+      <view class="text-section">
+        <text class="label">{{ item.params }}</text>
       </view>
       <view class="input-section">
         <input 
@@ -95,7 +95,7 @@ export default {
   background-color: #fff;
   margin-bottom: 20rpx;
   border-radius: 25rpx;
-  gap: 40rpx;
+  gap: 20rpx;
 }
 
 .input-item:last-child {
@@ -103,15 +103,24 @@ export default {
 }
 
 .label-section {
-  width: 180rpx;
+  width: 120rpx;
   flex-shrink: 0;
   display: flex;
   align-items: flex-start;
   padding-top: 8rpx;
 }
 
-.label {
-  font-size: 24rpx;
+.text-section {
+  width: 132rpx;
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 8rpx;
+}
+
+.label,
+.text {
+  font-size: 28rpx;
   color: #333333;
   word-break: break-all;
   line-height: 1.4;
@@ -136,7 +145,8 @@ export default {
   color: #333333;
   outline: none;
   transition: border-color 0.2s ease;
-  height: 60rpx;
+  height: 68rpx;
+  line-height: 68rpx;
   box-sizing: border-box;
   min-width: 0;
 }
@@ -151,16 +161,11 @@ export default {
 }
 
 .send-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   border-radius: 18rpx;
-  padding: 0;
-  font-size: 20rpx;
-  width: 80rpx;
-  height: 60rpx;
+  padding: 0rpx 24rpx;
+  font-size: 28rpx;
   transition: all 0.2s ease;
-  flex-shrink: 0;
 }
 
 .send-btn:active {

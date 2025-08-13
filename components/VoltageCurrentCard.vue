@@ -67,7 +67,7 @@ export default {
 }
 
 .value {
-	font-size: 20rpx;
+	font-size: 28rpx;
 	color: #333333;
 	font-weight: 600;
 	white-space: nowrap;
@@ -75,7 +75,7 @@ export default {
 }
 
 .label {
-	font-size: 20rpx;
+	font-size: 28rpx;
 	color: #333333;
 }
 </style> 
