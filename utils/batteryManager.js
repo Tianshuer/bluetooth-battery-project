@@ -32,8 +32,6 @@ class BluetoothWriter {
     // 允许为心跳包使用独立的特征值（如果需要的话），否则使用主特征值
     this._heartbeatCharacteristic = null;
 
-
-
     // 写入任务队列
     this._writeQueue = [];
 
@@ -167,31 +165,35 @@ class BluetoothWriter {
     if (!task) {
       task = new WriteTask(characteristic, data);
     }
-
+    console.log('_writeQueue: ', this._writeQueue);
+    console.log('data: ', data);
+    console.log('task: ', task);
+    console.log('priority: ', priority);
+    console.log('WritePriority: ', WritePriority.HIGH);
+    
+    
+    let isSameData = false;
+    if (this._writeQueue.length > 0) {
+      isSameData = this._isSameData(this._writeQueue[0].data, data);
+    }
+    console.log('isSameData: ', isSameData);
     if (priority === WritePriority.HIGH &&
       this._writeQueue.length > 0 &&
-      this._isSameData(this._writeQueue[0].data, data)) {
+      isSameData) {
       // 如果队列前端已经是这个心跳包，不要添加另一个
       console.log("心跳包已在队列中，跳过入队。");
       task.completer.resolve(true); // 视为成功，因为它很快就会被发送
       return;
     }
 
-    // 特殊处理 原本是直接传 task 而不是 queueItem
-    const queueItem = {
-      task: task,
-      priority: priority,
-      timestamp: Date.now()
-    };
-
     if (priority === WritePriority.HIGH) {
-      this._writeQueue.unshift(queueItem); // 高优先级插入前端
+      this._writeQueue.unshift(task); // 高优先级插入前端
       console.log(`入队高优先级写入（队列中${this._writeQueue.length}个）: ${this._arrayBufferToHex(data)}`);
     } else {
-      this._writeQueue.push(queueItem); // 普通优先级添加到末尾
+      this._writeQueue.push(task); // 普通优先级添加到末尾
       console.log(`入队普通优先级写入（队列中${this._writeQueue.length}个）: ${this._arrayBufferToHex(data)}`);
     }
-    this._processQueue(queueItem);
+    this._processQueue();
   }
   /**
    * 按顺序处理写入队列
@@ -201,11 +203,10 @@ class BluetoothWriter {
     if (this._isProcessingQueue) return;
 
     this._isProcessingQueue = true;
-    console.log("开始队列处理...");
+    console.log("开始队列处理...", this._writeQueue);
 
     while (this._writeQueue.length > 0) {
-      const queueItem = this._writeQueue.shift(); // removeFirst() 对应
-      const task = queueItem.task;
+      const task = this._writeQueue.shift();
       let success = false;
 
       try {
@@ -277,35 +278,43 @@ class BluetoothWriter {
 
   /**
    * 比较两个数据是否相同
-   * @param {Uint8Array} data1 - 第一个数据
+   * @param {Object} data1 - 第一个数据
    * @param {Uint8Array} data2 - 第二个数据
    * @returns {boolean} 是否相同
    */
   _isSameData(data1, data2) {
-    if (data1.length !== data2.length) {
-      return false;
-    }
-
-    for (let i = 0; i < data1.length; i++) {
-      if (data1[i] !== data2[i]) {
-        return false;
+    console.log('data1: ', data1);
+    console.log('data2: ', data2);
+    
+    // 情况1：如果data1是Uint8Array/Buffer，直接比较二进制
+  if (data1 instanceof Uint8Array || ArrayBuffer.isView(data1)) {
+    if (data1.length !== data2.length) return false;
+      const view1 = new DataView(data1.buffer);
+      const view2 = new DataView(data2.buffer);
+      for (let i = 0; i < data1.byteLength; i++) {
+        if (view1.getUint8(i) !== view2.getUint8(i)) return false;
       }
+      return true;
     }
-
-    return true;
+  
+    // 情况2：如果data1是普通对象，转换为JSON字符串再转为Buffer比较
+    try {
+      const str = JSON.stringify(data1);
+      const buf1 = new TextEncoder().encode(str);
+      console.log('buf1: ', buf1, 'length: ', buf1.length);
+      console.log('data2: ', data2, 'length: ', data2.length);
+      
+      if (buf1.length !== data2.length) return false;
+      const view1 = new DataView(buf1.buffer);
+      const view2 = new DataView(data2.buffer);
+      for (let i = 0; i < buf1.byteLength; i++) {
+        if (view1.getUint8(i) !== view2.getUint8(i)) return false;
+      }
+      return true;
+    } catch {
+      return false; // JSON.stringify失败时视为不相同
+    }
   }
-
-  /**
-   * 将ArrayBuffer转换为十六进制字符串用于日志
-   * @param {Uint8Array} data - 数据
-   * @returns {string} 十六进制字符串
-   */
-  _arrayBufferToHex(data) {
-    return Array.from(data)
-      .map(byte => byte.toString(16).padStart(2, '0'))
-      .join(' ');
-  }
-
   /**
    * 清理队列并停止心跳
    * 释放所有资源，将待处理任务标记为失败
@@ -317,10 +326,10 @@ class BluetoothWriter {
 
       // 将所有待处理任务标记为失败
       const pendingTasks = this._writeQueue.length;
-      this._writeQueue.forEach((queueItem, index) => {
+      this._writeQueue.forEach((task, index) => {
         try {
-          queueItem.task.completer.resolve(false); // 将待处理任务标记为失败
-          console.log(`写入失败: ${this._arrayBufferToHex(queueItem.task.data)}`);
+          task.completer.resolve(false); // 将待处理任务标记为失败
+          console.log(`写入失败: ${this._arrayBufferToHex(task.data)}`);
         } catch (error) {
           console.warn(`清理任务 ${index} 时出错:`, error);
         }
@@ -348,26 +357,6 @@ class BluetoothWriter {
       console.error("释放BluetoothWriter时出错:", error);
     }
   }
-  /**
-   * 添加写入任务到队列
-   * @param {WriteTask} task - 写入任务
-   * @param {string} priority - 优先级
-   */
-  //   addWriteTask(task, priority = WritePriority.NORMAL) {
-  //     const queueItem = {
-  //       task: task,
-  //       priority: priority,
-  //       timestamp: Date.now()
-  //     };
-
-  //     if (priority === WritePriority.HIGH) {
-  //       this._writeQueue.unshift(queueItem); // 高优先级插入前端
-  //     } else {
-  //       this._writeQueue.push(queueItem); // 普通优先级添加到末尾
-  //     }
-
-  //     this._processQueue();
-  //   }
 }
 
 class BLEManager {
@@ -483,7 +472,6 @@ class BLEManager {
     // 蓝牙事件订阅管理
     this.bleSubscription = null;
     this._subscriptions = new Set(); // 管理多个订阅
-
 
     // 初始化蓝牙状态监听器
     this._initializeBluetoothStateListener();
@@ -668,7 +656,7 @@ class BLEManager {
       deviceName: this._deviceName,
       passwordVerified: this._passwordVerified,
       lastError: this._lastError,
-      isConnectionEnabled: this._isConnectionEnabled
+      isConnectionEnabled: this._isConnectionEnabled,
     };
 
     this._listeners.forEach((listener, index) => {
@@ -728,7 +716,8 @@ class BLEManager {
               discoveredPeripherals: this._discoveredPeripherals,
               batteryData: this._batteryData,
               parameterValues: Object.fromEntries(this._parameterValues),
-              locale: this._locale
+              locale: this._locale,
+              writeCharacteristic: this._writeCharacteristic,
             });
 
             // 同步电池数据到主状态
@@ -856,11 +845,10 @@ class BLEManager {
     return new Promise((resolve, reject) => {
       uni.getBluetoothDevices({
         success: (res) => {
-          console.log('获取已发现的设备成功:', res);
           if (res.devices && Array.isArray(res.devices)) {
             // 处理已发现的设备
             this._handleDeviceFound({
-              devices: res.devices
+              devices: res.devices,
             });
           }
           resolve(res);
@@ -886,32 +874,23 @@ class BLEManager {
       if (!name) continue; // 仍然只展示有名称的设备
 
       const idx = this._discoveredPeripherals.findIndex(d => d.deviceId === device.deviceId);
-      if (idx === -1) {
-        const isUnknownDevice = name.includes('未知') || name.toLowerCase().includes('unknown');
-        const deviceData = {
-          deviceId: device.deviceId,
-          name,
-          RSSI: device.RSSI || 0,
-          advertisData: device.advertisData || {},
-          advertisServiceUUIDs: device.advertisServiceUUIDs || [],
-          localName: device.localName || '',
-          serviceData: device.serviceData || {}
-        };
-        
-        if (isUnknownDevice) {
-          this._discoveredPeripherals.push(deviceData);
-        } else {
-          this._discoveredPeripherals.unshift(deviceData);
-        }
-      } else {
-        const d = this._discoveredPeripherals[idx];
-        d.name = name || d.name;
-        d.RSSI = device.RSSI || d.RSSI || 0;
-        d.advertisData = device.advertisData || d.advertisData || {};
-        d.advertisServiceUUIDs = device.advertisServiceUUIDs || d.advertisServiceUUIDs || [];
-        d.localName = device.localName || d.localName || '';
-        d.serviceData = device.serviceData || d.serviceData || {};
-      }
+      if (idx !== -1) continue;
+      // 判断是否为未知设备
+      const isUnknownDevice = /未知|unknown/i.test(name);
+      const deviceData = {
+        deviceId: device.deviceId,
+        name,
+        RSSI: device.RSSI || 0,
+        advertisData: device.advertisData || {},
+        advertisServiceUUIDs: device.advertisServiceUUIDs || [],
+        localName: device.localName || '',
+        serviceData: device.serviceData || {}
+      };
+      
+      // 根据设备类型决定添加位置
+      isUnknownDevice 
+        ? this._discoveredPeripherals.push(deviceData) 
+        : this._discoveredPeripherals.unshift(deviceData);
     }
 
     this._notifyListeners();
@@ -1147,7 +1126,6 @@ class BLEManager {
 
     return new Promise((resolve, reject) => {
       uni.startBluetoothDevicesDiscovery({
-        interval: 0,
         success: (res) => {
           this._isScanning = true;
           this._notifyListeners();
@@ -1540,7 +1518,7 @@ class BLEManager {
 
       if (properties && properties.notify) {
         // 启用通知
-        await this._setNotifyValue(true);
+        await this._notifyCharacteristicValue(true);
         console.log("已订阅通知");
 
       } else if (properties && properties.read) {
@@ -1564,7 +1542,7 @@ class BLEManager {
    * @private
    * @param {boolean} state - 是否启用通知
    */
-  async _setNotifyValue(state) {
+  async _notifyCharacteristicValue(state) {
     return new Promise((resolve, reject) => {
       uni.notifyBLECharacteristicValueChange({
         deviceId: this._notifyCharacteristic.deviceId,
@@ -1599,7 +1577,15 @@ class BLEManager {
         },
         fail: (err) => {
           console.error('读取特征值失败:', err);
-          reject(new Error(`读取特征值失败: ${err.errMsg}`));
+          if (ree.code === 10007) {
+            console.log('特征值不支持读取，尝试启用通知...');
+              this._enableNotifyCharacteristic().then(() => {
+                console.log('通知已启用，数据将通过通知方式获取');
+                resolve({ message: '数据将通过通知方式获取' });
+              }).catch(reject);
+          } else {
+            reject(new Error(`读取特征值失败: ${err.errMsg}`));
+          }
         }
       });
     });
@@ -1749,8 +1735,7 @@ class BLEManager {
   }
 
   /**
-   * 将ArrayBuffer转换为十六进制字符串
-   * @private
+   * 将ArrayBuffer转换为十六进制字符串用于日志
    * @param {Uint8Array} data - 要转换的数据
    * @returns {string} 十六进制字符串
    */
@@ -1806,9 +1791,6 @@ class BLEManager {
     if (dataArray.length === 0) {
       return;
     }
-
-    const newValues = new Map();
-
     try {
       // 处理每个数据项
       for (const item of dataArray) {
@@ -1868,97 +1850,121 @@ class BLEManager {
         if (parts.length === 2) {
           const keyOfEqual = parts[0].trim();
           const value = parts[1].trim();
-          this._handleParameterSetting(keyOfEqual, value, newValues);
+          this._handleParameterSetting(keyOfEqual, value);
         }
       }
-
-      // 更新参数值
-      this._parameterValues = new Map(newValues);
       this._notifyListeners();
     } catch (error) {
       console.error('处理缓冲区数据出错:', error);
     }
   }
 
-  _handleParameterSetting(key, value, newValues) {
+  _handleParameterSetting(key, value) {
     switch (key) {
       case 'CS':
-        AppConstants.setCommandMap('CS', newValues, value);
+        // 串数设置
+        this._parameterValues = AppConstants.setCommandMap('CS', this._parameterValues, value);
         this._batteryData.totalStrings = Math.max(0, Math.min(252, parseInt(value) || 0));
         console.log(`Updated CS value: ${value}, displayed strings: ${this._batteryData.totalStrings}`);
         break;
       case 'gybh':
-        AppConstants.setCommandMap('gybh', newValues, value);
+        // 过压保护
+        this._parameterValues = AppConstants.setCommandMap('gybh', this._parameterValues, value);
         break;
       case 'gyhf':
-        AppConstants.setCommandMap('gyhf', newValues, value);
+        // 过压恢复
+        this._parameterValues = AppConstants.setCommandMap('gyhf', this._parameterValues, value);
         break;
       case 'qyhf':
-        AppConstants.setCommandMap('qyhf', newValues, value);
+        // 欠压恢复
+        this._parameterValues = AppConstants.setCommandMap('qyhf', this._parameterValues, value);
         break;
       case 'qybh':
-        AppConstants.setCommandMap('qybh', newValues, value);
+        // 欠压保护 - 修复：之前错误地使用了qyhf
+        this._parameterValues = AppConstants.setCommandMap('qybh', this._parameterValues, value);
         break;
       case 'usergw':
-        AppConstants.setCommandMap('usergw', newValues, value);
+        // 探头高温
+        this._parameterValues = AppConstants.setCommandMap('usergw', this._parameterValues, value);
         break;
       case 'userhf':
-        AppConstants.setCommandMap('userhf', newValues, value);
+        // 探头恢复
+        this._parameterValues = AppConstants.setCommandMap('userhf', this._parameterValues, value);
         break;
       case 'mosgw':
-        AppConstants.setCommandMap('mosgw', newValues, value);
+        // MOS高温
+        this._parameterValues = AppConstants.setCommandMap('mosgw', this._parameterValues, value);
         break;
       case 'moshf':
-        AppConstants.setCommandMap('moshf', newValues, value);
+        // MOS恢复
+        this._parameterValues = AppConstants.setCommandMap('moshf', this._parameterValues, value);
         break;
       case 'jhyc':
-        AppConstants.setCommandMap('jhyc', newValues, value);
+        // 均衡压差
+        this._parameterValues = AppConstants.setCommandMap('jhyc', this._parameterValues, value);
         break;
       case 'jhwd':
-        AppConstants.setCommandMap('jhwd', newValues, value);
+        // 均衡温度
+        this._parameterValues = AppConstants.setCommandMap('jhwd', this._parameterValues, value);
         break;
       case 'dcrl':
-        AppConstants.setCommandMap('dcrl', newValues, value);
-        break;
+        // 电池容量
+        this._parameterValues = AppConstants.setCommandMap('dcrl', this._parameterValues, value);
+        break;      
       case 'ycjh':
-        AppConstants.setCommandMap('ycjh', newValues, value);
-        break;
+        // 压差均衡
+        this._parameterValues = AppConstants.setCommandMap('ycjh', this._parameterValues, value);
+        break;    
       case 'jhqd':
-        AppConstants.setCommandMap('jhqd', newValues, value);
+        // 均衡启动
+        this._parameterValues = AppConstants.setCommandMap('jhqd', this._parameterValues, value);
+        break;
+      case 'dqdl':
+        // 当前电流
+        this._parameterValues = AppConstants.setCommandMap('dqdl', this._parameterValues, value);
         break;
       case 'gzys':
-        AppConstants.setCommandMap('gzys', newValues, value);
+        // 故障延时
+        this._parameterValues = AppConstants.setCommandMap('gzys', this._parameterValues, value);
         break;
       case 'glbh':
-        AppConstants.setCommandMap('glbh', newValues, value);
+        // 过流保护
+        this._parameterValues = AppConstants.setCommandMap('glbh', this._parameterValues, value);
         break;
       case 'cdgl':
-        AppConstants.setCommandMap('cdgl', newValues, value);
+        // 充电过流
+        this._parameterValues = AppConstants.setCommandMap('cdgl', this._parameterValues, value);
         break;
       case 'ycbh':
-        AppConstants.setCommandMap('ycbh', newValues, value);
+        // 压差保护
+        this._parameterValues = AppConstants.setCommandMap('ycbh', this._parameterValues, value);
         this._batteryData.ycbh = parseFloat(value) || 0;
         break;
       case 'ver':
-        AppConstants.setCommandMap('ver', newValues, value);
+        // 版本信息
+        this._parameterValues = AppConstants.setCommandMap('ver', this._parameterValues, value);
         this.versionName = value;
         break;
       case 'dljd':
-        AppConstants.setCommandMap('dljd', newValues, value);
+        // 电流检测
+        this._parameterValues = AppConstants.setCommandMap('dljd', this._parameterValues, value);
         break;
       case 'dlxd':
-        AppConstants.setCommandMap('dlxd', newValues, value);
+        // 电流消抖
+        this._parameterValues = AppConstants.setCommandMap('dlxd', this._parameterValues, value);
         break;
       case 'dlys':
-        AppConstants.setCommandMap('dlys', newValues, value);
+        // 短路延时
+        this._parameterValues = AppConstants.setCommandMap('dlys', this._parameterValues, value);
         break;
       case 'jhpl':
-        AppConstants.setCommandMap('jhpl', newValues, value);
+        // 均衡频率
+        this._parameterValues = AppConstants.setCommandMap('jhpl', this._parameterValues, value);
         break;
       default:
         console.warn(`未知参数: ${key}`);
         break;
-    }
+    };
   }
   startAutoRefresh(interval = 5000) {
     const heartbeatData = this._stringToUint8Array("re");
@@ -2112,7 +2118,7 @@ class BLEManager {
   async disconnect() {
     console.log('disconnect 断开连接', this._isConnected, 333, this._peripheral);
     
-    if (!this._isConnected && this._peripheral) {
+    if (this._isConnected && this._peripheral) {
       console.log('断开设备连接...');
       try {
         // 停止密码验证定时器
@@ -2155,26 +2161,10 @@ class BLEManager {
         this._isConnectionEnabled = false;
         this._notifyListeners();
       }
-      await new Promise((resolve, reject) => {
-        uni.closeBLEConnection({
-          deviceId: this._peripheral.deviceId,
-          success: (res) => {
-            console.log('设备断开连接成功:', res);
-            resolve(res);
-          },
-          fail: (err) => {
-            console.error('设备断开连接失败:', err);
-            // 即使断开失败，也要重置状态
-            resolve(err);
-          }
-        });
-      });
-
       console.log('设备连接已断开');
     } else {
       console.log('设备未连接，跳过断开操作');
     }
-
   }
 
   /**
@@ -2415,7 +2405,7 @@ class BLEManager {
 
       if (success) {
         // 密码修改成功
-        this._showToast(this.t("passwordModifiedSuccess"));
+        this._showToast(this.t("password_modified_success"));
       } else {
         this._showToast(this.t("password_error")); // 失败时显示提示
         console.log(`发送命令 '${command}' 失败: 写入操作失败`);
@@ -2498,7 +2488,7 @@ class BLEManager {
 
   setBalanceTemperature(temp) {
     this._sendControlCommand(CommandType.NORMAL_VALUE, {
-      prefix: "jhtw",
+      prefix: "jhwd",
       normalValue: temp
     });
   }
@@ -2562,24 +2552,28 @@ class BLEManager {
       normalValue: value
     });
   }
+  // 探头低温
   setMosHighTemperature(value) {
     this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "msgw",
       normalValue: value
     });
   }
+  // 电压差
   setBalanceVoltageDiff(value) {
     this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "jhyc",
       normalValue: value
     });
   }
+  // 电流限制
   setCurrentLimit(value) {
     this._sendControlCommand(CommandType.INTEGER_VALUE, {
       prefix: "dqdl",
       integerValue: value
     });
   }
+  // 过流保护
   setFaultDelay(value) {
     this._sendControlCommand(CommandType.INTEGER_VALUE, {
       prefix: "gyys",
@@ -2626,11 +2620,9 @@ class BLEManager {
       });
     }
   }
+  // 读取参数
   readParameters() {
     this.sendCommand("read\n");
-    // setTimeout(() => {
-    //   // 延迟处理逻辑
-    // }, 2000);
   }
   /**
    * 发送命令
@@ -3134,7 +3126,7 @@ class BLEManager {
       this._lastError = "当前蓝牙适配器不可用";
     } else if (error.errCode === 10009) {
       this._lastError = "当前蓝牙适配器不可用";
-    } else if (error.errMsg && error.errMsg.includes('unauthorized')) {
+    } else if (error.errMsg && error.errMsg.includes('auth deny')) {
       this._lastError = "请授权蓝牙权限";
     } else {
       this._lastError = error.errMsg || "蓝牙操作失败";

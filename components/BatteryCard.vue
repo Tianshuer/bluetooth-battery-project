@@ -175,7 +175,7 @@ export default {
       console.log('isConnected', this.isConnected);
       console.log('localIsConnected', this.localIsConnected);
       try {
-        if (!e.detail.value && this.localIsConnected) {
+        if (!newValue && this.localIsConnected) {
           console.log('想要关闭蓝牙', this.isConnected);
           // 检查是否有可用的设备
           if (!this.batteryDevice || !this.batteryDevice.deviceId) {
@@ -194,15 +194,7 @@ export default {
       } catch(error) {
         console.error('error: ', error);
         // await bleManager.disconnect();
-        if (!this.isConnected) {
-          uni.showToast({
-            title: this.t('connection_closed'),
-            icon: 'none',
-            duration: 2000,
-            mask: true,
-          });
-        }
-        console.log(this.isConnected);
+        console.log(123123, this.isConnected);
       }
     },
   },

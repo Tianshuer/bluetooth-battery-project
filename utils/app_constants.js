@@ -8,25 +8,25 @@ class AppConstants {
       "series_number_setting": "CS",
       "over_voltage_protection": "gybh",
       "over_voltage_recovery": "gyhf",
-      "under_voltage_protection": "qybh",
       "under_voltage_recovery": "qyhf",
-      "probe_high_temp": "usgw",
-      "probe_recovery_temp": "ushf",
-      "mos_high_temp": "msgw",
-      "mos_recovery_temp": "mshf",
+      "under_voltage_protection": "qybh",
+      "probe_high_temp": "usergw",
+      "probe_recovery_temp": "userhf",
+      "mos_high_temp": "mosgw",
+      "mos_recovery_temp": "moshf",
       "balance_voltage_diff": "jhyc",
       "balance_temperature": "jhwd",
-      "balance_frequency": "jhpl",
       "battery_capacity": "dcrl",
       "voltage_diff_balance": "ycjh",
       "balance_start": "jhqd",
-      "current_limit": "dqdl",
-      "fault_delay": "gyys",
+      "current_limit": "dljd",
+      "fault_delay": "gzys",
       "over_current_protection": "glbh",
       "charging_over_current": "cdgl",
       "voltage_diff_protection": "ycbh",
       "current_limit_debounce": "dlxd",
       "short_circuit_delay": "dlys",
+      "balance_frequency": "jhpl",
       "rename_device": "",
     };
   }
@@ -37,25 +37,25 @@ class AppConstants {
       "series_number_setting": "CS",  // 串数设置
       "over_voltage_protection": "gybh",  // 过压保护
       "over_voltage_recovery": "gyhf",   // 过压恢复
-      "under_voltage_protection": "qybh",  // 欠压保护
       "under_voltage_recovery": "qyhf",  // 欠压恢复
-      "probe_high_temp": "usgw",  // 探头高温
-      "probe_recovery_temp": "ushf",  // 探头恢复
-      "mos_high_temp": "msgw",  // MOS高温
-      "mos_recovery_temp": "mshf", // MOS恢复
+      "under_voltage_protection": "qybh",  // 欠压保护
+      "probe_high_temp": "usergw",  // 探头高温
+      "probe_recovery_temp": "userhf",  // 探头恢复
+      "mos_high_temp": "mosgw",  // MOS高温
+      "mos_recovery_temp": "moshf", // MOS恢复
       "balance_voltage_diff": "jhyc",  // 均衡压差
       "balance_temperature": "jhwd",  // 均衡温度
-      "balance_frequency": "jhpl",  // 均衡频率
       "battery_capacity": "dcrl",  // 电池容量
       "voltage_diff_balance": "ycjh",  // 压差均衡
       "balance_start": "jhqd",   // 均衡启动
-      "current_limit": "dqdl",  // 当前电流
-      "fault_delay": "gyys",  // 故障延时
+      "fault_delay": "gzys",  // 故障延时
+      "current_limit": "dljd",  // 当前电流
       "over_current_protection": "glbh",  // 过流保护
       "charging_over_current": "cdgl",   // 充电过流
       "voltage_diff_protection": "ycbh",  // 压差保护
       "current_limit_debounce": "dlxd",  // 电流消抖
       "short_circuit_delay": "dlys",  // 短路延时
+      "balance_frequency": "jhpl",  // 均衡频率
       "rename_device": "",
     };
   }
@@ -94,13 +94,19 @@ class AppConstants {
    * @param {string} commandValue - 命令值
    * @param {Map} newMap - 新映射
    * @param {string} newValue - 新值
+   * @returns {Map} 新的Map对象
    */
   static setCommandMap(commandValue, newMap, newValue) {
     // 如果没有找到匹配的值
     const key = this.getKeyFromCommandMap(commandValue);
     if (key !== null) {
-      newMap.set(key, newValue);
+      // 创建新的Map副本，避免修改原始Map
+      const resultMap = new Map(newMap);
+      resultMap.set(key, newValue);
+      return resultMap;
     }
+    // 如果没有找到匹配的命令，返回原始Map的副本
+    return new Map(newMap);
   }
 
   /**
@@ -141,3 +147,5 @@ class AppConstants {
     }
   }
 }
+
+export default AppConstants;

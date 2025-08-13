@@ -72,8 +72,6 @@ export default {
 		// 监听 store 中的 discoveredPeripherals 变化
 		discoveredPeripherals: {
 			handler(newDevices) {
-				console.log('Store中的设备列表已更新:', newDevices);
-				// 实时同步到本地状态
 				this.localDiscoveredPeripherals = [...newDevices];
 			},
 			immediate: true, // 立即执行一次
@@ -82,7 +80,6 @@ export default {
 		// 监听 store 中的 isScanning 变化
 		isScanning: {
 			handler(newScanningState) {
-				// 实时同步到本地状态
 				this.localIsScanning = newScanningState;
 			},
 			immediate: true // 立即执行一次
@@ -142,7 +139,7 @@ export default {
 			uni.showToast({
 				title: this.t('loading'),
 				icon: 'loading',
-				duration: 3000,
+				duration: 5000,
 				mask: true,
 			});
 			
@@ -152,7 +149,7 @@ export default {
 			// 10秒后自动停止扫描
 			setTimeout(async () => {
 				await bleManager.stopScanning();
-			}, 10000);
+			}, 5000);
 		},
 	
 		

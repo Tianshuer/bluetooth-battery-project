@@ -50,7 +50,11 @@ export default {
       'statusBarHeight',
       'isConnected',
       'passwordVerified',
+      'parameterValues',
     ]),
+    safeParameterValues() {
+      return this.parameterValues || {};
+    },
     // 功能按钮配置 - 响应语言变化
     functionButtonsConfig() {
       return [
@@ -63,173 +67,224 @@ export default {
     },
     // 表单输入项配置 - 响应语言变化
     formInputItems() {
+      console.log('safeParameterValues: ', this.safeParameterValues);
+      
+      const {
+        series_number_setting,
+        over_voltage_protection,
+        over_voltage_recovery,
+        under_voltage_protection,
+        under_voltage_recovery,
+        probe_high_temp,
+        probe_recovery_temp,
+        mos_high_temp,
+        mos_recovery_temp,
+        balance_voltage_diff,
+        balance_temperature,
+        balance_frequency,
+        battery_capacity,
+        voltage_diff_balance,
+        balance_start,
+        current_limit, 
+        fault_delay,
+        over_current_protection,
+        charging_over_current,
+        voltage_diff_protection,
+        current_limit_debounce,
+        short_circuit_delay,
+        rename_device
+      } = this.safeParameterValues;
       return [
         {
           label: this.t('series_number_setting'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'stringCount'
+          key: 'seriesNumberSetting',
+          params: series_number_setting || 0,
         },
         {
           label: this.t('over_voltage_protection'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'overvoltageProtection'
+          key: 'overvoltageProtection',
+          params: over_voltage_protection,
         },
         {
           label: this.t('over_voltage_recovery'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'overvoltageRecovery'
+          key: 'overvoltageRecovery',
+          params: over_voltage_recovery,
         },
         {
           label: this.t('under_voltage_protection'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'undervoltageProtection'
+          key: 'undervoltageProtection',
+          params: under_voltage_protection,
         },
         {
           label: this.t('under_voltage_recovery'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'undervoltageRecovery'
+          key: 'undervoltageRecovery',
+          params: under_voltage_recovery,
         },
         {
           label: this.t('probe_high_temp'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'probeHighTemp'
+          key: 'probeHighTemp',
+          params: probe_high_temp,
         },
         {
           label: this.t('probe_recovery_temp'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'probeRecovery'
+          key: 'probeRecovery',
+          params: probe_recovery_temp,
         },
         {
           label: this.t('mos_high_temp'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'mosHighTemp'
+          key: 'mosHighTemp',
+          params: mos_high_temp,
         },
         {
           label: this.t('mos_recovery_temp'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'mosRecovery'
+          key: 'mosRecovery',
+          params: mos_recovery_temp,
         },
         {
           label: this.t('balance_voltage_diff'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'balancePressureDiff'
+          key: 'balancePressureDiff',
+          params: balance_voltage_diff,
         },
         {
           label: this.t('balance_temperature'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'balanceTemperature'
+          key: 'balanceTemperature',
+          params: balance_temperature,
         },
         {
           label: this.t('balance_frequency'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'balanceFrequency'
+          key: 'balanceFrequency',
+          params: balance_frequency,
         },
         {
           label: this.t('battery_capacity'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'batteryCapacity'
+          key: 'batteryCapacity',
+          params: battery_capacity,
         },
         {
           label: this.t('voltage_diff_balance'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'pressureDiffBalance'
+          key: 'pressureDiffBalance',
+          params: voltage_diff_balance,
         },
         {
           label: this.t('balance_start'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'balanceStart'
+          key: 'balanceStart',
+          params: balance_start,
         },
         {
           label: this.t('current_limit'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'currentFlow'
+          key: 'currentFlow',
+          params: current_limit,
         },
         {
           label: this.t('fault_delay'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'faultDelayTime'
+          key: 'faultDelayTime',
+          params: fault_delay,
         },
         {
           label: this.t('over_current_protection'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'overcurrentProtection'
+          key: 'overcurrentProtection',
+          params: over_current_protection,
         },
         {
           label: this.t('charging_over_current'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'chargingOvercurrent'
+          key: 'chargingOvercurrent',
+          params: charging_over_current,
         },
         {
           label: this.t('voltage_diff_protection'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'pressureDiffProtection'
+          key: 'pressureDiffProtection',
+          params: voltage_diff_protection,
         },
         {
           label: this.t('current_limit_debounce'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'currentDebounce'
+          key: 'currentDebounce',
+          params: current_limit_debounce,
         },
         {
           label: this.t('short_circuit_delay'),
           placeholder: this.t('input_value'),
           type: 'number',
           buttonText: this.t('send'),
-          key: 'shortStepDelayTime'
+          key: 'shortStepDelayTime',
+          params: short_circuit_delay,
         },
         {
           label: this.t('bluetooth_rename'),
           placeholder: this.t('input_value'),
           type: 'text',
           buttonText: this.t('send'),
-          key: 'bluetoothRename'
+          key: 'bluetoothRename',
+          params: rename_device,
         }
       ]
     },
   },
   onLoad() {
     this.getScreenHeight();
+    console.log('parameterValues111111', this.parameterValues);
   },
   methods: {
     // 获取系统信息
@@ -253,8 +308,6 @@ export default {
         });
         return;
       }
-      console.log('功能按钮点击:', button);
-      
       // 根据action执行对应的操作
       switch(button.action) {
         case 'batteryReset':
@@ -311,8 +364,8 @@ export default {
       
       // 根据不同的表单项执行不同的逻辑
       switch(item.key) {
-        case 'stringCount':
-          this.handleStringCountSetting(value);
+        case 'seriesNumberSetting':
+          this.handleSeriesNumberSettingSetting(value);
           break;
         case 'overvoltageProtection':
         case 'overvoltageRecovery':
@@ -349,10 +402,10 @@ export default {
       }
     },
     
-    // 处理串数设置
-    handleStringCountSetting(value) {
-      const stringCount = parseInt(value);
-      if (stringCount < 1 || stringCount > 32) {
+    // 串数设置
+    handleSeriesNumberSettingSetting(value) {
+      const seriesNumberSetting = parseInt(value);
+      if (seriesNumberSetting < 1 || seriesNumberSetting > 32) {
         uni.showToast({
           title: this.t('series_count_range_error'),
           icon: 'none'
@@ -368,7 +421,7 @@ export default {
       setTimeout(() => {
         uni.hideLoading();
         uni.showToast({
-          title: this.t('series_count_set_success', stringCount),
+          title: this.t('series_count_set_success', seriesNumberSetting),
           icon: 'success'
         });
       }, 1500);

@@ -8,6 +8,9 @@
       <view class="label-section">
         <text class="label">{{ item.label }}</text>
       </view>
+      <view class="value-text">
+        <text>{{ item.params }}</text>
+      </view>
       <view class="input-section">
         <input 
           v-model="item.value"

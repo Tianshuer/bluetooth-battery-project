@@ -133,6 +133,8 @@ export default new Vuex.Store({
       // 参数值
       parameterValues: {},
 
+      writeCharacteristic: null,
+
       // 语言设置
       locale: 'zh'
     },
@@ -240,6 +242,7 @@ export default new Vuex.Store({
       if (data.batteryData !== undefined) state.bleManager.batteryData = data.batteryData;
       if (data.parameterValues !== undefined) state.bleManager.parameterValues = data.parameterValues;
       if (data.locale !== undefined) state.bleManager.locale = data.locale;
+      if (data.writeCharacteristic !== undefined) state.bleManager.writeCharacteristic = data.writeCharacteristic;
     },
 
     UPDATE_DISCOVERED_PERIPHERALS(state, peripherals) {
@@ -576,6 +579,7 @@ export default new Vuex.Store({
     discoveredPeripherals: state => state.bleManager.discoveredPeripherals,
     batteryData: state => state.bleManager.batteryData,
     parameterValues: state => state.bleManager.parameterValues,
-    bleManagerLocale: state => state.bleManager.locale
+    bleManagerLocale: state => state.bleManager.locale,
+    writeCharacteristic: state => state.bleManager.writeCharacteristic,
   }
 })
