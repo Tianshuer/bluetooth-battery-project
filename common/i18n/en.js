@@ -167,7 +167,7 @@ export default {
   "password_length_error": "Password length incorrect",
   "password_mismatch": "Password mismatch",
   "please_input_verify_code": "Please input verification code",
-  "passwordModifiedSuccess": "Password modified successfully",
+  "password_modified_success": "Password modified successfully",
   
   // ==================== Status Feedback ====================
   "device_renamed": "Device name changed to: %@",

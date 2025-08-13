@@ -167,7 +167,7 @@ export default {
   "password_length_error": "密码长度不正确",
   "password_mismatch": "密码不匹配",
   "please_input_verify_code": "请输入验证码",
-  "passwordModifiedSuccess": "密码修改成功",
+  "password_modified_success": "密码修改成功",
   
   // ==================== 状态反馈 ====================
   "device_renamed": "设备名称已更改为: %@",
