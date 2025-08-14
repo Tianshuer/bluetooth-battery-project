@@ -178,12 +178,11 @@ export default {
   
   // ==================== 保护功能 ====================
   "short_circuit_protection": "短路保护",
-  "single_overvoltage": "单体过压",
+  "single_under_voltage": "单体欠压",
   "manual_close": "手动关闭",
   "string_drop": "掉串",
   "delay_recovery": "延时恢复",
   "normal": "正常",
-  "single_undervoltage": "单体欠压",
   "over_temperature": "过温保护",
   "under_temperature": "欠温保护",
   "communication_error": "通信错误",

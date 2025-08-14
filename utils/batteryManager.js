@@ -2975,7 +2975,7 @@ class BLEManager {
     if ((statusValue & 0x80) !== 0) {
       statusText = this.t("short_circuit_protection") || '短路保护';
     } else if ((statusValue & 0x01) !== 0) {
-      statusText = this.t("single_overvoltage") || '单体过压';
+      statusText = this.t("single_under_voltage") || '单体欠压';
     } else if ((statusValue & 0x02) !== 0) {
       statusText = this.t("manual_close") || '手动关闭';
     } else if ((statusValue & 0x04) !== 0) {
