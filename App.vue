@@ -16,7 +16,7 @@
 			// 设置蓝牙管理器状态变化监听器，自动同步到Vuex
 			bleManager.addListener((stateData) => {
 				// 状态变化时会自动调用_syncStateToVuex方法
-				// console.log('app.vue 蓝牙状态变化，已自动同步到Vuex', stateData);
+				console.log('app.vue 蓝牙状态变化，已自动同步到Vuex', stateData);
 				if (stateData.isConnected && this.$store.state.bleManager.writeCharacteristic) {
 					console.log('App Launch 读取参数');
 					bleManager.readParameters();

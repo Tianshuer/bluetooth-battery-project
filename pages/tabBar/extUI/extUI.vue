@@ -67,8 +67,6 @@ export default {
     },
     // 表单输入项配置 - 响应语言变化
     formInputItems() {
-      console.log('safeParameterValues: ', this.safeParameterValues);
-      
       const {
         series_number_setting,
         over_voltage_protection,
@@ -101,7 +99,7 @@ export default {
           type: 'number',
           buttonText: this.t('send'),
           key: 'seriesNumberSetting',
-          params: series_number_setting || 0,
+          params: series_number_setting,
         },
         {
           label: this.t('over_voltage_protection'),
@@ -284,7 +282,6 @@ export default {
   },
   onLoad() {
     this.getScreenHeight();
-    console.log('parameterValues111111', this.parameterValues);
   },
   methods: {
     // 获取系统信息
@@ -543,7 +540,7 @@ export default {
       });
     },
     
-    // 电流重置
+    // 电池重置
     handleBatteryReset() {
       bleManager.resetCurrent();
     },

@@ -17,6 +17,18 @@ class WriteTask {
       this.completer.reject = reject;
     });
   }
+  complete(result) {
+    this.completer.resolve(result);
+  }
+  completeError(error) {
+    this.completer.reject(error);
+  }
+  get promise() {
+    return this.completer.promise;
+  }
+  static createIfNull(characteristic, data, existingTask = null) {
+    return existingTask || new WriteTask(characteristic, data);
+  }
 }
 
 const WritePriority = {
@@ -61,13 +73,13 @@ class BluetoothWriter {
    * @param {Uint8Array|null} data - 心跳数据，如果为null则停止心跳
    * @param {number} interval - 心跳间隔（毫秒），默认5000ms
    */
-  setHeartbeat(data = null, interval = 5000) {
+  async setHeartbeat(data = null, interval = 5000) {
     this._stopHeartbeat(); // 停止任何现有的定时器
     this._heartbeatData = data;
     this._heartbeatInterval = interval;
 
     if (this._heartbeatData !== null) {
-      this._startHeartbeat();
+      await this._startHeartbeat();
     }
   }
 
@@ -79,14 +91,14 @@ class BluetoothWriter {
       clearInterval(this._heartbeatTimer);
     }
 
-    this._heartbeatTimer = setInterval(() => {
+    this._heartbeatTimer = setInterval(async () => {
       if (this._heartbeatData !== null && this._writeCharacteristic !== null) {
         console.log('发送心跳包');
 
         // 使用心跳特征值（如果设置了），否则使用写入特征值
         const characteristicToUse = this._heartbeatCharacteristic || this._writeCharacteristic;
 
-        this._enqueueWrite(
+        await this._enqueueWrite(
           characteristicToUse,
           this._heartbeatData,
           null,
@@ -117,27 +129,32 @@ class BluetoothWriter {
    */
   async writeData({
     data,
-    priority = WritePriority.NORMAL
+    priority = WritePriority.NORMAL,
   } = {}) {
-    // 检查写入特征值是否已设置
-    if (!this._writeCharacteristic) {
-      console.error('特征值未设置');
+    try {
+      // 检查写入特征值是否已设置
+      if (!this._writeCharacteristic) {
+        console.error('特征值未设置');
+        return false;
+      }
+  
+      // 创建写入任务
+      const task = new WriteTask(this._writeCharacteristic, data);
+
+      // 将任务加入队列
+      await this._enqueueWrite(
+        this._writeCharacteristic,
+        data,
+        task,
+        priority,
+      );
+      // 等待任务完成并返回结果
+      const result = await task.promise;
+      return result;
+    } catch (error) {
+      console.error('写入数据失败:', error);
       return false;
     }
-
-    // 创建写入任务
-    const task = new WriteTask(this._writeCharacteristic, data);
-
-    // 将任务加入队列
-    this._enqueueWrite(
-      this._writeCharacteristic,
-      data,
-      task,
-      priority,
-    );
-
-    // 等待任务完成并返回结果
-    return task.completer.promise;
   }
 
   /**
@@ -156,33 +173,29 @@ class BluetoothWriter {
    * @param {WriteTask} options.task - 可选的写入任务
    * @param {string} options.priority - 优先级，默认为normal
    */
-  _enqueueWrite(
+  async _enqueueWrite(
     characteristic,
     data,
     task = null,
     priority = WritePriority.NORMAL,
   ) {
     if (!task) {
-      task = new WriteTask(characteristic, data);
+      task = WriteTask.createIfNull(characteristic, data, task);
     }
-    console.log('_writeQueue: ', this._writeQueue);
-    console.log('data: ', data);
-    console.log('task: ', task);
-    console.log('priority: ', priority);
-    console.log('WritePriority: ', WritePriority.HIGH);
-    
     
     let isSameData = false;
     if (this._writeQueue.length > 0) {
-      isSameData = this._isSameData(this._writeQueue[0].data, data);
+      const firstTask = this._writeQueue[0];
+      if (firstTask && firstTask.data) {
+        isSameData = this._isSameData(firstTask.data, data);
+      }
     }
-    console.log('isSameData: ', isSameData);
     if (priority === WritePriority.HIGH &&
       this._writeQueue.length > 0 &&
       isSameData) {
       // 如果队列前端已经是这个心跳包，不要添加另一个
-      console.log("心跳包已在队列中，跳过入队。");
-      task.completer.resolve(true); // 视为成功，因为它很快就会被发送
+      // console.log("心跳包已在队列中，跳过入队。");
+      task.complete(true); // 视为成功，因为它很快就会被发送
       return;
     }
 
@@ -193,7 +206,7 @@ class BluetoothWriter {
       this._writeQueue.push(task); // 普通优先级添加到末尾
       console.log(`入队普通优先级写入（队列中${this._writeQueue.length}个）: ${this._arrayBufferToHex(data)}`);
     }
-    this._processQueue();
+    await this._processQueue();
   }
   /**
    * 按顺序处理写入队列
@@ -216,15 +229,14 @@ class BluetoothWriter {
 
         // 根据您的协议使用超时和withoutResponse。
         // 对于一般命令，withoutResponse: false 对于成功确认更安全。
-        await this._writeBLECharacteristicValue(task.data);
-        success = true;
-        console.log(`写入成功: ${this._arrayBufferToHex(task.data)}`);
+        success = await this._writeBLECharacteristicValue(task.data);
+        console.log(`_processQueue写入成功: ${this._arrayBufferToHex(task.data)}`);
       } catch (error) {
+        console.log(`_processQueue写入失败 ${this._arrayBufferToHex(task.data)}: ${error}`);
         success = false;
-        console.log(`写入失败 ${this._arrayBufferToHex(task.data)}: ${error}`);
         // 可选择：失败时重新入队或记录更多详细信息
       } finally {
-        task.completer.resolve(success); // 向调用者报告结果
+        task.complete(success); // 向调用者报告结果
       }
 
       // 添加小延迟防止过载BLE模块
@@ -242,22 +254,23 @@ class BluetoothWriter {
    * @returns {Promise} 写入结果
    */
   async _writeBLECharacteristicValue(data) {
+    const characteristic = this._writeCharacteristic;
+    let writeData;
+    if (data instanceof ArrayBuffer) {
+      writeData = data;
+    } else if (data instanceof Uint8Array) {
+      writeData = data.buffer;
+    } else if (data.buffer instanceof ArrayBuffer) {
+      writeData = data.buffer;
+    } else if (Array.isArray(data)) {
+      writeData = new Uint8Array(data).buffer;
+    } else {
+      throw new Error(`不支持的数据类型: ${typeof data}`);
+    }
     return new Promise((resolve, reject) => {
-      const characteristic = this._writeCharacteristic;
-
-      let writeData;
-      if (data instanceof ArrayBuffer) {
-        writeData = data;
-      } else if (data instanceof Uint8Array) {
-        writeData = data.buffer;
-      } else if (data.buffer instanceof ArrayBuffer) {
-        writeData = data.buffer;
-      } else if (Array.isArray(data)) {
-        writeData = new Uint8Array(data).buffer;
-      } else {
-        throw new Error(`不支持的数据类型: ${typeof data}`);
-      }
-
+      const timeoutId = setTimeout(() => {
+        reject(new Error('蓝牙写入超时'));
+      }, 5000); 
       uni.writeBLECharacteristicValue({
         deviceId: characteristic.deviceId,
         serviceId: characteristic.serviceId,
@@ -265,12 +278,13 @@ class BluetoothWriter {
         value: writeData,
         writeType: 'writeNoResponse',
         success: (res) => {
-          console.log('BLE写入成功:', res);
-          resolve(res);
+          console.log(`BLE写入成功: ${this._arrayBufferToHex(writeData)}`);
+          resolve(true);
         },
         fail: (err) => {
+          clearTimeout(timeoutId); // 清除超时
           console.error('BLE写入失败:', err);
-          reject(new Error(`BLE写入失败: ${err.errMsg || err.message}`));
+          reject(false);
         }
       });
     });
@@ -283,9 +297,6 @@ class BluetoothWriter {
    * @returns {boolean} 是否相同
    */
   _isSameData(data1, data2) {
-    console.log('data1: ', data1);
-    console.log('data2: ', data2);
-    
     // 情况1：如果data1是Uint8Array/Buffer，直接比较二进制
   if (data1 instanceof Uint8Array || ArrayBuffer.isView(data1)) {
     if (data1.length !== data2.length) return false;
@@ -301,8 +312,6 @@ class BluetoothWriter {
     try {
       const str = JSON.stringify(data1);
       const buf1 = new TextEncoder().encode(str);
-      console.log('buf1: ', buf1, 'length: ', buf1.length);
-      console.log('data2: ', data2, 'length: ', data2.length);
       
       if (buf1.length !== data2.length) return false;
       const view1 = new DataView(buf1.buffer);
@@ -328,13 +337,12 @@ class BluetoothWriter {
       const pendingTasks = this._writeQueue.length;
       this._writeQueue.forEach((task, index) => {
         try {
-          task.completer.resolve(false); // 将待处理任务标记为失败
+          task.complete(false); // 将待处理任务标记为失败
           console.log(`写入失败: ${this._arrayBufferToHex(task.data)}`);
         } catch (error) {
           console.warn(`清理任务 ${index} 时出错:`, error);
         }
       });
-
       if (pendingTasks > 0) {
         console.log(`已清理 ${pendingTasks} 个待处理任务`);
       }
@@ -355,6 +363,21 @@ class BluetoothWriter {
       console.log("BluetoothWriter已释放。");
     } catch (error) {
       console.error("释放BluetoothWriter时出错:", error);
+    }
+  }
+    /**
+   * 将ArrayBuffer转换为十六进制字符串用于日志
+   * @param {Uint8Array} data - 要转换的数据
+   * @returns {string} 十六进制字符串
+   */
+  _arrayBufferToHex(data) {
+    try {
+      return Array.from(data)
+        .map(byte => byte.toString(16).padStart(2, '0'))
+        .join(' ');
+    } catch (error) {
+      console.error("ArrayBuffer转十六进制失败:", error);
+      return '';
     }
   }
 }
@@ -609,11 +632,8 @@ class BLEManager {
    * 移除状态变化监听器
    * @param {Function} listener - 监听器函数
    */
-  removeListener(listener) {
-    const index = this._listeners.indexOf(listener);
-    if (index > -1) {
-      this._listeners.splice(index, 1);
-    }
+  _removeAllListeners() {
+    this._listeners = [];
   }
 
   /**
@@ -1036,10 +1056,7 @@ class BLEManager {
     // 停止扫描
     this._isScanning = false;
 
-    // --- 开始：蓝牙关闭时释放BluetoothWriter ---
-    if (this._bluetoothWriter) {
-      this._bluetoothWriter.dispose();
-    }
+    this.dispose();
     // --- 结束：蓝牙关闭时释放BluetoothWriter ---
 
     // 清理特征值
@@ -1268,7 +1285,7 @@ class BLEManager {
 
 
       // 启动自动刷新（心跳机制）
-      this.startAutoRefresh();
+      await this.startAutoRefresh();
 
       console.log(`设备连接完成: ${peripheral.name || peripheral.deviceId}`);
 
@@ -1354,6 +1371,9 @@ class BLEManager {
 
     // 停止故障延时定时器
     this.stopGZYSTimer();
+
+    // 移除所有状态变化监听器
+    this._removeAllListeners();
 
     // 清空设备信息
     this._peripheral = null;
@@ -1966,13 +1986,13 @@ class BLEManager {
         break;
     };
   }
-  startAutoRefresh(interval = 5000) {
+  async startAutoRefresh(interval = 5000) {
     const heartbeatData = this._stringToUint8Array("re");
-    this._bluetoothWriter.setHeartbeat(heartbeatData, interval);
+    await this._bluetoothWriter.setHeartbeat(heartbeatData, interval);
   }
 
-  stopAutoRefresh() {
-    this._bluetoothWriter.setHeartbeat(null);
+  async stopAutoRefresh() {
+    await this._bluetoothWriter.setHeartbeat(null);
   }
 
   /**
@@ -1991,9 +2011,11 @@ class BLEManager {
       this._cancelBleSubscription();
       this._stopAllTimers();
       this._clearAllStates();
-
-      // 断开设备连接
-      this.disconnect();
+      if (this._peripheral) {
+        // 断开设备连接
+        this.disconnect();
+      }
+      this._removeAllListeners();
 
       console.log('BLE管理器销毁完成');
 
@@ -2127,6 +2149,8 @@ class BLEManager {
         // 重置密码验证状态
         this._passwordVerified = false;
 
+        this._firstPasswordVerified = false;
+
         // --- 开始：不需要直接调用_peripheral.disconnect()，BluetoothWriter会处理 ---
         // 相反，我们只需要释放写入器，它会取消定时器和任务，
         // 让connectionState监听器处理实际的_isConnected标志。
@@ -2159,6 +2183,8 @@ class BLEManager {
         // 即使出错也要重置状态
         this._isConnected = false;
         this._isConnectionEnabled = false;
+        this._firstPasswordVerified = false;
+        this._passwordVerified = false;
         this._notifyListeners();
       }
       console.log('设备连接已断开');
@@ -2293,21 +2319,12 @@ class BLEManager {
    * @returns {Uint8Array} 转换后的Uint8Array
    */
   _stringToUint8Array(str) {
-    try {
-      // 检查TextEncoder是否可用
-      if (typeof TextEncoder !== 'undefined') {
-        // 使用TextEncoder进行UTF-8编码
-        const encoder = new TextEncoder();
-        return encoder.encode(str);
-      } else {
-        // TextEncoder不可用，使用备用方法
-        console.log("TextEncoder不可用，使用备用转换方法");
-        return this._stringToUint8ArrayFallback(str);
-      }
-    } catch (error) {
-      console.error("字符串转换失败:", error);
-      // 使用备用转换方法
-      return this._stringToUint8ArrayFallback(str);
+    if (typeof TextEncoder !== 'undefined') {
+      // 使用TextEncoder
+      return new TextEncoder().encode(str);
+    } else {
+      // 降级到手动转换
+      return new Uint8Array([...str].map(char => char.charCodeAt(0)));
     }
   }
 
@@ -2355,11 +2372,13 @@ class BLEManager {
    * @param {string} password - 密码
    */
   verifyPassword(password) {
+    console.log('verifyPassword11: ', this._firstPasswordVerified, this._passwordVerified);
+    
     try {
       // 如果已经验证过密码，直接返回
       if (this._firstPasswordVerified && this._passwordVerified) { 
         this._showToast(this.t("password_verified"));
-        return true;
+        return;
       }
 
       // 保存密码用于后续验证
@@ -2367,9 +2386,10 @@ class BLEManager {
 
       // 构建密码验证命令
       const command = Command.PASSWORD_PREFIX + password + Command.PASSWORD_SUFFIX;
+      console.log('sand before command: ', command, command.length);
       
       // 发送密码验证命令并等待结果
-      this.sendCommand(command);
+      this.sendCommand(command, WritePriority.HIGH);
     } catch (error) {
       console.error('密码验证过程中发生错误:', error);
       this._showToast(this.t("password_error"));
@@ -2483,7 +2503,7 @@ class BLEManager {
       console.log("命令生成失败");
       return;
     }
-    this.sendCommand(command);
+    this.sendCommand(command, WritePriority.HIGH);
   }
 
   setBalanceTemperature(temp) {
@@ -2492,7 +2512,7 @@ class BLEManager {
       normalValue: temp
     });
   }
-  // 电流重置
+  // 电池重置
   resetCurrent() {
     if (this.guardPasswordVerified()) {
       this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
@@ -2622,36 +2642,48 @@ class BLEManager {
   }
   // 读取参数
   readParameters() {
-    this.sendCommand("read\n");
+    this.sendCommand("read\n", WritePriority.LOW);
   }
   /**
    * 发送命令
    * @param {string} command - 命令字符串
    */
-  async sendCommand(command) {
+  async sendCommand(command, priority = WritePriority.NORMAL) {
     try {
       console.log('准备发送命令:', command);
+      
       // 检查设备连接状态
       if (this._bluetoothWriter._writeCharacteristic === null || this._peripheral === null) {
         console.log("设备未连接，无法发送命令", this.t("ble_not_ready"));
         this._showToast(this.t("ble_not_ready"));
-        return;
+        return false;
       }
 
       // 转换命令为数据格式
       const data = this._stringToUint8Array(command);
       if (data.length === 0) {
-        return;
+        return false;
       }
-
       console.log("发送命令:", command, "数据长度:", data.length);
 
       // 使用BluetoothWriter发送命令
+      // const success = await this._bluetoothWriter.writeData({
+      //   data: data,
+      //   priority: WritePriority.HIGH,
+      // });
+      
+      // if (!command.startsWith("pswd=")) {
+      //   console.log('this._stringToUint8Array(command): ', this._stringToUint8Array(command));
+      //   console.log('_peripheral: ', this._peripheral);
+      //   console.log('this._bluetoothWriter._writeCharacteristic: ', this._bluetoothWriter._writeCharacteristic);
+      //   console.log('data: ', data);
+        
+      //   console.log('success: ', success, 'command123: ', command);
+      // }
       const success = await this._bluetoothWriter.writeData({
         data: data,
-        priority: WritePriority.NORMAL,
+        priority,
       });
-
       if (success) {
         console.log(`命令 '${command}' 发送成功`);
         
@@ -2659,13 +2691,16 @@ class BLEManager {
         if (!command.startsWith("re")) {
           this._showToast(this.t("sent"));
         }
+        return true;
       } else {
         console.log(`发送命令 '${command}' 失败: 写入操作失败`);
         this._showToast(this.t("command_send_failed"));
+        return false;
       }
     } catch (error) {
       console.error(`发送命令 '${command}' 时发生错误:`, error);
       this._showToast(this.t("command_send_failed"));
+      return false;
     }
   }
 
@@ -2689,6 +2724,8 @@ class BLEManager {
   }
 
   _handlePasswordResponse(response) {
+    console.log('_handlePasswordResponse: ', response);
+    
     if (this._firstPasswordVerified) {
       if (response === PasswordResponse.SUCCESS) {
         if (!this._passwordVerified) {
