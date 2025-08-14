@@ -98,7 +98,7 @@ export default {
 			'setConnectionStatus',
 			'setBluetoothDevice',
 		]),
-	
+
 		// 显示弹窗
 		showPopup() {
 			uni.hideTabBar({
@@ -180,7 +180,7 @@ export default {
 		async connectToDevice(device) {
 			try {
 				await bleManager.connect(device);
-				
+
 				if (!this.localIsConnected) {
 					uni.showToast({
 						title: this.t('failed_to_connect_to_device'),
@@ -243,17 +243,8 @@ export default {
 		},
 		
 		// 手动同步 store 数据到本地状态
-		syncStoreData() {
-			this.localIsScanning = this.isScanning;
-			this.localDiscoveredPeripherals = [...this.discoveredPeripherals];
-			this.localIsConnected = this.isConnected;
-		},
 
-	},
-	
-	// 组件挂载时同步 store 数据
-	mounted() {
-		this.syncStoreData();
+
 	},
 
 	// 组件销毁时清理资源

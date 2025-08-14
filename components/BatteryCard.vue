@@ -102,6 +102,7 @@ export default {
     return {
       switchKey: 0,
       localIsConnected: false,
+      bleListener: null,
     }
   },
   computed: {
@@ -126,6 +127,17 @@ export default {
       immediate: true,
     },
   },
+  mounted() {
+    this.bleListener = (stateData) => {
+      console.log('BatteryCard 蓝牙状态变化，已自动同步到Vuex', stateData.isConnected);
+    }
+    this.ensureBleListener();
+		// 初始化蓝牙状态
+		bleManager._notifyListeners();
+  },
+  activated() {
+		this.ensureBleListener();
+	},
   methods: {
     ...mapActions([
       'switchLanguage',
@@ -133,8 +145,20 @@ export default {
       'updateConnectionStatus'
     ]),
 
+    ensureBleListener() {
+			try {
+				const list = bleManager.listeners || [];
+				if (!list.includes(this.bleListener)) {
+					bleManager.addListener(this.bleListener);
+				}
+			} catch (e) {
+				// 兼容没有 getters 的情况，直接尝试添加（内部会做去重）
+				bleManager.addListener(this.bleListener);
+			}
+		},
     // 处理logo点击事件
     handleLogoClick() {
+      this.ensureBleListener();
       this.$refs.bluetoothList.showPopup();
     },
 

@@ -1432,10 +1432,8 @@ class BLEManager {
 
           // 遍历特征值
           for (const characteristic of characteristics.characteristics) {
-            console.log(`检查特征值: ${characteristic.uuid}`);
             // 处理通知特征值
             if (characteristic.uuid === this.constructor.NOTIFY_CHARACTERISTIC_UUID) {
-              console.log(`发现通知特征值: ${characteristic.uuid}`);
               this._notifyCharacteristic = {
                 deviceId: peripheral.deviceId,
                 serviceId: service.uuid,
@@ -1448,7 +1446,6 @@ class BLEManager {
                 notifyCharacteristicFound = true;
               }
             } else if (characteristic.uuid === this.constructor.WRITE_CHARACTERISTIC_UUID) {
-              console.log(`发现写入特征值: ${characteristic.uuid}`);
               this._writeCharacteristic = {
                 deviceId: peripheral.deviceId,
                 serviceId: service.uuid,
@@ -1472,6 +1469,9 @@ class BLEManager {
         }
       }
 
+      if (this._writeCharacteristic) {
+        this.readParameters();
+      }
       // 检查是否找到目标服务
       if (!serviceFound) {
         throw new Error(`未找到目标服务: ${this.constructor.SERVICE_UUID}`);
@@ -1621,11 +1621,8 @@ class BLEManager {
 
     // 设置新的监听器
     uni.onBLECharacteristicValueChange((res) => {
-      console.log('特征值变化:', res.value);
-      console.log('_notifyCharacteristic:', this._notifyCharacteristic.characteristicId);
-
       // 检查是否是我们的通知特征值
-      if (res.characteristicId === this._notifyCharacteristic.characteristicId) {
+      if (this._notifyCharacteristic && res.characteristicId === this._notifyCharacteristic.characteristicId) {
         // 处理接收到的数据
         if (res.value) {
           const data = new Uint8Array(res.value);
@@ -1656,16 +1653,12 @@ class BLEManager {
    * @param {Uint8Array} data - 接收到的数据
    */
   _handleReceivedData(data) {
-    console.log('处理接收到的数据:', this._arrayBufferToHex(data));
     try {
       // 将Uint8Array转换为字符串
       const string = this._uint8ArrayToString(data);
 
       // 添加到接收缓冲区
       this._receiveBuffer += string;
-
-      console.log("接收到的数据:", string);
-      console.log("当前缓冲区:", this._receiveBuffer);
 
       // 检查数据是否包含换行符
       if (this._receiveBuffer.includes("\n")) {
@@ -1804,7 +1797,6 @@ class BLEManager {
    */
   _processReceivedData(completeData) {
     const processedString = completeData.trim();
-    console.log("处理缓冲区数据:", processedString);
 
     const dataArray = processedString.split(" ").filter(item => item.length > 0);
 
@@ -1814,8 +1806,6 @@ class BLEManager {
     try {
       // 处理每个数据项
       for (const item of dataArray) {
-        console.log('item 内容：', item);
-
         // 处理密码验证响应
         if (item === PasswordResponse.SUCCESS || item === PasswordResponse.FAILURE) {
           this._handlePasswordResponse(item);
@@ -2161,9 +2151,11 @@ class BLEManager {
         // 仍然显式断开设备连接
         await this._disconnectPeripheral();
         // --- 结束：BluetoothWriter断开连接处理 ---
-
+        
+        
         // 立即更新UI
         this._isConnected = false;
+        console.log('1111', this._isConnected);
 
         // 更新开关状态
         this._isConnectionEnabled = false;
@@ -2174,8 +2166,7 @@ class BLEManager {
         // 停止扫描
         await this.stopScanning();
 
-        console.log("设备连接已断开");
-
+        this._removeAllListeners()
       } catch (error) {
         console.error("断开连接失败:", error);
         console.log('this._peripheral', this._peripheral);
@@ -2783,7 +2774,6 @@ class BLEManager {
 
   _updateBatteryDataOnMain(key, value) {
     this._updateBatteryData(key, value);
-    console.log('_batteryData', this._batteryData);
 
     // this._batteryData.update();
     this._notifyListeners();
