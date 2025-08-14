@@ -162,7 +162,7 @@ export default {
   "password_success": "Password verification successfully",
   "please_verify_password": "Please verify password",
   "please_input_new_password": "Please input new password",
-  "please_input_digital_password": "Please input digital password",
+  "please_input_digital_value": "Please input digital value",
   "password_required": "Password required",
   "password_length_error": "Password length incorrect",
   "password_mismatch": "Password mismatch",

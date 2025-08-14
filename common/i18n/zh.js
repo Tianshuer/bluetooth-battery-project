@@ -162,7 +162,7 @@ export default {
   "password_success": "密码验证成功",
   "please_verify_password": "请先验证当前密码",
   "please_input_new_password": "请输入新密码",
-  "please_input_digital_password": "请输入数字密码",
+  "please_input_digital_value": "请输入数字值",
   "password_required": "请输入密码",
   "password_length_error": "密码长度不正确",
   "password_mismatch": "密码不匹配",
