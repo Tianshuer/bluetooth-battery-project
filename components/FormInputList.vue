@@ -9,7 +9,7 @@
         <text class="label">{{ item.label }}</text>
       </view>
       <view class="text-section">
-        <text class="label">{{ item.params }}</text>
+        <text class="label">{{ item.params }} {{ item.params ? item.unit : '' }}</text>
       </view>
       <view class="input-section">
         <input 
@@ -103,7 +103,7 @@ export default {
 }
 
 .label-section {
-  width: 120rpx;
+  width: 160rpx;
   flex-shrink: 0;
   display: flex;
   align-items: flex-start;
@@ -111,7 +111,7 @@ export default {
 }
 
 .text-section {
-  width: 132rpx;
+  width: 150rpx;
   flex-shrink: 0;
   display: flex;
   align-items: flex-start;
