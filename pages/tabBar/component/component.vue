@@ -1,10 +1,6 @@
 <template>
   <page-meta :page-style="'overflow:'+(show?'hidden':'visible')">
-    <view class="container" :style="{
-      minHeight: screenHeight + 'px',
-      marginTop: statusBarHeight + 'px',
-      paddingBottom: !isConnected ? '120rpx' : '20rpx'
-    }">
+    <view class="container" :style="containerStyle">
       <!-- 电池状态卡片 -->
       <BatteryCard @language-popup-action="handleLanguagePopupAction" />
       
@@ -103,6 +99,14 @@ export default {
       'isConnected',
     ]),
     
+    containerStyle() {
+      return {
+        minHeight: this.screenHeight + 'px',
+        marginTop: this.statusBarHeight + 'px',
+        paddingBottom: !this.isConnected ? '120rpx' : '20rpx'
+      };
+    },
+
     safeBatteryData() {
       // 直接返回当前使用的电池数据
       return this.currentBatteryData || this.getDefaultBatteryData();
@@ -158,6 +162,35 @@ export default {
     
   },
   watch: {
+    // 'isConnected': {
+    //   handler(newConnectedState) {
+    //     this.isConnected = newConnectedState;
+    //     if (newConnectedState) {
+    //       // 设备连接时，如果有store数据则使用，否则保持当前数据
+    //       if (this.batteryData) {
+    //         this.currentBatteryData = {
+    //           totalVoltage: this.batteryData.totalVoltage || '0.00',
+    //           voltageDiff: this.batteryData.voltageDiff || '0.0000',
+    //           minVoltage: this.batteryData.minVoltage || '0.0000',
+    //           maxVoltage: this.batteryData.maxVoltage || '0.0000',
+    //           averageVoltage: this.batteryData.averageVoltage || '0.0000',
+    //           current: this.batteryData.current || '0.00',
+    //           power: this.batteryData.power || '0.00',
+    //           ratio: this.batteryData.ratio || '0.00',
+    //           totalCapacity: this.batteryData.totalCapacity || '0.0000',
+    //           mosTemperature: this.batteryData.mosTemperature || '0.0',
+    //           balanceTemperature: this.batteryData.balanceTemperature || '0.0',
+    //           chip1Temperature: this.batteryData.chip1Temperature || '0.0',
+    //           chip2Temperature: this.batteryData.chip2Temperature || '0.0',
+    //           cycleCapacity: this.batteryData.cycleCapacity || '0.0000',
+    //           temperatures: this.batteryData.temperatures || [],
+    //         };
+    //       }
+    //       // 如果连接但没有数据，保持当前数据（可能是默认值）
+    //     }
+    //   },
+    //   immediate: true,
+    // },
     // 监听store中的batteryData变化
     batteryData: {
       handler(newData) {
@@ -179,44 +212,12 @@ export default {
             chip2Temperature: newData.chip2Temperature || '0.0',
             cycleCapacity: newData.cycleCapacity || '0.0000',
             temperatures: newData.temperatures || [],
-            currentBatteryLevel: newData.currentBatteryLevel || 0
           };
         }
       },
       immediate: true,
       deep: true
     },
-    
-    // 监听连接状态变化
-    isConnected: {
-      handler(newStatus) {
-        if (newStatus) {
-          // 设备连接时，如果有store数据则使用，否则保持当前数据
-          if (this.batteryData) {
-            this.currentBatteryData = {
-              totalVoltage: this.batteryData.totalVoltage || '0.00',
-              voltageDiff: this.batteryData.voltageDiff || '0.0000',
-              minVoltage: this.batteryData.minVoltage || '0.0000',
-              maxVoltage: this.batteryData.maxVoltage || '0.0000',
-              averageVoltage: this.batteryData.averageVoltage || '0.0000',
-              current: this.batteryData.current || '0.00',
-              power: this.batteryData.power || '0.00',
-              ratio: this.batteryData.ratio || '0.00',
-              totalCapacity: this.batteryData.totalCapacity || '0.0000',
-              mosTemperature: this.batteryData.mosTemperature || '0.0',
-              balanceTemperature: this.batteryData.balanceTemperature || '0.0',
-              chip1Temperature: this.batteryData.chip1Temperature || '0.0',
-              chip2Temperature: this.batteryData.chip2Temperature || '0.0',
-              cycleCapacity: this.batteryData.cycleCapacity || '0.0000',
-              temperatures: this.batteryData.temperatures || [],
-              currentBatteryLevel: this.batteryData.currentBatteryLevel || 0
-            };
-          }
-          // 如果连接但没有数据，保持当前数据（可能是默认值）
-        }
-      },
-      immediate: true
-    }
   },
   onLoad() {
     this.getScreenHeight();
@@ -248,7 +249,6 @@ export default {
         chip2Temperature: '0.0',
         cycleCapacity: '0.0000',
         temperatures: [],
-        currentBatteryLevel: 0
       };
     },
     

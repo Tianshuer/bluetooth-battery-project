@@ -29,7 +29,7 @@
 					</view>
 					
 					<!-- 空状态 -->
-					<view v-if="localDiscoveredPeripherals.length === 0 && !localIsScanning" class="empty-state">
+					<view v-if="localDiscoveredPeripherals.length === 0 && !isScanning" class="empty-state">
 						<text class="empty-text">{{ t('no_devices_found') }}</text>
 					</view>
 				</scroll-view>
@@ -56,8 +56,6 @@ export default {
 	data() {
 		return {
 			localDiscoveredPeripherals: [],
-			localIsScanning: false,
-			localIsConnected: false,
 		}
 	},
 	computed: {
@@ -77,27 +75,8 @@ export default {
 			immediate: true, // 立即执行一次
 			deep: true // 深度监听数组变化
 		},
-		// 监听 store 中的 isScanning 变化
-		isScanning: {
-			handler(newScanningState) {
-				this.localIsScanning = newScanningState;
-			},
-			immediate: true // 立即执行一次
-		},
-		isConnected: {
-			handler(newConnectedState) {
-				console.log('Store中的连接状态已更新:', newConnectedState);
-				// 实时同步到本地状态
-				this.localIsConnected = newConnectedState;
-			},
-			immediate: true // 立即执行一次
-		},
 	},
 	methods: {
-		...mapActions([
-			'setConnectionStatus',
-			'setBluetoothDevice',
-		]),
 
 		// 显示弹窗
 		showPopup() {
@@ -130,7 +109,7 @@ export default {
 		
 		// 开始扫描
 		async startScan() {
-			if (this.localIsScanning) return;
+			if (this.isScanning) return;
 			
 			// 停止之前的扫描
 			this.stopScan(false);
@@ -180,24 +159,15 @@ export default {
 		async connectToDevice(device) {
 			try {
 				await bleManager.connect(device);
-
-				if (!this.localIsConnected) {
+				if (!this.isConnected) {
 					uni.showToast({
 						title: this.t('failed_to_connect_to_device'),
 						icon: 'none',
 						duration: 2000,
 						mask: true,
 					});
-					this.setConnectionStatus(false);
 					await bleManager.disconnect();
 				}
-				
-				// 设置设备信息和连接状态
-				this.setBluetoothDevice({
-					deviceId: device.deviceId,
-					name: device.name
-				});
-				this.setConnectionStatus(true);
 				
 				// 根据当前页面位置决定是否跳转
 				this.handlePageNavigation();
@@ -205,7 +175,6 @@ export default {
 				this.hidePopup();
 			} catch (error) {
 				console.error('连接设备失败:', error);
-				this.setConnectionStatus(false);
 				uni.showToast({
 					title: this.t('failed_to_connect_to_device'),
 					icon: 'none',

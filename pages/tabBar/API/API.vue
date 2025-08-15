@@ -6,7 +6,7 @@
       paddingBottom: !isConnected ? '120rpx' : '20rpx',
     }">
       <!-- 电池状态卡片 -->
-      <BatteryCard :batteryPercentage="batteryLevel" @language-popup-action="handleLanguagePopupAction" />
+      <BatteryCard @language-popup-action="handleLanguagePopupAction" />
       
       <!-- 显示与控制功能组件 -->
       <CommonPanel
@@ -41,6 +41,7 @@
             return {
                 show: false,
                 screenHeight: 0,
+                isConnected: false,
                 currentBatteryVoltageData: [],
                 // 设备状态
                 deviceStatus: {
@@ -104,13 +105,6 @@
             },
         },
         watch: {
-          batteryLevel: {
-            handler(newData) {
-              this.batteryLevel = newData;
-            },
-            immediate: true,
-            deep: true
-          },
           // 监听store中的电池数据变化，更新设备状态
           batteryData: {
             handler(newData) {

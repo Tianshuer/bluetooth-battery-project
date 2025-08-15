@@ -6,7 +6,7 @@
       paddingBottom: !isConnected ? '120rpx' : '20rpx',
     }">
       <!-- 电池状态卡片 -->
-      <BatteryCard :batteryPercentage="75" @language-popup-action="handleLanguagePopupAction" />
+      <BatteryCard @language-popup-action="handleLanguagePopupAction" />
       
       <!-- 公共功能组件 -->
       <CommonPanel

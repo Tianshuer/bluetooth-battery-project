@@ -774,12 +774,12 @@ class BLEManager {
               cellTemp2: this._batteryData.temperatures[1] ? this._batteryData.temperatures[1].toFixed(1) : '0.0',
               cellTemp3: this._batteryData.temperatures[2] ? this._batteryData.temperatures[2].toFixed(1) : '0.0',
               cellTemp4: this._batteryData.temperatures[3] ? this._batteryData.temperatures[3].toFixed(1) : '0.0',
-              currentBatteryLevel: this._calculateBatteryLevel()
             });
 
             // 同步连接状态
-            store.dispatch('setConnectionStatus', this._isConnected);
-            store.dispatch('setPasswordVerified', this._passwordVerified);
+            // store.dispatch('setConnectionStatus', this._isConnected);
+            // store.dispatch('setPasswordVerified', this._passwordVerified);
+            store.dispatch('setCurrentBatteryPercentage', this._calculateBatteryPercentage());
           }
         }
       }
@@ -793,7 +793,7 @@ class BLEManager {
    * @private
    * @returns {number} 电池电量百分比 (0-100)
    */
-  _calculateBatteryLevel() {
+  _calculateBatteryPercentage() {
     try {
       const currentVoltage = this._batteryData.totalVoltage || 0;
       const minVoltage = this._batteryData.minVoltage || 3.0;

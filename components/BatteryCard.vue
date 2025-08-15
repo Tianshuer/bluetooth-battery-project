@@ -8,7 +8,7 @@
       </view>
       <view class="connection-status">
         <switch class="connection-switch"
-          :checked="localIsConnected"
+          :checked="isConnected"
           @change="handleConnectionToggle"
         />
         <text class="status-text">
@@ -23,7 +23,7 @@
       </view>
       <view class="battery-content">
         <view class="battery-header">
-          <text class="battery-percentage">{{ batteryPercentage }}%</text>
+          <text class="battery-percentage">{{ currentBatteryPercentage }}%</text>
           <view class="language-selector" @click="openLanguagePicker">
             <image class="country-flag" :src="languageOptions[currentLanguageIndex].iconUrl" mode="aspectFit"></image>
             <view class="language-text">{{ t('language') }}</view>
@@ -101,7 +101,6 @@ export default {
   data() {
     return {
       switchKey: 0,
-      localIsConnected: false,
       bleListener: null,
     }
   },
@@ -112,20 +111,11 @@ export default {
       'currentLanguageIndex',
       'isConnected',
       't',
-      'batteryPercentage',
       'batteryDevice',
       'versionName',
       'deviceName',
+      'currentBatteryPercentage',
     ]),
-  },
-  watch: {
-    // 监听连接状态变化，确保 switch 组件状态同步
-    isConnected: {
-      handler(newConnectedState) {
-        this.localIsConnected = newConnectedState;
-      },
-      immediate: true,
-    },
   },
   mounted() {
     this.bleListener = (stateData) => {
@@ -141,8 +131,6 @@ export default {
   methods: {
     ...mapActions([
       'switchLanguage',
-      'setConnectionStatus',
-      'updateConnectionStatus'
     ]),
 
     ensureBleListener() {
@@ -196,11 +184,8 @@ export default {
     // 处理连接状态切换
     async handleConnectionToggle(e) {
       const newValue = e.detail.value;
-      console.log('isConnected', this.isConnected);
-      console.log('localIsConnected', this.localIsConnected);
       try {
-        if (!newValue && this.localIsConnected) {
-          console.log('想要关闭蓝牙', this.isConnected);
+        if (!newValue && this.isConnected) {
           // 检查是否有可用的设备
           if (!this.batteryDevice || !this.batteryDevice.deviceId) {
             uni.showToast({
@@ -211,7 +196,7 @@ export default {
             });
           }
           await bleManager.disconnect();
-          console.log(this.localIsConnected, 111);
+          console.log(this.isConnected, 111);
         } else {
           console.log('想要打开蓝牙', this.isConnected);
         }
