@@ -41,14 +41,7 @@
             return {
                 show: false,
                 screenHeight: 0,
-                isConnected: false,
                 currentBatteryVoltageData: [],
-                // 设备状态
-                deviceStatus: {
-                  charging: false,
-                  discharging: false,
-                  balancing: false
-                },
                 // 电压格式化配置
                 voltageFormat: {
                   decimals: 4,
@@ -106,16 +99,11 @@
         },
         watch: {
           // 监听store中的电池数据变化，更新设备状态
-          batteryData: {
+          'batteryData.voltages': {
             handler(newData) {
               if (newData) {
-                this.deviceStatus = {
-                  charging: newData.chargingStatus || false,
-                  discharging: newData.dischargingStatus || false,
-                  balancing: newData.balancingStatus || false
-                };
-                if (newData.voltages) {
-                  this.currentBatteryVoltageData = newData.voltages.map((voltage, index) => ({
+                if (newData) {
+                  this.currentBatteryVoltageData = newData.map((voltage, index) => ({
                     label: index + 1,
                     value: voltage || 0,
                     unit: 'V'
@@ -173,15 +161,6 @@
             // 初始化数据
             initializeData() {
               if (!this.isConnected) return;
-              
-              // 确保 deviceStatus 已初始化
-              if (!this.deviceStatus) {
-                this.deviceStatus = {
-                  charging: false,
-                  discharging: false,
-                  balancing: false
-                };
-              }
             },
 
             checkBeforeControl(actionCallback) {
