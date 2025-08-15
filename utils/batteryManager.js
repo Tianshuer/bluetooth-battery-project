@@ -1,5 +1,6 @@
 import ProductConfig from './productConfig';
 import AppConstants from './app_constants.js';
+import BatteryData from './battery_data.js';
 import i18n from '@/common/i18n/index.js';
 import {
   Command,
@@ -394,65 +395,7 @@ class BLEManager {
 
     // MARK: - 发布属性
     this._isConnected = false;
-    this._batteryData = {
-      // 电池基本信息
-      totalVoltage: 0.0,
-      voltageDiff: 0.0,
-      current: 0.0,
-      power: 0.0,
-      ratio: 0.0,
-      capacity: 0.0,
-      totalCapacity: 0.0,
-      cycleCapacity: 0.0,
-      averageVoltage: 0.0,
-      maxVoltage: 0.0,
-      minVoltage: 0.0,
-      highestString: 0,
-      lowestString: 0,
-
-      // 温度信息
-      mosTemperature: 0.0,
-      balanceTemperature: 0.0,
-      chip1Temperature: 0.0,
-      chip2Temperature: 0.0,
-      temperatures: [], // 温度数组
-
-      // 状态信息
-      chargingStatus: false,
-      dischargingStatus: false,
-      balancingStatus: false,
-
-      // 电池串信息
-      totalStrings: 0,
-      voltages: [], // 电压数组
-      balanceStatus: [], // 均衡状态数组
-
-      // 故障延时
-      gzys: 0,
-
-      // 更新方法
-      update: function () {
-        // 可以在这里添加数据更新逻辑
-        console.log('电池数据已更新');
-      },
-
-      // 获取均衡中的电池串
-      getBalancingStrings: function () {
-        const balancingStrings = [];
-        for (let i = 0; i < this.totalStrings; i++) {
-          const byteIndex = Math.floor(i / 6);
-          const bitPosition = i % 6;
-          const bitIndex = 1 << bitPosition;
-
-          if (byteIndex < this.balanceStatus.length) {
-            if ((this.balanceStatus[byteIndex] & bitIndex) !== 0) {
-              balancingStrings.push(i + 1);
-            }
-          }
-        }
-        return balancingStrings;
-      }
-    };
+    this._batteryData = new BatteryData();
     this._discoveredPeripherals = []; // 发现的设备列表
 
     // 参数读取状态
@@ -759,7 +702,7 @@ class BLEManager {
               temperatures: [...this._batteryData.temperatures],
               stringDrop: this._batteryData.stringDrop || 0,
               dataQuality: 'normal',
-              cycleCapacity: this._batteryData.cycleCapacity.toFixed(4),
+              cycleCapacity: this._batteryData.totalCapacity.toFixed(4),
               batteryCapacity: this._batteryData.totalCapacity.toFixed(4),
               remainingPower: this._batteryData.power.toFixed(2),
               chip1Temp: this._batteryData.chip1Temperature.toFixed(1),
@@ -2059,6 +2002,7 @@ class BLEManager {
       // 重置故障延时数据
       if (this._batteryData) {
         this._batteryData.gzys = 0;
+        this._batteryData.updateProperty('gzys', this._batteryData.gzys);
         // this._batteryData.update();
       }
 
@@ -2770,7 +2714,7 @@ class BLEManager {
 
   _updateBatteryDataOnMain(key, value) {
     this._updateBatteryData(key, value);
-
+    // this._batteryData.updateProperty(key, value);
     // this._batteryData.update();
     this._notifyListeners();
   }
@@ -2784,6 +2728,11 @@ class BLEManager {
     const neededBytes = ((count + 5) / 6);
     this._batteryData.balanceStatus = new Array(neededBytes).fill(0);
     this._batteryData.voltages = new Array(count).fill(0.0); // 调整电压数组大小
+    this._batteryData.updateMultiple({
+      totalStrings: count,
+      balanceStatus: new Array(neededBytes).fill(0),
+      voltages: new Array(count).fill(0.0),
+    })
     // this._batteryData.update();
     this._notifyListeners();
   }
@@ -2809,6 +2758,11 @@ class BLEManager {
     }
 
     // this._batteryData.update();
+    this._batteryData.updateMultiple({
+      chargingStatus,
+      dischargingStatus,
+      balancingStatus,
+    });
     this._notifyListeners();
   }
 
@@ -3130,6 +3084,7 @@ class BLEManager {
         return;
       } else {
         this._batteryData.gzys = this._batteryData.gzys - 1;
+        this._batteryData.updateProperty('gzys', this._batteryData.gzys);
         // this._batteryData.update();
         this._notifyListeners();
       }

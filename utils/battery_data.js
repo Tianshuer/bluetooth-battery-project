@@ -29,18 +29,11 @@ class BatteryData {
     this.chip1Temperature = 0.0;
     this.chip2Temperature = 0.0;
 
-    // 温度数据
-    this.mosTemperature = 0.0;
-    this.balanceTemperature = 0.0;
-    this.temperatures = [0.0, 0.0, 0.0, 0.0];
-    this.chip1Temperature = 0.0;
-    this.chip2Temperature = 0.0;
-
     // 故障延迟倒计时
     this.gzys = 0;
 
     // 状态数据
-    this.voltages = new Array(252).fill(0.0);
+    this.voltages = [];
     this.chargingStatus = false;
     this.dischargingStatus = false;
     this.balancingStatus = false;
@@ -136,7 +129,7 @@ class BatteryData {
     this.chip1Temperature = 0.0;
     this.chip2Temperature = 0.0;
     this.gzys = 0;
-    this.voltages = new Array(252).fill(0.0);
+    this.voltages = [];
     this.chargingStatus = false;
     this.dischargingStatus = false;
     this.balancingStatus = false;
