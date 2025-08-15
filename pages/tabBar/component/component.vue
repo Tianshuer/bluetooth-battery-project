@@ -1,6 +1,10 @@
 <template>
   <page-meta :page-style="'overflow:'+(show?'hidden':'visible')">
-    <view class="container" :style="containerStyle">
+    <view class="container" :style="{ 
+      minHeight: screenHeight + 'px',
+      marginTop: statusBarHeight + 'px',
+      paddingBottom: !isConnected ? '120rpx' : '20rpx',
+    }">
       <!-- 电池状态卡片 -->
       <BatteryCard @language-popup-action="handleLanguagePopupAction" />
       
@@ -98,14 +102,6 @@ export default {
       'batteryData',
       'isConnected',
     ]),
-    
-    containerStyle() {
-      return {
-        minHeight: this.screenHeight + 'px',
-        marginTop: this.statusBarHeight + 'px',
-        paddingBottom: !this.isConnected ? '120rpx' : '20rpx'
-      };
-    },
 
     safeBatteryData() {
       return this.currentBatteryData || this.getDefaultBatteryData();
