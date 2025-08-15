@@ -32,7 +32,7 @@ import CommonPanel from '../../../components/CommonPanel.vue'
 import FormInputList from '../../../components/FormInputList.vue'
 import { mapGetters } from 'vuex'
 import bleManager from '../../../utils/batteryManager.js'
-import AppConstants from '../../../utils/app_constants.js'
+import AppConstants from '../../../utils/appConstants.js'
 
 export default {
   components: {

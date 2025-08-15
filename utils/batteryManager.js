@@ -1,12 +1,12 @@
 import ProductConfig from './productConfig';
-import AppConstants from './app_constants.js';
-import BatteryData from './battery_data.js';
+import AppConstants from './appConstants.js';
+import BatteryData from './batteryData.js';
 import i18n from '@/common/i18n/index.js';
 import {
   Command,
   CommandType,
   PasswordResponse,
-} from './common_enum.js';
+} from './commonEnum.js';
 
 class WriteTask {
   constructor(characteristic, data) {
