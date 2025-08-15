@@ -28,12 +28,23 @@ export default new Vuex.Store({
     ],
     // 连接状态
     isConnected: false,
+
+    // 扫描状态
+    isScanning: false,
+
+    // 设备ID
+    deviceId: '',
+
+    // 设备名称
+    deviceName: '',
+
     // 密码验证状态
     isPasswordVerified: false,
+
+    // 电池百分比
+    currentBatteryPercentage: 0,
     // 语言变化触发器
     languageChangeTrigger: 0,
-    // 电池百分比
-    batteryPercentage: 0,
     // 状态栏高度
     statusBarHeight: 0,
     // 蓝牙设备数据
@@ -86,7 +97,7 @@ export default new Vuex.Store({
       cellTemp2: '0.0',
       cellTemp3: '0.0',
       cellTemp4: '0.0',
-      currentBatteryLevel: 0,
+      currentBatteryPercentage: 0,
     },
     // 蓝牙设备信息
     batteryDevice: {
@@ -151,24 +162,19 @@ export default new Vuex.Store({
       uni.setStorageSync('currentLanguage', language)
     },
 
-    // 设置连接状态
-    SET_CONNECTION_STATUS(state, status) {
-      state.isConnected = status
-    },
-
     // 设置密码验证状态
     SET_PASSWORD_VERIFIED(state, status) {
       state.isPasswordVerified = status
     },
 
+    // 设置电池百分比
+    SET_CURRENT_BATTERY_PERCENTAGE(state, currentBatteryPercentage) {
+      state.batteryData.currentBatteryPercentage = currentBatteryPercentage
+    },
+
     // 触发语言变化
     TRIGGER_LANGUAGE_CHANGE(state) {
       state.languageChangeTrigger = Date.now()
-    },
-
-    // 设置电池百分比
-    SET_BATTERY_PERCENTAGE(state, percentage) {
-      state.batteryPercentage = percentage
     },
 
     // 设置状态栏高度
@@ -183,13 +189,6 @@ export default new Vuex.Store({
           ...state.batteryData,
           ...data
         };
-        // 计算电池百分比
-        // const maxVoltage = 4.2;
-        // const minVoltage = 3.0;
-        const currentVoltage = parseFloat(state.batteryData.totalVoltage) || 0;
-        let percentage = ((currentVoltage - state.batteryData.minVoltage) / (state.batteryData.maxVoltage - state.batteryData.minVoltage)) * 100;
-        percentage = Math.min(Math.max(percentage, 0), 100);
-        state.batteryPercentage = Number(percentage.toFixed(2));
       }
     },
 
@@ -222,11 +221,9 @@ export default new Vuex.Store({
         cellTemp2: '0.0',
         cellTemp3: '0.0',
         cellTemp4: '0.0',
-        currentBatteryLevel: 0,
+        currentBatteryPercentage: 0,
       };
-      state.batteryPercentage = 0;
     },
-
 
     // 更新蓝牙管理器状态
     UPDATE_BLE_MANAGER_STATE(state, data) {
@@ -333,18 +330,18 @@ export default new Vuex.Store({
       commit('SET_LANGUAGE', language)
     },
 
-    // 设置连接状态
-    setConnectionStatus({
-      commit
-    }, status) {
-      commit('SET_CONNECTION_STATUS', status)
-    },
-
     // 设置密码验证状态
     setPasswordVerified({
       commit
     }, status) {
       commit('SET_PASSWORD_VERIFIED', status)
+    },
+
+    // 设置电池百分比
+    setCurrentBatteryPercentage({
+      commit
+    }, currentBatteryPercentage) {
+      commit('SET_CURRENT_BATTERY_PERCENTAGE', currentBatteryPercentage)
     },
 
     // 初始化语言设置
@@ -357,13 +354,6 @@ export default new Vuex.Store({
       } else {
         commit('SET_LANGUAGE', 'zh')
       }
-    },
-
-    // 设置电池百分比
-    setBatteryPercentage({
-      commit
-    }, percentage) {
-      commit('SET_BATTERY_PERCENTAGE', percentage)
     },
 
     // 设置状态栏高度
@@ -408,12 +398,7 @@ export default new Vuex.Store({
     }) {
       commit('RESET_BLUETOOTH_DATA')
     },
-    // 更新蓝牙管理器状态
-    // updateBleManagerState({ commit }, data) {
-    //   commit('UPDATE_BLE_MANAGER_STATE', data);
-    // }
 
-    // ------------
     // 更新BLEManager状态
     updateBleManagerState({
       commit
@@ -526,47 +511,18 @@ export default new Vuex.Store({
       return text
     },
 
-    // 格式化方法
-    formatVoltage: state => (voltage) => {
-      const messages = state.messages
-      return `${Number(voltage).toFixed(2)}${messages.voltage_unit || 'V'}`
-    },
-
-    formatCurrent: state => (current) => {
-      const messages = state.messages
-      return `${Number(current).toFixed(2)}${messages.current_unit || 'A'}`
-    },
-
-    formatPower: state => (power) => {
-      const messages = state.messages
-      return `${Number(power).toFixed(2)}${messages.power_unit || 'W'}`
-    },
-
-    formatTemperature: state => (temp) => {
-      const messages = state.messages
-      return `${Number(temp).toFixed(2)}${messages.temperature_unit || '°C'}`
-    },
-
-    formatCapacity: state => (capacity) => {
-      const messages = state.messages
-      return `${Number(capacity).toFixed(2)}${messages.capacity_unit || 'AH'}`
-    },
-
-    formatPercent: state => (value) => {
-      const messages = state.messages
-      return `${Number(value).toFixed(2)}${messages.percent || '%'}`
-    },
-
     // 连接状态
     isPasswordVerified: state => state.isPasswordVerified,
 
     // 电池百分比
-    batteryPercentage: state => state.batteryPercentage,
+    currentBatteryPercentage: state => state.currentBatteryPercentage,
 
     // 状态栏高度
     statusBarHeight: state => state.statusBarHeight,
+    
     // 蓝牙设备信息
     batteryDevice: state => state.batteryDevice,
+    
     bleManagerState: state => state.bleManager,
     isConnected: state => state.bleManager.isConnected,
     isScanning: state => state.bleManager.isScanning,
