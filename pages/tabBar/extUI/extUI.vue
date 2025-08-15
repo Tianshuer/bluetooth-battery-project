@@ -72,18 +72,20 @@ export default {
       const formConfigs = [];
       for (const [key, command] of Object.entries(AppConstants.parameterCommandPrefixMap)) {
         // 根据 key 获取对应的参数值和标签
-        const paramValue = this.safeParameterValues[key];
+        const paramValue = this.safeParameterValues[key] || '';
         const label = this.t(key);
+        const unit = this.getUnitByKey(key) || '';
         const inputType = key === 'rename_device' ? 'text' : 'number';
         
         formConfigs.push({
-          label: label,
+          label,
           placeholder: this.t('input_value'),
           type: inputType,
           buttonText: this.t('send'),
-          key: key,
+          key,
           params: paramValue,
-          command: command // 保存对应的命令前缀
+          command, // 保存对应的命令前缀
+          unit,
         });
       }
       return formConfigs;
@@ -97,6 +99,9 @@ export default {
     getScreenHeight() {
       const windowInfo = uni.getWindowInfo()
 		  this.screenHeight = windowInfo.windowHeight || 667;
+    },
+    getUnitByKey(key) {
+      return AppConstants.parameterUnitMap[key] || '';
     },
     // 发送验证码
     handleSendCode(code) {
