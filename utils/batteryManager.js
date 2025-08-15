@@ -544,10 +544,6 @@ class BLEManager {
     return this._passwordVerified;
   }
 
-  get versionName() {
-    return this._versionName;
-  }
-
   get deviceId() {
     return this._deviceId;
   }
@@ -1953,7 +1949,7 @@ class BLEManager {
       case 'ver':
         // 版本信息
         this._parameterValues = AppConstants.setCommandMap('ver', this._parameterValues, value);
-        this.versionName = value;
+        this._versionName = value;
         break;
       case 'dljd':
         // 电流检测
