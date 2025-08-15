@@ -179,6 +179,7 @@ export default {
   // ==================== Protection Functions ====================
   "short_circuit_protection": "Short Circuit Protection",
   "single_under_voltage": "Single Under-voltage",
+  "single_over_voltage": "Single Over-voltage",
   "manual_close": "Manual Close",
   "string_drop": "String Drop",
   "delay_recovery": "Delay Recovery",

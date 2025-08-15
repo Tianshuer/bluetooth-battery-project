@@ -43,6 +43,7 @@ export default new Vuex.Store({
 
     // 电池百分比
     currentBatteryPercentage: 0,
+
     // 语言变化触发器
     languageChangeTrigger: 0,
     // 状态栏高度
@@ -97,7 +98,6 @@ export default new Vuex.Store({
       cellTemp2: '0.0',
       cellTemp3: '0.0',
       cellTemp4: '0.0',
-      currentBatteryPercentage: 0,
     },
     // 蓝牙设备信息
     batteryDevice: {
@@ -147,7 +147,17 @@ export default new Vuex.Store({
       writeCharacteristic: null,
 
       // 语言设置
-      locale: 'zh'
+      locale: 'zh',
+
+      // 电池百分比
+      currentBatteryPercentage: 0,
+
+      // 放电MOS状态
+      fdCloseStatusText: '',
+
+      // 充电MOS状态
+      cdCloseStatusText: '',
+
     },
   },
 
@@ -169,7 +179,17 @@ export default new Vuex.Store({
 
     // 设置电池百分比
     SET_CURRENT_BATTERY_PERCENTAGE(state, currentBatteryPercentage) {
-      state.batteryData.currentBatteryPercentage = currentBatteryPercentage
+      state.bleManager.currentBatteryPercentage = currentBatteryPercentage
+    },
+
+    // 设置放电MOS状态
+    SET_FD_CLOSE_STATUS_TEXT(state, fdCloseStatusText) {
+      state.bleManager.fdCloseStatusText = fdCloseStatusText
+    },
+
+    // 设置充电MOS状态
+    SET_CD_CLOSE_STATUS_TEXT(state, cdCloseStatusText) {
+      state.bleManager.cdCloseStatusText = cdCloseStatusText
     },
 
     // 触发语言变化
@@ -221,7 +241,6 @@ export default new Vuex.Store({
         cellTemp2: '0.0',
         cellTemp3: '0.0',
         cellTemp4: '0.0',
-        currentBatteryPercentage: 0,
       };
     },
 
@@ -342,6 +361,20 @@ export default new Vuex.Store({
       commit
     }, currentBatteryPercentage) {
       commit('SET_CURRENT_BATTERY_PERCENTAGE', currentBatteryPercentage)
+    },
+
+    // 设置放电MOS状态
+    setFdCloseStatusText({
+      commit
+    }, fdCloseStatusText) {
+      commit('SET_FD_CLOSE_STATUS_TEXT', fdCloseStatusText)
+    },
+
+    // 设置充电MOS状态
+    setCdCloseStatusText({
+      commit
+    }, cdCloseStatusText) {
+      commit('SET_CD_CLOSE_STATUS_TEXT', cdCloseStatusText)
     },
 
     // 初始化语言设置
@@ -491,7 +524,11 @@ export default new Vuex.Store({
       let text = messages[key]
 
       if (!text || typeof text !== 'string') {
-        console.warn(`Translation key not found or invalid: ${key}`, { key, text, messages })
+        console.warn(`Translation key not found or invalid: ${key}`, {
+          key,
+          text,
+          messages
+        })
         return String(key) // 确保返回字符串
       }
 
@@ -503,7 +540,11 @@ export default new Vuex.Store({
             text = text.replace(`%d`, String(arg))
             text = text.replace(`%@`, String(arg))
           } catch (error) {
-            console.error('Error in translation parameter replacement:', error, { text, arg, key })
+            console.error('Error in translation parameter replacement:', error, {
+              text,
+              arg,
+              key
+            })
             // 如果替换失败，至少返回原始文本
           }
         })
@@ -515,14 +556,41 @@ export default new Vuex.Store({
     isPasswordVerified: state => state.isPasswordVerified,
 
     // 电池百分比
-    currentBatteryPercentage: state => state.currentBatteryPercentage,
+    currentBatteryPercentage: state => state.bleManager.currentBatteryPercentage,
 
+    // 放电MOS状态
+    fdCloseStatusText: (state) => {
+      const messages = state.messages;
+      const bleManager = state.bleManager;
+      
+      // 如果没有状态信息，返回默认文本
+      if (!bleManager.fdCloseStatusText) {
+        return;
+      }
+      const messageKey = bleManager.fdCloseStatusText === '单体欠压' ? 'single_under_voltage' : '';
+
+      return messages[messageKey] || '';
+    },
+
+    // 充电MOS状态
+    cdCloseStatusText: (state) => {
+      const messages = state.messages;
+      const bleManager = state.bleManager;
+      
+      if (!bleManager.cdCloseStatusText) {
+        return;
+      }
+
+      const messageKey = bleManager.cdCloseStatusText === '单体过压' ? 'single_over_voltage' : '';
+
+      return messages[messageKey] || '';
+    },
     // 状态栏高度
     statusBarHeight: state => state.statusBarHeight,
-    
+
     // 蓝牙设备信息
     batteryDevice: state => state.batteryDevice,
-    
+
     bleManagerState: state => state.bleManager,
     isConnected: state => state.bleManager.isConnected,
     isScanning: state => state.bleManager.isScanning,

@@ -616,6 +616,9 @@ class BLEManager {
       passwordVerified: this._passwordVerified,
       lastError: this._lastError,
       isConnectionEnabled: this._isConnectionEnabled,
+      fdCloseStatusText: this._fdCloseStatusText,
+      cdCloseStatusText: this._cdCloseStatusText,
+      currentBatteryPercentage: this._calculateBatteryPercentage(),
     };
 
     this._listeners.forEach((listener, index) => {
@@ -719,6 +722,8 @@ class BLEManager {
             // store.dispatch('setConnectionStatus', this._isConnected);
             // store.dispatch('setPasswordVerified', this._passwordVerified);
             store.dispatch('setCurrentBatteryPercentage', this._calculateBatteryPercentage());
+            store.dispatch('setFdCloseStatusText', this._fdCloseStatusText);
+            store.dispatch('setCdCloseStatusText', this._cdCloseStatusText);
           }
         }
       }
@@ -2923,21 +2928,21 @@ class BLEManager {
 
     console.log(`解析cdclose状态码: ${statusValue} (0x${statusValue.toString(16).padStart(2, '0')})`);
     if ((statusValue & 0x80) !== 0) {
-      statusText = this.t("short_circuit_protection") || '短路保护';
+      statusText = this.t("short_circuit_protection") || '';
     } else if ((statusValue & 0x01) !== 0) {
-      statusText = this.t("single_under_voltage") || '单体欠压';
+      statusText = this.t("single_over_voltage") || '';
     } else if ((statusValue & 0x02) !== 0) {
-      statusText = this.t("manual_close") || '手动关闭';
+      statusText = this.t("manual_close") || '';
     } else if ((statusValue & 0x04) !== 0) {
-      statusText = this.t("mos_high_temp") || 'MOS高温';
+      statusText = this.t("mos_high_temp") || '';
     } else if ((statusValue & 0x08) !== 0) {
-      statusText = this.t("probe_high_temp") || '探头高温';
+      statusText = this.t("probe_high_temp") || '';
     } else if ((statusValue & 0x10) !== 0) {
-      statusText = this.t("string_drop") || '串数脱落';
+      statusText = this.t("string_drop") || '';
     } else if ((statusValue & 0x40) !== 0) {
-      statusText = this.t("over_current_protection") || '过流保护';
+      statusText = this.t("over_current_protection") || '';
     } else if ((statusValue & 0x20) !== 0) {
-      statusText = this.t("delay_recovery") || '延时恢复';
+      statusText = this.t("delay_recovery") || '';
     } else {
       statusText = ""; // 未知或正常状态
     }
@@ -2955,6 +2960,17 @@ class BLEManager {
     }
 
     this._cdCloseStatusText = statusText;
+    if (typeof uni !== 'undefined' && uni.getStorageSync) {
+      const pages = getCurrentPages();
+      if (pages && pages.length > 0) {
+        const currentPage = pages[pages.length - 1];
+        if (currentPage && currentPage.$vm && currentPage.$vm.$store) {
+          const store = currentPage.$vm.$store;
+          store.dispatch('setCdCloseStatusText', this._cdCloseStatusText);
+          console.log('同步到 store 完成');
+        }
+      }
+    }
     this._notifyListeners();
   }
 
@@ -2970,21 +2986,21 @@ class BLEManager {
     console.log(`解析fdclose状态码: ${statusValue} (0x${statusValue.toString(16).padStart(2, '0')})`);
 
     if ((statusValue & 0x80) !== 0) {
-      statusText = this.t("short_circuit_protection") || '短路保护';
+      statusText = this.t("short_circuit_protection") || '';
     } else if ((statusValue & 0x01) !== 0) {
-      statusText = this.t("single_under_voltage") || '单体欠压';
+      statusText = this.t("single_under_voltage") || '';
     } else if ((statusValue & 0x02) !== 0) {
-      statusText = this.t("manual_close") || '手动关闭';
+      statusText = this.t("manual_close") || '';
     } else if ((statusValue & 0x04) !== 0) {
-      statusText = this.t("mos_high_temp") || 'MOS高温';
+      statusText = this.t("mos_high_temp") || '';
     } else if ((statusValue & 0x08) !== 0) {
-      statusText = this.t("probe_high_temp") || '探头高温';
+      statusText = this.t("probe_high_temp") || '';
     } else if ((statusValue & 0x10) !== 0) {
-      statusText = this.t("string_drop") || '串数脱落';
+      statusText = this.t("string_drop") || '';
     } else if ((statusValue & 0x40) !== 0) {
-      statusText = this.t("over_current_protection") || '过流保护';
+      statusText = this.t("over_current_protection") || '';
     } else if ((statusValue & 0x20) !== 0) {
-      statusText = this.t("delay_recovery") || '延时恢复';
+      statusText = this.t("delay_recovery") || '';
     } else {
       statusText = ""; // 未知或正常状态
     }
@@ -3002,6 +3018,17 @@ class BLEManager {
 
     console.log(`设备状态: ${statusText === "" ? "正常" : statusText}`);
     this._fdCloseStatusText = statusText;
+    if (typeof uni !== 'undefined' && uni.getStorageSync) {
+      const pages = getCurrentPages();
+      if (pages && pages.length > 0) {
+        const currentPage = pages[pages.length - 1];
+        if (currentPage && currentPage.$vm && currentPage.$vm.$store) {
+          const store = currentPage.$vm.$store;
+          store.dispatch('setFdCloseStatusText', this._fdCloseStatusText);
+          console.log('同步到 store 完成');
+        }
+      }
+    }
     this._notifyListeners();
   }
 

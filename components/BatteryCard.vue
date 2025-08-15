@@ -135,16 +135,9 @@ export default {
       'deviceName',
       'currentBatteryPercentage',
       'batteryData',
+      'fdCloseStatusText',
+      'cdCloseStatusText',
     ]),
-    // 放电MOS关闭状态文本
-    fdCloseStatusText() {
-      return bleManager.fdCloseStatusText || '';
-    },
-    
-    // 充电MOS关闭状态文本
-    cdCloseStatusText() {
-      return bleManager.cdCloseStatusText || '';
-    }
   },
   mounted() {
     this.bleListener = (stateData) => {
@@ -366,7 +359,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-self: flex-start;
-  width: 33.3%;
+  margin-right: 8rpx;
+  width: 33.3%
 }
 
 .status-item-content {
@@ -393,7 +387,9 @@ export default {
 
 .status-text {
   font-size: 24rpx;
-  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .alert-text {
