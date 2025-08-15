@@ -150,19 +150,28 @@ export default {
     
     // 表单发送事件
     handleFormSend({ item, index, value }) {
+      const numValue = parseFloat(value);
+      if (isNaN(numValue)) {
+        if (item.key !== 'rename_device') {
+          uni.showToast({
+            title: this.t('please_input_digital_value'),
+            icon: 'none'
+          });
+          return;
+        } else {
+          uni.showToast({
+            title: this.t('please_enter_content'),
+            icon: 'none'
+          });
+          return;
+        }
+      }
+      
       if(item.key === 'rename_device' && value.trim()) {
         bleManager.renameDevice(value);
         return;
       }
       
-      const numValue = parseFloat(value);
-      if (isNaN(numValue)) {
-        uni.showToast({
-          title: this.t('please_input_digital_value'),
-          icon: 'none'
-        });
-        return;
-      }
       this._sendCommand(item, value);
       
     },
@@ -177,13 +186,6 @@ export default {
 
     _sendCommand(item, value) {
       const numValue = parseFloat(value);
-      // 特殊处理蓝牙改名
-      if (item.key === 'rename_device') {
-        if (value.trim()) {
-          bleManager.renameDevice(value.trim());
-        }
-        return;
-      }
 
       // 获取命令前缀
       const commandPrefix = this.getCommandPrefix(item.key);
