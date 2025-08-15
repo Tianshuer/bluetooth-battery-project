@@ -30,17 +30,36 @@
           </view>
         </view>
         <view class="status-indicators">
+          <!-- 放电MOS状态 -->
           <view class="status-item">
-            <view class="status-dot red"></view>
-            <text class="status-text">{{ t('discharge_mos') }}</text>
+            <view class="status-item-content">
+              <view class="status-dot" :class="batteryData.dischargingStatus ? 'green' : 'red'"></view>
+              <text class="status-text">{{ t('discharge_mos') }}</text>
+            </view>
+            <view v-if="fdCloseStatusText" class="status-item-content">
+              <text class="iconfont icon-warning"  :class="batteryData.dischargingStatus ? 'green' : 'red'"></text>
+              <text class="status-text alert-text">{{ fdCloseStatusText }}</text>
+            </view>
           </view>
+
+          <!-- 充电MOS状态 -->
           <view class="status-item">
-            <view class="status-dot red"></view>
-            <text class="status-text">{{ t('charge_mos') }}</text>
+            <view class="status-item-content">
+              <view class="status-dot" :class="batteryData.chargingStatus ? 'green' : 'red'"></view>
+              <text class="status-text">{{ t('charge_mos') }}</text>
+            </view>
+            <view v-if="cdCloseStatusText" class="status-item-content">
+              <text class="iconfont icon-warning"  :class="batteryData.chargingStatus ? 'green' : 'red'"></text>
+              <text class="status-text alert-text">{{ cdCloseStatusText }}</text>
+            </view>
           </view>
+
+          <!-- 均衡状态 -->
           <view class="status-item">
-            <view class="status-dot red"></view>
-            <text class="status-text">{{ t('balancing') }}</text>
+            <view class="status-item-content">
+              <view class="status-dot" :class="batteryData.balancingStatus ? 'green' : 'red'"></view>
+              <text class="status-text">{{ t('balancing') }}</text>
+            </view>
           </view>
         </view>
       </view>
@@ -115,11 +134,21 @@ export default {
       'versionName',
       'deviceName',
       'currentBatteryPercentage',
+      'batteryData',
     ]),
+    // 放电MOS关闭状态文本
+    fdCloseStatusText() {
+      return bleManager.fdCloseStatusText || '';
+    },
+    
+    // 充电MOS关闭状态文本
+    cdCloseStatusText() {
+      return bleManager.cdCloseStatusText || '';
+    }
   },
   mounted() {
     this.bleListener = (stateData) => {
-      console.log('BatteryCard 蓝牙状态变化，已自动同步到Vuex', stateData.isConnected);
+      console.log('BatteryCard 蓝牙状态变化，已自动同步到Vuex', stateData);
     }
     this.ensureBleListener();
 		// 初始化蓝牙状态
@@ -251,11 +280,6 @@ export default {
   margin-top: 12rpx;
 }
 
-.status-text {
-  font-size: 24rpx;
-  line-height: 1;
-}
-
 .connection-status {
   display: flex;
   align-items: center;
@@ -333,21 +357,30 @@ export default {
 
 .status-indicators {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  gap: 40rpx;
+  flex-wrap: nowrap;
 }
 
 .status-item {
   display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  width: 33.3%;
+}
+
+.status-item-content {
+  display: flex;
   align-items: center;
+  justify-content: start;
+  margin-top: 16rpx;
 }
 
 .status-dot {
   width: 16rpx;
   height: 16rpx;
   border-radius: 50%;
-  margin-right: 8rpx;
+  margin-right: 12rpx;
 }
 
 .status-dot.red {
@@ -356,6 +389,28 @@ export default {
 
 .status-dot.green {
   background-color: #34C759;
+}
+
+.status-text {
+  font-size: 24rpx;
+  line-height: 1;
+}
+
+.alert-text {
+  color: #FF3B30;
+}
+
+.icon-warning.red {
+  color: #FF3B30;
+}
+
+.icon-warning.green {
+  color: #34C759;
+}
+
+.icon {
+  font-size: 24rpx;
+  line-height: 1;
 }
 
 /* 连接失败提示样式 */
