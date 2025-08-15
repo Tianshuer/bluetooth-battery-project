@@ -77,7 +77,9 @@ export default {
 		},
 	},
 	methods: {
-
+		...mapActions([
+			'setBluetoothDevice',
+		]),
 		// 显示弹窗
 		showPopup() {
 			uni.hideTabBar({
@@ -169,6 +171,10 @@ export default {
 					await bleManager.disconnect();
 				}
 				
+				this.setBluetoothDevice({
+					deviceId: device.deviceId,
+					name: device.name
+				});
 				// 根据当前页面位置决定是否跳转
 				this.handlePageNavigation();
 				

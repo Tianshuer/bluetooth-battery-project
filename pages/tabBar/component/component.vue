@@ -88,7 +88,7 @@ export default {
     return {
       screenHeight: 0,
       show: false,
-      currentBatteryData: null, // 当前使用的电池数据
+      currentBatteryData: null,
     }
   },
   computed: {
@@ -108,7 +108,6 @@ export default {
     },
 
     safeBatteryData() {
-      // 直接返回当前使用的电池数据
       return this.currentBatteryData || this.getDefaultBatteryData();
     },
     labelBatteryCapacity() {

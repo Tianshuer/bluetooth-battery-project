@@ -35,11 +35,6 @@
 export default {
   name: 'DoubleColumnData',
   props: {
-    // 标题
-    title: {
-      type: String,
-      default: ''
-    },
     // 数据项数组
     dataItems: {
       type: Array,
@@ -53,11 +48,6 @@ export default {
         padding: true // 是否补零
       })
     },
-    // 是否连接状态
-    isConnected: {
-      type: Boolean,
-      default: false
-    }
   },
   data() {
     return {
@@ -80,13 +70,6 @@ export default {
       deep: true,
       immediate: true
     },
-    // 监听连接状态变化
-    isConnected(newStatus, oldStatus) {
-      console.log('连接状态变化:', oldStatus, '->', newStatus);
-      if (!newStatus && oldStatus && this.hasEverReceivedData) {
-        console.log('设备断开连接，但保持最后一次数据:', this.lastValidData);
-      }
-    }
   },
   computed: {
     // 将一维数组转换为双列数据行

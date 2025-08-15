@@ -187,7 +187,7 @@ export default {
       try {
         if (!newValue && this.isConnected) {
           // 检查是否有可用的设备
-          if (!this.batteryDevice || !this.batteryDevice.deviceId) {
+          if (!this.batteryDevice.deviceId) {
             uni.showToast({
               title: this.t('no_device_available'),
               icon: 'none',
