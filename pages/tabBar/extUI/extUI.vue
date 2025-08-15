@@ -224,7 +224,6 @@ export default {
         'charging_over_current',
         'short_circuit_delay'
       ].includes(item.key.trim().toLowerCase())) {
-        
         // 电流相关：直接转为整数，2字节
         const intValue = Math.round(numValue);
         valueData = [(intValue >> 8) & 0xFF, intValue & 0xFF];
@@ -233,12 +232,6 @@ export default {
         const intValue = Math.round(numValue * 10);
         valueData = [intValue & 0xFF];
       } else {
-        
-        uni.showToast({
-          title: 5 + item.key,
-          icon: 'none',
-          duration: 2000,
-        })
         // 默认处理：直接转为整数，1字节
         const intValue = Math.round(numValue);
         valueData = [intValue & 0xFF];
@@ -262,24 +255,6 @@ export default {
       // 或者触发事件通知父组件清空
       this.$emit('clear-form-value', key);
     },
-
-
-// 清空命令数据
-clearCommandData() {
-  // 清空相关的临时变量
-  this.currentCommand = null;
-  this.currentValue = null;
-  
-  // 重置表单状态
-  this.resetFormState();
-},
-
-// 重置表单状态
-resetFormState() {
-  // 重置相关的状态变量
-  this.isSending = false;
-  this.lastSentCommand = null;
-},
 
     getCommandPrefix(key) {
       return AppConstants.parameterCommandPrefixMap[key] || "";
