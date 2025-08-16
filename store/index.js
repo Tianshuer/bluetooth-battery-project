@@ -560,30 +560,50 @@ export default new Vuex.Store({
 
     // 放电MOS状态
     fdCloseStatusText: (state) => {
-      const messages = state.messages;
-      const bleManager = state.bleManager;
-      
-      // 如果没有状态信息，返回默认文本
+      const { messages, bleManager } = state;
+    
       if (!bleManager.fdCloseStatusText) {
-        return;
+        return '';
       }
-      const messageKey = bleManager.fdCloseStatusText === '单体欠压' ? 'single_under_voltage' : '';
-
-      return messages[messageKey] || '';
+      
+      // 状态映射表
+      const statusMap = {
+        '单体欠压': 'single_under_voltage',
+        '短路保护': 'short_circuit_protection',
+        '手动关闭': 'manual_close',
+        'MOS高温': 'mos_high_temp',
+        '探头高温': 'probe_high_temp',
+        '串数脱落': 'string_drop',
+        '过流保护': 'over_current_protection',
+        '延时恢复': 'delay_recovery',
+      };
+      
+      const messageKey = statusMap[bleManager.fdCloseStatusText];
+      return messageKey ? messages[messageKey] || bleManager.fdCloseStatusText : bleManager.fdCloseStatusText;
     },
 
     // 充电MOS状态
     cdCloseStatusText: (state) => {
-      const messages = state.messages;
-      const bleManager = state.bleManager;
-      
+      const { messages, bleManager } = state;
+    
       if (!bleManager.cdCloseStatusText) {
-        return;
+        return '';
       }
-
-      const messageKey = bleManager.cdCloseStatusText === '单体过压' ? 'single_over_voltage' : '';
-
-      return messages[messageKey] || '';
+      
+      // 状态映射表
+      const statusMap = {
+        '短路保护': 'short_circuit_protection',
+        '单体过压': 'single_over_voltage',
+        '手动关闭': 'manual_close',
+        'MOS高温': 'mos_high_temp',
+        '探头高温': 'probe_high_temp',
+        '串数脱落': 'string_drop',
+        '过流保护': 'over_current_protection',
+        '延时恢复': 'delay_recovery',
+      };
+      
+      const messageKey = statusMap[bleManager.cdCloseStatusText];
+      return messageKey ? messages[messageKey] || bleManager.cdCloseStatusText : bleManager.cdCloseStatusText;
     },
     // 状态栏高度
     statusBarHeight: state => state.statusBarHeight,

@@ -136,7 +136,6 @@ export default {
   "voltage_diff_protection": "Fault Voltage Gap Protection",
   "current_limit_debounce": "Current Debouncing",
   "short_circuit_delay": "Short-circuit Protection Delay Time",
-  "bluetooth_rename": "Bluetooth Rename",
   "change_password": "Change Password",
   "battery_reset": "Battery Reset",
   "one_key_iron": "One-key Iron",
