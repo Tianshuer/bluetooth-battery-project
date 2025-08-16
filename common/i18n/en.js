@@ -173,7 +173,8 @@ export default {
   "device_status": "Device status: %@",
   "series_count_range_error": "Series count range error, please input number between 1-16",
   "setting_series_count": "Setting series count",
-  "series_count_set_success": "Series count set successfully: %@",
+  "string_drop_a": "%@ String Drop",
+  "fault_recovery_countdown": "Fault recovery countdown: %@ s",
   
   // ==================== Protection Functions ====================
   "short_circuit_protection": "Short Circuit Protection",

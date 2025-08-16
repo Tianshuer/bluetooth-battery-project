@@ -3,7 +3,7 @@
     <view class="container" :style="{ 
       minHeight: screenHeight + 'px',
       marginTop: statusBarHeight + 'px',
-      paddingBottom: !isConnected ? '120rpx' : '20rpx',
+      paddingBottom: (!isConnected || (isConnected && isShowYCBHAlert) || (isConnected && (gzys>0 )&& fdCloseStatusText && cdCloseStatusText))? '120rpx' : '20rpx',
     }">
       <!-- 电池状态卡片 -->
       <BatteryCard @language-popup-action="handleLanguagePopupAction" />
@@ -101,6 +101,10 @@ export default {
       'statusBarHeight',
       'batteryData',
       'isConnected',
+      'isShowYCBHAlert',
+      'gzys',
+      'fdCloseStatusText',
+      'cdCloseStatusText',
     ]),
 
     safeBatteryData() {

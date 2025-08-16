@@ -3,7 +3,7 @@
     <view class="container" :style="{ 
       minHeight: screenHeight + 'px',
       marginTop: statusBarHeight + 'px',
-      paddingBottom: !isConnected ? '120rpx' : '20rpx',
+      paddingBottom: (!isConnected || (isConnected && isShowYCBHAlert) || (isConnected && (gzys>0 )&& fdCloseStatusText && cdCloseStatusText))? '120rpx' : '20rpx',
     }">
       <!-- 电池状态卡片 -->
       <BatteryCard @language-popup-action="handleLanguagePopupAction" />
@@ -61,9 +61,12 @@
             ...mapGetters([
                 't',
                 'isConnected',
-                'isPasswordVerified',
                 'statusBarHeight',
-                'batteryData'
+                'batteryData',
+                'isShowYCBHAlert',
+                'gzys',
+                'fdCloseStatusText',
+                'cdCloseStatusText',
             ]),
             safeBatteryVoltageData() {
               const data = this.currentBatteryVoltageData.length > 0 ? this.currentBatteryVoltageData : this.getDefaultBatteryVoltageData();
@@ -110,13 +113,11 @@
           'batteryData.voltages': {
             handler(newData) {
               if (newData) {
-                if (newData) {
-                  this.currentBatteryVoltageData = newData.map((voltage, index) => ({
-                    label: index + 1,
-                    value: voltage || 0,
-                    unit: 'V'
-                  }));
-                }
+                this.currentBatteryVoltageData = newData.map((voltage, index) => ({
+                  label: index + 1,
+                  value: voltage || 0,
+                  unit: 'V'
+                }));
               }
             },
             immediate: true,

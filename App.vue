@@ -1,5 +1,4 @@
 <script>
-	import { version } from './package.json'
 	import { getTabBarConfig } from './utils/tabBarConfig.js'
 	import bleManager from './utils/batteryManager'
 

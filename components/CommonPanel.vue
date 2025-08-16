@@ -58,10 +58,6 @@ export default {
     ])
   },
   methods: {
-    ...mapActions([
-      'setPasswordVerified'
-    ]),
-
     // 发送验证码
     handleSendCode() {
       this.$emit('sendCode', this.verifyCode)

@@ -3,7 +3,7 @@
     <view class="container" :style="{ 
       minHeight: screenHeight + 'px',
       marginTop: statusBarHeight + 'px',
-      paddingBottom: !isConnected ? '120rpx' : '20rpx',
+      paddingBottom: (!isConnected || (isConnected && isShowYCBHAlert) || (isConnected && (gzys>0 )&& fdCloseStatusText && cdCloseStatusText))? '120rpx' : '20rpx',
     }">
       <!-- 电池状态卡片 -->
       <BatteryCard @language-popup-action="handleLanguagePopupAction" />
@@ -52,6 +52,10 @@ export default {
       'isConnected',
       'passwordVerified',
       'parameterValues',
+      'isShowYCBHAlert',
+      'gzys',
+      'fdCloseStatusText',
+      'cdCloseStatusText',
     ]),
     safeParameterValues() {
       return this.parameterValues || {};
@@ -150,30 +154,27 @@ export default {
     
     // 表单发送事件
     handleFormSend({ item, index, value }) {
-      const numValue = parseFloat(value);
-      if (isNaN(numValue)) {
-        if (item.key !== 'rename_device') {
-          uni.showToast({
-            title: this.t('please_input_digital_value'),
-            icon: 'none'
-          });
-          return;
-        } else {
-          uni.showToast({
-            title: this.t('please_enter_content'),
-            icon: 'none'
-          });
-          return;
-        }
+      if (item.key === 'rename_device' && !value.trim()) {
+        uni.showToast({
+          title: this.t('please_enter_content'),
+          icon: 'none'
+        });
+        return;
       }
-      
-      if(item.key === 'rename_device' && value.trim()) {
+      const numValue = parseFloat(value);
+      if (isNaN(numValue) && item.key !== 'rename_device') {
+        uni.showToast({
+          title: this.t('please_input_digital_value'),
+          icon: 'none'
+        });
+        return;
+      }
+      if (item.key === 'rename_device' && value.trim()) {
         bleManager.renameDevice(value);
         return;
       }
       
       this._sendCommand(item, value);
-      
     },
     
     stringToBytes(text) {

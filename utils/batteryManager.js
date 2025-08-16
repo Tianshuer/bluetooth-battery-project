@@ -439,6 +439,8 @@ class BLEManager {
     this.bleSubscription = null;
     this._subscriptions = new Set(); // 管理多个订阅
 
+    this._connectionStateListener = null;
+
     // 初始化蓝牙状态监听器
     this._initializeBluetoothStateListener();
     
@@ -619,6 +621,7 @@ class BLEManager {
       fdCloseStatusText: this._fdCloseStatusText,
       cdCloseStatusText: this._cdCloseStatusText,
       currentBatteryPercentage: this._calculateBatteryPercentage(),
+      isShowYCBHAlert: this._batteryData.showYCBHAlert(),
     };
 
     this._listeners.forEach((listener, index) => {
@@ -724,6 +727,9 @@ class BLEManager {
             store.dispatch('setCurrentBatteryPercentage', this._calculateBatteryPercentage());
             store.dispatch('setFdCloseStatusText', this._fdCloseStatusText);
             store.dispatch('setCdCloseStatusText', this._cdCloseStatusText);
+            store.dispatch('setLowestString', this._batteryData.lowestString);
+            store.dispatch('setGzys', this._batteryData.gzys);
+            store.dispatch('setIsShowYCBHAlert', this._batteryData.showYCBHAlert());
           }
         }
       }
@@ -783,6 +789,8 @@ class BLEManager {
     console.log('正在初始化蓝牙状态监听器...');
     // 监听蓝牙适配器状态变化
     this._setupAdapterStateListener();
+
+    this._notifyListeners();
 
     console.log('蓝牙状态监听器已初始化');
   }
@@ -1016,10 +1024,13 @@ class BLEManager {
    * @param {boolean} isEnabled - 是否启用连接功能
    */
   toggleConnection(isEnabled) {
-    if (this._isConnectionEnabled !== isEnabled) {
-      this._isConnectionEnabled = isEnabled;
-      this._notifyListeners();
+    this._isConnectionEnabled = isEnabled;
+    if (isEnabled) {
+      this.reconnect()
+    } else {
+      this.disconnect();
     }
+    this._notifyListeners();
   }
   /**
    * 开始扫描蓝牙设备
@@ -1276,22 +1287,34 @@ class BLEManager {
    * @private
    */
   _setupConnectionStateListener() {
-    // 监听BLE连接状态变化
-    uni.onBLEConnectionStateChange((res) => {
-      console.log('BLE连接状态变化:', res);
-
+    
+    if (this._connectionStateListener) {
+      uni.offBLEConnectionStateChange(this._connectionStateListener);
+    }
+    
+    this._connectionStateListener = (res) => {
+      console.log('BLE连接状态监听', res);
       if (!res.connected) {
         // 设备断开连接
         console.log('设备断开连接');
         this._isConnected = false;
+        this._notifyListeners();
         this._handleDeviceDisconnection();
+
+        if (this._isConnectionEnabled && this._deviceId) {
+          console.log('尝试自动重连...');
+          setTimeout(() => {
+            this.reconnect();
+          }, 2000); // 2秒后尝试重连
+        }
       } else {
         // 设备连接
         console.log('设备已连接');
         this._isConnected = true;
         this._notifyListeners();
       }
-    });
+    };
+    uni.onBLEConnectionStateChange(this._connectionStateListener);
   }
 
   /**
@@ -1305,19 +1328,22 @@ class BLEManager {
     this._isConnected = false;
     this._passwordVerified = false;
 
-    // 停止密码定时器
+    // 停止所有定时器和心跳
     this._stopPasswordTimer();
+    this._stopHeartbeat();
+    this.stopGZYSTimer();
 
     // 释放蓝牙写入器
     if (this._bluetoothWriter) {
       this._bluetoothWriter.dispose();
     }
 
-    // 停止故障延时定时器
-    this.stopGZYSTimer();
 
     // 移除所有状态变化监听器
-    this._removeAllListeners();
+    setTimeout(() => {
+      this._removeAllListeners();
+      console.log("设备断开连接处理完成");
+    }, 100);
 
     // 清空设备信息
     this._peripheral = null;
@@ -2100,8 +2126,6 @@ class BLEManager {
         
         // 立即更新UI
         this._isConnected = false;
-        console.log('1111', this._isConnected);
-
         // 更新开关状态
         this._isConnectionEnabled = false;
 
@@ -2419,7 +2443,7 @@ class BLEManager {
       console.log("命令生成失败");
       return;
     }
-    this.sendCommand(command, WritePriority.HIGH);
+    this.sendCommand(command);
   }
 
   setBalanceTemperature(temp) {
@@ -2585,9 +2609,9 @@ class BLEManager {
    * 发送命令
    * @param {string} command - 命令字符串
    */
-  async sendCommand(command, priority = WritePriority.NORMAL) {
+  async sendCommand(command) {
     try {
-      console.log('准备发送命令:', command);
+      console.log('准备发送命令:', command, 'isConnected: ', this.isConnected);
       
       // 检查设备连接状态
       if (this._bluetoothWriter._writeCharacteristic === null || this._peripheral === null) {
@@ -2619,7 +2643,7 @@ class BLEManager {
       // }
       const success = await this._bluetoothWriter.writeData({
         data: data,
-        priority,
+        priority: WritePriority.NORMAL,
       });
       if (success) {
         console.log(`命令 '${command}' 发送成功`);
@@ -2656,6 +2680,8 @@ class BLEManager {
       });
       if (!success) {
         this._showToast(this.t("command_send_failed"));
+      } else {
+        this._showToast(this.t("sent"));
       }
     }
   }

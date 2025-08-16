@@ -173,14 +173,14 @@ export default {
   "device_status": "设备状态: %@",
   "series_count_range_error": "串数范围错误，请输入1-16之间的数字",
   "setting_series_count": "设置串数",
-  "series_count_set_success": "串数设置成功: %@",
+  "string_drop_a": "%@ 串掉串",
+  "fault_recovery_countdown": "故障恢复倒计时中 %@ s",
   
   // ==================== 保护功能 ====================
   "short_circuit_protection": "短路保护",
   "single_under_voltage": "单体欠压",
   "single_over_voltage": "单体过压",
   "manual_close": "手动关闭",
-  "string_drop": "掉串",
   "delay_recovery": "延时恢复",
   "normal": "正常",
   "over_temperature": "过温保护",

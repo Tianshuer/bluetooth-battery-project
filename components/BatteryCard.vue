@@ -7,7 +7,7 @@
         <text class="device-version">{{ versionName || t('version_unknown') }}</text>
       </view>
       <view class="connection-status">
-        <switch class="connection-switch"
+        <switch v-if="isConnected" class="connection-switch"
           :checked="isConnected"
           @change="handleConnectionToggle"
         />
@@ -69,8 +69,20 @@
     <BluetoothList ref="bluetoothList" />
     
     <!-- 连接失败提示盒子 -->
-    <view v-if="!isConnected" class="connection-failed-tip" @click="handleLogoClick">
+    <view v-if="!isConnected" class="banner-tip" @click="handleLogoClick">
       <text class="tip-text">{{ t('ble_disconnected_retry') }}</text>
+    </view>
+
+    <!-- 故障恢复倒计时提示 -->
+    <view v-else-if="isConnected &&
+      gzys > 0 &&
+      fdCloseStatusText &&
+      cdCloseStatusText" class="banner-tip">
+      <view class="tip-text">{{ t('fault_recovery_countdown', [gzys]) }}</view>
+    </view>
+    <!-- 串数脱落提示 -->
+    <view v-else-if="isConnected && isShowYCBHAlert" class="banner-tip">
+      <view class="tip-text">{{ t('string_drop_a', [lowestString]) }}</view>
     </view>
     
     <!-- 语言选择弹出框 -->
@@ -121,6 +133,7 @@ export default {
     return {
       switchKey: 0,
       bleListener: null,
+      userInitiatedAction: false,
     }
   },
   computed: {
@@ -129,6 +142,7 @@ export default {
       'languageOptions', 
       'currentLanguageIndex',
       'isConnected',
+      'isConnectionEnabled',
       't',
       'batteryDevice',
       'versionName',
@@ -137,6 +151,9 @@ export default {
       'batteryData',
       'fdCloseStatusText',
       'cdCloseStatusText',
+      'lowestString',
+      'gzys',
+      'isShowYCBHAlert',
     ]),
   },
   mounted() {
@@ -146,10 +163,16 @@ export default {
     this.ensureBleListener();
 		// 初始化蓝牙状态
 		bleManager._notifyListeners();
+    // this.handleConnectionStateChange();
   },
   activated() {
 		this.ensureBleListener();
 	},
+  // watch: {
+  //   isConnected(newVal) {
+  //     this.handleConnectionStateChange();
+  //   }
+  // },
   methods: {
     ...mapActions([
       'switchLanguage',
@@ -206,6 +229,7 @@ export default {
     // 处理连接状态切换
     async handleConnectionToggle(e) {
       const newValue = e.detail.value;
+      this.userInitiatedAction = true;
       try {
         if (!newValue && this.isConnected) {
           // 检查是否有可用的设备
@@ -228,6 +252,25 @@ export default {
         console.log(123123, this.isConnected);
       }
     },
+
+    // handleConnectionStateChange() {
+    //   if (this.isConnected && !this.isConnectionEnabled) {
+    //     this.$nextTick(() => {
+    //       this.handleConnectionToggle(true);
+    //     })
+    //   } else if ( !this.isConnected &&
+    //               this.isConnectionEnabled &&
+    //               !this.userInitiatedAction
+    //   ) {
+    //     this.$nextTick(() => {
+    //       bleManager.reconnect();
+    //     })
+    //   }
+    //   this.$nextTick(() => {
+    //     this.userInitiatedAction = false;
+    //   });
+    // }
+
   },
 }
 </script>
@@ -309,9 +352,9 @@ export default {
 }
 
 .battery-content {
-  flex: 1;
   display: flex;
   flex-direction: column;
+  width: 80%;
 }
 
 .battery-header {
@@ -410,7 +453,7 @@ export default {
 }
 
 /* 连接失败提示样式 */
-.connection-failed-tip {
+.banner-tip {
   width: 100%;
   position: fixed;
   bottom: 0rpx; /* 在tabbar上方 */
