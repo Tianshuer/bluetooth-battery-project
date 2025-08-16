@@ -2325,7 +2325,7 @@ class BLEManager {
       console.log('sand before command: ', command, command.length);
       
       // 发送密码验证命令并等待结果
-      this.sendCommand(command, WritePriority.HIGH);
+      this.sendCommand(command);
     } catch (error) {
       console.error('密码验证过程中发生错误:', error);
       this._showToast(this.t("password_error"));
@@ -2376,26 +2376,6 @@ class BLEManager {
     if (this._peripheral === null || !this.isConnected) {
       this.sendCommand("re");
       this._notifyListeners();
-    }
-  }
-  startCharging() {
-    if (this.guardPasswordVerified()) {
-      this.sendCommand(Command.CHARGE_OPEN);
-    }
-  }
-  stopCharging() {
-    if (this.guardPasswordVerified()) {
-      this.sendCommand(Command.CHARGE_CLOSE);
-    }
-  }
-  startDischarging() {
-    if (this.guardPasswordVerified()) {
-      this.sendCommand(Command.DISCHARGE_OPEN);
-    }
-  }
-  stopDischarging() {
-    if (this.guardPasswordVerified()) {
-      this.sendCommand(Command.DISCHARGE_CLOSE);
     }
   }
 
@@ -2536,29 +2516,50 @@ class BLEManager {
       integerValue: value
     });
   }
-  // 充电开启
   openCharge() {
     this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
       specialCommandValue: "cdopen"
     });
   }
-  // 充电关闭
   closeCharge() {
     this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
       specialCommandValue: "cdclose"
     });
   }
-  // 放电开启
   openDischarge() {
     this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
       specialCommandValue: "fdopen"
     });
   }
-  // 放电关闭
   closeDischarge() {
     this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
       specialCommandValue: "fdclose"
     });
+  }
+
+  // 充电开启
+  startCharging() {
+    if (this.guardPasswordVerified()) {
+      this.sendCommand(Command.CHARGE_OPEN);
+    }
+  }
+  // 充电关闭
+  stopCharging() {
+    if (this.guardPasswordVerified()) {
+      this.sendCommand(Command.CHARGE_CLOSE);
+    }
+  }
+  // 放电开启
+  startDischarging() {
+    if (this.guardPasswordVerified()) {
+      this.sendCommand(Command.DISCHARGE_OPEN);
+    }
+  }
+  // 放电关闭
+  stopDischarging() {
+    if (this.guardPasswordVerified()) {
+      this.sendCommand(Command.DISCHARGE_CLOSE);
+    }
   }
   // 一键均衡
   startOneKeyBalance() {
