@@ -23,6 +23,11 @@
         @send="handleFormSend"
       />
     </view>
+    <!-- 修改密码弹窗 -->
+    <uni-popup ref="inputDialog" type="dialog">
+      <uni-popup-dialog ref="inputClose"  mode="input" title="修改密码" :value="currentPassword" type="number"
+        placeholder="请输入新密码" @confirm="dialogInputConfirm" @close="onDialogClose"></uni-popup-dialog>
+    </uni-popup>
   </page-meta>
 </template>
 
@@ -33,16 +38,21 @@ import FormInputList from '../../../components/FormInputList.vue'
 import { mapGetters } from 'vuex'
 import bleManager from '../../../utils/batteryManager.js'
 import AppConstants from '../../../utils/appConstants.js'
+import uniPopup from '@/uni_modules/uni-popup/components/uni-popup/uni-popup.vue'
+import uniPopupDialog from '@/uni_modules/uni-popup/components/uni-popup-dialog/uni-popup-dialog.vue'
 
 export default {
   components: {
     BatteryCard,
     CommonPanel,
-    FormInputList
+    FormInputList,
+    uniPopup,
+    uniPopupDialog,
   },
   data() {
     return {
       screenHeight: 0,
+      currentPassword: '',
     }
   },
   computed: {
@@ -114,7 +124,6 @@ export default {
     
     // 功能按钮点击
     handleFunctionClick({ button, index }) {
-
       if (!this.passwordVerified) {
         uni.showToast({
           title: this.t('please_verify_password'),
@@ -290,19 +299,24 @@ export default {
     
     // 修改密码
     handleChangePassword() {
-      console.log(123456789);
-      // 修改密码最后做
-      // if (bleManager.guardPasswordVerified()) {
-      //   uni.showToast({
-      //     title: this.t('please_verify_password'),
-      //     icon: 'none'
-      //   });
-      //   if (changePassword)
-      //   return;
-      // }
-      // uni.navigateTo({
-      //   url: '/pages/changePassword/changePassword'
-      // });
+      this.$refs.inputDialog.open();
+    },
+    dialogInputConfirm(val) {
+      const numValue = parseFloat(val);
+      if (isNaN(numValue)) {
+        this.$refs.inputClose.val = '';
+        uni.showToast({
+          title: this.t('please_input_digital_value'),
+          icon: 'none',
+          duration: 2000,
+        });
+        return;
+      }
+      bleManager.changePassword(val);
+      this.$refs.inputClose.val = '';
+    },
+    onDialogClose() {
+      this.$refs.inputClose.val = '';
     },
     // 处理语言弹窗状态变化
     handleLanguagePopupAction(isOpen) {

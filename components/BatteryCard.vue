@@ -158,7 +158,7 @@ export default {
   },
   mounted() {
     this.bleListener = (stateData) => {
-      console.log('BatteryCard 蓝牙状态变化，已自动同步到Vuex', stateData);
+      // console.log('BatteryCard 蓝牙状态变化，已自动同步到Vuex', stateData);
     }
     this.ensureBleListener();
 		// 初始化蓝牙状态
