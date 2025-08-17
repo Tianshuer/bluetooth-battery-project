@@ -67,6 +67,7 @@
                 'gzys',
                 'fdCloseStatusText',
                 'cdCloseStatusText',
+                'parameterValues',
             ]),
             safeBatteryVoltageData() {
               const data = this.currentBatteryVoltageData.length > 0 ? this.currentBatteryVoltageData : this.getDefaultBatteryVoltageData();
@@ -113,11 +114,16 @@
           'batteryData.voltages': {
             handler(newData) {
               if (newData) {
-                this.currentBatteryVoltageData = newData.map((voltage, index) => ({
-                  label: index + 1,
-                  value: voltage || 0,
-                  unit: 'V'
-                }));
+                this.currentBatteryVoltageData = [];
+                const targetLength = this.parameterValues.series_number_setting  || 0;
+                if (newData && newData.length > 0) {
+                  // 重新构建数据
+                  this.currentBatteryVoltageData = Array.from({ length: targetLength }, (_, index) => ({
+                    label: index + 1,
+                    value: newData && newData[index] ? newData[index] : 0,
+                    unit: 'V'
+                  }));
+                }
               }
             },
             immediate: true,

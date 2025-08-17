@@ -55,6 +55,14 @@ class BluetoothWriter {
 
     // 防止多个并发处理循环的标志
     this._isProcessingQueue = false;
+
+    // 添加写入超时和重试机制
+    this._writeTimeout = 3000; // 3秒超时
+    this._maxRetries = 2; // 最大重试次数
+    
+    // 优化队列处理
+    this._batchSize = 3; // 批量处理大小
+    this._processDelay = 20; // 减少处理延迟到20ms
   }
   /**
    * 设置要写入的特征值
@@ -94,21 +102,32 @@ class BluetoothWriter {
 
     this._heartbeatTimer = setInterval(async () => {
       if (this._heartbeatData !== null && this._writeCharacteristic !== null) {
-        console.log('发送心跳包');
+        try {
+          console.log('发送心跳包');
 
-        // 使用心跳特征值（如果设置了），否则使用写入特征值
-        const characteristicToUse = this._heartbeatCharacteristic || this._writeCharacteristic;
+          // 使用心跳特征值（如果设置了），否则使用写入特征值
+          const characteristicToUse = this._heartbeatCharacteristic || this._writeCharacteristic;
 
-        await this._enqueueWrite(
-          characteristicToUse,
-          this._heartbeatData,
-          null,
-          WritePriority.HIGH
-        );
+          await this._enqueueWrite(
+            characteristicToUse,
+            this._heartbeatData,
+            null,
+            WritePriority.HIGH
+          );
+        } catch (error) {
+          console.error('心跳包发送失败:', error);
+          // 心跳失败时尝试重连
+          this._handleHeartbeatFailure();
+        }
       }
     }, this._heartbeatInterval);
 
     console.log(`心跳包启动，间隔: ${this._heartbeatInterval}ms`);
+  }
+  // 处理心跳失败
+  _handleHeartbeatFailure() {
+    console.warn('心跳包发送失败，可能连接不稳定');
+    // 可以在这里添加重连逻辑
   }
   /**
    * 停止心跳定时器
@@ -219,34 +238,53 @@ class BluetoothWriter {
     this._isProcessingQueue = true;
     console.log("开始队列处理...", this._writeQueue);
 
-    while (this._writeQueue.length > 0) {
-      const task = this._writeQueue.shift();
-      let success = false;
+    try {
+      while (this._writeQueue.length > 0) {
+        const batch = this._writeQueue.splice(0, this._batchSize);
+        const promises = batch.map(task => this._processWriteTask(task));
 
-      try {
-        console.log(
-          `尝试写入数据: ${this._arrayBufferToHex(task.data)} 到 ${task.characteristic.characteristicId}`
-        );
-
-        // 根据您的协议使用超时和withoutResponse。
-        // 对于一般命令，withoutResponse: false 对于成功确认更安全。
-        success = await this._writeBLECharacteristicValue(task.data);
-        console.log(`_processQueue写入成功: ${this._arrayBufferToHex(task.data)}`);
-      } catch (error) {
-        console.log(`_processQueue写入失败 ${this._arrayBufferToHex(task.data)}: ${error}`);
-        success = false;
-        // 可选择：失败时重新入队或记录更多详细信息
-      } finally {
-        task.complete(success); // 向调用者报告结果
+        // 并发处理批量任务
+        await Promise.allSettled(promises);
+  
+        // 减少延迟
+        if (this._writeQueue.length > 0) {
+          await new Promise(resolve => setTimeout(resolve, this._processDelay));
+        }
       }
-
-      // 添加小延迟防止过载BLE模块
-      // 这对稳定性至关重要，特别是频繁写入时。
-      await new Promise(resolve => setTimeout(resolve, 50));
+    } catch (error) {
+      console.error('队列处理出错: ', error);
+    } finally {
+      this._isProcessingQueue = false;
+      console.log("队列处理完成。");
     }
+  }
+  /**
+   * 处理单个写入任务
+   * @param {WriteTask} task - 写入任务
+   * @returns {Promise} 写入结果
+   */
+  async _processWriteTask(task) {
+    let success = false;
+    let retries = 0;
 
-    this._isProcessingQueue = false;
-    console.log("队列处理完成。");
+    while (retries <= this._maxRetries && !success) {
+      try {
+        success = await this._writeBLECharacteristicValue(task.data);
+        if (success) {
+          console.log(`_processWriteTask写入成功: ${this._arrayBufferToHex(task.data)}`);
+          break;
+        }
+      } catch (error) {
+        console.log(`_processWriteTask写入失败 (重试 ${retries + 1}/${this._maxRetries + 1}): ${error}`);
+        retries++;
+        
+        if (retries <= this._maxRetries) {
+          // 重试前等待
+          await new Promise(resolve => setTimeout(resolve, 100 * retries));
+        }
+      }
+    }
+    task.complete(success);
   }
 
   /**
@@ -443,6 +481,12 @@ class BLEManager {
     // 添加Toast队列管理
     this._toastQueue = [];
     this._isShowingToast = false;
+
+    // 添加连接稳定性相关属性
+    this._connectionRetryCount = 0;
+    this._maxConnectionRetries = 3;
+    this._connectionRetryDelay = 2000;
+    this._isReconnecting = false;
 
     // 命令缓存
     this._commandCache = new Map();
@@ -1239,8 +1283,6 @@ class BLEManager {
     try {
       // 检查是否有已保存的设备信息
       if (this._peripheral !== null) {
-        console.log(`发现已保存的设备: ${this._peripheral.name || this._peripheral.deviceId}`);
-
         // 检查连接功能是否启用
         if (this._isConnectionEnabled) {
           console.log('连接功能已启用，尝试连接设备');
@@ -1265,17 +1307,11 @@ class BLEManager {
    * @returns {Promise<boolean>} 连接是否成功
    */
   async connect(peripheral) {
-    console.log('connect: ', peripheral);
     try {
-      // 停止扫描
-      // await this.stopScanning();
-      // console.log('扫描已停止');
-
       // 保存设备信息
       this._peripheral = peripheral;
       // 建立BLE连接
       await this._establishBLEConnection(peripheral);
-      console.log(`成功连接到设备: ${peripheral.name || peripheral.deviceId}`);
 
       // 设置连接状态监听
       this._setupConnectionStateListener();
@@ -1316,8 +1352,6 @@ class BLEManager {
    * @param {Object} peripheral - 设备对象
    */
   async _establishBLEConnection(peripheral) {
-    console.log('establishBLEConnection', peripheral);
-
     // 建立BLE连接
     return await new Promise((resolve, reject) => {
       uni.createBLEConnection({
@@ -1344,7 +1378,7 @@ class BLEManager {
    * @private
    */
   _setupConnectionStateListener() {
-    
+    // 先移除旧的监听器
     if (this._connectionStateListener) {
       uni.offBLEConnectionStateChange(this._connectionStateListener);
     }
@@ -1355,26 +1389,51 @@ class BLEManager {
         // 设备断开连接
         console.log('设备断开连接');
         this._isConnected = false;
-        if (this._isConnectionEnabled && this._deviceId) {
+        if (this._isConnectionEnabled && !this._isReconnecting) {
           console.log('尝试自动重连...');
-          setTimeout(() => {
-            this.reconnect();
-          }, 2000); // 2秒后尝试重连
+          this._scheduleReconnection();
         } else {
           this._handleDeviceDisconnection();
         }
         this._notifyListeners();
-        console.log('this._isConnectionEnabled: ', this._isConnectionEnabled);
-        console.log('this._deviceId: ', this._deviceId);
-        console.log('this._peripheral: ', this._peripheral);
       } else {
         // 设备连接
         console.log('设备已连接');
         this._isConnected = true;
+        this._connectionRetryCount = 0;
+        this._isReconnecting = false;
         this._notifyListeners();
       }
     };
     uni.onBLEConnectionStateChange(this._connectionStateListener);
+  }
+
+  /**
+   * 安排重连
+   */
+  _scheduleReconnection() {
+    if (this._connectionRetryCount >= this._maxConnectionRetries) {
+      console.log('达到最大重连次数，停止重连');
+      this._isReconnecting = false;
+      return;
+    }
+
+    this._isReconnecting = true;
+    this._connectionRetryCount++;
+    
+    const delay = this._connectionRetryDelay * this._connectionRetryCount;
+    console.log(`${delay}ms后尝试第${this._connectionRetryCount}次重连`);
+    
+    setTimeout(async () => {
+      if (this._isConnectionEnabled && !this._isConnected) {
+        try {
+          await this.reconnect();
+        } catch (error) {
+          console.error('重连失败:', error);
+          this._scheduleReconnection(); // 继续重连
+        }
+      }
+    }, delay);
   }
 
   /**
@@ -1685,40 +1744,13 @@ class BLEManager {
     try {
       // 将Uint8Array转换为字符串
       const string = this._uint8ArrayToString(data);
-
       // 添加到接收缓冲区
       this._receiveBuffer += string;
 
-      // 检查数据是否包含换行符
-      if (this._receiveBuffer.includes("\n")) {
-        // 数据包可能包含多个完整数据，按换行符分割处理
-        const components = this._receiveBuffer.split("\n");
-
-        // 处理除最后一个外的所有完整数据片段
-        for (let i = 0; i < components.length - 1; i++) {
-          const completePacket = components[i];
-          if (completePacket.trim().length > 0) {
-            this._processReceivedData(completePacket);
-          }
-        }
-
-        // 处理最后一个片段
-        if (this._receiveBuffer.endsWith("\n")) {
-          // 如果原始数据以换行符结尾，则最后一个片段也是完整的
-          if (components[components.length - 1].trim().length > 0) {
-            this._processReceivedData(components[components.length - 1]);
-          }
-          this._receiveBuffer = ""; // 清空缓冲区
-          console.log("缓冲区已清空");
-        } else {
-          // 保留最后一个不完整的片段
-          this._receiveBuffer = components[components.length - 1];
-          console.log("保留不完整片段:", this._receiveBuffer);
-          this._startProcessingTimer();
-        }
+      // 批量处理数据，减少状态更新频率
+       if (this._receiveBuffer.includes("\n")) {
+        this._processBufferedData();
       } else {
-        // 数据不包含换行符，等待更多数据
-        console.log("数据不完整，等待更多数据");
         this._startProcessingTimer();
       }
     } catch (error) {
@@ -1726,10 +1758,149 @@ class BLEManager {
       // 出错时清空缓冲区，避免数据混乱
       this._receiveBuffer = "";
     }
-    // 这里可以添加具体的数据处理逻辑
-    // 例如：解析协议、处理命令响应等
   }
 
+  // 批量处理缓冲数据
+  _processBufferedData() {
+    const components = this._receiveBuffer.split("\n");
+    const completePackets = [];
+    
+    // 收集完整的数据包
+    for (let i = 0; i < components.length - 1; i++) {
+      const packet = components[i].trim();
+      if (packet.length > 0) {
+        completePackets.push(packet);
+      }
+    }
+
+    // 批量处理所有完整数据包
+    if (completePackets.length > 0) {
+      this._processMultiplePackets(completePackets);
+    }
+
+    // 处理最后一个片段
+    if (this._receiveBuffer.endsWith("\n")) {
+      const lastPacket = components[components.length - 1].trim();
+      if (lastPacket.length > 0) {
+        this._processReceivedData(lastPacket);
+      }
+      this._receiveBuffer = "";
+    } else {
+      this._receiveBuffer = components[components.length - 1];
+      this._startProcessingTimer();
+    }
+  }
+
+  // 批量处理多个数据包
+  _processMultiplePackets(packets) {
+    // 收集所有需要更新的数据
+    const updates = {
+      batteryData: {},
+      status: {},
+      parameters: {}
+    };
+
+    // 处理每个数据包
+    for (const packet of packets) {
+      this._processSinglePacket(packet, updates);
+    }
+
+    // 批量更新状态，减少通知次数
+    this._applyBatchUpdates(updates);
+  }
+
+  // 处理单个数据包
+  _processSinglePacket(packet, updates) {
+    const dataArray = packet.split(" ").filter(item => item.length > 0);
+    
+    for (const item of dataArray) {
+      if (item === PasswordResponse.SUCCESS || item === PasswordResponse.FAILURE) {
+        setTimeout(() => {
+          this._handlePasswordResponse(item);
+        }, 200);
+        continue;
+      }
+      
+      // 处理其他数据...
+      this._processDataItem(item, updates);
+    }
+  }
+  _processDataItem(item, updates) {
+    try {
+      // 处理状态命令
+      if (item.includes("cdopen")) {
+        updates.status.chargingStatus = true;
+        this.clearCdDeviceStatus();
+      } else if (item.includes("cdclose")) {
+        updates.status.chargingStatus = false;
+        if (item.startsWith('cdclose') && item.length > 7) {
+          this._handleCdCloseStatus(item);
+        }
+      } else if (item.includes("fdopen")) {
+        updates.status.dischargingStatus = true;
+        this.clearFdDeviceStatus();
+      } else if (item.includes("fdclose")) {
+        updates.status.dischargingStatus = false;
+        if (item.startsWith('fdclose') && item.length > 7) {
+          this._handleFdCloseStatus(item);
+        }
+      } else if (item.includes("jhstop")) {
+        updates.status.balancingStatus = false;
+      } else if (item.startsWith("jhzt")) {
+        // 处理均衡状态数据
+        const parsedData = this._parseLine(item);
+        if (parsedData) {
+          this._updateBatteryDataOnMain(parsedData.key, parsedData.value);
+        }
+      } else if (item === "RES") {
+        this._showToast(this.t("restarted"));
+      } else {
+        // 处理键值对数据
+        const parsedData = this._parseLine(item);
+        if (parsedData) {
+          this._updateBatteryDataOnMain(parsedData.key, parsedData.value);
+        }
+        
+        // 处理中间为=的内容（设置参数）
+        const parts = item.split("=");
+        if (parts.length === 2) {
+          const keyOfEqual = parts[0].trim();
+          const value = parts[1].trim();
+          this._handleParameterSetting(keyOfEqual, value);
+        }
+      }
+    } catch (error) {
+      console.error('处理数据项失败:', item, error);
+    }
+  }
+
+  // 应用批量更新
+  _applyBatchUpdates(updates) {
+    // 批量更新电池数据
+    if (Object.keys(updates.batteryData).length > 0) {
+      this._batteryData.updateMultiple(updates.batteryData);
+    }
+
+    // 批量更新状态
+    if (Object.keys(updates.status).length > 0) {
+      this._updateStatus(updates.status);
+    }
+
+    // 批量更新参数
+    if (Object.keys(updates.parameters).length > 0) {
+      this._updateParameters(updates.parameters);
+    }
+
+    // 只通知一次监听器
+    this._notifyListeners();
+  }
+
+  // 更新参数值
+  _updateParameters(parameters) {
+    for (const [key, value] of Object.entries(parameters)) {
+      this._parameterValues.set(key, value);
+    }
+  }
 
   /**
    * 将Uint8Array转换为字符串
@@ -1893,6 +2064,9 @@ class BLEManager {
           this._handleParameterSetting(keyOfEqual, value);
         }
       }
+      this._batteryData.updateMultiple({
+        _batteryData: this._batteryData,
+      });
       this._notifyListeners();
     } catch (error) {
       console.error('处理缓冲区数据出错:', error);
@@ -2030,7 +2204,6 @@ class BLEManager {
       // 然后执行BLEManager自己的清理
       this._cancelBleSubscription();
       this._stopAllTimers();
-      this._clearAllStates();
       if (this._peripheral) {
         // 断开设备连接
         this.disconnect();
@@ -2170,7 +2343,6 @@ class BLEManager {
         this._removeAllListeners()
       } catch (error) {
         console.error("断开连接失败:", error);
-        console.log('this._peripheral', this._peripheral);
         
         // 即使出错也要重置状态
         this._isConnected = false;
@@ -2181,6 +2353,7 @@ class BLEManager {
       console.log('设备连接已断开');
     } else {
       console.log('设备未连接，跳过断开操作');
+      this._notifyListeners();
     }
   }
 
@@ -2375,38 +2548,46 @@ class BLEManager {
     }
   }
 
-  // 处理 Toast 队列
+  /**
+   * 处理 Toast 队列
+   * 优化后的版本：移除重复等待、改进错误处理、添加队列状态管理
+   */
   async _processToastQueue() {
+    // 如果队列为空，重置状态并返回
     if (this._toastQueue.length === 0) {
       this._isShowingToast = false;
       return;
     }
     
     this._isShowingToast = true;
-    const { message, duration } = this._toastQueue.shift();
     
     try {
+      // 获取队列中的第一个 Toast
+      const { message, duration = 1500 } = this._toastQueue.shift();  
       // 显示 Toast
       uni.showToast({
         title: message,
         icon: 'none',
         duration: duration,
+        mask: true,
       });
       
-      // 等待 Toast 显示完成后再显示下一个
-      await new Promise(resolve => setTimeout(resolve, duration + 200));
+      // 等待 Toast 显示完成
+      await new Promise(resolve => setTimeout(resolve, 100));
       
     } catch (error) {
       console.error('显示 Toast 失败:', error);
+      // 即使出错也要继续处理队列
+    } finally {
+      // 重置状态
+      this._isShowingToast = false;
+      
+      // 等待100ms后显示下一个Toast
+      setTimeout(() => {
+        this._processToastQueue();
+      }, 100);
     }
-    
-    // 等待 Toast 显示完成后再显示下一个
-    await new Promise(resolve => setTimeout(resolve, duration + 500));
-    
-    // 处理队列中的下一个 Toast
-    this._processToastQueue();
   }
-
 
   // MARK: - 控制命令
   /**
@@ -2414,8 +2595,6 @@ class BLEManager {
    * @param {string} password - 密码
    */
   async verifyPassword(password) {
-    console.log('verifyPassword11: ', this._passwordVerified);
-    
     try {
       // 如果已经验证过密码，直接返回
       if (this._passwordVerified) { 
@@ -2428,7 +2607,6 @@ class BLEManager {
 
       // 构建密码验证命令
       const command = Command.PASSWORD_PREFIX + password + Command.PASSWORD_SUFFIX;
-      console.log('sand before command: ', command, command.length);
       
       // 发送密码验证命令并等待结果
       await this.sendCommand(command);
@@ -2457,7 +2635,6 @@ class BLEManager {
       return;
     }
 
-    console.log("changePassword: ", command);
     let success = false;
     try {
       success = await this._bluetoothWriter.writeData({
@@ -2468,7 +2645,6 @@ class BLEManager {
       if (success) {
         // 密码修改成功
         this._showToast(this.t("password_modified_success"));
-        await this.sendCommand(command, WritePriority.HIGH, false);
       } else {
         this._showToast(this.t("password_error")); // 失败时显示提示
         console.log(`发送命令 '${command}' 失败: 写入操作失败`);
@@ -2494,7 +2670,6 @@ class BLEManager {
     batteryTypeValue
   }) {
     let command = null;
-    // console.log('_sendControlCommand: ', specialCommandValue);
     switch (type) {
       case CommandType.NORMAL_VALUE:
         if (prefix !== null && normalValue !== null) {
@@ -2527,6 +2702,8 @@ class BLEManager {
       console.log("命令生成失败");
       return;
     }
+    await this.sendCommand(command);
+    // await this.readParameters();
   }
 
   async setBalanceTemperature(temp) {
@@ -2695,11 +2872,8 @@ class BLEManager {
    */
   async sendCommand(command, priority = WritePriority.NORMAL, showToast = true) {
     try {
-      console.log('准备发送命令:', command, 'isConnected: ', this.isConnected);
-      
       // 检查设备连接状态
-      if (this._bluetoothWriter._writeCharacteristic === null || this._peripheral === null) {
-        console.log("设备未连接，无法发送命令", this.t("ble_not_ready"));
+      if (!this._isConnected || !this._bluetoothWriter._writeCharacteristic || this._peripheral === null) {
         if (showToast) {
           this._showToast(this.t("ble_not_ready"));
         }
@@ -2713,20 +2887,6 @@ class BLEManager {
       }
       console.log("发送命令:", command, "数据长度:", data.length);
 
-      // 使用BluetoothWriter发送命令
-      // const success = await this._bluetoothWriter.writeData({
-      //   data: data,
-      //   priority: WritePriority.HIGH,
-      // });
-      
-      // if (!command.startsWith("pswd=")) {
-      //   console.log('this._stringToUint8Array(command): ', this._stringToUint8Array(command));
-      //   console.log('_peripheral: ', this._peripheral);
-      //   console.log('this._bluetoothWriter._writeCharacteristic: ', this._bluetoothWriter._writeCharacteristic);
-      //   console.log('data: ', data);
-        
-      //   console.log('success: ', success, 'command123: ', command);
-      // }
       const success = await this._bluetoothWriter.writeData({
         data: data,
         priority: priority,
@@ -2742,7 +2902,7 @@ class BLEManager {
         }
         return true;
       } else {
-        console.log(`发送命令 '${command}' 失败: 写入操作失败`);
+        console.log(`发送命令 '${command}' 失败`);
         if (showToast) {
           this._showToast(this.t("command_send_failed"));
         }
@@ -2768,7 +2928,7 @@ class BLEManager {
       console.log("发送原始命令:", data);
       let success = await this._bluetoothWriter.writeData({
         data: data,
-        priority: WritePriority.HIGH,
+        priority: WritePriority.NORMAL,
       });
       if (!success) {
         this._showToast(this.t("command_send_failed"));
@@ -2776,11 +2936,10 @@ class BLEManager {
         this._showToast(this.t("sent"));
       }
     }
+    // await this.readParameters();
   }
 
   _handlePasswordResponse(response) {
-    console.log('_handlePasswordResponse: ', response, 'this._passwordVerified: ', this._passwordVerified);
-    
     if (response === PasswordResponse.SUCCESS) {
       if (!this._passwordVerified) {
         // 密码验证成功
@@ -3018,7 +3177,7 @@ class BLEManager {
           }
         }
         break;
-    }
+    }    
   }
 
   _handleCdCloseStatus(statusString) {
@@ -3072,7 +3231,6 @@ class BLEManager {
         if (currentPage && currentPage.$vm && currentPage.$vm.$store) {
           const store = currentPage.$vm.$store;
           store.dispatch('setCdCloseStatusText', this._cdCloseStatusText);
-          console.log('同步到 store 完成');
         }
       }
     }
@@ -3127,7 +3285,6 @@ class BLEManager {
         if (currentPage && currentPage.$vm && currentPage.$vm.$store) {
           const store = currentPage.$vm.$store;
           store.dispatch('setFdCloseStatusText', this._fdCloseStatusText);
-          console.log('同步到 store 完成');
         }
       }
     }
@@ -3173,7 +3330,6 @@ class BLEManager {
       console.log('密码未验证，请先验证密码');
       return false;
     }
-    console.log('密码已验证，允许执行操作');
     return true;
   }
 

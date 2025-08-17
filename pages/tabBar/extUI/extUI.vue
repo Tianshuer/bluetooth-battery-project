@@ -278,28 +278,28 @@ export default {
     },
     
     // 电池重置
-    handleBatteryReset() {
-      bleManager.resetCurrent();
+    async handleBatteryReset() {
+      await bleManager.resetCurrent();
     },
     
     // 一键铁锂
-    handleIronChain() {
-      bleManager.setFeLiBattery();
+    async handleIronChain() {
+      await bleManager.setFeLiBattery();
     },
     
     // 一键钛锂
-    handleTitaniumChain() {
-      bleManager.setTiLiBattery();
+    async handleTitaniumChain() {
+      await bleManager.setTiLiBattery();
     },
     
     // 一键三元
-    handleTernary() {
-      bleManager.setSanyuanBattery();
+    async handleTernary() {
+      await bleManager.setSanyuanBattery();
     },
     
     // 修改密码
-    handleChangePassword() {
-      this.$refs.inputDialog.open();
+    async handleChangePassword() {
+      await this.$refs.inputDialog.open();
     },
     async dialogInputConfirm(val) {
       const numValue = parseFloat(val);
