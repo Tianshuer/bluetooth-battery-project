@@ -417,7 +417,6 @@ class BLEManager {
 
     // 密码相关状态
     this._passwordVerified = false;
-    this._firstPasswordVerified = false;
     this._lastError = null;
     this._passwordTimer = null;
     this.verifiedPassword = null; // 最近一次验证通过的密码
@@ -440,6 +439,13 @@ class BLEManager {
     this._subscriptions = new Set(); // 管理多个订阅
 
     this._connectionStateListener = null;
+
+    // 添加Toast队列管理
+    this._toastQueue = [];
+    this._isShowingToast = false;
+
+    // 命令缓存
+    this._commandCache = new Map();
 
     // 初始化蓝牙状态监听器
     this._initializeBluetoothStateListener();
@@ -1298,15 +1304,18 @@ class BLEManager {
         // 设备断开连接
         console.log('设备断开连接');
         this._isConnected = false;
-        this._notifyListeners();
-        this._handleDeviceDisconnection();
-
         if (this._isConnectionEnabled && this._deviceId) {
           console.log('尝试自动重连...');
           setTimeout(() => {
             this.reconnect();
           }, 2000); // 2秒后尝试重连
+        } else {
+          this._handleDeviceDisconnection();
         }
+        this._notifyListeners();
+        console.log('this._isConnectionEnabled: ', this._isConnectionEnabled);
+        console.log('this._deviceId: ', this._deviceId);
+        console.log('this._peripheral: ', this._peripheral);
       } else {
         // 设备连接
         console.log('设备已连接');
@@ -1330,7 +1339,6 @@ class BLEManager {
 
     // 停止所有定时器和心跳
     this._stopPasswordTimer();
-    this._stopHeartbeat();
     this.stopGZYSTimer();
 
     // 释放蓝牙写入器
@@ -1587,7 +1595,7 @@ class BLEManager {
    */
   _setupCharacteristicValueChangeListener() {
     // 移除之前的监听器（如果存在）
-    this._removeCharacteristicValueChangeListener();
+    // this._removeCharacteristicValueChangeListener();
 
     // 设置新的监听器
     uni.onBLECharacteristicValueChange((res) => {
@@ -1608,14 +1616,14 @@ class BLEManager {
    * 移除特征值变化监听
    * @private
    */
-  _removeCharacteristicValueChangeListener() {
-    try {
-      uni.offBLECharacteristicValueChange();
-      console.log('特征值变化监听器已移除');
-    } catch (error) {
-      console.warn('移除特征值变化监听器失败:', error);
-    }
-  }
+  // _removeCharacteristicValueChangeListener() {
+  //   try {
+  //     uni.offBLECharacteristicValueChange();
+  //     console.log('特征值变化监听器已移除');
+  //   } catch (error) {
+  //     console.warn('移除特征值变化监听器失败:', error);
+  //   }
+  // }
 
   /**
    * 处理接收到的数据
@@ -1687,7 +1695,6 @@ class BLEManager {
         return decoder.decode(data);
       } else {
         // TextDecoder不可用，使用备用方法
-        console.log("TextDecoder不可用，使用备用转换方法");
         return this._uint8ArrayToStringFallback(data);
       }
     } catch (error) {
@@ -1778,7 +1785,9 @@ class BLEManager {
       for (const item of dataArray) {
         // 处理密码验证响应
         if (item === PasswordResponse.SUCCESS || item === PasswordResponse.FAILURE) {
-          this._handlePasswordResponse(item);
+          setTimeout(() => {
+            this._handlePasswordResponse(item);
+          }, 200);
           continue;
         } else if (item === "RES") {
           this._showToast(this.t("restarted"));
@@ -1899,9 +1908,9 @@ class BLEManager {
         // 均衡启动
         this._parameterValues = AppConstants.setCommandMap('jhqd', this._parameterValues, value);
         break;
-      case 'dqdl':
+      case 'dljd':
         // 当前电流
-        this._parameterValues = AppConstants.setCommandMap('dqdl', this._parameterValues, value);
+        this._parameterValues = AppConstants.setCommandMap('dljd', this._parameterValues, value);
         break;
       case 'gzys':
         // 故障延时
@@ -2019,32 +2028,6 @@ class BLEManager {
     }
   }
 
-  /**
-   * 停止故障延时定时器
-   */
-  stopGZYSTimer() {
-    if (this.gzysTimer !== null) {
-      console.log('停止故障延时定时器');
-
-      // 取消定时器
-      clearTimeout(this.gzysTimer);
-      this.gzysTimer = null;
-
-      // 重置故障延时数据
-      if (this._batteryData) {
-        this._batteryData.gzys = 0;
-        this._batteryData.updateProperty('gzys', this._batteryData.gzys);
-        // this._batteryData.update();
-      }
-
-      // 通知监听器
-      this._notifyListeners();
-
-      console.log('故障延时定时器已停止，数据已重置');
-    } else {
-      console.log('故障延时定时器不存在，无需停止');
-    }
-  }
 
   _stopPasswordTimer() {
     if (this._passwordTimer) {
@@ -2110,8 +2093,6 @@ class BLEManager {
         // 重置密码验证状态
         this._passwordVerified = false;
 
-        this._firstPasswordVerified = false;
-
         // --- 开始：不需要直接调用_peripheral.disconnect()，BluetoothWriter会处理 ---
         // 相反，我们只需要释放写入器，它会取消定时器和任务，
         // 让connectionState监听器处理实际的_isConnected标志。
@@ -2143,7 +2124,6 @@ class BLEManager {
         // 即使出错也要重置状态
         this._isConnected = false;
         this._isConnectionEnabled = false;
-        this._firstPasswordVerified = false;
         this._passwordVerified = false;
         this._notifyListeners();
       }
@@ -2245,7 +2225,7 @@ class BLEManager {
       try {
         success = await this._bluetoothWriter.writeData({
           data: data,
-          priority: WritePriority.NORMAL
+          priority: WritePriority.NORMAL,
         });
       } catch (error) {
         console.error("发送重命名命令失败:", error);
@@ -2279,31 +2259,56 @@ class BLEManager {
    * @returns {Uint8Array} 转换后的Uint8Array
    */
   _stringToUint8Array(str) {
-    if (typeof TextEncoder !== 'undefined') {
-      // 使用TextEncoder
-      return new TextEncoder().encode(str);
-    } else {
-      // 降级到手动转换
-      return new Uint8Array([...str].map(char => char.charCodeAt(0)));
+    // 检查缓存
+    if (this._commandCache.has(str)) {
+      return this._commandCache.get(str);
     }
-  }
-
-  /**
-   * 备用字符串转换方法
-   * @private
-   * @param {string} str - 要转换的字符串
-   * @returns {Uint8Array} 转换后的Uint8Array
-   */
-  _stringToUint8ArrayFallback(str) {
     try {
-      const codeUnits = [];
+      // 在 uniapp 小程序中，TextEncoder 可能也不可用
+      // 使用兼容性最好的手动转换方法
+      
+      const bytes = [];
+      
       for (let i = 0; i < str.length; i++) {
-        codeUnits.push(str.charCodeAt(i));
+        const charCode = str.charCodeAt(i);
+        
+        if (charCode < 0x80) {
+          // ASCII 字符 (0-127)
+          bytes.push(charCode);
+        } else if (charCode < 0x800) {
+          // 2字节 UTF-8 (128-2047)
+          bytes.push(0xC0 | (charCode >> 6));
+          bytes.push(0x80 | (charCode & 0x3F));
+        } else if (charCode < 0x10000) {
+          // 3字节 UTF-8 (2048-65535)
+          bytes.push(0xE0 | (charCode >> 12));
+          bytes.push(0x80 | ((charCode >> 6) & 0x3F));
+          bytes.push(0x80 | (charCode & 0x3F));
+        } else {
+          // 4字节 UTF-8 (65536+)
+          bytes.push(0xF0 | (charCode >> 18));
+          bytes.push(0x80 | ((charCode >> 12) & 0x3F));
+          bytes.push(0x80 | ((charCode >> 6) & 0x3F));
+          bytes.push(0x80 | (charCode & 0x3F));
+        }
       }
-      return new Uint8Array(codeUnits);
+
+      const result = new Uint8Array(bytes);
+    
+      // 缓存结果
+      this._commandCache.set(str, result);
+      
+      return result;
+      
     } catch (error) {
-      console.error("备用字符串转换也失败:", error);
-      // 最后的备用方案：返回空数组
+      console.error('字符串转换失败，使用备用方法:', error);
+      
+      // 备用方法：简单的字符码转换
+      const arr = new Uint8Array(str.length);
+      for (let i = 0; i < str.length; i++) {
+        arr[i] = str.charCodeAt(i) & 0xFF;
+      }
+      console.error('字符串转换失败:', error);
       return new Uint8Array(0);
     }
   }
@@ -2312,19 +2317,37 @@ class BLEManager {
    * @private
    * @param {string} message - 提示消息
    */
-  _showToast(message) {
-    try {
-      uni.showToast({
-        title: message,
-        icon: 'none',
-        duration: 1500,
-      })
-    } catch (error) {
-      console.log("Toast显示失败:", error);
-      // 备用提示方法
-      console.log(`[Toast] ${message}`);
+  _showToast(message, duration = 1500) {
+    this._toastQueue.push({ message, duration });
+    if (!this._isShowingToast) {
+      this._processToastQueue();
     }
   }
+
+  // 处理 Toast 队列
+  async _processToastQueue() {
+    if (this._toastQueue.length === 0) {
+      this._isShowingToast = false;
+      return;
+    }
+    
+    this._isShowingToast = true;
+    const { message, duration } = this._toastQueue.shift();
+    
+    // 显示 Toast
+    uni.showToast({
+      title: message,
+      icon: 'none',
+      duration: duration,
+    });
+    
+    // 等待 Toast 显示完成后再显示下一个
+    await new Promise(resolve => setTimeout(resolve, duration + 500));
+    
+    // 处理队列中的下一个 Toast
+    this._processToastQueue();
+  }
+
 
   // MARK: - 控制命令
   /**
@@ -2332,11 +2355,11 @@ class BLEManager {
    * @param {string} password - 密码
    */
   verifyPassword(password) {
-    console.log('verifyPassword11: ', this._firstPasswordVerified, this._passwordVerified);
+    console.log('verifyPassword11: ', this._passwordVerified);
     
     try {
       // 如果已经验证过密码，直接返回
-      if (this._firstPasswordVerified && this._passwordVerified) { 
+      if (this._passwordVerified) { 
         this._showToast(this.t("password_verified"));
         return;
       }
@@ -2375,17 +2398,18 @@ class BLEManager {
       return;
     }
 
-    console.log("入队命令:", command);
+    console.log("changePassword: ", command);
     let success = false;
     try {
       success = await this._bluetoothWriter.writeData({
         data: data,
-        priority: WritePriority.NORMAL
+        priority: WritePriority.HIGH,
       });
 
       if (success) {
         // 密码修改成功
         this._showToast(this.t("password_modified_success"));
+        await this.sendCommand(command, WritePriority.HIGH, false);
       } else {
         this._showToast(this.t("password_error")); // 失败时显示提示
         console.log(`发送命令 '${command}' 失败: 写入操作失败`);
@@ -2443,7 +2467,7 @@ class BLEManager {
       console.log("命令生成失败");
       return;
     }
-    this.sendCommand(command);
+    this.sendCommand(command, WritePriority.HIGH);
   }
 
   setBalanceTemperature(temp) {
@@ -2533,7 +2557,7 @@ class BLEManager {
       integerValue: value
     });
   }
-  // 过流保护
+  // 故障延时
   setFaultDelay(value) {
     this._sendControlCommand(CommandType.INTEGER_VALUE, {
       prefix: "gyys",
@@ -2596,6 +2620,7 @@ class BLEManager {
   // 重启设备
   restartDevice() {
     if (this.guardPasswordVerified()) {
+      this._isConnectionEnabled = false;
       this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
         specialCommandValue: "restart"
       });
@@ -2603,20 +2628,22 @@ class BLEManager {
   }
   // 读取参数
   readParameters() {
-    this.sendCommand("read\n", WritePriority.LOW);
+    this.sendCommand("read\n");
   }
   /**
    * 发送命令
    * @param {string} command - 命令字符串
    */
-  async sendCommand(command) {
+  async sendCommand(command, priority = WritePriority.NORMAL, showToast = true) {
     try {
       console.log('准备发送命令:', command, 'isConnected: ', this.isConnected);
       
       // 检查设备连接状态
       if (this._bluetoothWriter._writeCharacteristic === null || this._peripheral === null) {
         console.log("设备未连接，无法发送命令", this.t("ble_not_ready"));
-        this._showToast(this.t("ble_not_ready"));
+        if (showToast) {
+          this._showToast(this.t("ble_not_ready"));
+        }
         return false;
       }
 
@@ -2643,24 +2670,30 @@ class BLEManager {
       // }
       const success = await this._bluetoothWriter.writeData({
         data: data,
-        priority: WritePriority.NORMAL,
+        priority: priority,
       });
       if (success) {
         console.log(`命令 '${command}' 发送成功`);
         
         // 对于非刷新命令，显示成功提示
         if (!command.startsWith("re")) {
-          this._showToast(this.t("sent"));
+          if (showToast) {
+            this._showToast(this.t("sent"));
+          }
         }
         return true;
       } else {
         console.log(`发送命令 '${command}' 失败: 写入操作失败`);
-        this._showToast(this.t("command_send_failed"));
+        if (showToast) {
+          this._showToast(this.t("command_send_failed"));
+        }
         return false;
       }
     } catch (error) {
       console.error(`发送命令 '${command}' 时发生错误:`, error);
-      this._showToast(this.t("command_send_failed"));
+      if (showToast) {
+        this._showToast(this.t("command_send_failed"));
+      }
       return false;
     }
   }
@@ -2676,7 +2709,7 @@ class BLEManager {
       console.log("发送原始命令:", data);
       let success = await this._bluetoothWriter.writeData({
         data: data,
-        priority: WritePriority.NORMAL
+        priority: WritePriority.HIGH,
       });
       if (!success) {
         this._showToast(this.t("command_send_failed"));
@@ -2687,37 +2720,28 @@ class BLEManager {
   }
 
   _handlePasswordResponse(response) {
-    console.log('_handlePasswordResponse: ', response);
+    console.log('_handlePasswordResponse: ', response, 'this._passwordVerified: ', this._passwordVerified);
     
-    if (this._firstPasswordVerified) {
-      if (response === PasswordResponse.SUCCESS) {
-        if (!this._passwordVerified) {
-          // 密码验证成功
-          this._lastError = null;
-          this._passwordVerified = true;
-          this.verifiedPassword = this.lastVerifyPassword;
+    if (response === PasswordResponse.SUCCESS) {
+      if (!this._passwordVerified) {
+        // 密码验证成功
+        this._lastError = null;
+        this._passwordVerified = true;
+        this.verifiedPassword = this.lastVerifyPassword;
 
-          // 启动密码验证定时器（4分钟后自动失效）
-          this._startPasswordTimer();
-  
-          // 显示成功提示
-          // this._showToast(`打印密码是否验证 ${this._passwordVerified}, 2 ${this._firstPasswordVerified}`);
-          this._showToast(this.t("password_success"));
-        }
-      } else if (response === PasswordResponse.FAILURE) {
-        // 密码验证失败
-        this._passwordVerified = false;
-        this._lastError = this.t("password_error");
-        this.verifiedPassword = null;
-        // 显示失败提示
-        this._showToast(this.t("password_error"));
-      } else {
-        console.log('未知的密码响应类型:', response);
+        // 启动密码验证定时器（4分钟后自动失效）
+        this._startPasswordTimer();
+        // 显示成功提示
+        this._showToast(this.t("password_success"));
       }
+    } else if (response === PasswordResponse.FAILURE) {
+      // 密码验证失败
+      this._passwordVerified = false;
+      this._lastError = this.t("password_error");
+      // 显示失败提示
+      this._showToast(this.t("password_error"));
     } else {
-      // 这里逻辑需要优化
-      this.verifyPassword(this.lastVerifyPassword);
-      this._firstPasswordVerified = true;
+      console.log('未知的密码响应类型:', response);
     }
     
     // 通知所有监听器状态变化
@@ -2776,17 +2800,14 @@ class BLEManager {
   } = {}) {
     if (chargingStatus !== null) {
       this._batteryData.chargingStatus = chargingStatus;
-      console.log("充电状态:", chargingStatus);
     }
 
     if (dischargingStatus !== null) {
       this._batteryData.dischargingStatus = dischargingStatus;
-      console.log("放电状态:", dischargingStatus);
     }
 
     if (balancingStatus !== null) {
       this._batteryData.balancingStatus = balancingStatus;
-      console.log("均衡状态:", balancingStatus);
     }
 
     // this._batteryData.update();
@@ -2953,7 +2974,6 @@ class BLEManager {
     const statusValue = charIndex;
     let statusText = "";
 
-    console.log(`解析cdclose状态码: ${statusValue} (0x${statusValue.toString(16).padStart(2, '0')})`);
     if ((statusValue & 0x80) !== 0) {
       statusText = this.t("short_circuit_protection") || '';
     } else if ((statusValue & 0x01) !== 0) {
@@ -2973,7 +2993,6 @@ class BLEManager {
     } else {
       statusText = ""; // 未知或正常状态
     }
-    console.log(`设备状态: ${statusText || "正常"}`);
     if (statusString.length > 8) {
       // 假设延时时间从第9个字符开始，格式为数字字符串
       const delayStr = statusString.substring(8);
@@ -3010,7 +3029,6 @@ class BLEManager {
     const charIndex = statusString.charCodeAt(7);
     const statusValue = charIndex;
     var statusText = "";
-    console.log(`解析fdclose状态码: ${statusValue} (0x${statusValue.toString(16).padStart(2, '0')})`);
 
     if ((statusValue & 0x80) !== 0) {
       statusText = this.t("short_circuit_protection") || '';
@@ -3042,8 +3060,6 @@ class BLEManager {
       }
       console.log(`解析延时时间: ${delayTimeSeconds} 秒`);
     }
-
-    console.log(`设备状态: ${statusText === "" ? "正常" : statusText}`);
     this._fdCloseStatusText = statusText;
     if (typeof uni !== 'undefined' && uni.getStorageSync) {
       const pages = getCurrentPages();
@@ -3092,32 +3108,6 @@ class BLEManager {
     return balancingStrings;
   }
 
-  // _handleReceivedData(data) {
-  //   const string = String.fromCharCode(...data);
-  //   this._receiveBuffer += string;
-
-  //   if (this._receiveBuffer.includes("\n")) {
-  //     const components = this._receiveBuffer.split("\n");
-  //     for (let i = 0; i < components.length - 1; i++) {
-  //       let completePacket = components[i];
-  //       this._processReceivedData(completePacket);
-  //     }
-
-  //     if (this._receiveBuffer.endsWith("\n")) {
-  //       const lastComponent = components[components.length - 1];
-  //       if (lastComponent && lastComponent.trim().length > 0) {
-  //         this._processReceivedData(lastComponent);
-  //       }
-  //       this._receiveBuffer = "";
-  //     } else {
-  //       this._receiveBuffer = components[components.length - 1];
-  //       this._startProcessingTimer();
-  //     }
-  //   } else {
-  //     this._startProcessingTimer();
-  //   }
-  // }
-
   guardPasswordVerified() {
     if (!this._passwordVerified) {
       this._showToast(this.t("please_verify_password"));
@@ -3128,7 +3118,7 @@ class BLEManager {
     return true;
   }
 
-  startGzysTimer() {
+  startGZYSTimer() {
     this.stopGZYSTimer();
     this.gzysTimer = setInterval(() => {
       console.log(`延迟定时器: ${this._batteryData.gzys}`);
@@ -3145,6 +3135,33 @@ class BLEManager {
     }, 1000);
   }
 
+
+  /**
+   * 停止故障延时定时器
+   */
+  stopGZYSTimer() {
+    if (this.gzysTimer !== null) {
+      console.log('停止故障延时定时器');
+
+      // 取消定时器
+      clearTimeout(this.gzysTimer);
+      this.gzysTimer = null;
+
+      // 重置故障延时数据
+      if (this._batteryData) {
+        this._batteryData.gzys = 0;
+        this._batteryData.updateProperty('gzys', this._batteryData.gzys);
+        // this._batteryData.update();
+      }
+
+      // 通知监听器
+      this._notifyListeners();
+
+      console.log('故障延时定时器已停止，数据已重置');
+    } else {
+      console.log('故障延时定时器不存在，无需停止');
+    }
+  }
   /**
    * 处理蓝牙错误
    * @param {Object} error - 错误对象

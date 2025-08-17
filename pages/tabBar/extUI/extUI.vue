@@ -204,7 +204,6 @@ export default {
         console.warn('没有找到对应的命令前缀:', item.key);
         return;
       }
-
       const prefixData = this.stringToBytes(commandPrefix + "=");
       const suffixData = this.stringToBytes("\n");
       
@@ -253,10 +252,12 @@ export default {
         const intValue = Math.round(numValue);
         valueData = [intValue & 0xFF];
       }
-      const commandData = new Uint8Array([...prefixData, ...valueData, ...suffixData]);
+      // const commandData = new Uint8Array([...prefixData, ...valueData, ...suffixData]);
       // console.log('commandData', commandData);
-      
+      const str = String.fromCharCode(...prefixData) + String.fromCharCode(...valueData) + String.fromCharCode(...suffixData);
+      const commandData = this.stringToUint8Array(str);
       // 发送命令
+      console.log('commandData: ', commandData, typeof commandData);
       
       bleManager.sendRawCommand(commandData);
       // this.clearFormValue(item.key);
@@ -322,6 +323,55 @@ export default {
     handleLanguagePopupAction(isOpen) {
       this.show = isOpen
     },
+    stringToUint8Array(str) {
+      if (typeof str !== 'string') {
+        console.error('stringToUint8Array 期望字符串参数，收到:', typeof str);
+        return new Uint8Array(0);
+      }
+      
+      if (str.length === 0) {
+        return new Uint8Array(0);
+      }
+      try {
+        const bytes = [];
+        
+        for (let i = 0; i < str.length; i++) {
+          const charCode = str.charCodeAt(i);
+          
+          // 只处理 ASCII 字符，避免复杂的 UTF-8 编码
+          if (charCode < 0x80) {
+            bytes.push(charCode);
+          } else {
+            // 对于非 ASCII 字符，使用简单的字符码转换
+            bytes.push(charCode & 0xFF);
+          }
+        }
+        
+        const result = new Uint8Array(bytes);
+        
+        // 验证结果
+        if (result.length !== bytes.length) {
+          console.warn('Uint8Array 创建异常，长度不匹配');
+        }
+        
+        return result;
+            
+      } catch (error) {
+        console.error('字符串转换失败，使用备用方法:', error);
+        
+        // 备用方法：简单的字符码转换
+        try {
+          const arr = new Uint8Array(str.length);
+          for (let i = 0; i < str.length; i++) {
+            arr[i] = str.charCodeAt(i) & 0xFF;
+          }
+          return arr;
+        } catch (fallbackError) {
+          console.error('备用转换方法也失败:', fallbackError);
+          return new Uint8Array(0);
+        }
+      }
+    }
   }
 }
 </script>

@@ -48,13 +48,13 @@ class AppConstants {
       "battery_capacity": "dcrl",  // 电池容量
       "voltage_diff_balance": "ycjh",  // 压差均衡
       "balance_start": "jhqd",   // 均衡启动
-      "fault_delay": "gzys",  // 故障延时
+      "fault_delay": "gyys",  // 故障延时
       "current_limit": "dqdl",  // 当前电流
       "over_current_protection": "glbh",  // 过流保护
       "charging_over_current": "cdgl",   // 充电过流
       "voltage_diff_protection": "ycbh",  // 压差保护
       "current_limit_debounce": "dlxd",  // 电流消抖
-      "short_circuit_delay": "gyys",  // 短路延时
+      "short_circuit_delay": "dlys",  // 短路延时
       "balance_frequency": "jhpl",  // 均衡频率
       "rename_device": "",
     };
