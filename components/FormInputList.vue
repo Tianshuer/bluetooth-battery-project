@@ -17,6 +17,7 @@
           :placeholder="item.placeholder || '请输入'"
           :type="item.type || 'text'"
           class="input-field"
+          :focus="false"
           @input="handleInput(item, index)"
         />
         <button 

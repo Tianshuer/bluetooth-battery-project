@@ -160,33 +160,33 @@
           },
           
           // 充电开启
-          handleChargeOn() {
-            bleManager.startCharging();
+          async handleChargeOn() {
+            await bleManager.startCharging();
           },
           
           // 充电关闭
-          handleChargeOff() {
-            bleManager.stopCharging();
+          async handleChargeOff() {
+            await bleManager.stopCharging();
           },
           
           // 放电开启
-          handleDischargeOn() {
-            bleManager.startDischarging();
+          async handleDischargeOn() {
+            await bleManager.startDischarging();
           },
           
           // 放电关闭
-          handleDischargeOff() {
-            bleManager.closeDischarge();
+          async handleDischargeOff() {
+            await bleManager.stopDischarging();
           },
           
           // 一键均衡
-          handleAutoBalance() {
-            bleManager.startOneKeyBalance();
+          async handleAutoBalance() {
+            await bleManager.startOneKeyBalance();
           },
 
           // 重启设备
-          handleRestartDevice() {
-            bleManager.restartDevice();
+          async handleRestartDevice() {
+            await bleManager.restartDevice();
           },
 
           // 处理语言弹窗状态变化

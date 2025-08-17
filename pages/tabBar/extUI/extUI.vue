@@ -26,7 +26,7 @@
     <!-- 修改密码弹窗 -->
     <uni-popup ref="inputDialog" type="dialog">
       <uni-popup-dialog ref="inputClose"  mode="input" title="修改密码" :value="currentPassword" type="number"
-        placeholder="请输入新密码" @confirm="dialogInputConfirm" @close="onDialogClose"></uni-popup-dialog>
+        placeholder="请输入新密码" :focus="false" @confirm="dialogInputConfirm" @close="onDialogClose"></uni-popup-dialog>
     </uni-popup>
   </page-meta>
 </template>
@@ -118,8 +118,8 @@ export default {
       return AppConstants.parameterUnitMap[key] || '';
     },
     // 发送验证码
-    handleSendCode(code) {
-      bleManager.verifyPassword(code);
+    async handleSendCode(code) {
+      await bleManager.verifyPassword(code);
     },
     
     // 功能按钮点击
@@ -162,7 +162,7 @@ export default {
     },
     
     // 表单发送事件
-    handleFormSend({ item, index, value }) {
+    async handleFormSend({ item, index, value }) {
       if (item.key === 'rename_device' && !value.trim()) {
         uni.showToast({
           title: this.t('please_enter_content'),
@@ -183,7 +183,7 @@ export default {
         return;
       }
       
-      this._sendCommand(item, value);
+      await this._sendCommand(item, value);
     },
     
     stringToBytes(text) {
@@ -194,7 +194,7 @@ export default {
     return bytes;
   },
 
-    _sendCommand(item, value) {
+    async _sendCommand(item, value) {
       const numValue = parseFloat(value);
 
       // 获取命令前缀
@@ -259,7 +259,7 @@ export default {
       // 发送命令
       console.log('commandData: ', commandData, typeof commandData);
       
-      bleManager.sendRawCommand(commandData);
+      await bleManager.sendRawCommand(commandData);
       // this.clearFormValue(item.key);
     },
     // 清空表单值
@@ -302,7 +302,7 @@ export default {
     handleChangePassword() {
       this.$refs.inputDialog.open();
     },
-    dialogInputConfirm(val) {
+    async dialogInputConfirm(val) {
       const numValue = parseFloat(val);
       if (isNaN(numValue)) {
         this.$refs.inputClose.val = '';
@@ -313,7 +313,7 @@ export default {
         });
         return;
       }
-      bleManager.changePassword(val);
+      await bleManager.changePassword(val);
       this.$refs.inputClose.val = '';
     },
     onDialogClose() {

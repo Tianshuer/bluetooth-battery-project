@@ -1448,7 +1448,7 @@ class BLEManager {
       }
 
       if (this._writeCharacteristic) {
-        this.readParameters();
+        await this.readParameters();
       }
       // 检查是否找到目标服务
       if (!serviceFound) {
@@ -2354,7 +2354,7 @@ class BLEManager {
    * 验证密码
    * @param {string} password - 密码
    */
-  verifyPassword(password) {
+  async verifyPassword(password) {
     console.log('verifyPassword11: ', this._passwordVerified);
     
     try {
@@ -2372,7 +2372,7 @@ class BLEManager {
       console.log('sand before command: ', command, command.length);
       
       // 发送密码验证命令并等待结果
-      this.sendCommand(command);
+      await this.sendCommand(command);
     } catch (error) {
       console.error('密码验证过程中发生错误:', error);
       this._showToast(this.t("password_error"));
@@ -2420,9 +2420,9 @@ class BLEManager {
     }
   }
 
-  refreshDeviceInfo() {
+  async refreshDeviceInfo() {
     if (this._peripheral === null || !this.isConnected) {
-      this.sendCommand("re");
+      await this.sendCommand("re");
       this._notifyListeners();
     }
   }
@@ -2434,7 +2434,8 @@ class BLEManager {
     specialCommandValue,
     batteryTypeValue
   }) {
-    console.log('_sendControlCommand: ', specialCommandValue);
+    let command = null;
+    // console.log('_sendControlCommand: ', specialCommandValue);
     switch (type) {
       case CommandType.NORMAL_VALUE:
         if (prefix !== null && normalValue !== null) {
@@ -2467,168 +2468,167 @@ class BLEManager {
       console.log("命令生成失败");
       return;
     }
-    this.sendCommand(command, WritePriority.HIGH);
   }
 
-  setBalanceTemperature(temp) {
-    this._sendControlCommand(CommandType.NORMAL_VALUE, {
+  async setBalanceTemperature(temp) {
+    await this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "jhwd",
       normalValue: temp
     });
   }
   // 电池重置
-  resetCurrent() {
+  async resetCurrent() {
     if (this.guardPasswordVerified()) {
-      this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+      await this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
         specialCommandValue: "dl0"
       });
     }
   }
   // 一键铁锂
-  setFeLiBattery() {
+  async setFeLiBattery() {
     if (this.guardPasswordVerified()) {
-      this._sendControlCommand(CommandType.BATTERY_TYPE, {
+      await this._sendControlCommand(CommandType.BATTERY_TYPE, {
         batteryTypeValue: "okFe"
       });
     }
   }
   // 一键钛锂
-  setTiLiBattery() {
+  async setTiLiBattery() {
     if (this.guardPasswordVerified()) {
-      this._sendControlCommand(CommandType.BATTERY_TYPE, {
+      await this._sendControlCommand(CommandType.BATTERY_TYPE, {
         batteryTypeValue: "okTi"
       });
     }
   }
   // 一键三元
-  setSanyuanBattery() {
+  async setSanyuanBattery() {
     if (this.guardPasswordVerified()) {
-      this._sendControlCommand(CommandType.BATTERY_TYPE, {
+      await this._sendControlCommand(CommandType.BATTERY_TYPE, {
         batteryTypeValue: "okCo"
       });
     }
   }
   // 过压保护
-  setOverVoltageProtection(value) {
-    this._sendControlCommand(CommandType.NORMAL_VALUE, {
+  async setOverVoltageProtection(value) {
+    await this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "gybh",
       normalValue: value
     });
   }
   // 过压恢复
-  setOverVoltageRecovery(value) {
-    this._sendControlCommand(CommandType.NORMAL_VALUE, {
+  async setOverVoltageRecovery(value) {
+    await this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "gyhf",
       normalValue: value
     });
   }
   // 欠压保护
-  setUnderVoltageProtection(value) {
-    this._sendControlCommand(CommandType.NORMAL_VALUE, {
+  async setUnderVoltageProtection(value) {
+    await this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "qybh",
       normalValue: value
     });
   }
   // 探头高温
-  setProbeHighTemperature(value) {
-    this._sendControlCommand(CommandType.NORMAL_VALUE, {
+  async setProbeHighTemperature(value) {
+    await this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "usgw",
       normalValue: value
     });
   }
   // 探头低温
-  setMosHighTemperature(value) {
-    this._sendControlCommand(CommandType.NORMAL_VALUE, {
+  async setMosHighTemperature(value) {
+    await this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "msgw",
       normalValue: value
     });
   }
   // 电压差
-  setBalanceVoltageDiff(value) {
-    this._sendControlCommand(CommandType.NORMAL_VALUE, {
+  async setBalanceVoltageDiff(value) {
+    await this._sendControlCommand(CommandType.NORMAL_VALUE, {
       prefix: "jhyc",
       normalValue: value
     });
   }
   // 电流限制
-  setCurrentLimit(value) {
-    this._sendControlCommand(CommandType.INTEGER_VALUE, {
+  async setCurrentLimit(value) {
+    await this._sendControlCommand(CommandType.INTEGER_VALUE, {
       prefix: "dqdl",
       integerValue: value
     });
   }
   // 故障延时
-  setFaultDelay(value) {
-    this._sendControlCommand(CommandType.INTEGER_VALUE, {
+  async setFaultDelay(value) {
+    await this._sendControlCommand(CommandType.INTEGER_VALUE, {
       prefix: "gyys",
       integerValue: value
     });
   }
-  openCharge() {
-    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+  async openCharge() {
+    await this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
       specialCommandValue: "cdopen"
     });
   }
-  closeCharge() {
-    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+  async closeCharge() {
+    await this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
       specialCommandValue: "cdclose"
     });
   }
-  openDischarge() {
-    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+  async openDischarge() {
+    await this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
       specialCommandValue: "fdopen"
     });
   }
-  closeDischarge() {
-    this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+  async closeDischarge() {
+    await this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
       specialCommandValue: "fdclose"
     });
   }
 
   // 充电开启
-  startCharging() {
+  async startCharging() {
     if (this.guardPasswordVerified()) {
-      this.sendCommand(Command.CHARGE_OPEN);
+      await this.sendCommand(Command.CHARGE_OPEN);
     }
   }
   // 充电关闭
-  stopCharging() {
+  async stopCharging() {
     if (this.guardPasswordVerified()) {
-      this.sendCommand(Command.CHARGE_CLOSE);
+      await this.sendCommand(Command.CHARGE_CLOSE);
     }
   }
   // 放电开启
-  startDischarging() {
+  async startDischarging() {
     if (this.guardPasswordVerified()) {
-      this.sendCommand(Command.DISCHARGE_OPEN);
+      await this.sendCommand(Command.DISCHARGE_OPEN);
     }
   }
   // 放电关闭
-  stopDischarging() {
+  async stopDischarging() {
     if (this.guardPasswordVerified()) {
-      this.sendCommand(Command.DISCHARGE_CLOSE);
+      await this.sendCommand(Command.DISCHARGE_CLOSE);
     }
   }
   // 一键均衡
-  startOneKeyBalance() {
+  async startOneKeyBalance() {
     if (this.guardPasswordVerified()) {
-      this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+      await this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
         specialCommandValue: "okjh"
       });
     }
   }
   // 重启设备
-  restartDevice() {
+  async restartDevice() {
     if (this.guardPasswordVerified()) {
       this._isConnectionEnabled = false;
-      this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
+      await this._sendControlCommand(CommandType.SPECIAL_COMMAND, {
         specialCommandValue: "restart"
       });
     }
   }
   // 读取参数
-  readParameters() {
-    this.sendCommand("read\n");
+  async readParameters() {
+    await this.sendCommand("read\n");
   }
   /**
    * 发送命令
