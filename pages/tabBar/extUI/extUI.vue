@@ -25,8 +25,8 @@
     </view>
     <!-- 修改密码弹窗 -->
     <uni-popup ref="inputDialog" type="dialog">
-      <uni-popup-dialog ref="inputClose"  mode="input" title="修改密码" :value="currentPassword" type="number"
-        placeholder="请输入新密码" :focus="false" @confirm="dialogInputConfirm" @close="onDialogClose"></uni-popup-dialog>
+      <uni-popup-dialog ref="inputClose"  mode="input" :title="t('modify_password')" :value="currentPassword" type="number"
+        :placeholder="t('please_input_new_password')" :focus="false" @confirm="dialogInputConfirm" @close="onDialogClose"></uni-popup-dialog>
     </uni-popup>
   </page-meta>
 </template>
@@ -77,7 +77,7 @@ export default {
         { text: this.t('one_key_iron'), type: 'info', action: 'IronChain' },
         { text: this.t('one_key_titanium'), type: 'info', action: 'titaniumChain' },
         { text: this.t('one_key_sanyuan'), type: 'warning', action: 'ternary' },
-        { text: this.t('change_password'), type: 'danger', action: 'changePassword' }
+        { text: this.t('modify_password'), type: 'danger', action: 'changePassword' }
       ]
     },
     // 表单输入项配置 - 响应语言变化
@@ -89,8 +89,7 @@ export default {
         const paramValue = this.safeParameterValues[key] || '';
         const label = this.t(key);
         const unit = this.getUnitByKey(key) || '';
-        const inputType = key === 'rename_device' ? 'text' : 'number';
-        
+        const inputType = key === 'rename_device' ? 'text' : 'digit';
         formConfigs.push({
           label,
           placeholder: this.t('input_value'),

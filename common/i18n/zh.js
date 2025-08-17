@@ -136,7 +136,6 @@ export default {
   "voltage_diff_protection": "压差保护",
   "current_limit_debounce": "电流消抖",
   "short_circuit_delay": "短路延时",
-  "change_password": "修改密码",
   "battery_reset": "电池重置",
   "one_key_iron": "一键铁锂",
   "one_key_titanium": "一键钛锂",

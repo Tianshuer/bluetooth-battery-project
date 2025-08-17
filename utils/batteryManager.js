@@ -385,7 +385,7 @@ class BluetoothWriter {
 
 class BLEManager {
   constructor(preLocale = 'en') {
-    this.t = i18n.t.bind(i18n);
+    this.t = null;
 
     // 国际化设置
     this._locale = preLocale; // 默认设置为英文
@@ -449,7 +449,10 @@ class BLEManager {
 
     // 初始化蓝牙状态监听器
     this._initializeBluetoothStateListener();
-    
+
+    // 初始化翻译方法
+    this._initTranslationMethod();
+
     // 初始化时同步一次状态到Vuex
     this._syncStateToVuex();
   }
@@ -556,7 +559,6 @@ class BLEManager {
   //   }
   // }
 
-
   /**
    * 获取当前语言设置
    * @returns {string} 当前语言代码
@@ -565,6 +567,35 @@ class BLEManager {
     return this._locale;
   }
 
+  // 初始化翻译方法
+  _initTranslationMethod() {
+    try {
+      // 尝试从当前页面获取翻译方法
+      if (typeof getCurrentPages !== 'undefined') {
+        const pages = getCurrentPages();
+        if (pages && pages.length > 0) {
+          const currentPage = pages[pages.length - 1];
+          if (currentPage && currentPage.$vm && currentPage.$vm.$store) {
+            const store = currentPage.$vm.$store;
+            this.t = store.getters.t;
+            return;
+          }
+        }
+      }
+      
+      // 如果无法获取，使用默认的 i18n
+      if (typeof i18n !== 'undefined') {
+        this.t = i18n.t.bind(i18n);
+      } else {
+        // 备用方案：简单的翻译方法
+        this.t = (key) => key;
+      }
+      
+    } catch (error) {
+      console.error('初始化翻译方法失败:', error);
+      this.t = (key) => key;
+    }
+  }
   /**
    * 添加状态变化监听器
    * @param {Function} listener - 监听器函数
@@ -610,9 +641,30 @@ class BLEManager {
       return;
     }
 
+    let currentLanguage = this._locale;
+    try {
+      // 尝试从当前页面获取最新的语言设置
+      if (typeof getCurrentPages !== 'undefined') {
+        const pages = getCurrentPages();
+        if (pages && pages.length > 0) {
+          const currentPage = pages[pages.length - 1];
+          if (currentPage && currentPage.$vm && currentPage.$vm.$store) {
+            const store = currentPage.$vm.$store;
+            currentLanguage = store.state.language;
+
+            // 更新内部语言设置和翻译方法
+            this._locale = currentLanguage;
+            this.t = store.getters.t;
+          }
+        }
+      }
+    } catch (error) {
+      console.error('获取当前语言失败:', error);
+    }
+
     // 传递当前状态数据给监听器
     const stateData = {
-      locale: this._locale,
+      locale: currentLanguage,
       isConnected: this._isConnected,
       isScanning: this._isScanning,
       batteryData: this._batteryData,
@@ -673,7 +725,6 @@ class BLEManager {
           const currentPage = pages[pages.length - 1];
           if (currentPage && currentPage.$vm && currentPage.$vm.$store) {
             const store = currentPage.$vm.$store;
-            
             // 同步蓝牙管理器状态
             store.dispatch('updateBleManagerState', {
               isConnected: this._isConnected,
@@ -728,14 +779,14 @@ class BLEManager {
             });
 
             // 同步连接状态
-            // store.dispatch('setConnectionStatus', this._isConnected);
-            // store.dispatch('setPasswordVerified', this._passwordVerified);
             store.dispatch('setCurrentBatteryPercentage', this._calculateBatteryPercentage());
             store.dispatch('setFdCloseStatusText', this._fdCloseStatusText);
             store.dispatch('setCdCloseStatusText', this._cdCloseStatusText);
             store.dispatch('setLowestString', this._batteryData.lowestString);
             store.dispatch('setGzys', this._batteryData.gzys);
             store.dispatch('setIsShowYCBHAlert', this._batteryData.showYCBHAlert());
+            // 同步语言设置
+            store.dispatch('switchLanguage', this._locale);
           }
         }
       }
@@ -2334,12 +2385,20 @@ class BLEManager {
     this._isShowingToast = true;
     const { message, duration } = this._toastQueue.shift();
     
-    // 显示 Toast
-    uni.showToast({
-      title: message,
-      icon: 'none',
-      duration: duration,
-    });
+    try {
+      // 显示 Toast
+      uni.showToast({
+        title: message,
+        icon: 'none',
+        duration: duration,
+      });
+      
+      // 等待 Toast 显示完成后再显示下一个
+      await new Promise(resolve => setTimeout(resolve, duration + 200));
+      
+    } catch (error) {
+      console.error('显示 Toast 失败:', error);
+    }
     
     // 等待 Toast 显示完成后再显示下一个
     await new Promise(resolve => setTimeout(resolve, duration + 500));

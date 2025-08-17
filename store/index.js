@@ -80,9 +80,6 @@ export default new Vuex.Store({
 
       writeCharacteristic: null,
 
-      // 语言设置
-      locale: 'zh',
-
       // 电池百分比
       currentBatteryPercentage: 0,
 
@@ -191,8 +188,11 @@ export default new Vuex.Store({
       if (data.discoveredPeripherals !== undefined) state.bleManager.discoveredPeripherals = data.discoveredPeripherals;
       if (data.batteryData !== undefined) state.bleManager.batteryData = data.batteryData;
       if (data.parameterValues !== undefined) state.bleManager.parameterValues = data.parameterValues;
-      if (data.locale !== undefined) state.bleManager.locale = data.locale;
       if (data.writeCharacteristic !== undefined) state.bleManager.writeCharacteristic = data.writeCharacteristic;
+
+      if (data.locale !== undefined && data.locale !== state.language) {
+        this.commit('SET_LANGUAGE', data.locale);
+      }
     },
   },
 

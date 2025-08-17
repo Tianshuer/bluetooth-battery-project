@@ -32,6 +32,7 @@
 			updateTabBar() {
 				try {
 					const t = this.$store.getters.t
+					
 					const tabBarConfig = getTabBarConfig(t)
 					
 					// 设置 tabbar 文本

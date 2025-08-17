@@ -161,35 +161,6 @@ export default {
     
   },
   watch: {
-    // 'isConnected': {
-    //   handler(newConnectedState) {
-    //     this.isConnected = newConnectedState;
-    //     if (newConnectedState) {
-    //       // 设备连接时，如果有store数据则使用，否则保持当前数据
-    //       if (this.batteryData) {
-    //         this.currentBatteryData = {
-    //           totalVoltage: this.batteryData.totalVoltage || '0.00',
-    //           voltageDiff: this.batteryData.voltageDiff || '0.0000',
-    //           minVoltage: this.batteryData.minVoltage || '0.0000',
-    //           maxVoltage: this.batteryData.maxVoltage || '0.0000',
-    //           averageVoltage: this.batteryData.averageVoltage || '0.0000',
-    //           current: this.batteryData.current || '0.00',
-    //           power: this.batteryData.power || '0.00',
-    //           ratio: this.batteryData.ratio || '0.00',
-    //           totalCapacity: this.batteryData.totalCapacity || '0.0000',
-    //           mosTemperature: this.batteryData.mosTemperature || '0.0',
-    //           balanceTemperature: this.batteryData.balanceTemperature || '0.0',
-    //           chip1Temperature: this.batteryData.chip1Temperature || '0.0',
-    //           chip2Temperature: this.batteryData.chip2Temperature || '0.0',
-    //           cycleCapacity: this.batteryData.cycleCapacity || '0.0000',
-    //           temperatures: this.batteryData.temperatures || [],
-    //         };
-    //       }
-    //       // 如果连接但没有数据，保持当前数据（可能是默认值）
-    //     }
-    //   },
-    //   immediate: true,
-    // },
     // 监听store中的batteryData变化
     batteryData: {
       handler(newData) {
