@@ -60,11 +60,13 @@ export default {
   methods: {
     // 发送验证码
     handleSendCode() {
+      uni.vibrateShort();
       this.$emit('sendCode', this.verifyCode)
     },
     
     // 功能按钮点击
     handleFunctionClick(button, index) {
+      uni.vibrateShort();
       this.$emit('functionClick', { button, index })
     }
   }

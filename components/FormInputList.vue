@@ -77,6 +77,7 @@ export default {
     
     // 发送按钮点击事件
     handleSend(item, index) {
+      uni.vibrateShort();
       this.$emit('send', {
         item,
         index,
