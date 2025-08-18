@@ -31,7 +31,7 @@
         </view>
         <view class="status-indicators">
           <!-- 放电MOS状态 -->
-          <view class="status-item" :class="{ 'has-alert': fdCloseStatusText }">
+          <view class="status-item">
             <view class="status-item-content">
               <view class="status-dot" :class="batteryData.dischargingStatus ? 'active-dot' : 'inactive-dot'"></view>
               <text class="status-text">{{ t('discharge_mos') }}</text>
@@ -44,7 +44,7 @@
 
           <!-- 充电MOS状态 -->
           <view class="status-item">
-            <view class="status-item-content" :class="{ 'has-alert': cdCloseStatusText }">
+            <view class="status-item-content">
               <view class="status-dot" :class="batteryData.chargingStatus ? 'active-dot' : 'inactive-dot'"></view>
               <text class="status-text">{{ t('charge_mos') }}</text>
             </view>
@@ -406,10 +406,6 @@ export default {
   width: 33.3%
 }
 
-.status-item .has-alert {
-  margin-bottom: 8rpx;
-}
-
 .status-item-content {
   display: flex;
   align-items: center;
@@ -421,6 +417,7 @@ export default {
   width: 16rpx;
   height: 16rpx;
   border-radius: 50%;
+  margin-left: 8rpx;
   margin-right: 12rpx;
 }
 
@@ -441,6 +438,11 @@ export default {
 
 .alert-text {
   color: #FF3B30;
+}
+
+.icon-warning {
+  display: inline-block;
+  margin-right: 4rpx;
 }
 
 .icon-warning.inactive-dot {

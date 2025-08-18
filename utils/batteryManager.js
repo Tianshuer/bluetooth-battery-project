@@ -1746,9 +1746,8 @@ class BLEManager {
       const string = this._uint8ArrayToString(data);
       // 添加到接收缓冲区
       this._receiveBuffer += string;
-
       // 批量处理数据，减少状态更新频率
-       if (this._receiveBuffer.includes("\n")) {
+      if (this._receiveBuffer.includes("\n")) {
         this._processBufferedData();
       } else {
         this._startProcessingTimer();
@@ -1768,21 +1767,16 @@ class BLEManager {
     // 收集完整的数据包
     for (let i = 0; i < components.length - 1; i++) {
       const packet = components[i].trim();
-      if (packet.length > 0) {
-        completePackets.push(packet);
-      }
+      completePackets.push(packet);
     }
-
     // 批量处理所有完整数据包
     if (completePackets.length > 0) {
       this._processMultiplePackets(completePackets);
     }
-
-    // 处理最后一个片段
+    // 处理最后一个不完整的行
     if (this._receiveBuffer.endsWith("\n")) {
-      const lastPacket = components[components.length - 1].trim();
-      if (lastPacket.length > 0) {
-        this._processReceivedData(lastPacket);
+      if (components[components.length - 1]) {
+        this._processMultiplePackets(components[components.length - 1]);
       }
       this._receiveBuffer = "";
     } else {
@@ -1811,8 +1805,9 @@ class BLEManager {
 
   // 处理单个数据包
   _processSinglePacket(packet, updates) {
+    packet = packet.trim();
     const dataArray = packet.split(" ").filter(item => item.length > 0);
-    
+
     for (const item of dataArray) {
       if (item === PasswordResponse.SUCCESS || item === PasswordResponse.FAILURE) {
         setTimeout(() => {
@@ -1876,21 +1871,30 @@ class BLEManager {
 
   // 应用批量更新
   _applyBatchUpdates(updates) {
+    const statusPayload = {};
+    if (typeof updates.status.chargingStatus === 'boolean') {
+      statusPayload.chargingStatus = updates.status.chargingStatus;
+    }
+    if (typeof updates.status.dischargingStatus === 'boolean') {
+      statusPayload.dischargingStatus = updates.status.dischargingStatus;
+    }
+    if (typeof updates.status.balancingStatus === 'boolean') {
+      statusPayload.balancingStatus = updates.status.balancingStatus;
+    }
+    // 批量更新状态
+    if (Object.keys(statusPayload).length > 0) {
+      this._updateStatus(statusPayload);
+    }
+    
     // 批量更新电池数据
-    if (Object.keys(updates.batteryData).length > 0) {
+    if (updates.batteryData && Object.keys(updates.batteryData).length > 0) {
       this._batteryData.updateMultiple(updates.batteryData);
     }
 
-    // 批量更新状态
-    if (Object.keys(updates.status).length > 0) {
-      this._updateStatus(updates.status);
-    }
-
     // 批量更新参数
-    if (Object.keys(updates.parameters).length > 0) {
+    if (updates.parameters && Object.keys(updates.parameters).length > 0) {
       this._updateParameters(updates.parameters);
     }
-
     // 只通知一次监听器
     this._notifyListeners();
   }
@@ -1973,7 +1977,7 @@ class BLEManager {
 
     this._processingTimer = setTimeout(() => {
       if (this._receiveBuffer.length > 0) {
-        this._processReceivedData(this._receiveBuffer);
+        this._processBufferedData();
         this._receiveBuffer = "";
       }
     }, delay);
@@ -1987,89 +1991,6 @@ class BLEManager {
     if (this._processingTimer) {
       clearTimeout(this._processingTimer);
       this._processingTimer = null;
-    }
-  }
-
-  /**
-   * 处理缓冲区数据
-   * @private
-   */
-  _processReceivedData(completeData) {
-    const processedString = completeData.trim();
-
-    const dataArray = processedString.split(" ").filter(item => item.length > 0);
-
-    if (dataArray.length === 0) {
-      return;
-    }
-    try {
-      // 处理每个数据项
-      for (const item of dataArray) {
-        // 处理密码验证响应
-        if (item === PasswordResponse.SUCCESS || item === PasswordResponse.FAILURE) {
-          setTimeout(() => {
-            this._handlePasswordResponse(item);
-          }, 200);
-          continue;
-        } else if (item === "RES") {
-          this._showToast(this.t("restarted"));
-          continue;
-        }
-        // 处理状态命令
-        if (item.includes("cdopen")) {
-          this._updateStatus({
-            chargingStatus: true
-          });
-          this.clearCdDeviceStatus();
-        } else if (item.includes("cdclose")) {
-          this._updateStatus({
-            chargingStatus: false
-          });
-          if (item.startsWith('cdclose') && item.length > 7) {
-            this._handleCdCloseStatus(item);
-          }
-        } else if (item.includes("fdopen")) {
-          this._updateStatus({
-            dischargingStatus: true
-          });
-          this.clearFdDeviceStatus();
-        } else if (item.includes("fdclose")) {
-          this._updateStatus({
-            dischargingStatus: false
-          });
-          if (item.startsWith('fdclose') && item.length > 7) {
-            this._handleFdCloseStatus(item);
-          }
-        } else if (item.includes("jhstop")) {
-          this._updateStatus({
-            balancingStatus: false
-          });
-        } else if (item.startsWith("jhzt")) {
-          const parsedData = this._parseLine(item);
-          if (parsedData) {
-            this._updateBatteryDataOnMain(parsedData.key, parsedData.value);
-          }
-        } else {
-          // 处理键值对数据
-          const parsedData = this._parseLine(item);
-          if (parsedData) {
-            this._updateBatteryDataOnMain(parsedData.key, parsedData.value);
-          }
-        }
-        // 处理中间为=的内容（设置参数）
-        const parts = item.split("=");
-        if (parts.length === 2) {
-          const keyOfEqual = parts[0].trim();
-          const value = parts[1].trim();
-          this._handleParameterSetting(keyOfEqual, value);
-        }
-      }
-      this._batteryData.updateMultiple({
-        _batteryData: this._batteryData,
-      });
-      this._notifyListeners();
-    } catch (error) {
-      console.error('处理缓冲区数据出错:', error);
     }
   }
 
@@ -3011,30 +2932,29 @@ class BLEManager {
     this._notifyListeners();
   }
 
-  _updateStatus({
-    chargingStatus,
-    dischargingStatus,
-    balancingStatus
-  } = {}) {
-    if (chargingStatus !== null) {
-      this._batteryData.chargingStatus = chargingStatus;
-    }
+  _updateStatus(status = {}) {
+    const hasCharging = Object.prototype.hasOwnProperty.call(status, 'chargingStatus');
+    const hasDischarging = Object.prototype.hasOwnProperty.call(status, 'dischargingStatus');
+    const hasBalancing = Object.prototype.hasOwnProperty.call(status, 'balancingStatus');
 
-    if (dischargingStatus !== null) {
-      this._batteryData.dischargingStatus = dischargingStatus;
+    if (hasCharging) {
+      const next = !!status.chargingStatus;
+      if (this._batteryData.chargingStatus !== next) {
+        this._batteryData.chargingStatus = next;
+      }
     }
-
-    if (balancingStatus !== null) {
-      this._batteryData.balancingStatus = balancingStatus;
+    if (hasDischarging) {
+      const next = !!status.dischargingStatus;
+      if (this._batteryData.dischargingStatus !== next) {
+        this._batteryData.dischargingStatus = next;
+      }
     }
-
-    // this._batteryData.update();
-    this._batteryData.updateMultiple({
-      chargingStatus,
-      dischargingStatus,
-      balancingStatus,
-    });
-    this._notifyListeners();
+    if (hasBalancing) {
+      const next = !!status.balancingStatus;
+      if (this._batteryData.balancingStatus !== next) {
+        this._batteryData.balancingStatus = next;
+      }
+    }
   }
 
   _parseLine(item) {
