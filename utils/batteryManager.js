@@ -473,9 +473,6 @@ class BLEManager {
     this._isScanning = false; // 扫描状态标志
 
     // 蓝牙事件订阅管理
-    this.bleSubscription = null;
-    this._subscriptions = new Set(); // 管理多个订阅
-
     this._connectionStateListener = null;
 
     // 添加Toast队列管理
@@ -490,6 +487,8 @@ class BLEManager {
 
     // 命令缓存
     this._commandCache = new Map();
+
+    this._isDisposing = false;
 
     // 初始化蓝牙状态监听器
     this._initializeBluetoothStateListener();
@@ -1887,8 +1886,12 @@ class BLEManager {
     }
     
     // 批量更新电池数据
-    if (updates.batteryData && Object.keys(updates.batteryData).length > 0) {
-      this._batteryData.updateMultiple(updates.batteryData);
+    const batteryPayload = updates.batteryData ? { ...updates.batteryData } : null;
+    if (batteryPayload && Object.prototype.hasOwnProperty.call(batteryPayload, 'gzys')) {
+      delete batteryPayload.gzys;
+    }
+    if (batteryPayload && Object.keys(batteryPayload).length > 0) {
+      this._batteryData.updateMultiple(batteryPayload);
     }
 
     // 批量更新参数
@@ -2114,16 +2117,18 @@ class BLEManager {
    * 销毁BLE管理器，清理所有资源
    */
   dispose() {
+    if (this._isDisposing) return;
+    this._isDisposing = true;
     console.log('开始销毁BLE管理器...');
 
     try {
+      // 然后执行BLEManager自己的清理
+      this._cancelBleSubscription();
       // 先调用BluetoothWriter的dispose
       if (this._bluetoothWriter) {
         this._bluetoothWriter.dispose();
       }
 
-      // 然后执行BLEManager自己的清理
-      this._cancelBleSubscription();
       this._stopAllTimers();
       if (this._peripheral) {
         // 断开设备连接
@@ -2135,6 +2140,9 @@ class BLEManager {
 
     } catch (error) {
       console.error('销毁BLE管理器时出错:', error);
+    } finally {
+      this._isDisposing = false;
+      this._notifyListeners();
     }
   }
 
@@ -2144,12 +2152,11 @@ class BLEManager {
    */
   _cancelBleSubscription() {
     try {
-      // 取消蓝牙订阅（如果存在）
-      if (this.bleSubscription) {
-        this.bleSubscription.cancel();
-        this.bleSubscription = null;
-        console.log('蓝牙订阅已取消');
+      if (this._connectionStateListener != null) {
+        uni.offBLEConnectionStateChange(this._connectionStateListener);
+        this._connectionStateListener = null;
       }
+
       // 取消蓝牙设备发现监听
       uni.offBluetoothDeviceFound();
 
@@ -2161,10 +2168,6 @@ class BLEManager {
 
       // 取消特征值变化监听
       uni.offBLECharacteristicValueChange();
-
-      // 清空订阅列表
-      this._subscriptions.clear();
-      this.bleSubscription = null;
 
       console.log('蓝牙订阅已取消');
 
@@ -3254,7 +3257,10 @@ class BLEManager {
   }
 
   startGZYSTimer() {
-    this.stopGZYSTimer();
+    if (this.gzysTimer != null) {
+      clearInterval(this.gzysTimer);
+      this.gzysTimer = null;
+    }
     this.gzysTimer = setInterval(() => {
       console.log(`延迟定时器: ${this._batteryData.gzys}`);
 
@@ -3264,7 +3270,6 @@ class BLEManager {
       } else {
         this._batteryData.gzys = this._batteryData.gzys - 1;
         this._batteryData.updateProperty('gzys', this._batteryData.gzys);
-        // this._batteryData.update();
         this._notifyListeners();
       }
     }, 1000);
@@ -3279,14 +3284,13 @@ class BLEManager {
       console.log('停止故障延时定时器');
 
       // 取消定时器
-      clearTimeout(this.gzysTimer);
+      clearInterval(this.gzysTimer);
       this.gzysTimer = null;
 
       // 重置故障延时数据
       if (this._batteryData) {
         this._batteryData.gzys = 0;
-        this._batteryData.updateProperty('gzys', this._batteryData.gzys);
-        // this._batteryData.update();
+        this._batteryData.updateProperty('gzys', 0);
       }
 
       // 通知监听器
