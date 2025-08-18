@@ -40,100 +40,100 @@
       restartDevice: 'handleRestartDevice'
     };
     export default {
-        components: {
-            BatteryCard,
-            CommonPanel,
-            DoubleColumnData
-        },
-        data() {
-            return {
-                show: false,
-                screenHeight: 0,
-                currentBatteryVoltageData: [],
-                // 电压格式化配置
-                voltageFormat: {
-                  decimals: 4,
-                  padding: true
-                },
-            };
-        },
-        computed: {
-            ...mapGetters([
-                't',
-                'isConnected',
-                'statusBarHeight',
-                'batteryData',
-                'isShowYCBHAlert',
-                'gzys',
-                'fdCloseStatusText',
-                'cdCloseStatusText',
-                'parameterValues',
-            ]),
-            safeBatteryVoltageData() {
-              const data = this.currentBatteryVoltageData.length > 0 ? this.currentBatteryVoltageData : this.getDefaultBatteryVoltageData();
-              return Array.isArray(data) ? data : [];
-            },
-            // 控制按钮配置 - 响应语言变化
-            controlButtons() {
-              return [
-                {
-                  text: this.t('start_charging'),
-                  action: 'chargeOn',
-                  color: '#34C759'
-                },
-                {
-                  text: this.t('stop_charging'),
-                  action: 'chargeOff',
-                  color: '#FF3B30'
-                },
-                {
-                  text: this.t('start_discharging'),
-                  action: 'dischargeOn',
-                  color: '#FF9500'
-                },
-                {
-                  text: this.t('stop_discharging'),
-                  action: 'dischargeOff',
-                  color: '#FF3B30'
-                },
-                {
-                  text: this.t('one_key_balance'),
-                  action: 'autoBalance',
-                  color: '#007AFF'
-                },
-                {
-                  text: this.t('restart_device'),
-                  action: 'restartDevice',
-                  color: '#AF52DE'
-                }
-              ];
-            },
-        },
-        watch: {
-          // 监听store中的电池数据变化，更新设备状态
-          'batteryData.voltages': {
-            handler(newData) {
-              if (newData) {
-                this.currentBatteryVoltageData = [];
-                const targetLength = this.parameterValues.series_number_setting  || 0;
-                if (newData && newData.length > 0) {
-                  // 重新构建数据
-                  this.currentBatteryVoltageData = Array.from({ length: targetLength }, (_, index) => ({
-                    label: index + 1,
-                    value: newData && newData[index] ? newData[index] : 0,
-                    unit: 'V'
-                  }));
-                }
-              }
-            },
-            immediate: true,
-            deep: true
+      components: {
+        BatteryCard,
+        CommonPanel,
+        DoubleColumnData
+      },
+      data() {
+        return {
+          show: false,
+          screenHeight: 0,
+          currentBatteryVoltageData: [],
+          // 电压格式化配置
+          voltageFormat: {
+            decimals: 4,
+            padding: true
           },
+        };
+      },
+      computed: {
+        ...mapGetters([
+          't',
+          'isConnected',
+          'statusBarHeight',
+          'batteryData',
+          'isShowYCBHAlert',
+          'gzys',
+          'fdCloseStatusText',
+          'cdCloseStatusText',
+          'parameterValues',
+        ]),
+        safeBatteryVoltageData() {
+          const data = this.currentBatteryVoltageData.length > 0 ? this.currentBatteryVoltageData : this.getDefaultBatteryVoltageData();
+          return Array.isArray(data) ? data : [];
         },
-        onLoad() {
-            this.getScreenHeight();
+        // 控制按钮配置 - 响应语言变化
+        controlButtons() {
+          return [
+            {
+              text: this.t('start_charging'),
+              action: 'chargeOn',
+              color: '#34C759'
+            },
+            {
+              text: this.t('stop_charging'),
+              action: 'chargeOff',
+              color: '#FF3B30'
+            },
+            {
+              text: this.t('start_discharging'),
+              action: 'dischargeOn',
+              color: '#FF9500'
+            },
+            {
+              text: this.t('stop_discharging'),
+              action: 'dischargeOff',
+              color: '#FF3B30'
+            },
+            {
+              text: this.t('one_key_balance'),
+              action: 'autoBalance',
+              color: '#007AFF'
+            },
+            {
+              text: this.t('restart_device'),
+              action: 'restartDevice',
+              color: '#AF52DE'
+            }
+          ];
         },
-        methods: {
+      },
+      watch: {
+        // 监听store中的电池数据变化，更新设备状态
+        'batteryData.voltages': {
+          handler(newData) {
+            if (newData) {
+              this.currentBatteryVoltageData = [];
+              const targetLength = this.parameterValues.series_number_setting  || 0;
+              if (newData && newData.length > 0) {
+                // 重新构建数据
+                this.currentBatteryVoltageData = Array.from({ length: targetLength }, (_, index) => ({
+                  label: index + 1,
+                  value: newData && newData[index] ? newData[index] : 0,
+                  unit: 'V'
+                }));
+              }
+            }
+          },
+          immediate: true,
+          deep: true
+        },
+      },
+      onLoad() {
+          this.getScreenHeight();
+      },
+      methods: {
           // 获取屏幕高度
           getScreenHeight() {
             const windowInfo = uni.getWindowInfo()
