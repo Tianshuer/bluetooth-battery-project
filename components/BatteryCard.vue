@@ -23,7 +23,7 @@
       </view>
       <view class="battery-content">
         <view class="battery-header">
-          <text class="battery-percentage">{{ currentBatteryPercentage }}%</text>
+          <text class="battery-percentage">{{ batteryData.ratio }}%</text>
           <view class="language-selector" @click="openLanguagePicker">
             <image class="country-flag" :src="languageOptions[currentLanguageIndex].iconUrl" mode="aspectFit"></image>
             <view class="language-text">{{ t('language') }}</view>
@@ -31,25 +31,25 @@
         </view>
         <view class="status-indicators">
           <!-- 放电MOS状态 -->
-          <view class="status-item">
+          <view class="status-item" :class="{ 'has-alert': fdCloseStatusText }">
             <view class="status-item-content">
-              <view class="status-dot" :class="batteryData.dischargingStatus ? 'green' : 'red'"></view>
+              <view class="status-dot" :class="batteryData.dischargingStatus ? 'active-dot' : 'inactive-dot'"></view>
               <text class="status-text">{{ t('discharge_mos') }}</text>
             </view>
             <view v-if="fdCloseStatusText" class="status-item-content">
-              <text class="iconfont icon-warning"  :class="batteryData.dischargingStatus ? 'green' : 'red'"></text>
+              <text class="iconfont icon-warning"  :class="batteryData.dischargingStatus ? 'active-dot' : 'inactive-dot'"></text>
               <text class="status-text alert-text">{{ fdCloseStatusText }}</text>
             </view>
           </view>
 
           <!-- 充电MOS状态 -->
           <view class="status-item">
-            <view class="status-item-content">
-              <view class="status-dot" :class="batteryData.chargingStatus ? 'green' : 'red'"></view>
+            <view class="status-item-content" :class="{ 'has-alert': cdCloseStatusText }">
+              <view class="status-dot" :class="batteryData.chargingStatus ? 'active-dot' : 'inactive-dot'"></view>
               <text class="status-text">{{ t('charge_mos') }}</text>
             </view>
             <view v-if="cdCloseStatusText" class="status-item-content">
-              <text class="iconfont icon-warning"  :class="batteryData.chargingStatus ? 'green' : 'red'"></text>
+              <text class="iconfont icon-warning"  :class="batteryData.chargingStatus ? 'active-dot' : 'inactive-dot'"></text>
               <text class="status-text alert-text">{{ cdCloseStatusText }}</text>
             </view>
           </view>
@@ -57,7 +57,7 @@
           <!-- 均衡状态 -->
           <view class="status-item">
             <view class="status-item-content">
-              <view class="status-dot" :class="batteryData.balancingStatus ? 'green' : 'red'"></view>
+              <view class="status-dot" :class="batteryData.balancingStatus ? 'active-dot' : 'inactive-dot'"></view>
               <text class="status-text">{{ t('balancing') }}</text>
             </view>
           </view>
@@ -406,6 +406,10 @@ export default {
   width: 33.3%
 }
 
+.status-item .has-alert {
+  margin-bottom: 8rpx;
+}
+
 .status-item-content {
   display: flex;
   align-items: center;
@@ -420,11 +424,11 @@ export default {
   margin-right: 12rpx;
 }
 
-.status-dot.red {
+.status-dot.inactive-dot {
   background-color: #FF3B30;
 }
 
-.status-dot.green {
+.status-dot.active-dot {
   background-color: #34C759;
 }
 
@@ -439,11 +443,11 @@ export default {
   color: #FF3B30;
 }
 
-.icon-warning.red {
+.icon-warning.inactive-dot {
   color: #FF3B30;
 }
 
-.icon-warning.green {
+.icon-warning.active-dot {
   color: #34C759;
 }
 
