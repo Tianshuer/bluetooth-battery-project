@@ -2869,10 +2869,10 @@ class BLEManager {
         // 密码验证成功
         this._lastError = null;
         this._passwordVerified = true;
-        this.verifiedPassword = this.lastVerifyPassword;
-
         // 启动密码验证定时器（4分钟后自动失效）
         this._startPasswordTimer();
+        this.verifiedPassword = this.lastVerifyPassword;
+
         // 显示成功提示
         this._showToast(this.t("password_success"));
       }
