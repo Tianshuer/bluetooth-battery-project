@@ -113,24 +113,49 @@ export default {
 		async startScan() {
 			if (this.isScanning) return;
 			
-			// 停止之前的扫描
+			// 停旧扫描
 			this.stopScan(false);
+
+			// 显示可控的 loading
+			uni.showLoading({ title: this.t('loading'), mask: true });
 			
-			// 显示加载提示
-			uni.showToast({
-				title: this.t('loading'),
-				icon: 'loading',
-				duration: 5000,
-				mask: true,
-			});
-			
-			// 开始扫描
+			// 启动扫描
 			await bleManager.startScanning();
-			
-			// 10秒后自动停止扫描
-			setTimeout(async () => {
+
+			// 活跃检测：列表长度在一段时间内不再变化则隐藏 loading
+			let lastLen = (bleManager.discoveredPeripherals || []).length;
+			let lastChangeTs = Date.now();
+			const idleWindowMs = 1200;   // 1.2s 无变化视为稳定
+
+			const watchInterval = setInterval(() => {
+				const list = bleManager.discoveredPeripherals || [];
+				const len = list.length;
+				if (len !== lastLen) {
+					lastLen = len;
+					lastChangeTs = Date.now();
+				}
+				const idleFor = Date.now() - lastChangeTs;
+
+				// 列表已出现且稳定 → 隐藏 loading
+				if (lastLen > 0 && idleFor >= idleWindowMs) {
+					uni.hideLoading();
+					clearInterval(watchInterval);
+				}
+			}, 300);
+
+			// 最长 10 秒自动停止扫描（并隐藏 loading）
+			const hardStop = setTimeout(async () => {
 				await bleManager.stopScanning();
-			}, 5000);
+				uni.hideLoading();
+				clearInterval(watchInterval);
+			}, 10000);
+
+			// 保障：页面离开/再次触发时清理
+			this.$once('hook:beforeDestroy', () => {
+				clearInterval(watchInterval);
+				clearTimeout(hardStop);
+				uni.hideLoading();
+			});
 		},
 	
 		

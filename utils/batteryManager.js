@@ -498,6 +498,10 @@ class BLEManager {
 
     // 初始化时同步一次状态到Vuex
     this._syncStateToVuex();
+
+    // 扫描专用
+    this._deviceFoundHandler = null;   // 当前活跃监听
+    this._seenDeviceIds = new Set();   // 本次扫描已见设备
   }
   // MARK: - 常量定义
   static get SERVICE_UUID() {
@@ -900,55 +904,58 @@ class BLEManager {
    * @private
    */
   async _setupScanResultsListener() {
-    console.log('_setupScanResultsListener', this._discoveredPeripherals);
-    try {
-      await this._getAlreadyDiscoveredDevices();
-    } catch (error) {
-      console.log('获取已发现设备失败，可能是首次扫描:', error);
+    // 先移除旧的
+    if (this._deviceFoundHandler) {
+      uni.offBluetoothDeviceFound(this._deviceFoundHandler);
+      this._deviceFoundHandler = null;
     }
 
-    // 2. 设置监听器监听新发现的设备
-    uni.onBluetoothDeviceFound((res) => {
-      this._handleDeviceFound(res);
-    });
+    // 如无必要，不要回灌缓存（会把历史设备全加进来）
+    // 若必须回灌，务必过滤后调用：await this._getAlreadyDiscoveredDevices();
+
+    this._deviceFoundHandler = (res) => this._handleDeviceFound(res);
+    uni.onBluetoothDeviceFound(this._deviceFoundHandler);
   }
 
-  async _getAlreadyDiscoveredDevices() {
-    return new Promise((resolve, reject) => {
-      uni.getBluetoothDevices({
-        success: (res) => {
-          if (res.devices && Array.isArray(res.devices)) {
-            // 处理已发现的设备
-            this._handleDeviceFound({
-              devices: res.devices,
-            });
-          }
-          resolve(res);
-        },
-        fail: (error) => {
-          console.log('获取已发现的设备失败:', error);
-          // 不算作错误，可能是还没有发现任何设备
-          resolve({
-            devices: []
-          });
-        }
-      });
-    });
-  }
+  // async _getAlreadyDiscoveredDevices() {
+  //   return new Promise((resolve, reject) => {
+  //     uni.getBluetoothDevices({
+  //       success: (res) => {
+  //         if (res.devices && Array.isArray(res.devices)) {
+  //           // 处理已发现的设备
+  //           this._handleDeviceFound({
+  //             devices: res.devices,
+  //           });
+  //         }
+  //         resolve(res);
+  //       },
+  //       fail: (error) => {
+  //         console.log('获取已发现的设备失败:', error);
+  //         // 不算作错误，可能是还没有发现任何设备
+  //         resolve({
+  //           devices: []
+  //         });
+  //       }
+  //     });
+  //   });
+  // }
 
   _handleDeviceFound(res) {
-    if (!res.devices || !Array.isArray(res.devices)) {
-      return;
-    }
+    if (!res.devices || !Array.isArray(res.devices)) return;
+
+    let added = 0;
+    // const prefix = this._targetDevicePrefix; // 如 "BLE_DEVICE" 或 ProductConfig.devicePrefix
 
     for (const device of res.devices) {
       const name = (device.name || device.localName || '').toString().trim();
-      if (!name) continue; // 仍然只展示有名称的设备
+      if (!name) continue;
 
-      const idx = this._discoveredPeripherals.findIndex(d => d.deviceId === device.deviceId);
-      if (idx !== -1) continue;
-      // 判断是否为未知设备
-      const isUnknownDevice = /未知|unknown/i.test(name);
+      // 强过滤：只接收目标前缀（如需展示全部可去掉此条件）
+      // if (prefix && !name.startsWith(prefix)) continue;
+
+      // 本次扫描会话级别去重
+      if (this._seenDeviceIds.has(device.deviceId)) continue;
+      this._seenDeviceIds.add(device.deviceId);
       const deviceData = {
         deviceId: device.deviceId,
         name,
@@ -958,14 +965,12 @@ class BLEManager {
         localName: device.localName || '',
         serviceData: device.serviceData || {}
       };
-      
-      // 根据设备类型决定添加位置
-      isUnknownDevice 
-        ? this._discoveredPeripherals.push(deviceData) 
-        : this._discoveredPeripherals.unshift(deviceData);
+
+      this._discoveredPeripherals.push(deviceData)
+      added++;
     }
 
-    this._notifyListeners();
+    if (added > 0) this._notifyListeners();
   }
 
   /**
@@ -1137,23 +1142,18 @@ class BLEManager {
    */
   async startScanning() {
     try {
-      // 如果已连接，不进行扫描
-      if (this._isConnected) {
-        console.log('设备已连接，跳过扫描');
-        return;
-      }
-      // 不区分首次与否：每次扫描前清空结果并强制重启扫描
-      if (this._isScanning) {
-        await this.stopScanning();
-      }
+      if (this._isConnected) return;
+      if (this._isScanning) await this.stopScanning();
 
+      // 重置本次扫描状态
       this._discoveredPeripherals.length = 0;
+      this._seenDeviceIds.clear();
       this._notifyListeners();
 
       await this._startBluetoothScan();
       this._setScanTimeout(10000);
-    } catch (error) {
-      console.error('开始扫描蓝牙设备失败:', error);
+    } catch (e) {
+      console.error('开始扫描蓝牙设备失败:', e);
       this._lastError = "开始扫描蓝牙设备失败";
       this._notifyListeners();
     }
@@ -1195,19 +1195,23 @@ class BLEManager {
   }
 
   async _startBluetoothDevicesDiscovery() {
-
     return new Promise((resolve, reject) => {
       uni.startBluetoothDevicesDiscovery({
+        // services: [BLEManager.SERVICE_UUID], // 如平台支持，可按服务过滤
         success: (res) => {
           this._isScanning = true;
           this._notifyListeners();
           resolve(res);
         },
-        fail: (err) => {
+        fail: async (err) => {
           if (err.errMsg && err.errMsg.includes('already discovering')) {
-            console.error('蓝牙设备搜索启动失败:', err);
-            this._setupScanResultsListener();
-            resolve(err);
+            // 先停后启，避免重复监听叠加
+            await new Promise(r => uni.stopBluetoothDevicesDiscovery({ complete: r }));
+            // 重新开始
+            uni.startBluetoothDevicesDiscovery({
+              success: (res2) => { this._isScanning = true; this._notifyListeners(); resolve(res2); },
+              fail: (e2) => { this._isScanning = false; reject(new Error(`设备搜索失败: ${e2.errMsg||e2.message}`)); }
+            });
           } else {
             this._isScanning = false;
             reject(new Error(`设备搜索失败: ${err.errMsg || err.message}`));
@@ -1238,36 +1242,27 @@ class BLEManager {
    */
   stopScanning() {
     try {
-      // 如果没有在扫描，直接返回
       if (!this._isScanning) return;
       this._isScanning = false;
 
-      console.log('停止设备扫描...');
-
-      // 清除扫描超时定时器
       if (this._scanTimeoutTimer) {
         clearTimeout(this._scanTimeoutTimer);
         this._scanTimeoutTimer = null;
       }
 
-      // 停止扫描
+      // 移除监听器（关键）
+      if (this._deviceFoundHandler) {
+        uni.offBluetoothDeviceFound(this._deviceFoundHandler);
+        this._deviceFoundHandler = null;
+      }
+
       uni.stopBluetoothDevicesDiscovery({
-        success: (res) => {
-          console.log('扫描停止成功:', res);
-        },
-        fail: (err) => {
-          console.error('扫描停止失败:', err);
-          // 即使停止失败，也要重置状态
-        }
+        complete: () => { /* 成功或失败都无所谓，状态我们已置位 */ }
       });
 
-      // 更新扫描状态并通知
-      console.log('设备扫描已停止');
       this._notifyListeners();
-
-    } catch (error) {
-      console.error('停止扫描过程出错:', error);
-      // 确保状态被重置
+    } catch (e) {
+      console.error('停止扫描出错:', e);
       this._isScanning = false;
       this._notifyListeners();
     }
