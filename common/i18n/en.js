@@ -8,6 +8,7 @@ export default {
   "realtime_status": "Realtime Status",
   "display_control": "Display&Control",
   "system_settings": "System Settings",
+  "electricity_convergence": "Electricity Convergence",
   
   // ==================== Connection Status ====================
   "connection_success": "Connection",

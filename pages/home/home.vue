@@ -5,10 +5,10 @@
 				<image class="logo" src="/static/images/thunder-illustration.png" mode="aspectFit"></image>
 			</view>
 			<view class="brand-section">
-				<image class="brand-image" src="/static/images/mlbms_product_icon.png" mode="aspectFit"></image>
+				<image class="brand-image" :src="brandImageSrc" mode="aspectFit"></image>
 			</view>
-			<view class="text-section">
-				<text class="brand-text uni-color-black">Electricity Convergence</text>
+			<view class="text-section" v-if="!showBrandText">
+				<text class="brand-text uni-color-black">{{ t('electricity_convergence') }}</text>
 			</view>
 		</view>
 		<view class="bottom-section">
@@ -38,8 +38,18 @@ export default {
 	},
 	computed: {
 		...mapGetters([
-			't'
-		])
+			't',
+			'currentLanguage',
+		]),
+		currentLocale() {
+			return this.currentLanguage
+		},
+		showBrandText() {
+			return this.currentLocale === 'zh'
+		},
+		brandImageSrc() {
+			return this.currentLocale === 'zh' ? '/static/images/mlbms-first-info.jpeg' : '/static/images/mlbms_product_icon.png'
+		}
 	},
 	async onLoad() {
 		// 获取屏幕高度
@@ -59,7 +69,7 @@ export default {
 .container {
 	display: flex;
 	flex-direction: column;
-	background: #f5f5f5;
+	background: #f9f9f9;
 	position: relative;
 }
 

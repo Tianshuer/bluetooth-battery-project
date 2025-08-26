@@ -8,6 +8,7 @@ export default {
   "realtime_status": "实时状态",
   "display_control": "显示与控制",
   "system_settings": "系统设置",
+  "electricity_convergence": "让您的电池更安全",
   
   // ==================== 连接状态 ====================
   "connection_success": "连接成功",
