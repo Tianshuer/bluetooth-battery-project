@@ -1,5 +1,5 @@
 <template>
-	<view class="container" :style="{ minHeight: screenHeight + 'px' }">
+	<view class="container" :style="{ minHeight: screenHeight + 'px', background: containerBackground }">
 		<view class="main-content">
 			<view class="logo-section">
 				<image class="logo" src="/static/images/thunder-illustration.png" mode="aspectFit"></image>
@@ -44,6 +44,9 @@ export default {
 		currentLocale() {
 			return this.currentLanguage
 		},
+		containerBackground() {
+			return this.currentLocale === 'zh' ? '#f9f9f9' : '#f6f6f6';
+		},
 		showBrandText() {
 			return this.currentLocale === 'zh'
 		},
@@ -69,7 +72,6 @@ export default {
 .container {
 	display: flex;
 	flex-direction: column;
-	background: #f9f9f9;
 	position: relative;
 }
 
