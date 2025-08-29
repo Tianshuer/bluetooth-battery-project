@@ -204,12 +204,12 @@
 </script>
 
 <style scoped>
-    .container {
-      display: flex;
-      flex-direction: column;
-      gap: 26rpx;
-      background-color: #f5f5f5;
-      padding: 20rpx;
-      box-sizing: border-box;
-    }
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 26rpx;
+  background-color: #f5f5f5;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
 </style> 
