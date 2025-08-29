@@ -62,6 +62,8 @@ export default {
   
   // ==================== 蓝牙设备 ====================
   "no_devices_found": "未发现蓝牙设备",
+  "no_search_results": "未找到匹配的设备",
+  "search_devices": "搜索设备",
   "found_peripherals": "已发现 %d 个外围设备",
   "stop_scan": "结束扫描",
   "start_scan": "开始扫描",

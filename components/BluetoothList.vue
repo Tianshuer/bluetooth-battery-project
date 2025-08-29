@@ -9,11 +9,29 @@
 				<text class="popup-close" @click="hidePopup">×</text>
 			</view>
 			<view class="popup-body">
+				<!-- 搜索框 -->
+				<view class="search-container">
+					<view class="search-input-wrapper">
+						<text class="iconfont icon-search search-icon"></text>
+						<input 
+							class="search-input" 
+							:placeholder="t('search_devices')" 
+							v-model="searchKeyword"
+							@input="onSearchInput"
+						/>
+						<text 
+							v-if="searchKeyword" 
+							class="clear-icon" 
+							@click="clearSearch"
+						>×</text>
+					</view>
+				</view>
+				
 				<!-- 设备列表 -->
 				<scroll-view class="device-list" scroll-y="true">
 					<view 
 						class="device-item" 
-						v-for="(device, index) in localDiscoveredPeripherals" 
+						v-for="(device, index) in filteredDevices" 
 						:key="index"
 						@click="selectDevice(device)"
 					>
@@ -29,8 +47,10 @@
 					</view>
 					
 					<!-- 空状态 -->
-					<view v-if="localDiscoveredPeripherals.length === 0 && !isScanning" class="empty-state">
-						<text class="empty-text">{{ t('no_devices_found') }}</text>
+					<view v-if="filteredDevices.length === 0 && !isScanning" class="empty-state">
+						<text class="empty-text">
+							{{ searchKeyword ? t('no_search_results') : t('no_devices_found') }}
+						</text>
 					</view>
 				</scroll-view>
 				
@@ -56,6 +76,8 @@ export default {
 	data() {
 		return {
 			localDiscoveredPeripherals: [],
+			searchKeyword: '', // 搜索关键词
+			originalDevices: [], // 保存原始设备数据
 		}
 	},
 	computed: {
@@ -65,12 +87,29 @@ export default {
 			'isScanning',
 			'isConnected',
 		]),
+		// 过滤后的设备列表
+		filteredDevices() {
+			if (!this.searchKeyword.trim()) {
+				return this.localDiscoveredPeripherals;
+			}
+			
+			const keyword = this.searchKeyword.toLowerCase().trim();
+			return this.localDiscoveredPeripherals.filter(device => {
+				// 模糊查询设备名称和UUID
+				const name = (device.name || '').toLowerCase();
+				const deviceId = (device.deviceId || '').toLowerCase();
+				
+				return name.includes(keyword) || deviceId.includes(keyword);
+			});
+		}
 	},
 	watch: {
 		// 监听 store 中的 discoveredPeripherals 变化
 		discoveredPeripherals: {
 			handler(newDevices) {
 				this.localDiscoveredPeripherals = [...newDevices];
+				// 同时更新原始数据
+				this.originalDevices = [...newDevices];
 			},
 			immediate: true, // 立即执行一次
 			deep: true // 深度监听数组变化
@@ -80,11 +119,24 @@ export default {
 		...mapActions([
 			'setBluetoothDevice',
 		]),
+		// 搜索输入处理
+		onSearchInput() {
+			// 实时搜索，不需要额外处理，computed 会自动更新
+		},
+		
+		// 清除搜索
+		clearSearch() {
+			this.searchKeyword = '';
+		},
+		
 		// 显示弹窗
 		showPopup() {
 			uni.hideTabBar({
 				animation: true
 			})
+			
+			// 清空搜索关键词
+			this.searchKeyword = '';
 			
 			// 打开弹窗
 			this.$refs.popup.open();
@@ -99,6 +151,12 @@ export default {
 		hidePopup() {
 			// 先停止扫描
 			this.stopScan(false);
+			
+			// 清空搜索关键词
+			this.searchKeyword = '';
+
+			// 确保隐藏 loading
+			uni.hideLoading();
 
 			// 显示tabbar
 			uni.showTabBar({
@@ -119,55 +177,70 @@ export default {
 			// 显示可控的 loading
 			uni.showLoading({ title: this.t('loading'), mask: true });
 			
-			// 启动扫描
-			await bleManager.startScanning();
+			try {
+				// 启动扫描
+				await bleManager.startScanning();
 
-			// 活跃检测：列表长度在一段时间内不再变化则隐藏 loading
-			let lastLen = (bleManager.discoveredPeripherals || []).length;
-			let lastChangeTs = Date.now();
-			const idleWindowMs = 1200;   // 1.2s 无变化视为稳定
+				// 活跃检测：列表长度在一段时间内不再变化则隐藏 loading
+				let lastLen = (bleManager.discoveredPeripherals || []).length;
+				let lastChangeTs = Date.now();
+				const idleWindowMs = 1200;   // 1.2s 无变化视为稳定
 
-			const watchInterval = setInterval(() => {
-				const list = bleManager.discoveredPeripherals || [];
-				const len = list.length;
-				if (len !== lastLen) {
-					lastLen = len;
-					lastChangeTs = Date.now();
-				}
-				const idleFor = Date.now() - lastChangeTs;
+				const watchInterval = setInterval(() => {
+					const list = bleManager.discoveredPeripherals || [];
+					const len = list.length;
+					if (len !== lastLen) {
+						lastLen = len;
+						lastChangeTs = Date.now();
+					}
+					const idleFor = Date.now() - lastChangeTs;
 
-				// 列表已出现且稳定 → 隐藏 loading
-				if (lastLen > 0 && idleFor >= idleWindowMs) {
+					// 列表已出现且稳定 → 隐藏 loading
+					if (lastLen > 0 && idleFor >= idleWindowMs) {
+						uni.hideLoading();
+						clearInterval(watchInterval);
+					}
+				}, 300);
+
+				// 最长 10 秒自动停止扫描（并隐藏 loading）
+				const hardStop = setTimeout(async () => {
+					await bleManager.stopScanning();
 					uni.hideLoading();
 					clearInterval(watchInterval);
-				}
-			}, 300);
+				}, 10000);
 
-			// 最长 10 秒自动停止扫描（并隐藏 loading）
-			const hardStop = setTimeout(async () => {
-				await bleManager.stopScanning();
+				// 保障：页面离开/再次触发时清理
+				this.$once('hook:beforeDestroy', () => {
+					clearInterval(watchInterval);
+					clearTimeout(hardStop);
+					uni.hideLoading();
+				});
+			} catch (error) {
+				// 扫描出错时隐藏 loading
+				console.error('扫描失败:', error);
 				uni.hideLoading();
-				clearInterval(watchInterval);
-			}, 10000);
-
-			// 保障：页面离开/再次触发时清理
-			this.$once('hook:beforeDestroy', () => {
-				clearInterval(watchInterval);
-				clearTimeout(hardStop);
-				uni.hideLoading();
-			});
+			}
 		},
 	
 		
 		// 停止扫描
 		async stopScan(isShowToast = true) {
-			await bleManager.stopScanning();
-			
-			if (isShowToast) {
-				uni.showToast({
-					title: this.t('stop_scan'),
-					icon: 'none',
-				});
+			try {
+				await bleManager.stopScanning();
+				
+				// 停止扫描时隐藏 loading
+				uni.hideLoading();
+				
+				if (isShowToast) {
+					uni.showToast({
+						title: this.t('stop_scan'),
+						icon: 'none',
+					});
+				}
+			} catch (error) {
+				// 停止扫描出错时也隐藏 loading
+				console.error('停止扫描失败:', error);
+				uni.hideLoading();
 			}
 		},
 		
@@ -250,6 +323,8 @@ export default {
 	// 组件销毁时清理资源
 	beforeDestroy() {
 		this.stopScan(false);
+		// 确保组件销毁时隐藏 loading
+		uni.hideLoading();
 	}
 }
 </script>
@@ -313,11 +388,60 @@ export default {
 	flex: 1;
 }
 
+/* 搜索框样式 */
+.search-container {
+	margin-bottom: 20rpx;
+	padding: 0 10rpx;
+}
+
+.search-input-wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+	background: #f5f5f5;
+	border-radius: 20rpx;
+	padding: 0 20rpx;
+	height: 72rpx;
+}
+
+.search-icon {
+	color: #999999;
+	font-size: 32rpx;
+	margin-right: 16rpx;
+}
+
+.search-input {
+	flex: 1;
+	height: 100%;
+	font-size: 28rpx;
+	color: #333333;
+	background: transparent;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+}
+
+.search-input::placeholder {
+	color: #999999;
+}
+
+.clear-icon {
+	color: #999999;
+	font-size: 36rpx;
+	padding: 8rpx;
+	cursor: pointer;
+	transition: color 0.2s;
+}
+
+.clear-icon:active {
+	color: #666666;
+}
+
 /* 设备列表样式 */
 .device-list {
 	flex: 1;
 	margin-bottom: 30rpx;
-	max-height: 64vh;
+	max-height: 60vh;
 }
 
 .device-item {

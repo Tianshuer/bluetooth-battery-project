@@ -63,6 +63,8 @@ export default {
   // ==================== Bluetooth Devices ====================
   "no_devices_found": "No Bluetooth devices found",
   "found_peripherals": "Found %d peripheral devices",
+  "no_search_results": "No search results",
+  "search_devices": "Search devices",
   "stop_scan": "Stop Scan",
   "start_scan": "Start Scan",
   "unknown_device": "Unknown Device",
