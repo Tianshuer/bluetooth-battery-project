@@ -22,3 +22,7 @@
   content: "\e6a1";
 }
 
+.icon-search:before {
+  content: "\e8ef";
+}
+
