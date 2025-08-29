@@ -200,6 +200,10 @@ export default {
   "next": "下一步",
   "previous": "上一步",
   "finish": "完成",
+  "params_setting": "参数设置",
+  "save": "保存",
+  "clear": "清除",
+  "params_write": "一键写入",
   
   // ==================== 错误信息 ====================
   "network_error": "网络错误",

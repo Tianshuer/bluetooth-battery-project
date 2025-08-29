@@ -201,7 +201,10 @@ export default {
   "next": "Next",
   "previous": "Previous",
   "finish": "Finish",
-  
+  "params_setting": "Params Setting",
+  "save": "Save",
+  "params_write": "Params Write",
+  "clear": "Clear",
   // ==================== Error Messages ====================
   "network_error": "Network Error",
   "timeout_error": "Timeout Error",

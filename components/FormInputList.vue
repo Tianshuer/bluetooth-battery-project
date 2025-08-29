@@ -8,7 +8,7 @@
       <view class="label-section">
         <text class="label">{{ item.label }}</text>
       </view>
-      <view class="text-section">
+      <view class="text-section" v-if="showTextSection">
         <text class="label">{{ item.params }} {{ item.params ? item.unit : '' }}</text>
       </view>
       <view class="input-section">
@@ -20,7 +20,9 @@
           :focus="false"
           @input="handleInput(item, index)"
         />
+        <text v-if="showUnitInInput && item.unit" class="unit">{{ item.unit }}</text>
         <button 
+          v-if="showSendButton"
           class="send-btn uni-bg-green uni-color-black"
           @click="handleSend(item, index)"
         >
@@ -41,6 +43,21 @@ export default {
     items: {
       type: Array,
       default: () => []
+    },
+    // 是否显示中部文本区（原来的 params + unit 展示）
+    showTextSection: {
+      type: Boolean,
+      default: true
+    },
+    // 是否显示右侧发送按钮
+    showSendButton: {
+      type: Boolean,
+      default: true
+    },
+    // 是否在输入框右侧显示单位
+    showUnitInInput: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -151,6 +168,12 @@ export default {
   line-height: 68rpx;
   box-sizing: border-box;
   min-width: 0;
+}
+
+.unit {
+  flex-shrink: 0;
+  color: #333333;
+  font-size: 26rpx;
 }
 
 .input-field:focus {

@@ -14,6 +14,7 @@
         <text class="status-text">
           {{ isConnected ? t('connection_success') : t('connection_closed') }}
         </text>
+        <uni-icons type="settings" size="26" @click="openAdvancedPopup"></uni-icons>
       </view>
     </view>
     
@@ -114,26 +115,44 @@
         </view>
       </view>
     </uni-popup>
+
+    <!-- 输入框参数一键写入弹出框 -->
+    <AdvancedParamsPopup
+      ref="advancedPopup"
+      :items="advancedParams"
+      @close="onAdvancedClose"
+      @input="onAdvancedInput"
+      @send="onAdvancedSend"
+      @clear="onAdvancedClear"
+      @save="onAdvancedSave"
+      @write="onAdvancedWrite"
+    />
   </view>
 </template>
 
 <script>
-import uniPopup from '@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue'
-import { mapGetters, mapActions } from 'vuex'
-import BluetoothList from './BluetoothList.vue'
+import uniPopup from '@dcloudio/uni-ui/lib/uni-popup/uni-popup.vue';
+import uniIcons from '@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue';
+import { mapGetters, mapActions } from 'vuex';
+import BluetoothList from './BluetoothList.vue';
+import AdvancedParamsPopup from './AdvancedParamsPopup.vue';
 import bleManager from '../utils/batteryManager';
+import AppConstants from '../utils/appConstants.js';
 
 export default {
   name: 'BatteryCard',
   components: {
     uniPopup,
-    BluetoothList
+    uniIcons,
+    BluetoothList,
+    AdvancedParamsPopup,
   },
   data() {
     return {
       switchKey: 0,
       bleListener: null,
       userInitiatedAction: false,
+      advancedParams: [], // 高级参数列表
     }
   },
   computed: {
@@ -154,6 +173,7 @@ export default {
       'lowestString',
       'gzys',
       'isShowYCBHAlert',
+      'parameterValues',
     ]),
   },
   mounted() {
@@ -164,6 +184,9 @@ export default {
 		// 初始化蓝牙状态
 		bleManager._notifyListeners();
     // this.handleConnectionStateChange();
+    
+    // 初始化高级参数
+    this.initAdvancedParams();
   },
   activated() {
 		this.ensureBleListener();
@@ -177,7 +200,6 @@ export default {
     ...mapActions([
       'switchLanguage',
     ]),
-
     ensureBleListener() {
 			try {
 				const list = bleManager.listeners || [];
@@ -270,6 +292,191 @@ export default {
     //     this.userInitiatedAction = false;
     //   });
     // }
+
+    // 初始化高级参数
+    initAdvancedParams() {
+      const params = [];
+      for (const [key, command] of Object.entries(AppConstants.parameterCommandPrefixMap)) {
+        if (key === 'rename_device') continue; // 跳过重命名设备
+        
+        const label = this.t(key);
+        const unit = AppConstants.parameterUnitMap[key] || '';
+        const inputType = key === 'rename_device' ? 'text' : 'digit';
+        
+        // 尝试从本地存储获取保存的值，如果没有则使用默认值
+        const savedValue = uni.getStorageSync(`advanced_param_${key}`);
+        const defaultValue = savedValue || '';
+        
+        params.push({
+          key,
+          label,
+          unit,
+          inputType,
+          params: defaultValue,
+          placeholder: this.t('input_value'),
+          command
+        });
+      }
+      this.advancedParams = params;
+      
+    },
+
+    // 打开高级设置弹窗
+    openAdvancedPopup() {
+      // 刷新参数值（从蓝牙设备获取最新值）
+      // this.refreshParamsFromDevice();
+      
+      this.$refs.advancedPopup.open();
+      uni.hideTabBar({
+        animation: true
+      });
+    },
+
+    // AdvancedParamsPopup 事件回调
+    onAdvancedClose() {
+      uni.showTabBar({ animation: true });
+    },
+    onAdvancedInput({ item, index, value }) {
+      // 同步本地 advancedParams
+      if (this.advancedParams[index]) {
+        this.$set(this.advancedParams[index], 'params', value)
+      }
+    },
+    onAdvancedSend({ item, index, value }) {
+      // 可扩展：单项发送（当前直接透传/忽略）
+    },
+    onAdvancedClear() {
+      this.advancedParams = this.advancedParams.map(p => ({ ...p, params: '' }))
+    },
+    onAdvancedSave(payload) {
+      // payload: [{ key, value }]
+      (payload || []).forEach(({ key, value }) => {
+        const idx = this.advancedParams.findIndex(p => p.key === key)
+        if (idx >= 0) this.$set(this.advancedParams[idx], 'params', value || '')
+        if (key) uni.setStorageSync(`advanced_param_${key}`, value || '')
+      })
+      uni.showToast({ title: '参数已保存', icon: 'success' })
+    },
+    onAdvancedWrite(payload) {
+      // 写入：此处仍使用原有一键写入逻辑（可在此处按需对接 bleManager）
+      uni.showLoading({ title: '正在写入...', mask: true })
+      setTimeout(() => {
+        uni.hideLoading()
+        // 更新本地与外部页面
+        (payload || []).forEach(({ key, value }) => {
+          const idx = this.advancedParams.findIndex(p => p.key === key)
+          if (idx >= 0) this.$set(this.advancedParams[idx], 'params', value || '')
+        })
+        this.$emit('update-form-inputs', this.advancedParams)
+        uni.showToast({ title: '参数写入成功', icon: 'success' })
+        this.$refs.advancedPopup.close()
+        this.onAdvancedClose()
+      }, 1200)
+    },
+
+    // refreshParamsFromDevice() {
+    //   // 暂时使用模拟数据，实际应该从bleManager获取
+    //   this.advancedParams.forEach(param => {
+    //     if (!param.params) {
+    //       // 如果没有保存的值，设置一个默认值
+    //       param.params = this.getDefaultParamValue(param.key);
+    //     }
+    //   });
+    // },
+
+    // 获取参数的默认值
+    // getDefaultParamValue(key) {
+    //   const defaultValues = {
+    //     'series_number_setting': '16',
+    //     'over_voltage_protection': '4.25',
+    //     'over_voltage_recovery': '4.15',
+    //     'under_voltage_protection': '2.5',
+    //     'under_voltage_recovery': '2.8',
+    //     'probe_high_temp': '60',
+    //     'probe_recovery_temp': '50',
+    //     'mos_high_temp': '80',
+    //     'mos_recovery_temp': '70',
+    //     'balance_voltage_diff': '0.05',
+    //     'balance_temperature': '25',
+    //     'battery_capacity': '100',
+    //     'voltage_diff_balance': '0.1',
+    //     'balance_start': '3.8',
+    //     'current_limit': '10',
+    //     'fault_delay': '5',
+    //     'over_current_protection': '20',
+    //     'charging_over_current': '15',
+    //     'voltage_diff_protection': '0.2',
+    //     'current_limit_debounce': '5',
+    //     'short_circuit_delay': '100',
+    //     'balance_frequency': '1000'
+    //   };
+    //   return defaultValues[key] || '';
+    // },
+
+    // 处理参数输入
+    handleParamInput(item, index) {
+      // 参数输入时的处理逻辑
+      console.log('参数输入:', item.key, item.params);
+    },
+
+    // 清除所有参数
+    clearAllParams() {
+      uni.showModal({
+        title: '确认清除',
+        content: '确定要清除所有参数值吗？',
+        success: (res) => {
+          if (res.confirm) {
+            this.advancedParams.forEach(param => {
+              param.params = '';
+            });
+            uni.showToast({
+              title: '已清除所有参数',
+              icon: 'success'
+            });
+          }
+        }
+      });
+    },
+
+    // 保存所有参数
+    saveAllParams() {
+      // 保存到本地存储
+      this.advancedParams.forEach(param => {
+        if (param.params) {
+          uni.setStorageSync(`advanced_param_${param.key}`, param.params);
+        }
+      });
+      
+      uni.showToast({
+        title: '参数已保存',
+        icon: 'success'
+      });
+    },
+
+    // 一键写入所有参数
+    writeAllParams() {
+      // 这里应该将参数写入到蓝牙设备
+      // 暂时模拟写入过程
+      uni.showLoading({
+        title: '正在写入...',
+        mask: true
+      });
+
+      setTimeout(() => {
+        uni.hideLoading();
+        
+        // 发送事件通知父组件更新formInputItems
+        this.$emit('update-form-inputs', this.advancedParams);
+        
+        uni.showToast({
+          title: '参数写入成功',
+          icon: 'success'
+        });
+        
+        // 关闭弹窗
+        this.closeAdvancedPopup();
+      }, 2000);
+    },
 
   },
 }
